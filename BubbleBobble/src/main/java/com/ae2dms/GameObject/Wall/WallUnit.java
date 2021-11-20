@@ -1,25 +1,34 @@
-package main;
+package com.ae2dms.GameObject.Wall;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
 
 /**
- * The CeilingUnit class creates ceiling units to be used for the world.
- * A ceiling unit is a unit shaped like a square that is treated as a ceiling, with collision on all four sides.
- * The ceiling collides with any kind of game object.
- * Even if a game object is on top of a ceiling, the game object will be pushed down.
+ * The WallUnit class creates wall units to be used for the world.
+ * A wall unit is an unit shaped like a square that is treated as a wall,
+ * with collision on all four sides.
+ * The wall collides with any kind of game object.
  */
-public class CeilingUnit extends GameObject {
+public class WallUnit extends GameObject {
 	InteractableWorld world;
 
-	public CeilingUnit(InteractableWorld world, int colNum, int rowNum) {
+	public WallUnit(InteractableWorld world, int colNum, int rowNum) {
 		super(world, colNum, rowNum, Main.UNIT_SIZE, Main.UNIT_SIZE);
 	}
 
 	public void collideWith(GameObject obj) {
+		double center = obj.getHitbox().getCenterX();
 		if (this.overlaps(obj)) {
-			moveBelowUnit(obj);
-			obj.collideWithCeiling();
+			if (center > this.getHitbox().getCenterX()) {
+				moveRightOfUnit(obj);
+				obj.collideWithWall();
+			} else if (center < this.getHitbox().getCenterX()){
+				moveLeftOfUnit(obj);
+				obj.collideWithWall();
+			} else {
+				moveBelowUnit(obj);
+				obj.collideWithCeiling();
+			}
 		}
 	}
 
@@ -44,18 +53,19 @@ public class CeilingUnit extends GameObject {
 		obj.moveTo(new Point2D.Double(x + width, obj.getY()));
 	}
 
+
 	@Override
 	public void collideWithFloor() {
-		// Nothing happens
+
 	}
 
 	@Override
 	public void collideWithCeiling() {
-		// Nothing happens
+
 	}
 
 	@Override
 	public void collideWithWall() {
-		// Nothing happens
+
 	}
 }

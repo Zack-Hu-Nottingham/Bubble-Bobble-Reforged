@@ -1,14 +1,14 @@
-package main;
+package com.ae2dms.GameObject.Objects;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 
 /**
- * The EnemyProjectile class handles the specificities with the projectile being shot from an enemy.
- * For example, the enemy's projectile has a different color than the projectile of a hero.
- * It also can only hurt a hero.
+ * The HeroProjectile class handles the specificities with the projectile being shot from a hero.
+ * For example, the hero's projectile has a different color than the projectile of an enemy.
+ * It also can only hurt an enemy.
  */
-public class EnemyProjectile extends GameObject {
+public class HeroProjectile extends GameObject {
 	private static final int SIZE = 20;
 	private static final int SPEED = 15;
 	private static final int TERMINAL_VELOCITY_Y = 5;
@@ -17,7 +17,7 @@ public class EnemyProjectile extends GameObject {
 	private int activeFrames;
 	private int timer;
 
-	public EnemyProjectile(InteractableWorld world, int x, int y, int direction) {
+	public HeroProjectile(InteractableWorld world, int x, int y, int direction) {
 		super(x, y, SIZE, SIZE, world);
 		this.direction = direction;
 
@@ -25,16 +25,16 @@ public class EnemyProjectile extends GameObject {
 		yAccel = 0;
 
 		isActive = true;
-		activeFrames = 20;
+		activeFrames = 35;
 		timer = activeFrames;
 	}
-	
+
 	@Override
 	public void drawOn(Graphics2D g) {
 		if (isActive) {
-			g.setColor(new Color(0, 102, 0));
+			g.setColor(new Color(102, 204, 255));
 		} else {
-			g.setColor(new Color(0, 102, 0, 40));
+			g.setColor(new Color(51, 204, 255, 40));
 		}
 		g.fillOval(x, y, width, height);
 		g.setColor(Color.BLACK);
@@ -74,26 +74,26 @@ public class EnemyProjectile extends GameObject {
 
 	@Override
 	public void collideWithFloor() {
-		// Nothing happen
+		// Nothing happens
 	}
 
 	@Override
 	public void collideWithCeiling() {
-		// Nothing happen
+		// Nothing happens
 	}
 
 	@Override
 	public void collideWithWall() {
-		// Nothing happen
+		// Nothing happens
 	}
 
 	public void collideWith(Hero hero) {
-		if(this.overlaps(hero) && isActive) {
-			hero.collideWithProjectile();
-		}
+		// Nothing happens
 	}
 
 	public void collideWith(Enemy enemy) {
-		//Nothing happens
+		if (this.overlaps(enemy) && isActive) {
+			enemy.collideWithProjectile();
+		}
 	}
 }

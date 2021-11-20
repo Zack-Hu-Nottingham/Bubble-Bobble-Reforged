@@ -1,4 +1,4 @@
-package main;
+package com.ae2dms.UI;
 
 import javax.swing.JComponent;
 import java.awt.Dimension;

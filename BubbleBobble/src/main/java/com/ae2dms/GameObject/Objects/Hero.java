@@ -1,4 +1,4 @@
-package main;
+package com.ae2dms.GameObject.Objects;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -11,8 +11,8 @@ import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 
 /**
- * A Hero is a main.GameObject that is controllable by the player.
- * Of all the main.GameObject, only Hero has KeyBindings.
+ * A Hero is a com.ae2dms.GameObject.GameObject that is controllable by the player.
+ * Of all the com.ae2dms.GameObject.GameObject, only Hero has KeyBindings.
  * Hero can shoot HeroProjectiles, shield from attacks, trigger a special attack and
  * collect Fruits for points.
  */

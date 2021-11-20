@@ -1,9 +1,9 @@
-package main;
+package com.ae2dms.Main;
 
 import javax.swing.JFrame;
 
 /**
- * Main creates a JFrame and adds a main.GamePanel to that frame.
+ * Main creates a JFrame and adds a com.ae2dms.UI.GamePanel to that frame.
  * The size of the GamePanel is determined here.
  */
 public class Main {
