@@ -1,10 +1,15 @@
-package main;
+package com.ae2dms.GameObject.Objects;
+
+import com.ae2dms.GameObject.Awards.Fruit;
+import com.ae2dms.GameObject.Wall.CeilingUnit;
+import com.ae2dms.GameObject.Wall.FloorUnit;
+import com.ae2dms.GameObject.Wall.WallUnit;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 
 /**
- * An Enemy is a non-controllable main.GameObject that kills the main.Hero whenever it or its projectile comes in contact.
+ * An Enemy is a non-controllable com.ae2dms.GameObject.GameObject that kills the main.Hero whenever it or its projectile comes in contact.
  * Enemies are able to be bubbled and free themselves from these bubbles after a period of time.
  * Enemies change direction at random intervals, when hitting a wall, and when hitting the main.Hero's shield.
  * Enemies jump at random intervals as well.

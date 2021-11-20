@@ -1,4 +1,6 @@
-package main;
+package com.ae2dms.GameObject.Awards;
+
+import com.ae2dms.GameObject.Objects.Hero;
 
 import java.awt.Color;
 import java.awt.Graphics2D;

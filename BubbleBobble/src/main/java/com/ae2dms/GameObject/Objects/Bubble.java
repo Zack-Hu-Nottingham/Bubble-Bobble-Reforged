@@ -1,10 +1,10 @@
-package main;
+package com.ae2dms.GameObject.Objects;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 
 /**
- * The main.Bubble class handles everything with the main.Hero's special ability, named the bubble.
+ * The com.ae2dms.GameObject.Objects.Bubble class handles everything with the main.Hero's special ability, named the bubble.
  * It begins at the hero, and grows covering the whole screen.
  * Once it collides with an enemy, that enemy is bubbled.
  */
