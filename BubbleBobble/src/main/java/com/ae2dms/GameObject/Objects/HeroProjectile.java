@@ -1,7 +1,12 @@
 package com.ae2dms.GameObject.Objects;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
+import com.ae2dms.GameObject.GameObject;
+import com.ae2dms.UI.InteractableWorld;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
+//import java.awt.Color;
+//import java.awt.Graphics2D;
 
 /**
  * The HeroProjectile class handles the specificities with the projectile being shot from a hero.
@@ -30,14 +35,14 @@ public class HeroProjectile extends GameObject {
 	}
 
 	@Override
-	public void drawOn(Graphics2D g) {
+	public void drawOn(GraphicsContext g) {
 		if (isActive) {
-			g.setColor(new Color(102, 204, 255));
+			g.setFill(new Color(102, 204, 255, 100));
 		} else {
-			g.setColor(new Color(51, 204, 255, 40));
+			g.setFill(new Color(51, 204, 255, 40));
 		}
 		g.fillOval(x, y, width, height);
-		g.setColor(Color.BLACK);
+		g.setFill(Color.BLACK);
 	}
 
 	@Override

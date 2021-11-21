@@ -1,12 +1,16 @@
 package com.ae2dms.GameObject.Objects;
 
 import com.ae2dms.GameObject.Awards.Fruit;
+import com.ae2dms.GameObject.GameObject;
 import com.ae2dms.GameObject.Wall.CeilingUnit;
 import com.ae2dms.GameObject.Wall.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallUnit;
+import com.ae2dms.Main;
+import com.ae2dms.SoundEffect;
+import com.ae2dms.UI.InteractableWorld;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
 
 /**
  * An Enemy is a non-controllable com.ae2dms.GameObject.GameObject that kills the main.Hero whenever it or its projectile comes in contact.
@@ -32,7 +36,7 @@ public class Enemy extends GameObject {
 	
 	public Enemy(InteractableWorld world, int colNum, int rowNum) {
 		//initializes enemy
-		super(world, colNum, rowNum, WIDTH, HEIGHT);
+		super(colNum * Main.UNIT_SIZE, rowNum * Main.UNIT_SIZE, WIDTH, HEIGHT, world);
 		isOnAPlatform = false;
 		jumpSpeed = JUMP_SPEED;
 		terminal_xVelocity = TERMINAL_VELOCITY_X;
@@ -51,15 +55,15 @@ public class Enemy extends GameObject {
 	}
 
 	@Override
-	public void drawOn(Graphics2D g) {
+	public void drawOn(GraphicsContext g) {
 		//draws mook
-		g.setColor(Color.BLUE);
+		g.setFill(Color.BLUE);
 		g.fillRect(x, y, WIDTH, HEIGHT);
 		if (isBubbled) {
-			g.setColor(new Color(0, 255, 255, (int) (timer * ((double) 255 / 300))));
+			g.setFill(new Color(0, 255, 255, (int) (timer * ((double) 255 / 300))));
 			g.fillRect(x - 5, y - 5, WIDTH + 10, HEIGHT + 10);
 		}
-		g.setColor(Color.BLACK);
+		g.setFill(Color.BLACK);
 	}
 
 	@Override

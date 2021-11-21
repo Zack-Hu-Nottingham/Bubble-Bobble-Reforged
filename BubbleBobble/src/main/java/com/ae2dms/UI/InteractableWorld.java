@@ -1,9 +1,14 @@
 package com.ae2dms.UI;
 
-import javax.swing.JComponent;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import com.ae2dms.GameObject.Awards.Fruit;
+import com.ae2dms.GameObject.GameObject;
+import com.ae2dms.GameObject.Objects.*;
+import com.ae2dms.GameObject.Wall.CeilingUnit;
+import com.ae2dms.GameObject.Wall.FloorUnit;
+import com.ae2dms.GameObject.Wall.WallUnit;
+import com.ae2dms.Main;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,7 +17,7 @@ import java.util.Scanner;
  * InteractableWorld handles all of the game's operations:
  * updating positions, checking for collisions, and removing objects.
  */
-public class InteractableWorld extends JComponent {
+public class InteractableWorld extends Canvas {
 	private ArrayList<CeilingUnit> ceilingUnits;
 	private ArrayList<FloorUnit> floorUnits;
 	private ArrayList<WallUnit> wallUnits;
@@ -40,43 +45,46 @@ public class InteractableWorld extends JComponent {
 		bubbles = new ArrayList<Bubble>();
 
 		readyToReset = false;
-		this.setPreferredSize(new Dimension(width, height));
+		prefHeight(height);
+		prefWidth(width);
+//		this.setPreferredSize(new Dimension(width, height));
 	}
 
-	@Override
-	protected void paintComponent(Graphics g) {
-		//paints everything on the world
-		super.paintComponent(g);
-		Graphics2D g2 = (Graphics2D) g;
 
-		for (CeilingUnit ceilingUnit : ceilingUnits) {
-			ceilingUnit.drawOn(g2);
-		}
-		for (FloorUnit floorUnit : floorUnits) {
-			floorUnit.drawOn(g2);
-		}
-		for (WallUnit wallUnit : wallUnits) {
-			wallUnit.drawOn(g2);
-		}
-		for (Hero hero : heroes) {
-			hero.drawOn(g2);
-		}
-		for (Enemy enemy : enemies) {
-			enemy.drawOn(g2);
-		}
-		for (EnemyProjectile enemyProjectile : enemyProjectiles) {
-			enemyProjectile.drawOn(g2);
-		}
-		for (HeroProjectile heroProjectile : heroProjectiles) {
-			heroProjectile.drawOn(g2);
-		}
-		for (Fruit fruit : fruits) {
-			fruit.drawOn(g2);
-		}
-		for (Bubble bubble : bubbles) {
-			bubble.drawOn(g2);
-		}
-	}
+//	@Override
+//	protected void paintComponent(GraphicsContext g) {
+//		//paints everything on the world
+//		super.paintComponent(g);
+//		GraphicsContext g2 = (GraphicsContext) g;
+//
+//		for (CeilingUnit ceilingUnit : ceilingUnits) {
+//			ceilingUnit.drawOn(g2);
+//		}
+//		for (FloorUnit floorUnit : floorUnits) {
+//			floorUnit.drawOn(g2);
+//		}
+//		for (WallUnit wallUnit : wallUnits) {
+//			wallUnit.drawOn(g2);
+//		}
+//		for (Hero hero : heroes) {
+//			hero.drawOn(g2);
+//		}
+//		for (Enemy enemy : enemies) {
+//			enemy.drawOn(g2);
+//		}
+//		for (EnemyProjectile enemyProjectile : enemyProjectiles) {
+//			enemyProjectile.drawOn(g2);
+//		}
+//		for (HeroProjectile heroProjectile : heroProjectiles) {
+//			heroProjectile.drawOn(g2);
+//		}
+//		for (Fruit fruit : fruits) {
+//			fruit.drawOn(g2);
+//		}
+//		for (Bubble bubble : bubbles) {
+//			bubble.drawOn(g2);
+//		}
+//	}
 
 	void updatePosition() {
 		//updates positions of everything on screen

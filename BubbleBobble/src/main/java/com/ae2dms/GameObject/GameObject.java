@@ -1,8 +1,12 @@
 package com.ae2dms.GameObject;
 
-import java.awt.Graphics2D;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
+import com.ae2dms.UI.InteractableWorld;
+import javafx.scene.image.Image;
+
+import javafx.geometry.Rectangle2D;
+import javafx.geometry.Point2D;
+import javafx.scene.canvas.GraphicsContext;
+
 
 /**
  * GameObjects are the objects on the InteractableWorld screen.
@@ -11,6 +15,7 @@ import java.awt.geom.Rectangle2D;
  * must implement methods for collisions with every type of Unit.
  */
 public abstract class GameObject {
+	private Image image;
 	private static final double STATIC_FRICTION = 0.1;
 	protected static final int GRAVITY = 1;
 	private static final int TERMINAL_FALL_SPEED = 20;
@@ -25,23 +30,25 @@ public abstract class GameObject {
 	
 	public boolean canRemove;
 	public int direction;
-	
-	public GameObject(InteractableWorld world, int colNum, int rowNum, int width, int height) {
-		this.world = world;
-		x = colNum * Main.UNIT_SIZE;
-		y = rowNum * Main.UNIT_SIZE;
-		this.width = width;
-		this.height = height;
-		
-		xVelocity = 0;
-		yVelocity = 0;
-		xAccel = 0;
-		yAccel = GRAVITY;
-		terminal_xVelocity = 0;
-		terminal_yVelocity = TERMINAL_FALL_SPEED;
-		canRemove = false;
-		direction = -1;
-	}
+
+
+	// this method could be refactored(deleted)
+//	public GameObject(InteractableWorld world, int colNum, int rowNum, int width, int height) {
+//		this.world = world;
+//		x = colNum * Main.UNIT_SIZE;
+//		y = rowNum * Main.UNIT_SIZE;
+//		this.width = width;
+//		this.height = height;
+//
+//		xVelocity = 0;
+//		yVelocity = 0;
+//		xAccel = 0;
+//		yAccel = GRAVITY;
+//		terminal_xVelocity = 0;
+//		terminal_yVelocity = TERMINAL_FALL_SPEED;
+//		canRemove = false;
+//		direction = -1;
+//	}
 	
 	public GameObject(int x, int y, int width, int height, InteractableWorld world) {
 		//initializes the game object
@@ -61,7 +68,7 @@ public abstract class GameObject {
 		direction = -1;
 	}
 	
-	public abstract void drawOn(Graphics2D g);
+	public abstract void drawOn(GraphicsContext g);
 	public abstract void collideWithFloor();
 	public abstract void collideWithCeiling();
 	public abstract void collideWithWall();
@@ -89,7 +96,7 @@ public abstract class GameObject {
 			if (y > world.getHeight()) {
 				y = 0;
 			} else {
-				y = world.getHeight();
+				y = (int) world.getHeight();
 			}
 		}
 	}
@@ -122,9 +129,9 @@ public abstract class GameObject {
 		canRemove = true;
 	}
 	
-	public Rectangle2D.Double getHitbox(){
+	public Rectangle2D getHitbox(){
 		//sets hitbox for each game object
-		return new Rectangle2D.Double(x, y, width, height);
+		return new Rectangle2D(x, y, width, height);
 	}
 	
 	protected boolean overlaps(GameObject obj) {

@@ -1,9 +1,11 @@
 package com.ae2dms.GameObject.Awards;
 
+import com.ae2dms.GameObject.GameObject;
 import com.ae2dms.GameObject.Objects.Hero;
+import com.ae2dms.UI.InteractableWorld;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
 
 /**
  * The Fruit class handles how the fruit is created and interacts with the hero.
@@ -23,18 +25,18 @@ public class Fruit extends GameObject {
 	}
 
 	@Override
-	public void drawOn(Graphics2D g) {
+	public void drawOn(GraphicsContext g) {
 		//draws fruit
-		g.setColor(new Color(109,58,150));
+		g.setFill(new Color(109,58,150, 100));
 		g.fillRect(x, y, SIZE, SIZE);
-		g.setColor(Color.BLACK);
+		g.setFill(Color.BLACK);
 	}
 	
 	public void collideWith(Hero hero) {
 		//checks for collision with hero and tells it what to do if it is colliding
 		if (this.overlaps(hero) && readyToCollect) {
-			SoundEffect.FRUIT.setToLoud();
-			SoundEffect.FRUIT.play();
+			main.SoundEffect.FRUIT.setToLoud();
+			main.SoundEffect.FRUIT.play();
 			readyToCollect = false;
 			markToRemove();
 		}
