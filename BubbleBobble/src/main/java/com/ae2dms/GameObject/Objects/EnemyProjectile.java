@@ -1,7 +1,10 @@
 package com.ae2dms.GameObject.Objects;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
+
+import com.ae2dms.GameObject.GameObject;
+import com.ae2dms.UI.InteractableWorld;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 /**
  * The EnemyProjectile class handles the specificities with the projectile being shot from an enemy.
@@ -30,14 +33,14 @@ public class EnemyProjectile extends GameObject {
 	}
 	
 	@Override
-	public void drawOn(Graphics2D g) {
+	public void drawOn(GraphicsContext g) {
 		if (isActive) {
-			g.setColor(new Color(0, 102, 0));
+			g.setFill(new Color(0, 102, 0, 100));
 		} else {
-			g.setColor(new Color(0, 102, 0, 40));
+			g.setFill(new Color(0, 102, 0, 40));
 		}
 		g.fillOval(x, y, width, height);
-		g.setColor(Color.BLACK);
+		g.setFill(Color.BLACK);
 	}
 
 	@Override

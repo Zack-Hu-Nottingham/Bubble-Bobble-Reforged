@@ -1,4 +1,4 @@
-package main;
+package com.ae2dms;
 
 import java.io.*;
 import java.net.URL;

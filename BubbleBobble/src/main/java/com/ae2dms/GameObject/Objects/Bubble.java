@@ -1,7 +1,9 @@
 package com.ae2dms.GameObject.Objects;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
+import com.ae2dms.GameObject.GameObject;
+import com.ae2dms.UI.InteractableWorld;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 /**
  * The com.ae2dms.GameObject.Objects.Bubble class handles everything with the main.Hero's special ability, named the bubble.
@@ -29,14 +31,14 @@ public class Bubble extends GameObject {
 	}
 	
 	@Override
-	public void drawOn(Graphics2D g) {
+	public void drawOn(GraphicsContext g) {
 		if (width <= 2500) {
-			g.setColor(new Color(255, 204, 102, 255 - (int) (width * ((double) 255 / 2500))));
+			g.setFill(new Color(255, 204, 102, 255 - (int) (width * ((double) 255 / 2500))));
 		} else {
-			g.setColor(new Color(255, 204, 102, 0));
+			g.setFill(new Color(255, 204, 102, 0));
 		}
 		g.fillOval(x, y, width, height);
-		g.setColor(Color.BLACK);
+		g.setFill(Color.BLACK);
 	}
 
 	@Override

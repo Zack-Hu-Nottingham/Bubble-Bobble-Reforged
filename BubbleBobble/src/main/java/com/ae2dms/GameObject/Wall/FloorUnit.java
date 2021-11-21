@@ -1,7 +1,10 @@
 package com.ae2dms.GameObject.Wall;
 
-import java.awt.*;
-import java.awt.geom.Point2D;
+import com.ae2dms.GameObject.GameObject;
+import com.ae2dms.UI.InteractableWorld;
+import com.ae2dms.Main;
+import javafx.geometry.Point2D;
+import javafx.scene.canvas.GraphicsContext;
 
 /**
  * The FloorUnit class creates floor units to be used for the world.
@@ -14,7 +17,7 @@ public class FloorUnit extends GameObject {
 	InteractableWorld world;
 
 	public FloorUnit(InteractableWorld world, int colNum, int rowNum) {
-		super(world, colNum, rowNum, Main.UNIT_SIZE, Main.UNIT_SIZE);
+		super(colNum, rowNum, Main.UNIT_SIZE, Main.UNIT_SIZE, world);
 	}
 
 	public void collideWith(GameObject obj) {
@@ -33,24 +36,24 @@ public class FloorUnit extends GameObject {
 	}
 
 	@Override
-	public void drawOn(Graphics2D g) {
+	public void drawOn(GraphicsContext g) {
 		g.fillRect(x, y, width, height);
 	}
 
 	void moveAboveUnit(GameObject obj) {
-		obj.moveTo(new Point2D.Double(obj.getX(), y - obj.getHeight()));
+		obj.moveTo(new Point2D(obj.getX(), y - obj.getHeight()));
 	}
 
 	void moveBelowUnit(GameObject obj) {
-		obj.moveTo(new Point2D.Double(obj.getX(), y + height));
+		obj.moveTo(new Point2D(obj.getX(), y + height));
 	}
 
 	void moveLeftOfUnit(GameObject obj) {
-		obj.moveTo(new Point2D.Double(x - obj.getWidth(), obj.getY()));
+		obj.moveTo(new Point2D(x - obj.getWidth(), obj.getY()));
 	}
 
 	void moveRightOfUnit(GameObject obj) {
-		obj.moveTo(new Point2D.Double(x + width, obj.getY()));
+		obj.moveTo(new Point2D(x + width, obj.getY()));
 	}
 
 

@@ -1,14 +1,12 @@
 package com.ae2dms.GameObject.Objects;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import javax.swing.AbstractAction;
-import javax.swing.ActionMap;
-import javax.swing.InputMap;
-import javax.swing.JComponent;
-import javax.swing.KeyStroke;
-import java.awt.event.KeyEvent;
+import com.ae2dms.GameObject.GameObject;
+import com.ae2dms.Main;
+import com.ae2dms.SoundEffect;
+import com.ae2dms.UI.InteractableWorld;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
 
 /**
  * A Hero is a com.ae2dms.GameObject.GameObject that is controllable by the player.
@@ -36,7 +34,7 @@ public class Hero extends GameObject {
 	
 	public Hero(InteractableWorld world, int colNum, int rowNum) {
 		//initializes hero
-		super(world, colNum, rowNum, SIZE, SIZE);
+		super(colNum * Main.UNIT_SIZE, rowNum * Main.UNIT_SIZE, SIZE, SIZE, world);
 		isOnAPlatform = false;
 
 		terminal_xVelocity = TERMINAL_VELOCITY_X;
@@ -52,18 +50,18 @@ public class Hero extends GameObject {
 		addKeyBindings(world.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW), world.getActionMap());
 	}
 	
-	public void drawOn(Graphics2D g) {
+	public void drawOn(GraphicsContext g) {
 		//draws hero
-		g.setColor(Color.RED);
+		g.setFill(Color.RED);
 		g.fillRect(x, y, SIZE, SIZE);
 		if (isShielding) {
-			g.setColor(new Color(0, (int) (shieldTimer * ((double) 255 / SHIELD_TIME)), (int) (shieldTimer * ((double) 255 / SHIELD_TIME)), 190));
+			g.setFill(new Color(0, (int) (shieldTimer * ((double) 255 / SHIELD_TIME)), (int) (shieldTimer * ((double) 255 / SHIELD_TIME)), 190));
 			g.fillOval(x - 10, y - 10, SIZE + 20, SIZE + 20);
 		} else if (isStunned) {
-			g.setColor(Color.MAGENTA);
+			g.setFill(Color.MAGENTA);
 			g.fillRect(x, y, SIZE, SIZE);
 		}
-		g.setColor(Color.BLACK);
+		g.setFill(Color.BLACK);
 		
 	}
 	
@@ -202,8 +200,8 @@ public class Hero extends GameObject {
 	
 	public void die() {
 		//handles death
-		SoundEffect.DEATH.setToLoud();
-		SoundEffect.DEATH.play();
+		main.SoundEffect.DEATH.setToLoud();
+		main.SoundEffect.DEATH.play();
 		world.markToReset();
 	}
 
