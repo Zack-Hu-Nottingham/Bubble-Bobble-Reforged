@@ -4,7 +4,10 @@ import com.ae2dms.GameObject.GameObject;
 import com.ae2dms.Main;
 import com.ae2dms.SoundEffect;
 import com.ae2dms.UI.InteractableWorld;
+import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.skin.TextInputControlSkin;
+import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
 
@@ -46,8 +49,8 @@ public class Hero extends GameObject {
 		stunTimer = 250;
 		shootDelay = 0;
 		readyToCharge = false;
-		
-		addKeyBindings(world.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW), world.getActionMap());
+
+//		addKeyBindings(world.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW), world.getActionMap());
 	}
 	
 	public void drawOn(GraphicsContext g) {
@@ -86,112 +89,183 @@ public class Hero extends GameObject {
 			isOnAPlatform = false;
 		}
 	}
-	
-	private void addKeyBindings(InputMap inputMap, ActionMap actionMap) {
-		//maps all buttons with bindings
 
-		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, false), "Move right");
-		actionMap.put("Move right", new AbstractAction() {
-			public void actionPerformed(ActionEvent arg0) {
-				if (!isShielding && !isStunned) {
-					xAccel = RUN_ACCEL;
-					direction = 1;
-				}
-			}
-		});
-		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, true), "Stop moving right");
-		actionMap.put("Stop moving right", new AbstractAction() {
-			public void actionPerformed(ActionEvent arg0) {
-				xAccel = 0;
-			}
-		});
-		
-		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, false), "Move left");
-		actionMap.put("Move left", new AbstractAction() {
-			public void actionPerformed(ActionEvent arg0) {
-				if (!isShielding && !isStunned) {
-					xAccel = -RUN_ACCEL;
-					direction = -1;
-				}
-			}
-		});
-		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, true), "Stop moving left");
-		actionMap.put("Stop moving left", new AbstractAction() {
-			public void actionPerformed(ActionEvent arg0) {
-				xAccel = 0;
-			}
-		});
-		
-		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0, false), "Jump");
-		actionMap.put("Jump", new AbstractAction() {
-			public void actionPerformed(ActionEvent arg0) {
-				if (!isShielding && !isStunned) {
-					jump();
-					SoundEffect.JUMP.play();
-				}
-			}
-		});
-		
-		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0, false), "Dash");
-		actionMap.put("Dash", new AbstractAction() {
-			public void actionPerformed(ActionEvent arg0) {
-				terminal_xVelocity = RUN;
-			}
-		});
-		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0, true), "Stop dash");
-		actionMap.put("Stop dash", new AbstractAction() {
-			public void actionPerformed(ActionEvent arg0) {
-				terminal_xVelocity = WALK;
-			}
-		});
-		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_E, 0, false), "Shoot");
-		actionMap.put("Shoot", new AbstractAction() {
-			public void actionPerformed(ActionEvent arg0) {
-				if (!isShielding && !isStunned) {
-					shootDelay -= 1;
-					if (shootDelay <= 0) {
-						shootProjectile();
-						shootDelay = 10;
+	private void addKeyHandler(Scene scene) {
+		scene.setOnKeyPressed(event -> {
+			KeyCode keyCode = event.getCode();
+			switch (keyCode) {
+				case RIGHT:
+					if (!isShielding && !isStunned) {
+						xAccel = RUN_ACCEL;
+						direction = 1;
 					}
-				}
+					break;
+				case LEFT:
+					if (!isShielding && !isStunned) {
+						xAccel = -RUN_ACCEL;
+						direction = -1;
+					}
+					break;
+				case UP:
+					if (!isShielding && !isStunned) {
+						jump();
+						SoundEffect.JUMP.play();
+					}
+					break;
+				case E:
+					if (!isShielding && !isStunned) {
+						shootDelay -= 1;
+						if (shootDelay <= 0) {
+							shootProjectile();
+							shootDelay = 10;
+						}
+					}
+					break;
+				case SPACE:
+					terminal_xVelocity = RUN;
+					break;
+				case Q:
+					if (!isStunned) {
+						xVelocity = 0;
+						xAccel = 0;
+						isShielding = true;
+					}
+					break;
+				case W:
+					if (readyToCharge) {
+						world.addBubble(new Bubble(world, x, y));
+						SoundEffect.EXPLODE.setToLoud();
+						SoundEffect.EXPLODE.play();
+						readyToCharge = false;
+					}
+					break;
 			}
 		});
-		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_E, 0, true), "StopShoot");
-		actionMap.put("StopShoot", new AbstractAction() {
-			public void actionPerformed(ActionEvent arg0) {
-				shootDelay = 0;
-			}
-		});
-		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_Q, 0, false), "Shield");
-		actionMap.put("Shield", new AbstractAction() {
-			public void actionPerformed(ActionEvent arg0) {
-				if (!isStunned) {
-					xVelocity = 0;
+
+		scene.setOnKeyReleased(event -> {
+			switch (event.getCode()) {
+				case RIGHT:
+				case LEFT:
 					xAccel = 0;
-					isShielding = true;
-				}
+					break;
+				case E:
+					shootDelay = 0;
+					break;
+				case SPACE:
+					terminal_xVelocity = WALK;
+					break;
+				case Q:
+					isShielding = false;
+					break;
 			}
 		});
-		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_Q, 0, true), "NoShield");
-		actionMap.put("NoShield", new AbstractAction() {
-			public void actionPerformed(ActionEvent arg0) {
-				isShielding = false;
-			}
-		});
-		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, true), "SpecialMove");
-		actionMap.put("SpecialMove", new AbstractAction() {
-			public void actionPerformed(ActionEvent arg0) {
-				if (readyToCharge) {
-					world.addBubble(new Bubble(world, x, y));
-					SoundEffect.EXPLODE.setToLoud();
-					SoundEffect.EXPLODE.play();
-					readyToCharge = false;
-				}
-			}
-		});
-			
-		
 	}
+
+//	private void addKeyBindings(InputMap inputMap, ActionMap actionMap) {
+//		//maps all buttons with bindings
+//
+//		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, false), "Move right");
+//		actionMap.put("Move right", new AbstractAction() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				if (!isShielding && !isStunned) {
+//					xAccel = RUN_ACCEL;
+//					direction = 1;
+//				}
+//			}
+//		});
+//		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, true), "Stop moving right");
+//		actionMap.put("Stop moving right", new AbstractAction() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				xAccel = 0;
+//			}
+//		});
+//
+//		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, false), "Move left");
+//		actionMap.put("Move left", new AbstractAction() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				if (!isShielding && !isStunned) {
+//					xAccel = -RUN_ACCEL;
+//					direction = -1;
+//				}
+//			}
+//		});
+//		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, true), "Stop moving left");
+//		actionMap.put("Stop moving left", new AbstractAction() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				xAccel = 0;
+//			}
+//		});
+//
+//		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0, false), "Jump");
+//		actionMap.put("Jump", new AbstractAction() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				if (!isShielding && !isStunned) {
+//					jump();
+//					SoundEffect.JUMP.play();
+//				}
+//			}
+//		});
+//
+//		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0, false), "Dash");
+//		actionMap.put("Dash", new AbstractAction() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				terminal_xVelocity = RUN;
+//			}
+//		});
+//		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0, true), "Stop dash");
+//		actionMap.put("Stop dash", new AbstractAction() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				terminal_xVelocity = WALK;
+//			}
+//		});
+//		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_E, 0, false), "Shoot");
+//		actionMap.put("Shoot", new AbstractAction() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				if (!isShielding && !isStunned) {
+//					shootDelay -= 1;
+//					if (shootDelay <= 0) {
+//						shootProjectile();
+//						shootDelay = 10;
+//					}
+//				}
+//			}
+//		});
+//		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_E, 0, true), "StopShoot");
+//		actionMap.put("StopShoot", new AbstractAction() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				shootDelay = 0;
+//			}
+//		});
+//		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_Q, 0, false), "Shield");
+//		actionMap.put("Shield", new AbstractAction() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				if (!isStunned) {
+//					xVelocity = 0;
+//					xAccel = 0;
+//					isShielding = true;
+//				}
+//			}
+//		});
+//		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_Q, 0, true), "NoShield");
+//		actionMap.put("NoShield", new AbstractAction() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				isShielding = false;
+//			}
+//		});
+//		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, true), "SpecialMove");
+//		actionMap.put("SpecialMove", new AbstractAction() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				if (readyToCharge) {
+//					world.addBubble(new Bubble(world, x, y));
+//					SoundEffect.EXPLODE.setToLoud();
+//					SoundEffect.EXPLODE.play();
+//					readyToCharge = false;
+//				}
+//			}
+//		});
+//
+//
+//	}
 
 	@Override
 	public void collideWithWall() {
@@ -200,8 +274,8 @@ public class Hero extends GameObject {
 	
 	public void die() {
 		//handles death
-		main.SoundEffect.DEATH.setToLoud();
-		main.SoundEffect.DEATH.play();
+		SoundEffect.DEATH.setToLoud();
+		SoundEffect.DEATH.play();
 		world.markToReset();
 	}
 
