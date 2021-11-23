@@ -1,10 +1,11 @@
-package com.ae2dms.GameObject.Awards;
+package com.ae2dms.GameObject.Objects;
 
 import com.ae2dms.GameObject.GameObject;
-import com.ae2dms.GameObject.Objects.Hero;
-import com.ae2dms.UI.InteractableWorld;
+import com.ae2dms.SoundEffect;
+import com.ae2dms.GameScene.InteractableWorld;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+
 
 
 /**
@@ -25,9 +26,14 @@ public class Fruit extends GameObject {
 	}
 
 	@Override
+	public void update() {
+		super.update();
+	}
+
+	@Override
 	public void drawOn(GraphicsContext g) {
 		//draws fruit
-		g.setFill(new Color(109,58,150, 100));
+		g.setFill(new Color(1, (double) 109/255,(double) 58/255,(double) 150/255));
 		g.fillRect(x, y, SIZE, SIZE);
 		g.setFill(Color.BLACK);
 	}
@@ -35,8 +41,8 @@ public class Fruit extends GameObject {
 	public void collideWith(Hero hero) {
 		//checks for collision with hero and tells it what to do if it is colliding
 		if (this.overlaps(hero) && readyToCollect) {
-			main.SoundEffect.FRUIT.setToLoud();
-			main.SoundEffect.FRUIT.play();
+			SoundEffect.FRUIT.setToLoud();
+			SoundEffect.FRUIT.play();
 			readyToCollect = false;
 			markToRemove();
 		}
