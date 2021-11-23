@@ -2,10 +2,13 @@ package com.ae2dms.GameObject.Wall;
 
 
 import com.ae2dms.GameObject.GameObject;
-import com.ae2dms.Main;
-import com.ae2dms.UI.InteractableWorld;
+import com.ae2dms.GameScene.InteractableWorld;
 import javafx.geometry.Point2D;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
+import static com.ae2dms.GamePanel.UNIT_SIZE;
 
 /**
  * The WallUnit class creates wall units to be used for the world.
@@ -17,17 +20,18 @@ public class WallUnit extends GameObject {
 	InteractableWorld world;
 
 	public WallUnit(InteractableWorld world, int colNum, int rowNum) {
-		super(colNum * Main.UNIT_SIZE, rowNum * Main.UNIT_SIZE, Main.UNIT_SIZE, Main.UNIT_SIZE, world);
+		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, UNIT_SIZE, UNIT_SIZE, world);
 	}
 
 	public void collideWith(GameObject obj) {
-		double center = (obj.getHitbox().getMaxX()-obj.getHitbox().getMinX())/2;
+		double center = obj.x + obj.getWidth()/2;
 //		double center = obj.getHitbox().getCenterX();
+//		this.getHitbox().getMinX()+this.getHitbox().getWidth()/2
 		if (this.overlaps(obj)) {
-			if (center > (this.getHitbox().getMaxX()-this.getHitbox().getMinX())/2) {
+			if (center > this.getHitbox().getMinX()+this.getHitbox().getWidth()/2) {
 				moveRightOfUnit(obj);
 				obj.collideWithWall();
-			} else if (center < (this.getHitbox().getMaxX()-this.getHitbox().getMinX())/2){
+			} else if (center < this.getHitbox().getMinX()+this.getHitbox().getWidth()/2){
 				moveLeftOfUnit(obj);
 				obj.collideWithWall();
 			} else {
@@ -39,6 +43,7 @@ public class WallUnit extends GameObject {
 
 	@Override
 	public void drawOn(GraphicsContext g) {
+		g.setFill(Color.BLACK);
 		g.fillRect(x, y, width, height);
 	}
 

@@ -1,10 +1,12 @@
 package com.ae2dms.GameObject.Wall;
 
 import com.ae2dms.GameObject.GameObject;
-import com.ae2dms.Main;
-import com.ae2dms.UI.InteractableWorld;
+import com.ae2dms.GameScene.InteractableWorld;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
+import static com.ae2dms.GamePanel.UNIT_SIZE;
 
 //import java.awt.*;
 //import java.awt.geom.Point2D;
@@ -22,7 +24,7 @@ public class CeilingUnit extends GameObject {
 //		super(world, colNum, rowNum, Main.UNIT_SIZE, Main.UNIT_SIZE);
 //	}
 	public CeilingUnit(InteractableWorld world, int colNum, int rowNum) {
-		super(colNum * Main.UNIT_SIZE, rowNum * Main.UNIT_SIZE, Main.UNIT_SIZE, Main.UNIT_SIZE, world);
+		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, UNIT_SIZE, UNIT_SIZE, world);
 	}
 
 	public void collideWith(GameObject obj) {
@@ -33,7 +35,10 @@ public class CeilingUnit extends GameObject {
 	}
 
 	@Override
-	public void drawOn(GraphicsContext g) { g.fillRect(x, y, width, height); }
+	public void drawOn(GraphicsContext g) {
+		g.setFill(Color.BLACK);
+		g.fillRect(x, y, width, height);
+	}
 
 	void moveAboveUnit(GameObject obj) {
 		obj.moveTo(new Point2D(obj.getX(), y - obj.getHeight()));

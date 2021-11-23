@@ -1,10 +1,12 @@
 package com.ae2dms.GameObject.Wall;
 
 import com.ae2dms.GameObject.GameObject;
-import com.ae2dms.UI.InteractableWorld;
-import com.ae2dms.Main;
+import com.ae2dms.GameScene.InteractableWorld;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
+import static com.ae2dms.GamePanel.UNIT_SIZE;
 
 /**
  * The FloorUnit class creates floor units to be used for the world.
@@ -17,7 +19,7 @@ public class FloorUnit extends GameObject {
 	InteractableWorld world;
 
 	public FloorUnit(InteractableWorld world, int colNum, int rowNum) {
-		super(colNum, rowNum, Main.UNIT_SIZE, Main.UNIT_SIZE, world);
+		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, UNIT_SIZE, UNIT_SIZE, world);
 	}
 
 	public void collideWith(GameObject obj) {
@@ -37,6 +39,7 @@ public class FloorUnit extends GameObject {
 
 	@Override
 	public void drawOn(GraphicsContext g) {
+		g.setFill(Color.BLACK);
 		g.fillRect(x, y, width, height);
 	}
 
