@@ -1,14 +1,14 @@
 package com.ae2dms.GameObject.Objects;
 
 import com.ae2dms.GameObject.GameObject;
-import com.ae2dms.Main;
 import com.ae2dms.SoundEffect;
-import com.ae2dms.UI.InteractableWorld;
+import com.ae2dms.GameScene.InteractableWorld;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.skin.TextInputControlSkin;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
+
+import static com.ae2dms.GamePanel.UNIT_SIZE;
 
 
 /**
@@ -23,7 +23,8 @@ public class Hero extends GameObject {
 	private static final int SIZE = 20;
 	private static final int WALK = 5;
 	private static final int RUN = 10;
-	private static final double RUN_ACCEL = 20;
+	private static final double RUN_ACCEL = 15;
+//	private static final double RUN_ACCEL = 20;
 	private static final int SHIELD_TIME = 100;
 	
 	private boolean isShielding;
@@ -37,7 +38,7 @@ public class Hero extends GameObject {
 	
 	public Hero(InteractableWorld world, int colNum, int rowNum) {
 		//initializes hero
-		super(colNum * Main.UNIT_SIZE, rowNum * Main.UNIT_SIZE, SIZE, SIZE, world);
+		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, SIZE, SIZE, world);
 		isOnAPlatform = false;
 
 		terminal_xVelocity = TERMINAL_VELOCITY_X;
@@ -49,7 +50,7 @@ public class Hero extends GameObject {
 		stunTimer = 250;
 		shootDelay = 0;
 		readyToCharge = false;
-
+		addKeyHandler(world.getScene());
 //		addKeyBindings(world.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW), world.getActionMap());
 	}
 	
@@ -58,7 +59,7 @@ public class Hero extends GameObject {
 		g.setFill(Color.RED);
 		g.fillRect(x, y, SIZE, SIZE);
 		if (isShielding) {
-			g.setFill(new Color(0, (int) (shieldTimer * ((double) 255 / SHIELD_TIME)), (int) (shieldTimer * ((double) 255 / SHIELD_TIME)), 190));
+			g.setFill(new Color(1,0, (double) (shieldTimer * ((double) 255 / SHIELD_TIME))/255, (double) (shieldTimer * ((double) 255 / SHIELD_TIME))/255));
 			g.fillOval(x - 10, y - 10, SIZE + 20, SIZE + 20);
 		} else if (isStunned) {
 			g.setFill(Color.MAGENTA);
@@ -90,7 +91,7 @@ public class Hero extends GameObject {
 		}
 	}
 
-	private void addKeyHandler(Scene scene) {
+	public void addKeyHandler(Scene scene) {
 		scene.setOnKeyPressed(event -> {
 			KeyCode keyCode = event.getCode();
 			switch (keyCode) {
