@@ -1,17 +1,22 @@
-package com.ae2dms.UI;
+package com.ae2dms.GameScene;
 
-import com.ae2dms.GameObject.Awards.Fruit;
+import com.ae2dms.GameObject.Objects.Fruit;
 import com.ae2dms.GameObject.GameObject;
 import com.ae2dms.GameObject.Objects.*;
 import com.ae2dms.GameObject.Wall.CeilingUnit;
 import com.ae2dms.GameObject.Wall.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallUnit;
-import com.ae2dms.Main;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import static com.ae2dms.GamePanel.HEIGHT;
+import static com.ae2dms.GamePanel.WIDTH;
 
 /**
  * InteractableWorld handles all of the game's operations:
@@ -45,48 +50,48 @@ public class InteractableWorld extends Canvas {
 		bubbles = new ArrayList<Bubble>();
 
 		readyToReset = false;
-		prefHeight(height);
-		prefWidth(width);
-//		this.setPreferredSize(new Dimension(width, height));
+		this.setHeight(height);
+		this.setWidth(width);
 	}
 
 
 //	@Override
-//	protected void paintComponent(GraphicsContext g) {
-//		//paints everything on the world
+	public void paintComponent(GraphicsContext g) {
+		//paints everything on the world
 //		super.paintComponent(g);
-//		GraphicsContext g2 = (GraphicsContext) g;
-//
-//		for (CeilingUnit ceilingUnit : ceilingUnits) {
-//			ceilingUnit.drawOn(g2);
-//		}
-//		for (FloorUnit floorUnit : floorUnits) {
-//			floorUnit.drawOn(g2);
-//		}
-//		for (WallUnit wallUnit : wallUnits) {
-//			wallUnit.drawOn(g2);
-//		}
-//		for (Hero hero : heroes) {
-//			hero.drawOn(g2);
-//		}
-//		for (Enemy enemy : enemies) {
-//			enemy.drawOn(g2);
-//		}
-//		for (EnemyProjectile enemyProjectile : enemyProjectiles) {
-//			enemyProjectile.drawOn(g2);
-//		}
-//		for (HeroProjectile heroProjectile : heroProjectiles) {
-//			heroProjectile.drawOn(g2);
-//		}
-//		for (Fruit fruit : fruits) {
-//			fruit.drawOn(g2);
-//		}
-//		for (Bubble bubble : bubbles) {
-//			bubble.drawOn(g2);
-//		}
-//	}
+		GraphicsContext g2 = (GraphicsContext) g;
+		g2.clearRect(0, 0, this.getWidth(), this.getHeight());
 
-	void updatePosition() {
+		for (CeilingUnit ceilingUnit : ceilingUnits) {
+			ceilingUnit.drawOn(g2);
+		}
+		for (FloorUnit floorUnit : floorUnits) {
+			floorUnit.drawOn(g2);
+		}
+		for (WallUnit wallUnit : wallUnits) {
+			wallUnit.drawOn(g2);
+		}
+		for (Hero hero : heroes) {
+			hero.drawOn(g2);
+		}
+		for (Enemy enemy : enemies) {
+			enemy.drawOn(g2);
+		}
+		for (EnemyProjectile enemyProjectile : enemyProjectiles) {
+			enemyProjectile.drawOn(g2);
+		}
+		for (HeroProjectile heroProjectile : heroProjectiles) {
+			heroProjectile.drawOn(g2);
+		}
+		for (Fruit fruit : fruits) {
+			fruit.drawOn(g2);
+		}
+		for (Bubble bubble : bubbles) {
+			bubble.drawOn(g2);
+		}
+	}
+
+	public void updatePosition() {
 		//updates positions of everything on screen
 		for (Hero hero : heroes) {
 			hero.update();
@@ -260,7 +265,7 @@ public class InteractableWorld extends Canvas {
 		bubbles.add(bubble);
 	}
 
-	void clearContents() {
+	public void clearContents() {
 		//clears everything from the screen
 		ceilingUnits.removeAll(ceilingUnits);
 		floorUnits.removeAll(floorUnits);
@@ -290,13 +295,15 @@ public class InteractableWorld extends Canvas {
 		readyToReset = true;
 	}
 
-	void startGame() {
-		InputStream input = this.getClass().getClassLoader().getResourceAsStream("world/World1.txt");
+	public void startGame() {
+		InputStream input = this.getClass().getClassLoader().getResourceAsStream("World1.txt");
 		Scanner scanner = new Scanner(input);
+
 		clearContents();
-		for (int row = 0; row < Main.HEIGHT; row++) {
+		for (int row = 0; row < HEIGHT; row++) {
 			String currentLine = scanner.next();
-			for (int col = 0; col < Main.WIDTH; col++) {
+//			System.out.println(currentLine);
+			for (int col = 0; col < WIDTH; col++) {
 				if (currentLine.charAt(col) == '*') {
 					addFloorUnit(new FloorUnit(this, col, row));
 				} else if (currentLine.charAt(col) == 'H') {
@@ -314,6 +321,7 @@ public class InteractableWorld extends Canvas {
 			}
 		}
 		scanner.close();
+//		System.out.println(floorUnits);
 
 		readyToReset = false;
 	}
