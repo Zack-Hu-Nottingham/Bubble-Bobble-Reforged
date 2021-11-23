@@ -1,15 +1,15 @@
 package com.ae2dms.GameObject.Objects;
 
-import com.ae2dms.GameObject.Awards.Fruit;
 import com.ae2dms.GameObject.GameObject;
 import com.ae2dms.GameObject.Wall.CeilingUnit;
 import com.ae2dms.GameObject.Wall.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallUnit;
-import com.ae2dms.Main;
 import com.ae2dms.SoundEffect;
-import com.ae2dms.UI.InteractableWorld;
+import com.ae2dms.GameScene.InteractableWorld;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+
+import static com.ae2dms.GamePanel.UNIT_SIZE;
 
 
 /**
@@ -19,8 +19,8 @@ import javafx.scene.paint.Color;
  * Enemies jump at random intervals as well.
  */
 public class Enemy extends GameObject {
-	private static final int WIDTH = Main.UNIT_SIZE + 10;
-	private static final int HEIGHT = Main.UNIT_SIZE + 10;
+	private static final int WIDTH = UNIT_SIZE + 10;
+	private static final int HEIGHT = UNIT_SIZE + 10;
 	private static final int JUMP_SPEED = 20;
 	private static final int TERMINAL_VELOCITY_X = 4;
 	private static final int BUBBLED_FRAMES = 300;
@@ -36,7 +36,7 @@ public class Enemy extends GameObject {
 	
 	public Enemy(InteractableWorld world, int colNum, int rowNum) {
 		//initializes enemy
-		super(colNum * Main.UNIT_SIZE, rowNum * Main.UNIT_SIZE, WIDTH, HEIGHT, world);
+		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, WIDTH, HEIGHT, world);
 		isOnAPlatform = false;
 		jumpSpeed = JUMP_SPEED;
 		terminal_xVelocity = TERMINAL_VELOCITY_X;
@@ -60,7 +60,7 @@ public class Enemy extends GameObject {
 		g.setFill(Color.BLUE);
 		g.fillRect(x, y, WIDTH, HEIGHT);
 		if (isBubbled) {
-			g.setFill(new Color(0, 255, 255, (int) (timer * ((double) 255 / 300))));
+			g.setFill(new Color((double) (timer * ((double) 255 / 300))/255, 0, 255/255, 255/255 ));
 			g.fillRect(x - 5, y - 5, WIDTH + 10, HEIGHT + 10);
 		}
 		g.setFill(Color.BLACK);
