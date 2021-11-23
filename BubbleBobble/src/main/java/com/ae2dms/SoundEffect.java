@@ -31,6 +31,7 @@ public enum SoundEffect {
 	private AudioClip audioClip;
 	
 	SoundEffect(String src) {
+		audioClip = new AudioClip(SoundEffect.class.getResource(src).toString());
 		// sets the sound effect
 //		try {
 //			URL url = this.getClass().getClassLoader().getResource(soundFileName);
