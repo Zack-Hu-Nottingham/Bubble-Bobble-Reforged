@@ -8,8 +8,6 @@ import com.ae2dms.GameObject.Wall.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallUnit;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -58,7 +56,6 @@ public class InteractableWorld extends Canvas {
 //	@Override
 	public void paintComponent(GraphicsContext g) {
 		//paints everything on the world
-//		super.paintComponent(g);
 		GraphicsContext g2 = (GraphicsContext) g;
 		g2.clearRect(0, 0, this.getWidth(), this.getHeight());
 

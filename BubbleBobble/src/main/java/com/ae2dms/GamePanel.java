@@ -1,10 +1,8 @@
 package com.ae2dms;
 
-import com.ae2dms.GameObject.Objects.Hero;
-import com.ae2dms.GameScene.InteractableWorld;
+import com.ae2dms.Scene.GameScene;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -45,11 +43,8 @@ public class GamePanel {
 	public static final int WIDTH = 40, HEIGHT = 34;
 	private Stage stage;
 
-//	private Canvas canvas = new Canvas((double)UNIT_SIZE * WIDTH, (double)UNIT_SIZE * HEIGHT);
-//	private Hero hero = new Hero();
-
 	private static GamePanel instance = new GamePanel();
-	private InteractableWorld world = new InteractableWorld(UNIT_SIZE * WIDTH, UNIT_SIZE * HEIGHT);
+	private GameScene world = new GameScene(UNIT_SIZE * WIDTH, UNIT_SIZE * HEIGHT);
 	private GraphicsContext graphicsContext = world.getGraphicsContext2D();
 
 	GamePanel() {}
@@ -70,39 +65,16 @@ public class GamePanel {
 		stage.show();
 
 		new AnimationTimer() {
-			private long lastUpdate = 0 ;
 			public void handle(long currentTime) {
-
-//				world.clearRect(0, 0, an)
 				world.updatePosition();
 				world.paintComponent(graphicsContext);
 			}
 		}.start();
 	}
 
-	public void gameStart() {
-//		world.
-	}
-
+	public void gameStart() {}
 	public void toIndex() {}
 	public void gameOver() {}
 
 
-
-//	public GamePanel(int width, int height) {
-//		world = new InteractableWorld(width, height);
-//
-////		this.world = world;
-//		world.startGame();
-////		GraphicsContext gc = this.getGraphicsContext2D();
-//
-//
-//		new AnimationTimer() {
-//			public void handle(long currentTime) {
-//				world.updatePosition();
-//
-//			}
-//		}.start();
-//
-//	}
 }
