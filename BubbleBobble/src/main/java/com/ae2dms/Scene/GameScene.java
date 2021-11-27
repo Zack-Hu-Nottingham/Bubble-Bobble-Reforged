@@ -305,7 +305,7 @@ public class GameScene {
 	}
 
 	public void readMap(String mapName) {
-		InputStream input = this.getClass().getClassLoader().getResourceAsStream(mapName);
+		InputStream input = this.getClass().getResourceAsStream(mapName);
 		Scanner scanner = new Scanner(input);
 
 		clearContents();
@@ -339,7 +339,7 @@ public class GameScene {
 		this.stage = stage;
 		AnchorPane root = new AnchorPane(canvas);
 		stage.getScene().setRoot(root);
-		readMap("World1.txt");
+		readMap("/World/World1.txt");
 
 		refresh.start();
 	}
