@@ -1,7 +1,7 @@
 package com.ae2dms.GameObject.Objects;
 
 import com.ae2dms.GameObject.GameObject;
-import com.ae2dms.UI.InteractableWorld;
+import com.ae2dms.Scene.GameScene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
 public class Bubble extends GameObject {
 	private int accel;
 	
-	public Bubble(InteractableWorld world, int x, int y) {
+	public Bubble(GameScene world, int x, int y) {
 		super(x, y, 0, 0, world);
 		accel = 1;
 	}

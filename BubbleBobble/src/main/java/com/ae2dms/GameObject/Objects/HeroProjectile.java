@@ -1,12 +1,10 @@
 package com.ae2dms.GameObject.Objects;
 
 import com.ae2dms.GameObject.GameObject;
-import com.ae2dms.UI.InteractableWorld;
+
+import com.ae2dms.Scene.GameScene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-
-//import java.awt.Color;
-//import java.awt.Graphics2D;
 
 /**
  * The HeroProjectile class handles the specificities with the projectile being shot from a hero.
@@ -22,7 +20,7 @@ public class HeroProjectile extends GameObject {
 	private int activeFrames;
 	private int timer;
 
-	public HeroProjectile(InteractableWorld world, int x, int y, int direction) {
+	public HeroProjectile(GameScene world, int x, int y, int direction) {
 		super(x, y, SIZE, SIZE, world);
 		this.direction = direction;
 
@@ -37,9 +35,9 @@ public class HeroProjectile extends GameObject {
 	@Override
 	public void drawOn(GraphicsContext g) {
 		if (isActive) {
-			g.setFill(new Color(102, 204, 255, 100));
+			g.setFill(Color.BLUE);
 		} else {
-			g.setFill(new Color(51, 204, 255, 40));
+			g.setFill(new Color(0.4, (double) 102/255, (double)204/255, (double) 255/255));
 		}
 		g.fillOval(x, y, width, height);
 		g.setFill(Color.BLACK);

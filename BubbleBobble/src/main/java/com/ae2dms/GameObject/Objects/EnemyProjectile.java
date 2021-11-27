@@ -2,7 +2,8 @@ package com.ae2dms.GameObject.Objects;
 
 
 import com.ae2dms.GameObject.GameObject;
-import com.ae2dms.UI.InteractableWorld;
+
+import com.ae2dms.Scene.GameScene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -20,7 +21,7 @@ public class EnemyProjectile extends GameObject {
 	private int activeFrames;
 	private int timer;
 
-	public EnemyProjectile(InteractableWorld world, int x, int y, int direction) {
+	public EnemyProjectile(GameScene world, int x, int y, int direction) {
 		super(x, y, SIZE, SIZE, world);
 		this.direction = direction;
 

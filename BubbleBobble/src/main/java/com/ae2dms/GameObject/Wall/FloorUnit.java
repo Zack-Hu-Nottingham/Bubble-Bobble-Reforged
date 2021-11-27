@@ -1,7 +1,7 @@
 package com.ae2dms.GameObject.Wall;
 
 import com.ae2dms.GameObject.GameObject;
-import com.ae2dms.GameScene.InteractableWorld;
+import com.ae2dms.Scene.GameScene;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -16,9 +16,9 @@ import static com.ae2dms.GamePanel.UNIT_SIZE;
  * When an enemy is bubbled, the enemy will still be stopped by a floor unit above it.
  */
 public class FloorUnit extends GameObject {
-	InteractableWorld world;
+	GameScene world;
 
-	public FloorUnit(InteractableWorld world, int colNum, int rowNum) {
+	public FloorUnit(GameScene world, int colNum, int rowNum) {
 		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, UNIT_SIZE, UNIT_SIZE, world);
 	}
 

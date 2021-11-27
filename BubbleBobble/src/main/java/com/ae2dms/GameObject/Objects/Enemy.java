@@ -4,8 +4,9 @@ import com.ae2dms.GameObject.GameObject;
 import com.ae2dms.GameObject.Wall.CeilingUnit;
 import com.ae2dms.GameObject.Wall.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallUnit;
+import com.ae2dms.Scene.GameScene;
 import com.ae2dms.SoundEffect;
-import com.ae2dms.GameScene.InteractableWorld;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -34,7 +35,7 @@ public class Enemy extends GameObject {
 	private boolean isOnAPlatform;
 	private double jumpSpeed;
 	
-	public Enemy(InteractableWorld world, int colNum, int rowNum) {
+	public Enemy(GameScene world, int colNum, int rowNum) {
 		//initializes enemy
 		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, WIDTH, HEIGHT, world);
 		isOnAPlatform = false;

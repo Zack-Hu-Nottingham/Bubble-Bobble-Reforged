@@ -1,4 +1,4 @@
-package com.ae2dms.GameScene;
+package com.ae2dms.Scene;
 
 import com.ae2dms.GameObject.Objects.Fruit;
 import com.ae2dms.GameObject.GameObject;
@@ -6,23 +6,28 @@ import com.ae2dms.GameObject.Objects.*;
 import com.ae2dms.GameObject.Wall.CeilingUnit;
 import com.ae2dms.GameObject.Wall.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallUnit;
+import javafx.animation.AnimationTimer;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static com.ae2dms.GamePanel.HEIGHT;
-import static com.ae2dms.GamePanel.WIDTH;
+import static com.ae2dms.GamePanel.*;
 
 /**
  * InteractableWorld handles all of the game's operations:
  * updating positions, checking for collisions, and removing objects.
  */
-public class InteractableWorld extends Canvas {
+public class GameScene {
+//	public class GameScene extends Canvas {
 	private ArrayList<CeilingUnit> ceilingUnits;
 	private ArrayList<FloorUnit> floorUnits;
 	private ArrayList<WallUnit> wallUnits;
@@ -36,8 +41,15 @@ public class InteractableWorld extends Canvas {
 
 	private boolean readyToReset;
 
-	public InteractableWorld(int width, int height) {
-		//initializes interactableworld
+	private Canvas canvas = new Canvas(WIDTH * UNIT_SIZE, HEIGHT * UNIT_SIZE);
+	GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
+
+	private Refresh refresh = new Refresh();
+
+	public GameScene() {
+//			public GameScene(int width, int height) {
+
+			//initializes interactableworld
 		ceilingUnits = new ArrayList<CeilingUnit>();
 		floorUnits = new ArrayList<FloorUnit>();
 		wallUnits = new ArrayList<WallUnit>();
@@ -50,8 +62,8 @@ public class InteractableWorld extends Canvas {
 		bubbles = new ArrayList<Bubble>();
 
 		readyToReset = false;
-		this.setHeight(height);
-		this.setWidth(width);
+//		this.setHeight(height);
+//		this.setWidth(width);
 	}
 
 
@@ -60,7 +72,7 @@ public class InteractableWorld extends Canvas {
 		//paints everything on the world
 //		super.paintComponent(g);
 		GraphicsContext g2 = (GraphicsContext) g;
-		g2.clearRect(0, 0, this.getWidth(), this.getHeight());
+		g2.clearRect(0, 0, WIDTH * UNIT_SIZE, HEIGHT * UNIT_SIZE);
 
 		for (CeilingUnit ceilingUnit : ceilingUnits) {
 			ceilingUnit.drawOn(g2);
@@ -224,8 +236,8 @@ public class InteractableWorld extends Canvas {
 			remove(obj);
 		}
 		toBeRemoved.removeAll(toBeRemoved);
-		if (readyToReset)
-			startGame();
+//		if (readyToReset)
+//			init(stage);
 	}
 
 	public void addCeilingUnit(CeilingUnit ceilingUnit) {
@@ -295,14 +307,13 @@ public class InteractableWorld extends Canvas {
 		readyToReset = true;
 	}
 
-	public void startGame() {
-		InputStream input = this.getClass().getClassLoader().getResourceAsStream("World1.txt");
+	public void readMap(String mapName) {
+		InputStream input = this.getClass().getClassLoader().getResourceAsStream(mapName);
 		Scanner scanner = new Scanner(input);
 
 		clearContents();
 		for (int row = 0; row < HEIGHT; row++) {
 			String currentLine = scanner.next();
-//			System.out.println(currentLine);
 			for (int col = 0; col < WIDTH; col++) {
 				if (currentLine.charAt(col) == '*') {
 					addFloorUnit(new FloorUnit(this, col, row));
@@ -321,8 +332,50 @@ public class InteractableWorld extends Canvas {
 			}
 		}
 		scanner.close();
-//		System.out.println(floorUnits);
 
 		readyToReset = false;
 	}
+
+	private Stage stage;
+
+	public void init(Stage stage) {
+		this.stage = stage;
+		AnchorPane root = new AnchorPane(canvas);
+		stage.getScene().setRoot(root);
+		readMap("World1.txt");
+
+		refresh.start();
+	}
+
+	private class Refresh extends AnimationTimer {
+		@Override
+		public void handle(long currentTime) {
+			updatePosition();
+			paintComponent(graphicsContext);
+		}
+
+//		new AnimationTimer() {
+//			private long lastUpdate = 0 ;
+//			public void handle(long currentTime) {
+//
+////				world.clearRect(0, 0, an)
+//				world.updatePosition();
+//				world.paintComponent(graphicsContext);
+//			}
+//		}.start();
+	}
+
+
+	public int getHeight() {
+		return HEIGHT * UNIT_SIZE;
+	}
+
+	public int getWidth() {
+		return WIDTH * UNIT_SIZE;
+	}
+
+	public Scene getScene() {
+		return stage.getScene();
+	}
+
 }
