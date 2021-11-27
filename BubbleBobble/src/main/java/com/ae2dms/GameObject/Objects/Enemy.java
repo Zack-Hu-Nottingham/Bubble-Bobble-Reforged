@@ -124,8 +124,8 @@ public class Enemy extends GameObject {
 	public void collideWithProjectile() {
 		//handles what to do if hit with a projectile by the hero
 		if (!isBubbled) {
-			SoundEffect.BUBBLED.setToLoud();
-			SoundEffect.BUBBLED.play();
+			SoundEffect.setToLoud();
+			SoundEffect.play("/sound/bubbled.wav");
 			isBubbled = true;
 			yVelocity = 0;
 			xAccel = 0;
@@ -155,7 +155,7 @@ public class Enemy extends GameObject {
 				}
 			}
 			else if (!canRemove){
-				SoundEffect.POP.play();
+				SoundEffect.play("/sound/pop.wav");
 				die();
 			}
 		}

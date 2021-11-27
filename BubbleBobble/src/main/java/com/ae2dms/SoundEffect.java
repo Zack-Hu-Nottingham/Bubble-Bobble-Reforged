@@ -11,15 +11,16 @@ import javafx.scene.media.AudioClip;
  * Classes that want to use SFX will call the static variables in this enum and
  * play them via the play() method.
  */
-public enum SoundEffect {
-	FRUIT("/sound/fruit.wav"),
-	DEATH("/sound/death.wav"),
-	SHOOT("/sound/shoot.wav"),
-	POP("/sound/pop.wav"),
-	BUBBLED("/sound/bubbled.wav"),
-	JUMP("/sound/jump.wav"),
-	EXPLODE("/sound/explode.wav"),
-	LAND("/sound/land.wav");
+public class SoundEffect {
+//	public enum SoundEffect {
+//	FRUIT("/sound/fruit.wav"),
+//	DEATH("/sound/death.wav"),
+//	SHOOT("/sound/shoot.wav"),
+//	POP("/sound/pop.wav"),
+//	BUBBLED("/sound/bubbled.wav"),
+//	JUMP("/sound/jump.wav"),
+//	EXPLODE("/sound/explode.wav"),
+//	LAND("/sound/land.wav");
 	
 	public static enum Volume {
 		MUTE, LOW, MEDIUM, HIGH
@@ -28,10 +29,13 @@ public enum SoundEffect {
 	public static Volume volume = Volume.LOW;
 	
 //	private Clip clip;
-	private AudioClip audioClip;
-	
-	SoundEffect(String src) {
-		audioClip = new AudioClip(SoundEffect.class.getResource(src).toString());
+	private static AudioClip audioClip;
+
+	public SoundEffect() {
+	}
+
+//	public SoundEffect(String src) {
+//		audioClip = new AudioClip(SoundEffect.class.getResource(src).toString());
 		// sets the sound effect
 //		try {
 //			URL url = this.getClass().getClassLoader().getResource(soundFileName);
@@ -46,9 +50,15 @@ public enum SoundEffect {
 //			e.printStackTrace();
 //		}
 
-	}
+//	}
 	
-	public void play() {
+	public static void play(String src) {
+//		audioClip = new AudioClip(src);
+
+
+		audioClip = new AudioClip(SoundEffect.class.getResource(src).toString());
+//		audioClip = new AudioClip(SoundEffect.class.getClassLoader().getResource(src).toString());
+
 		// plays the sound effect
 		if (volume != Volume.MUTE) {
 			if (audioClip.isPlaying()) {
@@ -69,7 +79,7 @@ public enum SoundEffect {
 		audioClip.setCycleCount(AudioClip.INDEFINITE);
 	}
 	
-	public void setToLoud() {
+	public static void setToLoud() {
 		// sets volume to be loud
 		volume = Volume.HIGH;
 	}

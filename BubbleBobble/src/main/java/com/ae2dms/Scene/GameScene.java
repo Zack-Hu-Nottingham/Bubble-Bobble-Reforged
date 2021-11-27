@@ -233,8 +233,8 @@ public class GameScene {
 			remove(obj);
 		}
 		toBeRemoved.removeAll(toBeRemoved);
-//		if (readyToReset)
-//			init(stage);
+		if (readyToReset)
+			init(stage);
 	}
 
 	public void addCeilingUnit(CeilingUnit ceilingUnit) {
@@ -350,16 +350,6 @@ public class GameScene {
 			updatePosition();
 			paintComponent(graphicsContext);
 		}
-
-//		new AnimationTimer() {
-//			private long lastUpdate = 0 ;
-//			public void handle(long currentTime) {
-//
-////				world.clearRect(0, 0, an)
-//				world.updatePosition();
-//				world.paintComponent(graphicsContext);
-//			}
-//		}.start();
 	}
 
 
