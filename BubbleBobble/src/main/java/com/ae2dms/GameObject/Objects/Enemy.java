@@ -57,18 +57,15 @@ public class Enemy extends GameObject {
 	}
 
 	Image enemyImage = new Image(this.getClass().getResource("/image/enemy01.png").toString(), WIDTH, HEIGHT, false, false);
+
 	@Override
 	public void drawOn(GraphicsContext g) {
 		//draws mook
 		g.drawImage(enemyImage, x, y, WIDTH, HEIGHT);
-
-//		g.setFill(Color.BLUE);
-//		g.fillRect(x, y, WIDTH, HEIGHT);
 		if (isBubbled) {
 			g.setFill(new Color((double) (timer * ((double) 255 / 300))/255, 0, 255/255, 255/255 ));
 			g.fillRect(x - 5, y - 5, WIDTH + 10, HEIGHT + 10);
 		}
-//		g.setFill(Color.BLACK);
 	}
 
 	@Override

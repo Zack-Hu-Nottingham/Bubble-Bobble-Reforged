@@ -5,8 +5,6 @@ import com.ae2dms.Scene.GameScene;
 import com.ae2dms.SoundEffect;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-
 
 
 /**
@@ -31,14 +29,11 @@ public class Fruit extends GameObject {
 		super.update();
 	}
 
+	Image fruitImage = new Image(Fruit.class.getResource("/image/apple.png").toString(), SIZE, SIZE, false, false);
 	@Override
 	public void drawOn(GraphicsContext g) {
 		//draws fruit
-		Image image = new Image(Fruit.class.getResource("/image/apple.png").toString(), SIZE, SIZE, false, false);
-		g.drawImage(image, x, y, SIZE, SIZE);
-//		g.setFill(new Color(1, (double) 109/255,(double) 58/255,(double) 150/255));
-//		g.fillRect(x, y, SIZE, SIZE);
-//		g.setFill(Color.BLACK);
+		g.drawImage(fruitImage, x, y, SIZE, SIZE);
 	}
 	
 	public void collideWith(Hero hero) {
