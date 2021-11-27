@@ -5,12 +5,10 @@ import com.ae2dms.GameObject.GameObject;
 import com.ae2dms.Scene.GameScene;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 import static com.ae2dms.GamePanel.UNIT_SIZE;
-
-//import java.awt.*;
-//import java.awt.geom.Point2D;
 
 /**
  * The CeilingUnit class creates ceiling units to be used for the world.
@@ -20,10 +18,8 @@ import static com.ae2dms.GamePanel.UNIT_SIZE;
  */
 public class CeilingUnit extends GameObject {
 	GameScene world;
+	Image image = new Image(CeilingUnit.class.getResource("/image/wall.png").toString(), UNIT_SIZE, UNIT_SIZE, false, false);
 
-//	public CeilingUnit(InteractableWorld world, int colNum, int rowNum) {
-//		super(world, colNum, rowNum, Main.UNIT_SIZE, Main.UNIT_SIZE);
-//	}
 	public CeilingUnit(GameScene world, int colNum, int rowNum) {
 		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, UNIT_SIZE, UNIT_SIZE, world);
 	}
@@ -37,8 +33,7 @@ public class CeilingUnit extends GameObject {
 
 	@Override
 	public void drawOn(GraphicsContext g) {
-		g.setFill(Color.BLACK);
-		g.fillRect(x, y, width, height);
+		g.drawImage(image, x, y, UNIT_SIZE, UNIT_SIZE);
 	}
 
 	void moveAboveUnit(GameObject obj) {

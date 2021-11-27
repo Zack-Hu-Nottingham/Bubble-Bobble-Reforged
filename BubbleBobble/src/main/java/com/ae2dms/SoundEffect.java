@@ -1,9 +1,5 @@
 package com.ae2dms;
 
-//import java.io.*;
-//import java.net.URL;
-//import javax.sound.sampled.*;
-
 import javafx.scene.media.AudioClip;
 
 /**
@@ -12,15 +8,6 @@ import javafx.scene.media.AudioClip;
  * play them via the play() method.
  */
 public class SoundEffect {
-//	public enum SoundEffect {
-//	FRUIT("/sound/fruit.wav"),
-//	DEATH("/sound/death.wav"),
-//	SHOOT("/sound/shoot.wav"),
-//	POP("/sound/pop.wav"),
-//	BUBBLED("/sound/bubbled.wav"),
-//	JUMP("/sound/jump.wav"),
-//	EXPLODE("/sound/explode.wav"),
-//	LAND("/sound/land.wav");
 	
 	public static enum Volume {
 		MUTE, LOW, MEDIUM, HIGH
@@ -33,31 +20,10 @@ public class SoundEffect {
 
 	public SoundEffect() {
 	}
-
-//	public SoundEffect(String src) {
-//		audioClip = new AudioClip(SoundEffect.class.getResource(src).toString());
-		// sets the sound effect
-//		try {
-//			URL url = this.getClass().getClassLoader().getResource(soundFileName);
-//			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
-//			clip = AudioSystem.getClip();
-//			clip.open(audioInputStream);
-//		} catch (UnsupportedAudioFileException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		} catch (LineUnavailableException e) {
-//			e.printStackTrace();
-//		}
-
-//	}
 	
 	public static void play(String src) {
-//		audioClip = new AudioClip(src);
-
 
 		audioClip = new AudioClip(SoundEffect.class.getResource(src).toString());
-//		audioClip = new AudioClip(SoundEffect.class.getClassLoader().getResource(src).toString());
 
 		// plays the sound effect
 		if (volume != Volume.MUTE) {
@@ -65,11 +31,6 @@ public class SoundEffect {
 				audioClip.stop();
 			}
 			audioClip.play();
-//			if (clip.isRunning()) {
-//				clip.stop();
-//			}
-//			clip.setFramePosition(0);
-//			clip.start();
 		}
 	}
 	

@@ -8,6 +8,7 @@ import com.ae2dms.Scene.GameScene;
 import com.ae2dms.SoundEffect;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 import static com.ae2dms.GamePanel.UNIT_SIZE;
@@ -55,16 +56,19 @@ public class Enemy extends GameObject {
 		turningAwayCount = 10;
 	}
 
+	Image enemyImage = new Image(this.getClass().getResource("/image/enemy01.png").toString(), WIDTH, HEIGHT, false, false);
 	@Override
 	public void drawOn(GraphicsContext g) {
 		//draws mook
-		g.setFill(Color.BLUE);
-		g.fillRect(x, y, WIDTH, HEIGHT);
+		g.drawImage(enemyImage, x, y, WIDTH, HEIGHT);
+
+//		g.setFill(Color.BLUE);
+//		g.fillRect(x, y, WIDTH, HEIGHT);
 		if (isBubbled) {
 			g.setFill(new Color((double) (timer * ((double) 255 / 300))/255, 0, 255/255, 255/255 ));
 			g.fillRect(x - 5, y - 5, WIDTH + 10, HEIGHT + 10);
 		}
-		g.setFill(Color.BLACK);
+//		g.setFill(Color.BLACK);
 	}
 
 	@Override
