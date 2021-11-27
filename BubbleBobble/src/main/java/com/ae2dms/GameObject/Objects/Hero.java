@@ -60,10 +60,7 @@ public class Hero extends GameObject {
 	
 	public void drawOn(GraphicsContext g) {
 		//draws hero
-
 		g.drawImage(imageBub, x, y, SIZE, SIZE);
-//		g.setFill(Color.RED);
-//		g.fillRect(x, y, SIZE, SIZE);
 		if (isShielding) {
 			g.setFill(new Color(1,0, (double) (shieldTimer * ((double) 255 / SHIELD_TIME))/255, (double) (shieldTimer * ((double) 255 / SHIELD_TIME))/255));
 			g.fillOval(x - 10, y - 10, SIZE + 20, SIZE + 20);
@@ -71,8 +68,6 @@ public class Hero extends GameObject {
 			g.setFill(Color.MAGENTA);
 			g.fillRect(x, y, SIZE, SIZE);
 		}
-//		g.setFill(Color.BLACK);
-		
 	}
 	
 	public void shootProjectile() {
