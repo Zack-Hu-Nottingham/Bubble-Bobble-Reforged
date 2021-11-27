@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="505.0" prefWidth="884.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ae2dms.GameObject.Controller.IndexController">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/background.jpg" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <effect>
+            <Glow />
+         </effect>
+      </ImageView>
+      <ImageView fx:id="startGame" fitHeight="150.0" fitWidth="200.0" layoutX="62.0" layoutY="93.0" onMouseClicked="#mouseClickedStartGame" onMouseEntered="#mouseEnteredStartGame" onMouseExited="#mouseExitStartGame" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/startGame.png" />
+         </image></ImageView>
+      <ImageView fx:id="exitGame" fitHeight="150.0" fitWidth="200.0" layoutX="62.0" layoutY="344.0" onMouseClicked="#mouseClickedExitGame" onMouseEntered="#mouseEnteredExitGame" onMouseExited="#mouseExitExitGame" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/exit.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="information" fitHeight="150.0" fitWidth="200.0" layoutX="62.0" layoutY="223.0" onMouseClicked="#mouseClickedInformation" onMouseEntered="#mouseEnteredInformation" onMouseExited="#mouseExitInformation" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/information.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

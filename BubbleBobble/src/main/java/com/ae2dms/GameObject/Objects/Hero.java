@@ -72,7 +72,7 @@ public class Hero extends GameObject {
 	
 	public void shootProjectile() {
 		//makes hero shoot projectile
-		SoundEffect.SHOOT.play();
+		SoundEffect.play("/sound/jump.wav");
 		world.addHeroProjectile(new HeroProjectile(world, x, y, direction));
 	}
 
@@ -111,7 +111,7 @@ public class Hero extends GameObject {
 				case UP:
 					if (!isShielding && !isStunned) {
 						jump();
-						SoundEffect.JUMP.play();
+						SoundEffect.play("/sound/jump.wav");
 					}
 					break;
 				case E:
@@ -136,8 +136,10 @@ public class Hero extends GameObject {
 				case W:
 					if (readyToCharge) {
 						world.addBubble(new Bubble(world, x, y));
-						SoundEffect.EXPLODE.setToLoud();
-						SoundEffect.EXPLODE.play();
+						SoundEffect.setToLoud();
+						SoundEffect.play("/sound/explode.wav");
+//						SoundEffect.EXPLODE.setToLoud();
+//						SoundEffect.EXPLODE.play();
 						readyToCharge = false;
 					}
 					break;
@@ -276,8 +278,8 @@ public class Hero extends GameObject {
 	
 	public void die() {
 		//handles death
-		SoundEffect.DEATH.setToLoud();
-		SoundEffect.DEATH.play();
+		SoundEffect.setToLoud();
+		SoundEffect.play("/sound/death.wav");
 		world.markToReset();
 	}
 
@@ -321,7 +323,7 @@ public class Hero extends GameObject {
 		yVelocity = 0;
 		if (!isOnAPlatform) {
 			isOnAPlatform = true;
-			SoundEffect.LAND.play();
+			SoundEffect.play("/sound/land.wav");
 		}
 	}
 

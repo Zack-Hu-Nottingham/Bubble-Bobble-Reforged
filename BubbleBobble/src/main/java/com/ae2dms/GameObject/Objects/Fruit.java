@@ -41,8 +41,8 @@ public class Fruit extends GameObject {
 	public void collideWith(Hero hero) {
 		//checks for collision with hero and tells it what to do if it is colliding
 		if (this.overlaps(hero) && readyToCollect) {
-			SoundEffect.FRUIT.setToLoud();
-			SoundEffect.FRUIT.play();
+			SoundEffect.setToLoud();
+			SoundEffect.play("fruit");
 			readyToCollect = false;
 			markToRemove();
 		}
