@@ -1,6 +1,7 @@
 package com.ae2dms.GameObject;
 
-import com.ae2dms.UI.InteractableWorld;
+
+import com.ae2dms.Scene.GameScene;
 import javafx.scene.image.Image;
 
 import javafx.geometry.Rectangle2D;
@@ -20,7 +21,7 @@ public abstract class GameObject {
 	protected static final int GRAVITY = 1;
 	private static final int TERMINAL_FALL_SPEED = 20;
 	
-	public InteractableWorld world;
+	public GameScene world;
 	public int x, y;
 	public int width, height;
 	
@@ -50,7 +51,7 @@ public abstract class GameObject {
 //		direction = -1;
 //	}
 	
-	public GameObject(int x, int y, int width, int height, InteractableWorld world) {
+	public GameObject(int x, int y, int width, int height, GameScene world) {
 		//initializes the game object
 		this.x = x;
 		this.y = y;
@@ -67,8 +68,11 @@ public abstract class GameObject {
 		canRemove = false;
 		direction = -1;
 	}
-	
-	public abstract void drawOn(GraphicsContext g);
+
+	public void drawOn(GraphicsContext graphicsContext) {
+		graphicsContext.drawImage(image, x, y, width, height);
+	}
+//	public abstract void drawOn(GraphicsContext g);
 	public abstract void collideWithFloor();
 	public abstract void collideWithCeiling();
 	public abstract void collideWithWall();
@@ -91,9 +95,10 @@ public abstract class GameObject {
 			yVelocity += yAccel;
 		}
 		y += yVelocity;
-		
+//		System.out.println(world.getHeight());
 		if (isOffScreen()) {
 			if (y > world.getHeight()) {
+//				if (y > world.getHeight()) {
 				y = 0;
 			} else {
 				y = (int) world.getHeight();

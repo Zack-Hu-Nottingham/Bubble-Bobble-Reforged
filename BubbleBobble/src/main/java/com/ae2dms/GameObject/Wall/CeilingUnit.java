@@ -1,7 +1,8 @@
 package com.ae2dms.GameObject.Wall;
 
 import com.ae2dms.GameObject.GameObject;
-import com.ae2dms.GameScene.InteractableWorld;
+
+import com.ae2dms.Scene.GameScene;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -18,12 +19,12 @@ import static com.ae2dms.GamePanel.UNIT_SIZE;
  * Even if a game object is on top of a ceiling, the game object will be pushed down.
  */
 public class CeilingUnit extends GameObject {
-	InteractableWorld world;
+	GameScene world;
 
 //	public CeilingUnit(InteractableWorld world, int colNum, int rowNum) {
 //		super(world, colNum, rowNum, Main.UNIT_SIZE, Main.UNIT_SIZE);
 //	}
-	public CeilingUnit(InteractableWorld world, int colNum, int rowNum) {
+	public CeilingUnit(GameScene world, int colNum, int rowNum) {
 		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, UNIT_SIZE, UNIT_SIZE, world);
 	}
 

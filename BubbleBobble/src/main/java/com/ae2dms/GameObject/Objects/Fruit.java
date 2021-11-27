@@ -1,8 +1,8 @@
 package com.ae2dms.GameObject.Objects;
 
 import com.ae2dms.GameObject.GameObject;
+import com.ae2dms.Scene.GameScene;
 import com.ae2dms.SoundEffect;
-import com.ae2dms.GameScene.InteractableWorld;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -18,7 +18,7 @@ public class Fruit extends GameObject {
 	
 	private boolean readyToCollect;
 
-	public Fruit(int x, int y, InteractableWorld world) {
+	public Fruit(int x, int y, GameScene world) {
 		//initializes fruit
 		super(x, y, SIZE, SIZE, world);
 		terminal_yVelocity = TERMINAL_VELOCITY_Y;

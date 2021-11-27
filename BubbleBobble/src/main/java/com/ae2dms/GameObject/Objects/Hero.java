@@ -1,8 +1,8 @@
 package com.ae2dms.GameObject.Objects;
 
 import com.ae2dms.GameObject.GameObject;
+import com.ae2dms.Scene.GameScene;
 import com.ae2dms.SoundEffect;
-import com.ae2dms.GameScene.InteractableWorld;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
@@ -23,7 +23,8 @@ public class Hero extends GameObject {
 	private static final int SIZE = 20;
 	private static final int WALK = 5;
 	private static final int RUN = 10;
-	private static final double RUN_ACCEL = 15;
+	private static final double RUN_ACCEL = 5;
+//	private static final double RUN_ACCEL = 15;
 //	private static final double RUN_ACCEL = 20;
 	private static final int SHIELD_TIME = 100;
 	
@@ -36,7 +37,7 @@ public class Hero extends GameObject {
 	private boolean isOnAPlatform;
 	private double jumpSpeed;
 	
-	public Hero(InteractableWorld world, int colNum, int rowNum) {
+	public Hero(GameScene world, int colNum, int rowNum) {
 		//initializes hero
 		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, SIZE, SIZE, world);
 		isOnAPlatform = false;

@@ -1,9 +1,8 @@
 package com.ae2dms;
 
 import com.ae2dms.Scene.GameScene;
-import javafx.animation.AnimationTimer;
+import com.ae2dms.Scene.Index;
 import javafx.scene.Scene;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -14,28 +13,6 @@ import javafx.stage.Stage;
  * After every few milliseconds, GamePanel calls the methods that update its InteractableWorld,
  * then repaints the window to display the new drawn graphics.
  */
-//public class GamePanel extends GraphicContext {
-//	InteractableWorld world;
-//
-//	public GamePanel(int width, int height) {
-//		world = new InteractableWorld(width, height);
-//
-//		this.add(world);
-//
-//		world.startGame();
-//
-//		Timer repaintTimer = new Timer(1000 / 60, new ActionListener() {
-//			//handles updating the game, going to next frame
-//			public void actionPerformed(ActionEvent arg0) {
-//				world.updatePosition();
-//				repaint();
-//			}
-//		});
-//		repaintTimer.start();
-//	}
-//}
-
-
 
 public class GamePanel {
 
@@ -44,8 +21,8 @@ public class GamePanel {
 	private Stage stage;
 
 	private static GamePanel instance = new GamePanel();
-	private GameScene world = new GameScene(UNIT_SIZE * WIDTH, UNIT_SIZE * HEIGHT);
-	private GraphicsContext graphicsContext = world.getGraphicsContext2D();
+	private GameScene gameScene = new GameScene();
+
 
 	GamePanel() {}
 
@@ -53,28 +30,27 @@ public class GamePanel {
 
 	public void init(Stage stage) {
 		this.stage = stage;
-		AnchorPane root = new AnchorPane(world);
+		AnchorPane root = new AnchorPane();
 		Scene scene = new Scene(root, UNIT_SIZE * WIDTH, UNIT_SIZE * HEIGHT);
 
 		stage.setTitle("Bubble Bobble");
 		stage.getIcons().add(new Image("/icon.jpg"));
 		stage.setResizable(false);
 		stage.setScene(scene);
-		world.startGame();
+		stage.setWidth(UNIT_SIZE * (WIDTH+1));
+		stage.setHeight(UNIT_SIZE * (HEIGHT+2));
 
+		toIndex();
 		stage.show();
-
-		new AnimationTimer() {
-			public void handle(long currentTime) {
-				world.updatePosition();
-				world.paintComponent(graphicsContext);
-			}
-		}.start();
 	}
 
-	public void gameStart() {}
-	public void toIndex() {}
-	public void gameOver() {}
+	public void gameStart() {
+		gameScene.init(stage);
+	}
 
+	public void toIndex() {
+		Index.load(stage);
+	}
+	public void gameOver() {}
 
 }
