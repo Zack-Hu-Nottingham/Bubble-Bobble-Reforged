@@ -5,6 +5,7 @@ import com.ae2dms.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallObject.WallUnit;
 import com.ae2dms.Scene.GameScene;
+import com.ae2dms.Util.Direction;
 import com.ae2dms.Util.SoundEffect;
 
 import javafx.scene.canvas.GraphicsContext;
@@ -36,7 +37,9 @@ public class Enemy extends SpriteObject {
 	private boolean isOnAPlatform;
 	private double jumpSpeed;
 
-	protected static Image enemyImage = new Image(Enemy.class.getResource("/image/sprite/enemy/enemy01.png").toString(), WIDTH, HEIGHT, false, false);
+	protected static Image enemyImageRight = new Image(Enemy.class.getResource("/image/sprite/enemy/enemy01Right.png").toString(), WIDTH, HEIGHT, false, false);
+	protected static Image enemyImageLeft = new Image(Enemy.class.getResource("/image/sprite/enemy/enemy01Left.png").toString(), WIDTH, HEIGHT, false, false);
+	protected static Image enemyImage = enemyImageRight;
 
 
 	public Enemy(GameScene world, int colNum, int rowNum) {
@@ -47,7 +50,8 @@ public class Enemy extends SpriteObject {
 		terminal_xVelocity = TERMINAL_VELOCITY_X;
 		
 		xAccel = 1.5;
-		direction = 1;
+//		direction = 1;
+		direction = Direction.right;
 		if (Math.random() < 0.5) {
 			reverseDirection();
 		}
@@ -61,6 +65,11 @@ public class Enemy extends SpriteObject {
 
 	@Override
 	public void drawOn(GraphicsContext g) {
+		if (direction == Direction.left) {
+			enemyImage = enemyImageLeft;
+		} else {
+			enemyImage = enemyImageRight;
+		}
 		//draws mook
 		g.drawImage(enemyImage, x, y, WIDTH, HEIGHT);
 		if (isBubbled) {
@@ -94,7 +103,8 @@ public class Enemy extends SpriteObject {
 				isBubbled = false;
 				timer = BUBBLED_FRAMES;
 				xAccel = 1.5;
-				direction = 1;
+//				direction = 1;
+				direction = Direction.right;
 				if (Math.random() < 0.5) {
 					reverseDirection();
 				}

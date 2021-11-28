@@ -45,9 +45,7 @@ public class GameScene {
 	private Refresh refresh = new Refresh();
 
 	public GameScene() {
-//			public GameScene(int width, int height) {
-
-			//initializes interactableworld
+		//initializes interactableworld
 		ceilingUnits = new ArrayList<CeilingUnit>();
 		floorUnits = new ArrayList<FloorUnit>();
 		wallUnits = new ArrayList<WallUnit>();

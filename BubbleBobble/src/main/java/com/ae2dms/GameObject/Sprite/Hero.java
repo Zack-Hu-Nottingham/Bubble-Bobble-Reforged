@@ -1,6 +1,7 @@
 package com.ae2dms.GameObject.Sprite;
 
 import com.ae2dms.Scene.GameScene;
+import com.ae2dms.Util.Direction;
 import com.ae2dms.Util.SoundEffect;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
@@ -24,8 +25,6 @@ public class Hero extends SpriteObject {
 	private static final int WALK = 5;
 	private static final int RUN = 10;
 	private static final double RUN_ACCEL = 5;
-//	private static final double RUN_ACCEL = 15;
-//	private static final double RUN_ACCEL = 20;
 	private static final int SHIELD_TIME = 100;
 	
 	private boolean isShielding;
@@ -37,8 +36,10 @@ public class Hero extends SpriteObject {
 	private boolean isOnAPlatform;
 	private double jumpSpeed;
 
-	protected static Image imageBub = new Image(Hero.class.getResource("/image/sprite/hero/Bub.jpg").toString(), SIZE, SIZE, false, false);
-	
+	protected static Image imageBubLeft = new Image(Hero.class.getResource("/image/sprite/hero/BubLeft.jpg").toString(), SIZE, SIZE, false, false);
+	protected static Image imageBubRight = new Image(Hero.class.getResource("/image/sprite/hero/BubRight.jpg").toString(), SIZE, SIZE, false, false);
+	protected static Image imageBub = imageBubRight;
+
 	public Hero(GameScene world, int colNum, int rowNum) {
 		//initializes hero
 		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, SIZE, SIZE, world, imageBub);
@@ -60,6 +61,12 @@ public class Hero extends SpriteObject {
 	@Override
 	public void drawOn(GraphicsContext g) {
 		//draws hero
+		if (direction == Direction.left) {
+			imageBub = imageBubLeft;
+		} else {
+			imageBub = imageBubRight;
+		}
+
 		g.drawImage(imageBub, x, y, SIZE, SIZE);
 		if (isShielding) {
 			g.setFill(new Color(1,0, (double) (shieldTimer * ((double) 255 / SHIELD_TIME))/255, (double) (shieldTimer * ((double) 255 / SHIELD_TIME))/255));
@@ -99,13 +106,13 @@ public class Hero extends SpriteObject {
 				case RIGHT:
 					if (!isShielding && !isStunned) {
 						xAccel = RUN_ACCEL;
-						direction = 1;
+						direction = Direction.right;
 					}
 					break;
 				case LEFT:
 					if (!isShielding && !isStunned) {
 						xAccel = -RUN_ACCEL;
-						direction = -1;
+						direction = Direction.left;
 					}
 					break;
 				case UP:
