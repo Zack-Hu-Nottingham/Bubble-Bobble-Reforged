@@ -14,8 +14,7 @@ public class SoundEffect {
 	}
 	
 	public static Volume volume = Volume.LOW;
-	
-//	private Clip clip;
+
 	private static AudioClip audioClip;
 
 	public SoundEffect() {

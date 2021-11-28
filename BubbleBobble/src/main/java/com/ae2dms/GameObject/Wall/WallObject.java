@@ -8,11 +8,15 @@ import javafx.scene.image.Image;
 
 import static com.ae2dms.GamePanel.UNIT_SIZE;
 
+// strategy design pattern
+
 public abstract class WallObject extends GameObject {
     protected static Image image = new Image(WallUnit.class.getResource("/image/wall.png").toString(), UNIT_SIZE, UNIT_SIZE, false, false);
 
-    public WallObject(int x, int y, int width, int height, GameScene scene, Image image) {
-        super(x, y, width, height, scene, image);
+    protected CollideStrategy strategy;
+
+    public WallObject(GameScene world, int colNum, int rowNum) {
+        super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, UNIT_SIZE, UNIT_SIZE, world, image);
     }
 
     public abstract void collideWith(SpriteObject obj);

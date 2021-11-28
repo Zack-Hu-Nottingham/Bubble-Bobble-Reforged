@@ -1,14 +1,9 @@
 package com.ae2dms.GameObject.Sprite;
 
-
 import com.ae2dms.GameObject.GameObject;
 import com.ae2dms.Scene.GameScene;
 import javafx.scene.image.Image;
-
-import javafx.geometry.Rectangle2D;
 import javafx.geometry.Point2D;
-import javafx.scene.canvas.GraphicsContext;
-
 
 /**
  * GameObjects are the objects on the InteractableWorld screen.
@@ -17,15 +12,11 @@ import javafx.scene.canvas.GraphicsContext;
  * must implement methods for collisions with every type of Unit.
  */
 public abstract class SpriteObject extends GameObject {
-//	private Image image;
 	private static final double STATIC_FRICTION = 0.1;
 	protected static final int GRAVITY = 1;
-	private static final int TERMINAL_FALL_SPEED = 20;
-	
-//	public GameScene scene;
-//	public int x, y;
-//	public int width, height;
-	
+	private static final int TERMINAL_FALL_SPEED = 15;
+//	private static final int TERMINAL_FALL_SPEED = 20;
+
 	public double xVelocity, yVelocity;
 	public double xAccel, yAccel;
 	public int terminal_xVelocity, terminal_yVelocity;
@@ -48,10 +39,6 @@ public abstract class SpriteObject extends GameObject {
 		direction = -1;
 	}
 
-	public void drawOn(GraphicsContext graphicsContext) {
-		graphicsContext.drawImage(image, x, y, width, height);
-	}
-//	public abstract void drawOn(GraphicsContext g);
 	public abstract void collideWithFloor();
 	public abstract void collideWithCeiling();
 	public abstract void collideWithWall();
@@ -113,17 +100,7 @@ public abstract class SpriteObject extends GameObject {
 		//sets whether or not something can be removed
 		canRemove = true;
 	}
-	
-	public Rectangle2D getHitbox(){
-		//sets hitbox for each game object
-		return new Rectangle2D(x, y, width, height);
-	}
-	
-	protected boolean overlaps(GameObject obj) {
-		//checks if two objects overlap or collide
-		return getHitbox().intersects(obj.getHitbox());
-	}
-	
+
 	protected boolean isOffScreen() {
 		//checks if something is offscreen
 		boolean xLow = x + width < 0;

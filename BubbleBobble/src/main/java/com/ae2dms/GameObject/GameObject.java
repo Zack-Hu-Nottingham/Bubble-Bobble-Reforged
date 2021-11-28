@@ -33,7 +33,7 @@ public abstract class GameObject {
         return new Rectangle2D(x, y, width, height);
     }
 
-    protected boolean overlaps(SpriteObject obj) {
+    public boolean overlaps(GameObject obj) {
         //checks if two objects overlap or collide
         return getHitbox().intersects(obj.getHitbox());
     }
