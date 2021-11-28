@@ -1,6 +1,5 @@
-package com.ae2dms.GameObject.Objects;
+package com.ae2dms.GameObject.Sprite;
 
-import com.ae2dms.GameObject.GameObject;
 import com.ae2dms.Scene.GameScene;
 import com.ae2dms.SoundEffect;
 import javafx.scene.canvas.GraphicsContext;
@@ -11,15 +10,18 @@ import javafx.scene.image.Image;
  * The Fruit class handles how the fruit is created and interacts with the hero.
  * The fruits are created after a bubble containing an enemy is popped.
  */
-public class Fruit extends GameObject {
+public class Fruit extends SpriteObject {
 	private static final int SIZE = 25;
 	private static final int TERMINAL_VELOCITY_Y = 10;
 	
 	private boolean readyToCollect;
 
+	protected static Image fruitImage = new Image(Fruit.class.getResource("/image/apple.png").toString(), SIZE, SIZE, false, false);
+
+
 	public Fruit(int x, int y, GameScene world) {
 		//initializes fruit
-		super(x, y, SIZE, SIZE, world);
+		super(x, y, SIZE, SIZE, world, fruitImage);
 		terminal_yVelocity = TERMINAL_VELOCITY_Y;
 		readyToCollect = false;
 	}
@@ -29,7 +31,6 @@ public class Fruit extends GameObject {
 		super.update();
 	}
 
-	Image fruitImage = new Image(Fruit.class.getResource("/image/apple.png").toString(), SIZE, SIZE, false, false);
 	@Override
 	public void drawOn(GraphicsContext g) {
 		//draws fruit

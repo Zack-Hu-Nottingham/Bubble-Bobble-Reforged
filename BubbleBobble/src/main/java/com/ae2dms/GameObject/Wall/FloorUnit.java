@@ -1,6 +1,6 @@
 package com.ae2dms.GameObject.Wall;
 
-import com.ae2dms.GameObject.GameObject;
+import com.ae2dms.GameObject.Sprite.SpriteObject;
 import com.ae2dms.Scene.GameScene;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
@@ -15,15 +15,15 @@ import static com.ae2dms.GamePanel.UNIT_SIZE;
  * The floor collides with any kind of game object.
  * When an enemy is bubbled, the enemy will still be stopped by a floor unit above it.
  */
-public class FloorUnit extends GameObject {
-	GameScene world;
-	Image image = new Image(FloorUnit.class.getResource("/image/wall.png").toString(), UNIT_SIZE, UNIT_SIZE, false, false);
+public class FloorUnit extends WallObject {
+//	GameScene world;
+//	Image image = new Image(FloorUnit.class.getResource("/image/wall.png").toString(), UNIT_SIZE, UNIT_SIZE, false, false);
 
 	public FloorUnit(GameScene world, int colNum, int rowNum) {
-		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, UNIT_SIZE, UNIT_SIZE, world);
+		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, UNIT_SIZE, UNIT_SIZE, world, image);
 	}
 
-	public void collideWith(GameObject obj) {
+	public void collideWith(SpriteObject obj) {
 		double top = obj.getY();
 		double bottom = top + obj.getHeight();
 		if (this.overlaps(obj) && obj.yVelocity > 0) {
@@ -38,40 +38,40 @@ public class FloorUnit extends GameObject {
 		}
 	}
 
-	@Override
-	public void drawOn(GraphicsContext g) {
-		g.drawImage(image, x, y, UNIT_SIZE, UNIT_SIZE);
-	}
-
-	void moveAboveUnit(GameObject obj) {
-		obj.moveTo(new Point2D(obj.getX(), y - obj.getHeight()));
-	}
-
-	void moveBelowUnit(GameObject obj) {
-		obj.moveTo(new Point2D(obj.getX(), y + height));
-	}
-
-	void moveLeftOfUnit(GameObject obj) {
-		obj.moveTo(new Point2D(x - obj.getWidth(), obj.getY()));
-	}
-
-	void moveRightOfUnit(GameObject obj) {
-		obj.moveTo(new Point2D(x + width, obj.getY()));
-	}
-
-
-	@Override
-	public void collideWithFloor() {
-
-	}
-
-	@Override
-	public void collideWithCeiling() {
-
-	}
-
-	@Override
-	public void collideWithWall() {
-
-	}
+//	@Override
+//	public void drawOn(GraphicsContext g) {
+//		g.drawImage(image, x, y, UNIT_SIZE, UNIT_SIZE);
+//	}
+//
+//	void moveAboveUnit(SpriteObject obj) {
+//		obj.moveTo(new Point2D(obj.getX(), y - obj.getHeight()));
+//	}
+//
+//	void moveBelowUnit(SpriteObject obj) {
+//		obj.moveTo(new Point2D(obj.getX(), y + height));
+//	}
+//
+//	void moveLeftOfUnit(SpriteObject obj) {
+//		obj.moveTo(new Point2D(x - obj.getWidth(), obj.getY()));
+//	}
+//
+//	void moveRightOfUnit(SpriteObject obj) {
+//		obj.moveTo(new Point2D(x + width, obj.getY()));
+//	}
+//
+//
+//	@Override
+//	public void collideWithFloor() {
+//
+//	}
+//
+//	@Override
+//	public void collideWithCeiling() {
+//
+//	}
+//
+//	@Override
+//	public void collideWithWall() {
+//
+//	}
 }

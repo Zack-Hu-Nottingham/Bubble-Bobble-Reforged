@@ -1,9 +1,8 @@
-package com.ae2dms.GameObject.Objects;
-
-import com.ae2dms.GameObject.GameObject;
+package com.ae2dms.GameObject.Sprite;
 
 import com.ae2dms.Scene.GameScene;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 /**
@@ -11,7 +10,7 @@ import javafx.scene.paint.Color;
  * For example, the hero's projectile has a different color than the projectile of an enemy.
  * It also can only hurt an enemy.
  */
-public class HeroProjectile extends GameObject {
+public class HeroProjectile extends SpriteObject {
 	private static final int SIZE = 20;
 	private static final int SPEED = 15;
 	private static final int TERMINAL_VELOCITY_Y = 5;
@@ -20,8 +19,11 @@ public class HeroProjectile extends GameObject {
 	private int activeFrames;
 	private int timer;
 
+	protected static Image image = new Image(Bubble.class.getResource("/image/starBubble.png").toString(), SIZE, SIZE, false, false);
+
+
 	public HeroProjectile(GameScene world, int x, int y, int direction) {
-		super(x, y, SIZE, SIZE, world);
+		super(x, y, SIZE, SIZE, world, image);
 		this.direction = direction;
 
 		xVelocity = SPEED;

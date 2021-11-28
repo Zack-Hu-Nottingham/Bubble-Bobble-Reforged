@@ -1,6 +1,5 @@
-package com.ae2dms.GameObject.Objects;
+package com.ae2dms.GameObject.Sprite;
 
-import com.ae2dms.GameObject.GameObject;
 import com.ae2dms.GameObject.Wall.CeilingUnit;
 import com.ae2dms.GameObject.Wall.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallUnit;
@@ -20,7 +19,7 @@ import static com.ae2dms.GamePanel.UNIT_SIZE;
  * Enemies change direction at random intervals, when hitting a wall, and when hitting the main.Hero's shield.
  * Enemies jump at random intervals as well.
  */
-public class Enemy extends GameObject {
+public class Enemy extends SpriteObject {
 	private static final int WIDTH = UNIT_SIZE + 10;
 	private static final int HEIGHT = UNIT_SIZE + 10;
 	private static final int JUMP_SPEED = 20;
@@ -35,10 +34,13 @@ public class Enemy extends GameObject {
 	private int turningAwayCount;
 	private boolean isOnAPlatform;
 	private double jumpSpeed;
-	
+
+	protected static Image enemyImage = new Image(Enemy.class.getResource("/image/enemy01.png").toString(), WIDTH, HEIGHT, false, false);
+
+
 	public Enemy(GameScene world, int colNum, int rowNum) {
 		//initializes enemy
-		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, WIDTH, HEIGHT, world);
+		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, WIDTH, HEIGHT, world, enemyImage);
 		isOnAPlatform = false;
 		jumpSpeed = JUMP_SPEED;
 		terminal_xVelocity = TERMINAL_VELOCITY_X;
@@ -55,8 +57,6 @@ public class Enemy extends GameObject {
 		turningAwayFromShield = false;
 		turningAwayCount = 10;
 	}
-
-	Image enemyImage = new Image(this.getClass().getResource("/image/enemy01.png").toString(), WIDTH, HEIGHT, false, false);
 
 	@Override
 	public void drawOn(GraphicsContext g) {
@@ -97,7 +97,7 @@ public class Enemy extends GameObject {
 				if (Math.random() < 0.5) {
 					reverseDirection();
 				}
-				yAccel = GameObject.GRAVITY;
+				yAccel = SpriteObject.GRAVITY;
 			}
 		} else {
 			if (Math.random() < CHANGE_MOVEMENT_CHANCE) {
@@ -141,7 +141,7 @@ public class Enemy extends GameObject {
 	
 	void die() {
 		//handles what to do on death
-		world.addFruit(new Fruit(x, y, world));
+		scene.addFruit(new Fruit(x, y, scene));
 		markToRemove();
 	}
 

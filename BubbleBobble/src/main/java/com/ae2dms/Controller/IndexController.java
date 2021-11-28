@@ -1,4 +1,4 @@
-package com.ae2dms.GameObject.Controller;
+package com.ae2dms.Controller;
 
 import com.ae2dms.GamePanel;
 import com.ae2dms.SoundEffect;
