@@ -1,8 +1,8 @@
-package com.ae2dms.GameObject.Objects;
+package com.ae2dms.GameObject.Sprite;
 
-import com.ae2dms.GameObject.GameObject;
 import com.ae2dms.Scene.GameScene;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 /**
@@ -10,11 +10,16 @@ import javafx.scene.paint.Color;
  * It begins at the hero, and grows covering the whole screen.
  * Once it collides with an enemy, that enemy is bubbled.
  */
-public class Bubble extends GameObject {
+public class Bubble extends SpriteObject {
 	private int accel;
+	private static final int SIZE = 25;
+
+//	protected static Image fruitImage = new Image(Fruit.class.getResource("/image/apple.png").toString(), SIZE, SIZE, false, false);
+
+	protected static Image image = new Image(Bubble.class.getResource("/image/bubbled.png").toString(), SIZE, SIZE, false, false);
 	
 	public Bubble(GameScene world, int x, int y) {
-		super(x, y, 0, 0, world);
+		super(x, y, 0, 0, world, image);
 		accel = 1;
 	}
 

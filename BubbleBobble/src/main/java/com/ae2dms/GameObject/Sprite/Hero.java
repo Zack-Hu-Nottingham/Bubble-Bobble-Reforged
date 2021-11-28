@@ -1,6 +1,5 @@
-package com.ae2dms.GameObject.Objects;
+package com.ae2dms.GameObject.Sprite;
 
-import com.ae2dms.GameObject.GameObject;
 import com.ae2dms.Scene.GameScene;
 import com.ae2dms.SoundEffect;
 import javafx.scene.Scene;
@@ -18,7 +17,7 @@ import static com.ae2dms.GamePanel.UNIT_SIZE;
  * Hero can shoot HeroProjectiles, shield from attacks, trigger a special attack and
  * collect Fruits for points.
  */
-public class Hero extends GameObject {
+public class Hero extends SpriteObject {
 	private static final int JUMP_SPEED = 22;
 	private static final int TERMINAL_VELOCITY_X = 6;
 	private static final int SIZE = 20;
@@ -38,11 +37,11 @@ public class Hero extends GameObject {
 	private boolean isOnAPlatform;
 	private double jumpSpeed;
 
-	Image imageBub = new Image(Hero.class.getResource("/image/Bub.jpg").toString(), SIZE, SIZE, false, false);
+	protected static Image imageBub = new Image(Hero.class.getResource("/image/Bub.jpg").toString(), SIZE, SIZE, false, false);
 	
 	public Hero(GameScene world, int colNum, int rowNum) {
 		//initializes hero
-		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, SIZE, SIZE, world);
+		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, SIZE, SIZE, world, imageBub);
 		isOnAPlatform = false;
 
 		terminal_xVelocity = TERMINAL_VELOCITY_X;
@@ -57,7 +56,8 @@ public class Hero extends GameObject {
 
 		addKeyHandler(world.getScene());
 	}
-	
+
+	@Override
 	public void drawOn(GraphicsContext g) {
 		//draws hero
 		g.drawImage(imageBub, x, y, SIZE, SIZE);
@@ -73,7 +73,7 @@ public class Hero extends GameObject {
 	public void shootProjectile() {
 		//makes hero shoot projectile
 		SoundEffect.play("/sound/jump.wav");
-		world.addHeroProjectile(new HeroProjectile(world, x, y, direction));
+		scene.addHeroProjectile(new HeroProjectile(scene, x, y, direction));
 	}
 
 	void collideWithMook() {
@@ -135,7 +135,7 @@ public class Hero extends GameObject {
 					break;
 				case W:
 					if (readyToCharge) {
-						world.addBubble(new Bubble(world, x, y));
+						this.scene.addBubble(new Bubble(this.scene, x, y));
 						SoundEffect.setToLoud();
 						SoundEffect.play("/sound/explode.wav");
 //						SoundEffect.EXPLODE.setToLoud();
@@ -174,7 +174,7 @@ public class Hero extends GameObject {
 		//handles death
 		SoundEffect.setToLoud();
 		SoundEffect.play("/sound/death.wav");
-		world.markToReset();
+		scene.markToReset();
 	}
 
 	public void collideWithProjectile() {

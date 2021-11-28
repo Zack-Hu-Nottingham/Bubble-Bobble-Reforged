@@ -1,8 +1,8 @@
 package com.ae2dms.Scene;
 
-import com.ae2dms.GameObject.Objects.Fruit;
-import com.ae2dms.GameObject.GameObject;
-import com.ae2dms.GameObject.Objects.*;
+import com.ae2dms.GameObject.Sprite.Fruit;
+import com.ae2dms.GameObject.Sprite.SpriteObject;
+import com.ae2dms.GameObject.Sprite.*;
 import com.ae2dms.GameObject.Wall.CeilingUnit;
 import com.ae2dms.GameObject.Wall.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallUnit;
@@ -34,7 +34,7 @@ public class GameScene {
 	private ArrayList<HeroProjectile> heroProjectiles;
 	private ArrayList<EnemyProjectile> enemyProjectiles;
 	private ArrayList<Fruit> fruits;
-	private ArrayList<GameObject> toBeRemoved;
+	private ArrayList<SpriteObject> toBeRemoved;
 	private ArrayList<Bubble> bubbles;
 
 	private boolean readyToReset;
@@ -56,7 +56,7 @@ public class GameScene {
 		heroProjectiles = new ArrayList<HeroProjectile>();
 		enemyProjectiles = new ArrayList<EnemyProjectile>();
 		fruits = new ArrayList<Fruit>();
-		toBeRemoved = new ArrayList<GameObject>();
+		toBeRemoved = new ArrayList<SpriteObject>();
 		bubbles = new ArrayList<Bubble>();
 
 		readyToReset = false;
@@ -229,7 +229,7 @@ public class GameScene {
 		}
 
 		// Removing...
-		for (GameObject obj : toBeRemoved) {
+		for (SpriteObject obj : toBeRemoved) {
 			remove(obj);
 		}
 		toBeRemoved.removeAll(toBeRemoved);
@@ -286,7 +286,7 @@ public class GameScene {
 		fruits.removeAll(fruits);
 	}
 
-	public void remove(GameObject obj) {
+	public void remove(SpriteObject obj) {
 		//removes a single object from the screen
 		ceilingUnits.remove(obj);
 		floorUnits.remove(obj);
