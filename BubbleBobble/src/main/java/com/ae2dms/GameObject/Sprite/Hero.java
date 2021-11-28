@@ -18,7 +18,7 @@ import static com.ae2dms.GamePanel.UNIT_SIZE;
  * collect Fruits for points.
  */
 public class Hero extends SpriteObject {
-	private static final int JUMP_SPEED = 22;
+	private static final int JUMP_SPEED = 20;
 	private static final int TERMINAL_VELOCITY_X = 6;
 	private static final int SIZE = 20;
 	private static final int WALK = 5;
