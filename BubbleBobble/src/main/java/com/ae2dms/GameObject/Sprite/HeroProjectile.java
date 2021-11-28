@@ -19,7 +19,7 @@ public class HeroProjectile extends SpriteObject {
 	private int activeFrames;
 	private int timer;
 
-	protected static Image image = new Image(Bubble.class.getResource("/image/starBubble.png").toString(), SIZE, SIZE, false, false);
+	protected static Image image = new Image(Bubble.class.getResource("/image/sprite/bubble/starBubble.png").toString(), SIZE, SIZE, false, false);
 
 
 	public HeroProjectile(GameScene world, int x, int y, int direction) {

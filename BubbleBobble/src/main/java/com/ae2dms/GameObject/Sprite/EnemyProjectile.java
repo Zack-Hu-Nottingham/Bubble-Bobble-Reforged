@@ -20,7 +20,7 @@ public class EnemyProjectile extends SpriteObject {
 	private int activeFrames;
 	private int timer;
 
-	protected static Image image = new Image(Bubble.class.getResource("/image/bubbled.png").toString(), SIZE, SIZE, false, false);
+	protected static Image image = new Image(Bubble.class.getResource("/image/sprite/bubble/bubbled.png").toString(), SIZE, SIZE, false, false);
 
 
 	public EnemyProjectile(GameScene world, int x, int y, int direction) {

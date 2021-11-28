@@ -1,7 +1,7 @@
 package com.ae2dms.Controller;
 
 import com.ae2dms.GamePanel;
-import com.ae2dms.SoundEffect;
+import com.ae2dms.Util.SoundEffect;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;

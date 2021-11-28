@@ -1,10 +1,11 @@
 package com.ae2dms.GameObject.Sprite;
 
-import com.ae2dms.GameObject.Wall.CeilingUnit;
-import com.ae2dms.GameObject.Wall.FloorUnit;
-import com.ae2dms.GameObject.Wall.WallUnit;
+import com.ae2dms.GameObject.Award.Fruit;
+import com.ae2dms.GameObject.Wall.WallObject.CeilingUnit;
+import com.ae2dms.GameObject.Wall.WallObject.FloorUnit;
+import com.ae2dms.GameObject.Wall.WallObject.WallUnit;
 import com.ae2dms.Scene.GameScene;
-import com.ae2dms.SoundEffect;
+import com.ae2dms.Util.SoundEffect;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -35,7 +36,7 @@ public class Enemy extends SpriteObject {
 	private boolean isOnAPlatform;
 	private double jumpSpeed;
 
-	protected static Image enemyImage = new Image(Enemy.class.getResource("/image/enemy01.png").toString(), WIDTH, HEIGHT, false, false);
+	protected static Image enemyImage = new Image(Enemy.class.getResource("/image/sprite/enemy/enemy01.png").toString(), WIDTH, HEIGHT, false, false);
 
 
 	public Enemy(GameScene world, int colNum, int rowNum) {

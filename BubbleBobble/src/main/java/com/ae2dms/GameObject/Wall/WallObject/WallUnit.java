@@ -1,6 +1,8 @@
-package com.ae2dms.GameObject.Wall;
+package com.ae2dms.GameObject.Wall.WallObject;
 
 import com.ae2dms.GameObject.Sprite.SpriteObject;
+import com.ae2dms.GameObject.Wall.CollideStrategy.CollideWithWall;
+import com.ae2dms.GameObject.Wall.WallObject.WallObject;
 import com.ae2dms.Scene.GameScene;
 
 /**

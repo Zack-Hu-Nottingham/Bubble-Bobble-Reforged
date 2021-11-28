@@ -16,7 +16,7 @@ public class Bubble extends SpriteObject {
 
 //	protected static Image fruitImage = new Image(Fruit.class.getResource("/image/apple.png").toString(), SIZE, SIZE, false, false);
 
-	protected static Image image = new Image(Bubble.class.getResource("/image/bubbled.png").toString(), SIZE, SIZE, false, false);
+	protected static Image image = new Image(Bubble.class.getResource("/image/sprite/bubble/bubbled.png").toString(), SIZE, SIZE, false, false);
 	
 	public Bubble(GameScene world, int x, int y) {
 		super(x, y, 0, 0, world, image);
