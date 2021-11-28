@@ -2,6 +2,7 @@ package com.ae2dms.GameObject.Sprite;
 
 import com.ae2dms.GameObject.GameObject;
 import com.ae2dms.Scene.GameScene;
+import com.ae2dms.Util.Direction;
 import javafx.scene.image.Image;
 import javafx.geometry.Point2D;
 
@@ -15,14 +16,14 @@ public abstract class SpriteObject extends GameObject {
 	private static final double STATIC_FRICTION = 0.1;
 	protected static final int GRAVITY = 1;
 	private static final int TERMINAL_FALL_SPEED = 15;
-//	private static final int TERMINAL_FALL_SPEED = 20;
+	protected Direction direction = Direction.right;
 
 	public double xVelocity, yVelocity;
 	public double xAccel, yAccel;
 	public int terminal_xVelocity, terminal_yVelocity;
 	
 	public boolean canRemove;
-	public int direction;
+//	public int direction;
 
 	
 	public SpriteObject(int x, int y, int width, int height, GameScene scene, Image image) {
@@ -36,7 +37,16 @@ public abstract class SpriteObject extends GameObject {
 		terminal_xVelocity = 0;
 		terminal_yVelocity = TERMINAL_FALL_SPEED;
 		canRemove = false;
-		direction = -1;
+//		direction = -1;
+//		Direction
+	}
+
+	public void turnAround() {
+		if (direction == Direction.right) {
+			direction = Direction.left;
+		} else {
+			direction = Direction.right;
+		}
 	}
 
 	public abstract void collideWithFloor();
@@ -76,7 +86,8 @@ public abstract class SpriteObject extends GameObject {
 	protected void reverseDirection() {
 		//reverses game object's direction
 		xAccel *= -1;
-		direction *= -1;
+//		direction *= -1;
+		turnAround();
 	}
 	
 	public double getX() {
