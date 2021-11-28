@@ -10,7 +10,7 @@
    <children>
       <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/background.jpg" />
+            <Image url="@../image/ui/background.jpg" />
          </image>
          <cursor>
             <Cursor fx:constant="DEFAULT" />
@@ -21,16 +21,16 @@
       </ImageView>
       <ImageView fx:id="startGame" fitHeight="150.0" fitWidth="200.0" layoutX="62.0" layoutY="93.0" onMouseClicked="#mouseClickedStartGame" onMouseEntered="#mouseEnteredStartGame" onMouseExited="#mouseExitStartGame" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/startGame.png" />
+            <Image url="@../image/ui/startGame.png" />
          </image></ImageView>
       <ImageView fx:id="exitGame" fitHeight="150.0" fitWidth="200.0" layoutX="62.0" layoutY="344.0" onMouseClicked="#mouseClickedExitGame" onMouseEntered="#mouseEnteredExitGame" onMouseExited="#mouseExitExitGame" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/exit.png" />
+            <Image url="@../image/ui/exit.png" />
          </image>
       </ImageView>
       <ImageView fx:id="information" fitHeight="150.0" fitWidth="200.0" layoutX="62.0" layoutY="223.0" onMouseClicked="#mouseClickedInformation" onMouseEntered="#mouseEnteredInformation" onMouseExited="#mouseExitInformation" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/information.png" />
+            <Image url="@../image/wall/information.png" />
          </image>
       </ImageView>
    </children>

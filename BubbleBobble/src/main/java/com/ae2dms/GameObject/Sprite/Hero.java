@@ -1,7 +1,7 @@
 package com.ae2dms.GameObject.Sprite;
 
 import com.ae2dms.Scene.GameScene;
-import com.ae2dms.SoundEffect;
+import com.ae2dms.Util.SoundEffect;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -37,7 +37,7 @@ public class Hero extends SpriteObject {
 	private boolean isOnAPlatform;
 	private double jumpSpeed;
 
-	protected static Image imageBub = new Image(Hero.class.getResource("/image/Bub.jpg").toString(), SIZE, SIZE, false, false);
+	protected static Image imageBub = new Image(Hero.class.getResource("/image/sprite/hero/Bub.jpg").toString(), SIZE, SIZE, false, false);
 	
 	public Hero(GameScene world, int colNum, int rowNum) {
 		//initializes hero

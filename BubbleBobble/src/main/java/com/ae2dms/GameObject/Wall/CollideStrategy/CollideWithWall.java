@@ -1,8 +1,9 @@
-package com.ae2dms.GameObject.Wall;
+package com.ae2dms.GameObject.Wall.CollideStrategy;
 
 import com.ae2dms.GameObject.Sprite.SpriteObject;
+import com.ae2dms.GameObject.Wall.WallObject.WallObject;
 
-public class CollideWithWall implements CollideStrategy{
+public class CollideWithWall implements CollideStrategy {
 
     @Override
     public void collideWith(SpriteObject sprite, WallObject wall) {

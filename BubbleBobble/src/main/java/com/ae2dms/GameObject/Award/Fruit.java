@@ -1,7 +1,9 @@
-package com.ae2dms.GameObject.Sprite;
+package com.ae2dms.GameObject.Award;
 
+import com.ae2dms.GameObject.Sprite.Hero;
+import com.ae2dms.GameObject.Sprite.SpriteObject;
 import com.ae2dms.Scene.GameScene;
-import com.ae2dms.SoundEffect;
+import com.ae2dms.Util.SoundEffect;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -16,7 +18,7 @@ public class Fruit extends SpriteObject {
 	
 	private boolean readyToCollect;
 
-	protected static Image fruitImage = new Image(Fruit.class.getResource("/image/apple.png").toString(), SIZE, SIZE, false, false);
+	protected static Image fruitImage = new Image(Fruit.class.getResource("/image/award/apple.png").toString(), SIZE, SIZE, false, false);
 
 
 	public Fruit(int x, int y, GameScene world) {

@@ -1,11 +1,11 @@
 package com.ae2dms.Scene;
 
-import com.ae2dms.GameObject.Sprite.Fruit;
+import com.ae2dms.GameObject.Award.Fruit;
 import com.ae2dms.GameObject.Sprite.SpriteObject;
 import com.ae2dms.GameObject.Sprite.*;
-import com.ae2dms.GameObject.Wall.CeilingUnit;
-import com.ae2dms.GameObject.Wall.FloorUnit;
-import com.ae2dms.GameObject.Wall.WallUnit;
+import com.ae2dms.GameObject.Wall.WallObject.CeilingUnit;
+import com.ae2dms.GameObject.Wall.WallObject.FloorUnit;
+import com.ae2dms.GameObject.Wall.WallObject.WallUnit;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -60,8 +60,6 @@ public class GameScene {
 		bubbles = new ArrayList<Bubble>();
 
 		readyToReset = false;
-//		this.setHeight(height);
-//		this.setWidth(width);
 	}
 
 
@@ -339,7 +337,7 @@ public class GameScene {
 		this.stage = stage;
 		AnchorPane root = new AnchorPane(canvas);
 		stage.getScene().setRoot(root);
-		readMap("/World/World1.txt");
+		readMap("/world/World1.txt");
 
 		refresh.start();
 	}
