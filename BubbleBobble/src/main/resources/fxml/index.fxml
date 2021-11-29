@@ -6,11 +6,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="505.0" prefWidth="884.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ae2dms.Controller.IndexController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ae2dms.Controller.IndexController">
    <children>
-      <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="448.0" fitWidth="758.0" layoutY="-22.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/ui/background.jpg" />
+            <Image url="@../image/backGround/battleGround.jpg" />
          </image>
          <cursor>
             <Cursor fx:constant="DEFAULT" />
@@ -19,18 +19,43 @@
             <Glow />
          </effect>
       </ImageView>
-      <ImageView fx:id="startGame" fitHeight="150.0" fitWidth="200.0" layoutX="62.0" layoutY="93.0" onMouseClicked="#mouseClickedStartGame" onMouseEntered="#mouseEnteredStartGame" onMouseExited="#mouseExitStartGame" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="startGame" fitHeight="62.0" fitWidth="187.0" layoutX="36.0" layoutY="75.0" onMouseClicked="#mouseClickedStartGame" onMouseEntered="#mouseEnteredStartGame" onMouseExited="#mouseExitStartGame" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/ui/startGame.png" />
+            <Image url="@../image/ui/index/startGame.png" />
          </image></ImageView>
-      <ImageView fx:id="exitGame" fitHeight="150.0" fitWidth="200.0" layoutX="62.0" layoutY="344.0" onMouseClicked="#mouseClickedExitGame" onMouseEntered="#mouseEnteredExitGame" onMouseExited="#mouseExitExitGame" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="exitGame" fitHeight="56.0" fitWidth="187.0" layoutX="42.0" layoutY="252.0" onMouseClicked="#mouseClickedExitGame" onMouseEntered="#mouseEnteredExitGame" onMouseExited="#mouseExitExitGame" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/ui/exit.png" />
+            <Image url="@../image/ui/index/exit.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="information" fitHeight="150.0" fitWidth="200.0" layoutX="62.0" layoutY="223.0" onMouseClicked="#mouseClickedInformation" onMouseEntered="#mouseEnteredInformation" onMouseExited="#mouseExitInformation" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="information" fitHeight="56.0" fitWidth="169.0" layoutX="42.0" layoutY="171.0" onMouseClicked="#mouseClickedInformation" onMouseEntered="#mouseEnteredInformation" onMouseExited="#mouseExitInformation" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/wall/information.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="32.0" fitWidth="720.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/ui/index/bottomBar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="music" fitHeight="31.0" fitWidth="157.0" layoutX="306.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/ui/index/music.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="highScoreList" fitHeight="31.0" fitWidth="178.0" layoutX="536.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/ui/index/highScoreBar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="saveGame" fitHeight="31.0" fitWidth="149.0" layoutX="55.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/ui/index/saveGame.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="colorPreference" fitHeight="56.0" fitWidth="32.0" layoutX="435.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/ui/index/colorPreference.png" />
          </image>
       </ImageView>
    </children>

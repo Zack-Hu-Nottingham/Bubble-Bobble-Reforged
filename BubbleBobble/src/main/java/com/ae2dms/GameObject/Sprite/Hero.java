@@ -1,5 +1,6 @@
 package com.ae2dms.GameObject.Sprite;
 
+import com.ae2dms.GamePanel;
 import com.ae2dms.Scene.GameScene;
 import com.ae2dms.Util.Direction;
 import com.ae2dms.Util.SoundEffect;
@@ -181,7 +182,9 @@ public class Hero extends SpriteObject {
 		//handles death
 		SoundEffect.setToLoud();
 		SoundEffect.play("/sound/death.wav");
-		scene.markToReset();
+//		scene.markToReset();
+		// not mark to reset but let the game over.
+		GamePanel.getInstance().gameOver();
 	}
 
 	public void collideWithProjectile() {

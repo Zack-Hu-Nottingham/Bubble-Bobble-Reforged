@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
  * The fruits are created after a bubble containing an enemy is popped.
  */
 public class Fruit extends SpriteObject {
+	private static final int bonus = 400;
 	private static final int SIZE = 25;
 	private static final int TERMINAL_VELOCITY_Y = 10;
 	
