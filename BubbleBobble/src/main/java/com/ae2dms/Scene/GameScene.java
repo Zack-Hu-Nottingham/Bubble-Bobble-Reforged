@@ -37,7 +37,7 @@ public class GameScene {
 	private ArrayList<SpriteObject> toBeRemoved;
 	private ArrayList<Bubble> bubbles;
 
-	private boolean readyToReset;
+//	private boolean readyToReset;
 
 	private Canvas canvas = new Canvas(WIDTH * UNIT_SIZE, HEIGHT * UNIT_SIZE);
 	GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
@@ -57,7 +57,7 @@ public class GameScene {
 		toBeRemoved = new ArrayList<SpriteObject>();
 		bubbles = new ArrayList<Bubble>();
 
-		readyToReset = false;
+//		readyToReset = false;
 	}
 
 
@@ -229,8 +229,8 @@ public class GameScene {
 			remove(obj);
 		}
 		toBeRemoved.removeAll(toBeRemoved);
-		if (readyToReset)
-			init(stage);
+//		if (readyToReset)
+//			init(stage);
 	}
 
 	public void addCeilingUnit(CeilingUnit ceilingUnit) {
@@ -295,10 +295,10 @@ public class GameScene {
 		bubbles.remove(obj);
 	}
 
-	public void markToReset() {
-		//sets boolean to make sure the world is ready to be reset
-		readyToReset = true;
-	}
+//	public void markToReset() {
+//		//sets boolean to make sure the world is ready to be reset
+//		readyToReset = true;
+//	}
 
 	public void readMap(String mapName) {
 		InputStream input = this.getClass().getResourceAsStream(mapName);
@@ -326,7 +326,7 @@ public class GameScene {
 		}
 		scanner.close();
 
-		readyToReset = false;
+//		readyToReset = false;
 	}
 
 	private Stage stage;

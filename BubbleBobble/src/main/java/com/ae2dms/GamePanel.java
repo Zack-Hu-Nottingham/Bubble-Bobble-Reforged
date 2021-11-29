@@ -2,6 +2,7 @@ package com.ae2dms;
 
 import com.ae2dms.Scene.GameScene;
 import com.ae2dms.Scene.Index;
+import com.ae2dms.Util.SoundEffect;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -36,6 +37,7 @@ public class GamePanel {
 		stage.setTitle("Bubble Bobble");
 		String imgUrl = GamePanel.class.getResource("/image/ui/icon.jpg").toString();
 		stage.getIcons().add(new Image(imgUrl));
+		stage.setMaximized(true);
 		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.setWidth(UNIT_SIZE * (WIDTH+1));
@@ -52,6 +54,11 @@ public class GamePanel {
 	public void toIndex() {
 		Index.load(stage);
 	}
-	public void gameOver() {}
+	public void gameOver() {
+//		String sound = success? "/sound/success.wav" : "/sound/aiyouwodemaya.mp3";
+//		SoundEffect.play(sound);
+//		gameScene.clear(stage);
+//		GameOver.load(stage, success);
+	}
 
 }
