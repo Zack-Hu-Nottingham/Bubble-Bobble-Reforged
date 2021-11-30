@@ -1,4 +1,4 @@
-package com.ae2dms.Controller;
+package com.ae2dms.Controller.Menu;
 
 import com.ae2dms.GamePanel;
 import com.ae2dms.Util.SoundEffect;
@@ -6,17 +6,30 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class IndexController {
+import java.io.IOException;
+
+public class MenuController {
+//    public Pane highScoreScene;
     @FXML
-    public ImageView exitGame;
+    private ImageView exitGameButton;
 
     @FXML
-    private ImageView startGame;
+    private ImageView startGameButton;
+
+//    @FXML
+//    private ImageView information;
 
     @FXML
-    public ImageView information;
+    private InformationController informationSceneController;
+
+    @FXML
+    private HighScoreBarController highScoreSceneController;
 
 
+
+    public void initialize() {
+
+    }
     @FXML
     void mouseClickedStartGame(MouseEvent event) {
         SoundEffect.play("/sound/click.mp3");
@@ -26,13 +39,13 @@ public class IndexController {
 
     @FXML
     void mouseEnteredStartGame(MouseEvent event) {
-        startGame.setOpacity(0.8);
+        startGameButton.setOpacity(0.8);
 //        SoundEffect.play("/sound/Forest.wav");
     }
 
     @FXML
     void mouseExitStartGame(MouseEvent event) {
-        startGame.setOpacity(1);
+        startGameButton.setOpacity(1);
     }
 
     public void mouseClickedExitGame(MouseEvent mouseEvent) {
@@ -40,23 +53,27 @@ public class IndexController {
         System.exit(0);
     }
 
-    public void mouseClickedInformation(MouseEvent mouseEvent) {
-        SoundEffect.play("/sound/click.mp3");
+    public void mouseClickedInformation(MouseEvent mouseEvent) throws IOException {
+        informationSceneController.show();
     }
 
     public void mouseEnteredExitGame(MouseEvent mouseEvent) {
-        exitGame.setOpacity(0.8);
+        exitGameButton.setOpacity(0.8);
     }
 
     public void mouseEnteredInformation(MouseEvent mouseEvent) {
-        information.setOpacity(0.8);
+//        information.setOpacity(0.8);
     }
 
     public void mouseExitExitGame(MouseEvent mouseEvent) {
-        exitGame.setOpacity(1);
+        exitGameButton.setOpacity(1);
     }
 
     public void mouseExitInformation(MouseEvent mouseEvent) {
-        information.setOpacity(1);
+//        information.setOpacity(1);
+    }
+
+    public void mouseClickedHighScoreList(MouseEvent mouseEvent) {
+        highScoreSceneController.show();
     }
 }

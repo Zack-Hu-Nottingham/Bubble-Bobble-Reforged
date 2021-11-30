@@ -37,11 +37,11 @@ public class GamePanel {
 		stage.setTitle("Bubble Bobble");
 		String imgUrl = GamePanel.class.getResource("/image/ui/icon.jpg").toString();
 		stage.getIcons().add(new Image(imgUrl));
-		stage.setMaximized(true);
+
 		stage.setResizable(false);
 		stage.setScene(scene);
-		stage.setWidth(UNIT_SIZE * (WIDTH+1));
-		stage.setHeight(UNIT_SIZE * (HEIGHT+2));
+		stage.setWidth(1280);
+		stage.setHeight(750);
 
 		toIndex();
 		stage.show();

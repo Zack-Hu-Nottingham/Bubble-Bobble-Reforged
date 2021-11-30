@@ -25,7 +25,7 @@ public abstract class GameObject {
     }
 
     public void drawOn(GraphicsContext graphicsContext) {
-        graphicsContext.drawImage(image, x, y, width, height);
+        graphicsContext.drawImage(image, x+240, y+20, width, height);
     }
 
     public Rectangle2D getHitbox(){

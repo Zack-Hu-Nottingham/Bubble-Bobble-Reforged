@@ -7,6 +7,7 @@ import com.ae2dms.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallObject.WallUnit;
 import javafx.animation.AnimationTimer;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -14,6 +15,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -39,7 +41,7 @@ public class GameScene {
 
 //	private boolean readyToReset;
 
-	private Canvas canvas = new Canvas(WIDTH * UNIT_SIZE, HEIGHT * UNIT_SIZE);
+	private Canvas canvas = new Canvas(1280, 720);
 	GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
 
 	private Refresh refresh = new Refresh();
@@ -65,7 +67,7 @@ public class GameScene {
 	public void paintComponent(GraphicsContext g) {
 		//paints everything on the world
 		GraphicsContext g2 = (GraphicsContext) g;
-		g2.clearRect(0, 0, WIDTH * UNIT_SIZE, HEIGHT * UNIT_SIZE);
+		g2.clearRect(0, 0, 1280, 720);
 
 		for (CeilingUnit ceilingUnit : ceilingUnits) {
 			ceilingUnit.drawOn(g2);
@@ -332,9 +334,18 @@ public class GameScene {
 	private Stage stage;
 
 	public void init(Stage stage) {
-		this.stage = stage;
-		AnchorPane root = new AnchorPane(canvas);
+		AnchorPane root = null;
+		try {
+			root = FXMLLoader.load(Index.class.getResource("/fxml/gameScene.fxml"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		stage.getScene().setRoot(root);
+
+		root.getChildren().add(canvas);
+		this.stage = stage;
+//		AnchorPane root = new AnchorPane(canvas);
+//		stage.getScene().setRoot(root);
 		readMap("/world/World1.txt");
 
 		refresh.start();
