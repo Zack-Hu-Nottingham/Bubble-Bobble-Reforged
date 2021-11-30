@@ -6,10 +6,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Index {
+public class Menu {
     public static void load(Stage stage) {
         try {
-            Parent root = FXMLLoader.load(Index.class.getResource("/fxml/index.fxml"));
+            Parent root = FXMLLoader.load(Menu.class.getResource("/fxml/menu/Menu.fxml"));
             stage.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
