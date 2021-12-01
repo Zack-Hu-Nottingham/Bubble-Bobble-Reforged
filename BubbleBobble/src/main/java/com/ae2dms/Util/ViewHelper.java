@@ -8,18 +8,18 @@ import javafx.util.Duration;
 
 public class ViewHelper {
 
-    public static void loadViewWithEffect(Node view) {
-        
-        ScaleTransition scaleTransition = new ScaleTransition();
-        scaleTransition.setDuration(Duration.millis(500));
-        scaleTransition.setNode(view);
-        scaleTransition.setFromX(2);
-        scaleTransition.setFromY(2);
-        scaleTransition.setToX(1);
-        scaleTransition.setToY(1);
-        scaleTransition.setInterpolator(Interpolator.EASE_BOTH);
-        scaleTransition.play();
-    }
+//    public static void loadViewWithEffect(Node view) {
+//
+//        ScaleTransition scaleTransition = new ScaleTransition();
+//        scaleTransition.setDuration(Duration.millis(500));
+//        scaleTransition.setNode(view);
+//        scaleTransition.setFromX(2);
+//        scaleTransition.setFromY(2);
+//        scaleTransition.setToX(1);
+//        scaleTransition.setToY(1);
+//        scaleTransition.setInterpolator(Interpolator.EASE_BOTH);
+//        scaleTransition.play();
+//    }
 
     public static void popUp(Node view) {
         view.setVisible(true);
