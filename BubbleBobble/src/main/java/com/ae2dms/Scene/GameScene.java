@@ -43,8 +43,6 @@ public class GameScene {
 	private ArrayList<Bubble> bubbles;
 
 
-
-
 	public static int bonus = 0;
 
 	private Refresh refresh = new Refresh();
@@ -64,11 +62,8 @@ public class GameScene {
 
 	}
 
-
-//	@Override
 	public void paintComponent(GraphicsContext g) {
 		//paints everything on the world
-//		System.out.println(bonus);
 		GraphicsContext g2 = (GraphicsContext) g;
 		g2.clearRect(0, 0, 1280, 720);
 
@@ -99,16 +94,6 @@ public class GameScene {
 		for (Bubble bubble : bubbles) {
 			bubble.drawOn(g2);
 		}
-
-//		GameSceneController.assign
-//		g2.setFont(new Font(20));
-
-//		g2.setFill(new Color(97/255, 81/255, 107/255, 1));
-//		g2.setFont(GamePanel.smartisanMaquetteBold);
-//		g2.setTextAlign(TextAlignment.CENTER);
-//		g2.fillText(""+bonus, 1135, 32);
-
-
 	}
 
 	public void updatePosition() {
@@ -356,7 +341,6 @@ public class GameScene {
 
 	public void init(Stage stage) {
 		AnchorPane root = null;
-
 		try {
 			root = FXMLLoader.load(Menu.class.getResource("/fxml/gameScene.fxml"));
 		} catch (IOException e) {
@@ -372,14 +356,10 @@ public class GameScene {
 //		System.out.println(root.getChildren());
 
 		this.stage = stage;
-		readMap("/world/World1.txt");
-
-
-
+		readMap("/world/World3.txt");
+//		readMap("/world/World1.txt");
 
 		GameSceneController.gameState = GameStatus.playing;
-//		paintComponent(graphicsContext);
-
 		refresh.start();
 
 	}

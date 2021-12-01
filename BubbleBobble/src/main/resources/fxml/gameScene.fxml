@@ -19,7 +19,7 @@
                </image>
             </ImageView>
       
-            <ImageView fx:id="scoreBar" fitHeight="87.0" fitWidth="252.0" layoutX="1044.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+            <ImageView fx:id="scoreBar" fitHeight="87.0" fitWidth="252.0" layoutX="1014.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
                <image>
                   <Image url="@../image/ui/gameScene/scoreBar.png" />
                </image>
@@ -31,15 +31,15 @@
                </image>
             </ImageView>
       
-                  <Canvas fx:id="canvas" height="680.0" layoutX="244.0" layoutY="22.0" width="800.0" />
+                  <Canvas fx:id="canvas" height="600.0" layoutX="204.0" layoutY="101.0" width="880.0" />
       
-            <Label fx:id="currentScore" alignment="CENTER" contentDisplay="CENTER" layoutX="1137.0" layoutY="38.0" prefHeight="30.0" prefWidth="66.0" text="CurrentScore" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="currentScore" alignment="CENTER" contentDisplay="CENTER" layoutX="1107.0" layoutY="38.0" prefHeight="30.0" prefWidth="66.0" text="CurrentScore" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
       
-            <Label fx:id="timeSpend" alignment="CENTER" layoutX="1200.0" layoutY="41.0" prefHeight="27.0" prefWidth="80.0" text="TimeSpend" textFill="#61516b">
+            <Label fx:id="timeSpend" alignment="CENTER" layoutX="1170.0" layoutY="41.0" prefHeight="27.0" prefWidth="80.0" text="TimeSpend" textFill="#61516b">
                <font>
                   <Font size="20.0" />
                </font>

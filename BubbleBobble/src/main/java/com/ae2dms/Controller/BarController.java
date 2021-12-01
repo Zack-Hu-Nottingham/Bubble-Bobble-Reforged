@@ -1,14 +1,14 @@
-//package com.ae2dms.Controller;
-//
-//import com.ae2dms.Controller.Menu.HighScoreBarController;
-//import javafx.beans.property.BooleanProperty;
-//import javafx.beans.property.SimpleBooleanProperty;
-//import javafx.fxml.FXML;
-//import javafx.scene.control.Label;
-//import javafx.scene.image.Image;
-//import javafx.scene.image.ImageView;
-//import javafx.scene.layout.Pane;
-//
+package com.ae2dms.Controller;
+
+import com.ae2dms.Controller.Menu.HighScoreBarController;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+
 ///**
 // * MenuView and GameView all have tbe same Bar, and the same FXMLs to that,
 // * so the control logic inside the bar items will be manages here,

@@ -22,7 +22,7 @@ public class GamePanel {
 	public static Font smartisanMaquetteBold;
 
 	public static final int UNIT_SIZE = 20;
-	public static final int WIDTH = 40, HEIGHT = 34;
+	public static final int WIDTH = 44, HEIGHT = 30;
 	private Stage stage;
 
 	private static GamePanel instance = new GamePanel();
