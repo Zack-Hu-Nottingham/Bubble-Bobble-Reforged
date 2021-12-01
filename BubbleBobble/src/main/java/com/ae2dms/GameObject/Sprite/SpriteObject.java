@@ -76,7 +76,8 @@ public abstract class SpriteObject extends GameObject {
 			System.out.println("out");
 			if (y > scene.getHeight()) {
 				System.out.println("y>height");
-				y = 0;
+				y = 20;
+//				y = 0;
 			} else {
 				y = scene.getHeight();
 			}

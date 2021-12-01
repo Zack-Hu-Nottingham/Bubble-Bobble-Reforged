@@ -1,12 +1,14 @@
 package com.ae2dms;
 
 import com.ae2dms.Scene.GameScene;
-import com.ae2dms.Scene.Index;
-import com.ae2dms.Util.SoundEffect;
+import com.ae2dms.Scene.Menu;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 
 /**
@@ -16,6 +18,8 @@ import javafx.stage.Stage;
  */
 
 public class GamePanel {
+
+	public static Font smartisanMaquetteBold;
 
 	public static final int UNIT_SIZE = 20;
 	public static final int WIDTH = 40, HEIGHT = 34;
@@ -29,19 +33,26 @@ public class GamePanel {
 
 	public static GamePanel getInstance() { return instance; }
 
-	public void init(Stage stage) {
+	public void init(Stage stage) throws IOException {
+
+//		smartisanMaquetteBold = Font.loadFont(Main.class.getResourceAsStream("/font/SmartisanMaquetteBold.ttf"), 20);
+
 		this.stage = stage;
 		AnchorPane root = new AnchorPane();
 		Scene scene = new Scene(root, UNIT_SIZE * WIDTH, UNIT_SIZE * HEIGHT);
 
 		stage.setTitle("Bubble Bobble");
-		String imgUrl = GamePanel.class.getResource("/image/ui/icon.jpg").toString();
+		String imgUrl = GamePanel.class.getResource("/image/ui/icon/icon.jpg").toString();
 		stage.getIcons().add(new Image(imgUrl));
 
 		stage.setResizable(false);
 		stage.setScene(scene);
-		stage.setWidth(1280);
+		stage.setWidth(1294);
 		stage.setHeight(750);
+
+//		Parent root = FXMLLoader.load(Menu.class.getResource("/fxml/exitGamePopUp.fxml"));
+//		Scene scene = new Scene(root, 1280, 720);
+//		stage.setScene(scene);
 
 		toIndex();
 		stage.show();
@@ -52,7 +63,7 @@ public class GamePanel {
 	}
 
 	public void toIndex() {
-		Index.load(stage);
+		Menu.load(stage);
 	}
 	public void gameOver() {
 //		String sound = success? "/sound/success.wav" : "/sound/aiyouwodemaya.mp3";

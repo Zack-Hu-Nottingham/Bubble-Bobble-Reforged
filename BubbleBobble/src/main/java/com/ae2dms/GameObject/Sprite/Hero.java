@@ -68,7 +68,8 @@ public class Hero extends SpriteObject {
 			imageBub = imageBubRight;
 		}
 
-		g.drawImage(imageBub, x+240, y+20, SIZE, SIZE);
+//		g.drawImage(imageBub, x+240, y+20, SIZE, SIZE);
+		g.drawImage(imageBub, x, y, SIZE, SIZE);
 		if (isShielding) {
 			g.setFill(new Color(1,0, (double) (shieldTimer * ((double) 255 / SHIELD_TIME))/255, (double) (shieldTimer * ((double) 255 / SHIELD_TIME))/255));
 			g.fillOval(x - 10, y - 10, SIZE + 20, SIZE + 20);

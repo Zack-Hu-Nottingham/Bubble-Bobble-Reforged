@@ -1,5 +1,6 @@
 package com.ae2dms.GameObject.Award;
 
+import com.ae2dms.Controller.Game.GameSceneController;
 import com.ae2dms.GameObject.Sprite.Hero;
 import com.ae2dms.GameObject.Sprite.SpriteObject;
 import com.ae2dms.Scene.GameScene;
@@ -45,6 +46,8 @@ public class Fruit extends SpriteObject {
 		if (this.overlaps(hero) && readyToCollect) {
 			SoundEffect.setToLoud();
 			SoundEffect.play("/sound/fruit.wav");
+			GameScene.bonus += 500;
+			GameSceneController.bonus.set(String.valueOf(GameScene.bonus));
 			readyToCollect = false;
 			markToRemove();
 		}

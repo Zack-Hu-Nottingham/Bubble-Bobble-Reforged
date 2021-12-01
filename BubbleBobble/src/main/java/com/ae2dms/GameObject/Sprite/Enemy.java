@@ -71,7 +71,7 @@ public class Enemy extends SpriteObject {
 			enemyImage = enemyImageRight;
 		}
 		//draws mook
-		g.drawImage(enemyImage, x+240, y+20, WIDTH, HEIGHT);
+		g.drawImage(enemyImage, x, y, WIDTH, HEIGHT);
 		if (isBubbled) {
 			g.setFill(new Color((double) (timer * ((double) 255 / 300))/255, 0, 255/255, 255/255 ));
 			g.fillRect(x - 5, y - 5, WIDTH + 10, HEIGHT + 10);

@@ -1,13 +1,16 @@
 package com.ae2dms.Scene;
 
+import com.ae2dms.Controller.Game.GameSceneController;
 import com.ae2dms.GameObject.Award.Fruit;
 import com.ae2dms.GameObject.Sprite.SpriteObject;
 import com.ae2dms.GameObject.Sprite.*;
 import com.ae2dms.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallObject.WallUnit;
+import com.ae2dms.Util.GameStatus;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -39,10 +42,10 @@ public class GameScene {
 	private ArrayList<SpriteObject> toBeRemoved;
 	private ArrayList<Bubble> bubbles;
 
-//	private boolean readyToReset;
 
-	private Canvas canvas = new Canvas(1280, 720);
-	GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
+
+
+	public static int bonus = 0;
 
 	private Refresh refresh = new Refresh();
 
@@ -59,13 +62,13 @@ public class GameScene {
 		toBeRemoved = new ArrayList<SpriteObject>();
 		bubbles = new ArrayList<Bubble>();
 
-//		readyToReset = false;
 	}
 
 
 //	@Override
 	public void paintComponent(GraphicsContext g) {
 		//paints everything on the world
+//		System.out.println(bonus);
 		GraphicsContext g2 = (GraphicsContext) g;
 		g2.clearRect(0, 0, 1280, 720);
 
@@ -96,6 +99,16 @@ public class GameScene {
 		for (Bubble bubble : bubbles) {
 			bubble.drawOn(g2);
 		}
+
+//		GameSceneController.assign
+//		g2.setFont(new Font(20));
+
+//		g2.setFill(new Color(97/255, 81/255, 107/255, 1));
+//		g2.setFont(GamePanel.smartisanMaquetteBold);
+//		g2.setTextAlign(TextAlignment.CENTER);
+//		g2.fillText(""+bonus, 1135, 32);
+
+
 	}
 
 	public void updatePosition() {
@@ -231,7 +244,12 @@ public class GameScene {
 			remove(obj);
 		}
 		toBeRemoved.removeAll(toBeRemoved);
-//		if (readyToReset)
+
+		if (GameSceneController.gameState == GameStatus.win) {
+
+		} else if (GameSceneController.gameState == GameStatus.lose){
+
+		}
 //			init(stage);
 	}
 
@@ -328,34 +346,53 @@ public class GameScene {
 		}
 		scanner.close();
 
-//		readyToReset = false;
 	}
 
 	private Stage stage;
 
+
+	private Canvas canvas;
+	GraphicsContext graphicsContext;
+
 	public void init(Stage stage) {
 		AnchorPane root = null;
+
 		try {
-			root = FXMLLoader.load(Index.class.getResource("/fxml/gameScene.fxml"));
+			root = FXMLLoader.load(Menu.class.getResource("/fxml/gameScene.fxml"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		stage.getScene().setRoot(root);
 
-		root.getChildren().add(canvas);
+		Group temp = (Group) root.getChildren().get(0);
+		canvas = (Canvas) temp.getChildren().get(3);
+		graphicsContext = canvas.getGraphicsContext2D();
+//		System.out.println(root.getChildren());
+//		root.getChildren().add(canvas);
+//		System.out.println(root.getChildren());
+
 		this.stage = stage;
-//		AnchorPane root = new AnchorPane(canvas);
-//		stage.getScene().setRoot(root);
 		readMap("/world/World1.txt");
 
+
+
+
+		GameSceneController.gameState = GameStatus.playing;
+//		paintComponent(graphicsContext);
+
 		refresh.start();
+
 	}
 
 	private class Refresh extends AnimationTimer {
 		@Override
 		public void handle(long currentTime) {
-			updatePosition();
-			paintComponent(graphicsContext);
+			if (GameSceneController.gameState == GameStatus.playing) {
+				updatePosition();
+				paintComponent(graphicsContext);
+			}
+
+
 		}
 	}
 
