@@ -13,14 +13,16 @@ import javafx.scene.image.Image;
  * The Fruit class handles how the fruit is created and interacts with the hero.
  * The fruits are created after a bubble containing an enemy is popped.
  */
-public class Fruit extends SpriteObject {
-	private static final int bonus = 400;
+public abstract class Fruit extends SpriteObject {
+//	private static final int bonus = 400;
 	private static final int SIZE = 25;
 	private static final int TERMINAL_VELOCITY_Y = 10;
 	
 	private boolean readyToCollect;
+	protected int bonus;
 
-	protected static Image fruitImage = new Image(Fruit.class.getResource("/image/award/apple.png").toString(), SIZE, SIZE, false, false);
+	protected Image fruitImage;
+//	protected static Image fruitImage = new Image(Fruit.class.getResource("/image/award/apple.png").toString(), SIZE, SIZE, false, false);
 
 
 	public Fruit(int x, int y, GameScene world) {
@@ -46,7 +48,8 @@ public class Fruit extends SpriteObject {
 		if (this.overlaps(hero) && readyToCollect) {
 			SoundEffect.setToLoud();
 			SoundEffect.play("/sound/fruit.wav");
-			GameScene.bonus += 500;
+			GameScene.bonus += this.bonus;
+//			GameScene.bonus += 500;
 			GameSceneController.bonus.set(String.valueOf(GameScene.bonus));
 			readyToCollect = false;
 			markToRemove();
