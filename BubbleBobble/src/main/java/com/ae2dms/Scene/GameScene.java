@@ -1,12 +1,13 @@
 package com.ae2dms.Scene;
 
 import com.ae2dms.Controller.Game.GameSceneController;
-import com.ae2dms.GameObject.Award.Fruit;
+import com.ae2dms.GameObject.Award.Award;
 import com.ae2dms.GameObject.Sprite.SpriteObject;
 import com.ae2dms.GameObject.Sprite.*;
 import com.ae2dms.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallObject.WallUnit;
+import com.ae2dms.GameObject.Sprite.CollectEffect;
 import com.ae2dms.Util.GameStatus;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
@@ -38,9 +39,10 @@ public class GameScene {
 	private ArrayList<Enemy> enemies;
 	private ArrayList<HeroProjectile> heroProjectiles;
 	private ArrayList<EnemyProjectile> enemyProjectiles;
-	private ArrayList<Fruit> fruits;
+	private ArrayList<Award> fruits;
 	private ArrayList<SpriteObject> toBeRemoved;
 	private ArrayList<Bubble> bubbles;
+	private ArrayList<CollectEffect> collectEffects;
 
 
 	public static int bonus = 0;
@@ -56,9 +58,10 @@ public class GameScene {
 		enemies = new ArrayList<Enemy>();
 		heroProjectiles = new ArrayList<HeroProjectile>();
 		enemyProjectiles = new ArrayList<EnemyProjectile>();
-		fruits = new ArrayList<Fruit>();
+		fruits = new ArrayList<Award>();
 		toBeRemoved = new ArrayList<SpriteObject>();
 		bubbles = new ArrayList<Bubble>();
+		collectEffects = new ArrayList<CollectEffect>();
 
 	}
 
@@ -88,11 +91,14 @@ public class GameScene {
 		for (HeroProjectile heroProjectile : heroProjectiles) {
 			heroProjectile.drawOn(g2);
 		}
-		for (Fruit fruit : fruits) {
+		for (Award fruit : fruits) {
 			fruit.drawOn(g2);
 		}
 		for (Bubble bubble : bubbles) {
 			bubble.drawOn(g2);
+		}
+		for (CollectEffect collectEffect : collectEffects) {
+			collectEffect.drawOn(g2);
 		}
 	}
 
@@ -119,7 +125,7 @@ public class GameScene {
 				toBeRemoved.add(heroProjectile);
 			}
 		}
-		for (Fruit fruit : fruits) {
+		for (Award fruit : fruits) {
 			fruit.update();
 			if (fruit.canRemove) {
 				toBeRemoved.add(fruit);
@@ -130,6 +136,13 @@ public class GameScene {
 			bubble.update();
 			if (bubble.canRemove) {
 				toBeRemoved.add(bubble);
+			}
+		}
+		for (CollectEffect collectEffect : collectEffects) {
+//			collectEffect.up
+			collectEffect.update();
+			if (collectEffect.canRemove) {
+				toBeRemoved.add(collectEffect);
 			}
 		}
 
@@ -143,7 +156,7 @@ public class GameScene {
 				ceilingUnit.collideWith(enemy);
 				enemy.collideWith(ceilingUnit);
 			}
-			for (Fruit fruit : fruits) {
+			for (Award fruit : fruits) {
 				ceilingUnit.collideWith(fruit);
 			}
 			for (EnemyProjectile enemyProjectile : enemyProjectiles) {
@@ -161,7 +174,7 @@ public class GameScene {
 				floorUnit.collideWith(enemy);
 				enemy.collideWith(floorUnit);
 			}
-			for (Fruit fruit : fruits) {
+			for (Award fruit : fruits) {
 				floorUnit.collideWith(fruit);
 			}
 			for (EnemyProjectile enemyProjectile : enemyProjectiles) {
@@ -179,7 +192,7 @@ public class GameScene {
 				wallUnit.collideWith(enemy);
 				enemy.collideWith(wallUnit);
 			}
-			for (Fruit fruit : fruits) {
+			for (Award fruit : fruits) {
 				wallUnit.collideWith(fruit);
 			}
 			for (EnemyProjectile enemyProjectile : enemyProjectiles) {
@@ -213,7 +226,7 @@ public class GameScene {
 			}
 		}
 		// Fruits intiate collisions with Heroes
-		for (Fruit fruit : fruits) {
+		for (Award fruit : fruits) {
 			for (Hero hero : heroes) {
 				fruit.collideWith(hero);
 			}
@@ -265,7 +278,7 @@ public class GameScene {
 		heroProjectiles.add(heroProjectile);
 	}
 
-	public void addFruit(Fruit fruit) {
+	public void addFruit(Award fruit) {
 		//adds fruit on bubble pop
 		fruits.add(fruit);
 	}
@@ -273,6 +286,10 @@ public class GameScene {
 	public void addBubble(Bubble bubble) {
 		//adds special bubble
 		bubbles.add(bubble);
+	}
+
+	public void addCollectEffect(CollectEffect collectEffect) {
+		collectEffects.add(collectEffect);
 	}
 
 	public void clearContents() {
@@ -298,6 +315,7 @@ public class GameScene {
 		heroProjectiles.remove(obj);
 		fruits.remove(obj);
 		bubbles.remove(obj);
+		collectEffects.remove(obj);
 	}
 
 //	public void markToReset() {
@@ -351,13 +369,9 @@ public class GameScene {
 		Group temp = (Group) root.getChildren().get(0);
 		canvas = (Canvas) temp.getChildren().get(3);
 		graphicsContext = canvas.getGraphicsContext2D();
-//		System.out.println(root.getChildren());
-//		root.getChildren().add(canvas);
-//		System.out.println(root.getChildren());
 
 		this.stage = stage;
 		readMap("/world/World3.txt");
-//		readMap("/world/World1.txt");
 
 		GameSceneController.gameState = GameStatus.playing;
 		refresh.start();
@@ -371,8 +385,6 @@ public class GameScene {
 				updatePosition();
 				paintComponent(graphicsContext);
 			}
-
-
 		}
 	}
 

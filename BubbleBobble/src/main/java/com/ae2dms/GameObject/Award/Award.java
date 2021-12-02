@@ -4,8 +4,8 @@ import com.ae2dms.Controller.Game.GameSceneController;
 import com.ae2dms.GameObject.Sprite.Hero;
 import com.ae2dms.GameObject.Sprite.SpriteObject;
 import com.ae2dms.Scene.GameScene;
+import com.ae2dms.GameObject.Sprite.CollectEffect;
 import com.ae2dms.Util.SoundEffect;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 
@@ -13,21 +13,22 @@ import javafx.scene.image.Image;
  * The Fruit class handles how the fruit is created and interacts with the hero.
  * The fruits are created after a bubble containing an enemy is popped.
  */
-public abstract class Fruit extends SpriteObject {
-//	private static final int bonus = 400;
-	private static final int SIZE = 25;
+public abstract class Award extends SpriteObject {
+	private static final int SIZE = 30;
 	private static final int TERMINAL_VELOCITY_Y = 10;
 	
 	private boolean readyToCollect;
 	protected int bonus;
+	public CollectEffect collectEffect ;
 
-	protected Image fruitImage;
-//	protected static Image fruitImage = new Image(Fruit.class.getResource("/image/award/apple.png").toString(), SIZE, SIZE, false, false);
+//	protected Image awardImage;
 
 
-	public Fruit(int x, int y, GameScene world) {
+
+	public Award(int x, int y, GameScene world, Image image) {
 		//initializes fruit
-		super(x, y, SIZE, SIZE, world, fruitImage);
+		super(x, y, SIZE, SIZE, world, image);
+//		this.awardImage = fruitImage;
 		terminal_yVelocity = TERMINAL_VELOCITY_Y;
 		readyToCollect = false;
 	}
@@ -37,11 +38,11 @@ public abstract class Fruit extends SpriteObject {
 		super.update();
 	}
 
-	@Override
-	public void drawOn(GraphicsContext g) {
-		//draws fruit
-		g.drawImage(fruitImage, x, y, SIZE, SIZE);
-	}
+//	@Override
+//	public void drawOn(GraphicsContext g) {
+//		//draws fruit
+//		g.drawImage(awardImage, x, y, SIZE, SIZE);
+//	}
 	
 	public void collideWith(Hero hero) {
 		//checks for collision with hero and tells it what to do if it is colliding
@@ -49,7 +50,15 @@ public abstract class Fruit extends SpriteObject {
 			SoundEffect.setToLoud();
 			SoundEffect.play("/sound/fruit.wav");
 			GameScene.bonus += this.bonus;
-//			GameScene.bonus += 500;
+//			this.x;
+//			this.y;
+			collectEffect = new CollectEffect(x, y, scene, null, bonus);
+			scene.addCollectEffect(this.collectEffect);
+			// 不规范
+//			collectEffect.canRemove = true;
+//			this.collectEffect
+
+//			hero.
 			GameSceneController.bonus.set(String.valueOf(GameScene.bonus));
 			readyToCollect = false;
 			markToRemove();

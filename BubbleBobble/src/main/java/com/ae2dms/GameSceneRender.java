@@ -1,6 +1,6 @@
 package com.ae2dms;
 
-import com.ae2dms.GameObject.Award.Fruit;
+import com.ae2dms.GameObject.Award.Award;
 import com.ae2dms.GameObject.Sprite.*;
 import com.ae2dms.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.GameObject.Wall.WallObject.FloorUnit;
@@ -18,7 +18,7 @@ public class GameSceneRender {
     private ArrayList<Enemy> enemies;
     private ArrayList<HeroProjectile> heroProjectiles;
     private ArrayList<EnemyProjectile> enemyProjectiles;
-    private ArrayList<Fruit> fruits;
+    private ArrayList<Award> fruits;
     private ArrayList<SpriteObject> toBeRemoved;
     private ArrayList<Bubble> bubbles;
 
@@ -31,7 +31,7 @@ public class GameSceneRender {
         enemies = new ArrayList<Enemy>();
         heroProjectiles = new ArrayList<HeroProjectile>();
         enemyProjectiles = new ArrayList<EnemyProjectile>();
-        fruits = new ArrayList<Fruit>();
+        fruits = new ArrayList<Award>();
         toBeRemoved = new ArrayList<SpriteObject>();
         bubbles = new ArrayList<Bubble>();
 
@@ -66,7 +66,7 @@ public class GameSceneRender {
         for (HeroProjectile heroProjectile : heroProjectiles) {
             heroProjectile.drawOn(g2);
         }
-        for (Fruit fruit : fruits) {
+        for (Award fruit : fruits) {
             fruit.drawOn(g2);
         }
         for (Bubble bubble : bubbles) {
