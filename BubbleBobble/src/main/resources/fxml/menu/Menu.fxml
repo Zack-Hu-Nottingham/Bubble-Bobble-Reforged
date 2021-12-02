@@ -3,44 +3,38 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../Global.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ae2dms.Controller.MenuController">
    <children>
 
-      <ImageView fitHeight="687.0" fitWidth="1415.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="687.0" fitWidth="1415.0" layoutX="-35.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../image/backGround/battleGround2.jpg" />
          </image>
       </ImageView>
+      <ImageView fitHeight="92.0" fitWidth="225.0" layoutX="99.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../image/ui/menu/startGameBack.png" />
+         </image>
+      </ImageView>
 
-      <VBox layoutX="69.0" layoutY="140.0" prefHeight="383.0" prefWidth="219.0">
-         <children>
+      <ImageView fx:id="startGameButton" fitHeight="84.0" fitWidth="212.0" layoutX="105.0" layoutY="173.0" onMouseClicked="#mouseClickedStartGame" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+         <image>
+            <Image url="@../../image/ui/menu/startGame.png" />
+         </image>
+      </ImageView>
 
-            <ImageView fx:id="startGameButton" fitHeight="84.0" fitWidth="212.0" onMouseClicked="#mouseClickedStartGame" pickOnBounds="true" preserveRatio="true" styleClass="Button">
-               <image>
-                  <Image url="@../../image/ui/menu/startGame.png" />
-               </image>
-            </ImageView>
+      <ImageView fx:id="informationButton" fitHeight="78.0" fitWidth="225.0" layoutX="101.0" layoutY="295.0" onMouseClicked="#mouseClickedInformation" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+         <image>
+            <Image url="@../../image/ui/menu/information.png" />
+         </image>
+      </ImageView>
 
-            <ImageView fitHeight="53.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true" />
-
-            <ImageView fx:id="informationButton" fitHeight="78.0" fitWidth="225.0" onMouseClicked="#mouseClickedInformation" pickOnBounds="true" preserveRatio="true" styleClass="Button">
-               <image>
-                  <Image url="@../../image/wall/information.png" />
-               </image>
-            </ImageView>
-
-            <ImageView fitHeight="48.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
-
-            <ImageView fx:id="exitGameButton" fitHeight="78.0" fitWidth="225.0" onMouseClicked="#mouseClickedExitGame" pickOnBounds="true" preserveRatio="true" styleClass="Button">
-               <image>
-                  <Image url="@../../image/ui/menu/exit.png" />
-               </image>
-            </ImageView>
-
-         </children>
-      </VBox>
+      <ImageView fx:id="exitGameButton" fitHeight="78.0" fitWidth="225.0" layoutX="104.0" layoutY="422.0" onMouseClicked="#mouseClickedExitGame" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+         <image>
+            <Image url="@../../image/ui/menu/exit.png" />
+         </image>
+      </ImageView>
 
 
 
@@ -57,27 +51,32 @@
          </image>
       </ImageView>
 
-      <ImageView fx:id="music" fitHeight="55.0" fitWidth="120.0" layoutX="309.0" layoutY="666.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+      <ImageView fx:id="music" fitHeight="55.0" fitWidth="163.0" layoutX="293.0" layoutY="668.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
          <image>
             <Image url="@../../image/ui/menu/music.png" />
          </image>
       </ImageView>
 
-      <ImageView fx:id="highScoreList" fitHeight="78.0" fitWidth="225.0" layoutX="847.0" layoutY="664.0" onMouseClicked="#mouseClickedHighScoreList" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+      <ImageView fx:id="highScoreList" fitHeight="78.0" fitWidth="225.0" layoutX="847.0" layoutY="667.0" onMouseClicked="#mouseClickedHighScoreList" pickOnBounds="true" preserveRatio="true" styleClass="Button">
          <image>
             <Image url="@../../image/ui/menu/highScoreBar.png" />
          </image>
       </ImageView>
 
-      <ImageView fx:id="saveGame" fitHeight="56.0" fitWidth="163.0" layoutX="69.0" layoutY="667.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+      <ImageView fx:id="saveGame" fitHeight="56.0" fitWidth="163.0" layoutX="69.0" layoutY="668.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
          <image>
             <Image url="@../../image/ui/menu/saveGame.png" />
          </image>
       </ImageView>
 
-      <ImageView fx:id="colorPreference" fitHeight="50.0" fitWidth="51.0" layoutX="621.0" layoutY="667.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+      <ImageView fx:id="colorPreference" fitHeight="50.0" fitWidth="180.0" layoutX="491.0" layoutY="670.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
          <image>
             <Image url="@../../image/ui/menu/colorPreference.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="182.0" fitWidth="582.0" layoutX="684.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../image/ui/icon/bubbleBobble.png" />
          </image>
       </ImageView>
 

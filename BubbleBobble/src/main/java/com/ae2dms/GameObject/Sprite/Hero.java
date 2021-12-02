@@ -22,7 +22,7 @@ import static com.ae2dms.GamePanel.UNIT_SIZE;
 public class Hero extends SpriteObject {
 	private static final int JUMP_SPEED = 20;
 	private static final int TERMINAL_VELOCITY_X = 6;
-	private static final int SIZE = 20;
+	private static final int SIZE = 35;
 	private static final int WALK = 5;
 	private static final int RUN = 10;
 	private static final double RUN_ACCEL = 5;
@@ -37,8 +37,8 @@ public class Hero extends SpriteObject {
 	private boolean isOnAPlatform;
 	private double jumpSpeed;
 
-	protected static Image imageBubLeft = new Image(Hero.class.getResource("/image/sprite/hero/BubLeft.jpg").toString(), SIZE, SIZE, false, false);
-	protected static Image imageBubRight = new Image(Hero.class.getResource("/image/sprite/hero/BubRight.jpg").toString(), SIZE, SIZE, false, false);
+	protected static Image imageBubLeft = new Image(Hero.class.getResource("/image/sprite/hero/BubLeft.png").toString(), SIZE, SIZE, false, false);
+	protected static Image imageBubRight = new Image(Hero.class.getResource("/image/sprite/hero/BubRight.png").toString(), SIZE, SIZE, false, false);
 	protected static Image imageBub = imageBubRight;
 
 	public Hero(GameScene world, int colNum, int rowNum) {

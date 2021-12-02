@@ -21,5 +21,7 @@ module com.example.bubblebobble {
     opens com.ae2dms.Controller.Game to javafx.fxml;
     exports com.ae2dms.Controller.Game.PopUp;
     opens com.ae2dms.Controller.Game.PopUp to javafx.fxml;
+    exports com.ae2dms.GameObject.Sprite;
+    opens com.ae2dms.GameObject.Sprite to javafx.fxml;
 
 }
