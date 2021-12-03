@@ -8,11 +8,12 @@ import com.ae2dms.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallObject.WallUnit;
 import com.ae2dms.GameObject.Sprite.CollectEffect;
+import com.ae2dms.Main;
 import com.ae2dms.Util.GameStatus;
-import javafx.animation.AnimationTimer;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -31,7 +32,6 @@ import static com.ae2dms.GamePanel.*;
  * updating positions, checking for collisions, and removing objects.
  */
 public class GameScene {
-//	public class GameScene extends Canvas {
 	private ArrayList<CeilingUnit> ceilingUnits;
 	private ArrayList<FloorUnit> floorUnits;
 	private ArrayList<WallUnit> wallUnits;
@@ -44,11 +44,20 @@ public class GameScene {
 	private ArrayList<Bubble> bubbles;
 	private ArrayList<CollectEffect> collectEffects;
 
+//	public Stage stage;
+	private GraphicsContext graphicsContext;
 
-	public static int bonus = 0;
+	private IntegerProperty bonus = new SimpleIntegerProperty(0);
 
-	private Refresh refresh = new Refresh();
+	public IntegerProperty bonusProperty() {
+		return bonus;
+	}
 
+	public void incrementBonus(int bonus) {
+		this.bonus.set(this.bonus.get()+bonus);
+	}
+
+	private Stage stage;
 	public GameScene() {
 		//initializes interactableworld
 		ceilingUnits = new ArrayList<CeilingUnit>();
@@ -63,42 +72,44 @@ public class GameScene {
 		bubbles = new ArrayList<Bubble>();
 		collectEffects = new ArrayList<CollectEffect>();
 
+
+//		readMap("/world/World3.txt");
 	}
 
-	public void paintComponent(GraphicsContext g) {
+	public void paintComponent() {
 		//paints everything on the world
-		GraphicsContext g2 = (GraphicsContext) g;
-		g2.clearRect(0, 0, 1280, 720);
+//		GraphicsContext g2 = (GraphicsContext) g;
+		graphicsContext.clearRect(0, 0, 1280, 720);
 
 		for (CeilingUnit ceilingUnit : ceilingUnits) {
-			ceilingUnit.drawOn(g2);
+			ceilingUnit.drawOn(graphicsContext);
 		}
 		for (FloorUnit floorUnit : floorUnits) {
-			floorUnit.drawOn(g2);
+			floorUnit.drawOn(graphicsContext);
 		}
 		for (WallUnit wallUnit : wallUnits) {
-			wallUnit.drawOn(g2);
+			wallUnit.drawOn(graphicsContext);
 		}
 		for (Hero hero : heroes) {
-			hero.drawOn(g2);
+			hero.drawOn(graphicsContext);
 		}
 		for (Enemy enemy : enemies) {
-			enemy.drawOn(g2);
+			enemy.drawOn(graphicsContext);
 		}
 		for (EnemyProjectile enemyProjectile : enemyProjectiles) {
-			enemyProjectile.drawOn(g2);
+			enemyProjectile.drawOn(graphicsContext);
 		}
 		for (HeroProjectile heroProjectile : heroProjectiles) {
-			heroProjectile.drawOn(g2);
+			heroProjectile.drawOn(graphicsContext);
 		}
 		for (Award fruit : fruits) {
-			fruit.drawOn(g2);
+			fruit.drawOn(graphicsContext);
 		}
 		for (Bubble bubble : bubbles) {
-			bubble.drawOn(g2);
+			bubble.drawOn(graphicsContext);
 		}
 		for (CollectEffect collectEffect : collectEffects) {
-			collectEffect.drawOn(g2);
+			collectEffect.drawOn(graphicsContext);
 		}
 	}
 
@@ -243,12 +254,11 @@ public class GameScene {
 		}
 		toBeRemoved.removeAll(toBeRemoved);
 
-		if (GameSceneController.gameState == GameStatus.win) {
-
-		} else if (GameSceneController.gameState == GameStatus.lose){
-
+		if (enemies.isEmpty()) {
+			GameSceneController.gameState = GameStatus.win;
 		}
-//			init(stage);
+
+
 	}
 
 	public void addCeilingUnit(CeilingUnit ceilingUnit) {
@@ -276,6 +286,11 @@ public class GameScene {
 	public void addHeroProjectile(HeroProjectile heroProjectile) {
 		//adds a projectile to where necessary
 		heroProjectiles.add(heroProjectile);
+	}
+
+	public void addEnemyProjectile(EnemyProjectile enemyProjectile) {
+		//adds a projectile to where necessary
+		enemyProjectiles.add(enemyProjectile);
 	}
 
 	public void addFruit(Award fruit) {
@@ -351,44 +366,6 @@ public class GameScene {
 
 	}
 
-	private Stage stage;
-
-
-	private Canvas canvas;
-	GraphicsContext graphicsContext;
-
-	public void init(Stage stage) {
-		AnchorPane root = null;
-		try {
-			root = FXMLLoader.load(Menu.class.getResource("/fxml/gameScene.fxml"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		stage.getScene().setRoot(root);
-
-		Group temp = (Group) root.getChildren().get(0);
-		canvas = (Canvas) temp.getChildren().get(3);
-		graphicsContext = canvas.getGraphicsContext2D();
-
-		this.stage = stage;
-		readMap("/world/World3.txt");
-
-		GameSceneController.gameState = GameStatus.playing;
-		refresh.start();
-
-	}
-
-	private class Refresh extends AnimationTimer {
-		@Override
-		public void handle(long currentTime) {
-			if (GameSceneController.gameState == GameStatus.playing) {
-				updatePosition();
-				paintComponent(graphicsContext);
-			}
-		}
-	}
-
-
 	public int getHeight() {
 		return HEIGHT * UNIT_SIZE;
 	}
@@ -397,8 +374,24 @@ public class GameScene {
 		return WIDTH * UNIT_SIZE;
 	}
 
-	public Scene getScene() {
-		return stage.getScene();
+//	public Scene getScene() { return stage.getScene(); }
+
+
+	public static void load() {
+		AnchorPane root = null;
+        try {
+		root = FXMLLoader.load(Menu.class.getResource("/fxml/GameScene/gameScene.fxml"));
+		Main.stage.getScene().setRoot(root);
+		} catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+
+	public void getCanvas() {
+		AnchorPane root = (AnchorPane) Main.stage.getScene().getRoot();
+		Group temp = (Group) root.getChildren().get(0);
+		Canvas canvas = (Canvas) temp.getChildren().get(3);
+		graphicsContext = canvas.getGraphicsContext2D();
 	}
 
 }

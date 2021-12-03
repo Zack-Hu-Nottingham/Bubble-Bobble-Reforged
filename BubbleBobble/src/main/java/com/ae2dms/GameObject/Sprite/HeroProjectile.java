@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 public class HeroProjectile extends SpriteObject {
 	private static final int SIZE = 20;
 	private static final int SPEED = 15;
+//	private static final int SPEED = 15;
 	private static final int TERMINAL_VELOCITY_Y = 5;
 
 	private boolean isActive;
@@ -21,6 +22,7 @@ public class HeroProjectile extends SpriteObject {
 	private int timer;
 
 	protected static Image image = new Image(Bubble.class.getResource("/image/sprite/bubble/starBubble.png").toString(), SIZE, SIZE, false, false);
+	protected static Image blurImage = new Image(Bubble.class.getResource("/image/sprite/bubble/starBubble2.png").toString(), SIZE, SIZE, false, false);
 
 
 	public HeroProjectile(GameScene world, int x, int y, Direction direction) {
@@ -38,12 +40,10 @@ public class HeroProjectile extends SpriteObject {
 	@Override
 	public void drawOn(GraphicsContext g) {
 		if (isActive) {
-			g.setFill(Color.BLUE);
+			g.drawImage(image, x, y, width, height);
 		} else {
-			g.setFill(new Color(0.4, (double) 102/255, (double)204/255, (double) 255/255));
+			g.drawImage(blurImage, x, y, width, height);
 		}
-		g.fillOval(x, y, width, height);
-		g.setFill(Color.BLACK);
 	}
 
 	@Override
@@ -54,7 +54,6 @@ public class HeroProjectile extends SpriteObject {
 		} else {
 			x += xVelocity;
 		}
-//		x += xVelocity * direction;
 		updateVelocity();
 
 		if(y < 25) {

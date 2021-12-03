@@ -1,48 +1,74 @@
 package com.ae2dms.Controller.Game;
 
 import com.ae2dms.Controller.Game.PopUp.ExitGamePopUpController;
+import com.ae2dms.Controller.Game.PopUp.GameCompletePopUpController;
+import com.ae2dms.Controller.Game.PopUp.LoseGamePopUpController;
 import com.ae2dms.GamePanel;
+import com.ae2dms.Main;
 import com.ae2dms.Scene.GameScene;
+import com.ae2dms.Scene.Menu;
 import com.ae2dms.Util.GameStatus;
 import com.ae2dms.Util.GameTimer;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.animation.AnimationTimer;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.effect.GaussianBlur;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 
 public class GameSceneController {
 
-    @FXML
-    private Canvas canvas;
-    @FXML
-    public Group blurGroup;
+    // Model
+    private GameScene gameScene = new GameScene();
+
+    // View Node
+    @FXML private Canvas canvas;
+    @FXML public Group blurGroup;
+    @FXML private Label currentScore;
+    @FXML private Label timeSpend;
+    @FXML private ExitGamePopUpController exitGamePopUpController;
+    @FXML private GameCompletePopUpController gameCompletePopUpController;
+    @FXML private LoseGamePopUpController loseGamePopUpController;
+
 
     public static GameStatus gameState = GameStatus.ready;
-    public static StringProperty bonus = new SimpleStringProperty("0");
 
-    private GameTimer timer = new GameTimer();
+    private GameTimer timer;
 
-    @FXML
-    private Label currentScore;
+    private Refresh refresh = new Refresh();
 
-    @FXML
-    private Label timeSpend;
+    private int timeDelay = 300;
 
-    @FXML
-    private ExitGamePopUpController exitGamePopUpController;
+    public void startGame() {
+        gameScene.readMap("/world/World3.txt");
+
+        gameScene.getCanvas();
+
+        GameSceneController.gameState = GameStatus.playing;
+
+        refresh.start();
+
+    }
 
     public void initialize() {
-        System.out.println("initialize");
+
+        timer = new GameTimer();
+
         timer.start();
+
         timeSpend.textProperty().bind(timer.timeToDisplay);
-        currentScore.textProperty().bind(bonus);
+
+        currentScore.textProperty().bind(gameScene.bonusProperty().asString());
 
     }
 
@@ -86,4 +112,52 @@ public class GameSceneController {
     public void clearEffect() {
         blurGroup.setEffect(null);
     }
+
+
+    private class Refresh extends AnimationTimer {
+        @Override
+        public void handle(long currentTime) {
+            switch (GameSceneController.gameState){
+                case playing:
+                    gameScene.updatePosition();
+                    gameScene.paintComponent();
+                    break;
+
+                case pause:
+                    break;
+
+                case win:
+                    if (timeDelay <= 0) {
+                        win();
+                    } else {
+                        gameScene.updatePosition();
+                        gameScene.paintComponent();
+                        timeDelay -= 1;
+                    }
+                    break;
+
+                case lose:
+                    if (timeDelay <= 0) {
+                        lose();
+                    } else {
+                        gameScene.updatePosition();
+                        gameScene.paintComponent();
+                        timeDelay -= 1;
+                    }
+                    break;
+            }
+        }
+    }
+
+    private void win() {
+        gameCompletePopUpController.show();
+    }
+
+    private void lose() {
+        loseGamePopUpController.show();
+
+    }
+
+
+
 }
