@@ -49,7 +49,8 @@ public abstract class Award extends SpriteObject {
 		if (this.overlaps(hero) && readyToCollect) {
 			SoundEffect.setToLoud();
 			SoundEffect.play("/sound/fruit.wav");
-			GameScene.bonus += this.bonus;
+//			GameScene.score  += this.bonus;
+//			GameScene.bonus += this.bonus;
 //			this.x;
 //			this.y;
 			collectEffect = new CollectEffect(x, y, scene, null, bonus);
@@ -59,7 +60,8 @@ public abstract class Award extends SpriteObject {
 //			this.collectEffect
 
 //			hero.
-			GameSceneController.bonus.set(String.valueOf(GameScene.bonus));
+//			GameSceneController.bonus.set(String.valueOf(GameScene.bonus));
+			scene.incrementBonus(bonus);
 			readyToCollect = false;
 			markToRemove();
 		}

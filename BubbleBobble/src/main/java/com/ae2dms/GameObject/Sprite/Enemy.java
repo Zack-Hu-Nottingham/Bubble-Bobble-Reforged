@@ -29,6 +29,7 @@ public class Enemy extends SpriteObject {
 	private static final int TERMINAL_VELOCITY_X = 4;
 	private static final int BUBBLED_FRAMES = 300;
 	private static final double CHANGE_MOVEMENT_CHANCE = 0.01;
+	private static final double SHOOT_BUBBLE_CHANCE = 0.01;
 
 	boolean isBubbled;
 	int timer;
@@ -41,6 +42,8 @@ public class Enemy extends SpriteObject {
 	protected static Image enemyImageRight = new Image(Enemy.class.getResource("/image/sprite/enemy/enemy01Right.png").toString(), WIDTH, HEIGHT, false, false);
 	protected static Image enemyImageLeft = new Image(Enemy.class.getResource("/image/sprite/enemy/enemy01Left.png").toString(), WIDTH, HEIGHT, false, false);
 	protected static Image enemyImage = enemyImageRight;
+
+	protected static Image bubbled = new Image(Bubble.class.getResource("/image/sprite/bubble/bubbled.png").toString(), 40, 40, false, false);
 
 
 	public Enemy(GameScene world, int colNum, int rowNum) {
@@ -74,8 +77,9 @@ public class Enemy extends SpriteObject {
 		//draws mook
 		g.drawImage(enemyImage, x, y, WIDTH, HEIGHT);
 		if (isBubbled) {
-			g.setFill(new Color((double) (timer * ((double) 255 / 300))/255, 0, 255/255, 255/255 ));
-			g.fillRect(x - 5, y - 5, WIDTH + 10, HEIGHT + 10);
+			g.drawImage(bubbled, x-10, y-5, 50, 50);
+//			g.setFill(new Color((double) (timer * ((double) 255 / 300))/255, 0, 255/255, 255/255 ));
+//			g.fillRect(x - 5, y - 5, WIDTH + 10, HEIGHT + 10);
 		}
 	}
 
@@ -104,7 +108,6 @@ public class Enemy extends SpriteObject {
 				isBubbled = false;
 				timer = BUBBLED_FRAMES;
 				xAccel = 1.5;
-//				direction = 1;
 				direction = Direction.right;
 				if (Math.random() < 0.5) {
 					reverseDirection();
@@ -117,6 +120,9 @@ public class Enemy extends SpriteObject {
 			}
 			if (Math.random() < CHANGE_MOVEMENT_CHANCE) {
 				reverseDirection();
+			}
+			if(Math.random() < SHOOT_BUBBLE_CHANCE) {
+				shootProjectile();
 			}
 		}
 	}
@@ -132,6 +138,8 @@ public class Enemy extends SpriteObject {
 
 	private void shootProjectile() {
 		// Nothing happens
+		SoundEffect.play("/sound/shoot.wav");
+		scene.addEnemyProjectile(new EnemyProjectile(scene, x, y, direction));
 	}
 	
 	public void collideWithProjectile() {

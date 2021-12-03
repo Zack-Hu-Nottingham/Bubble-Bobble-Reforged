@@ -10,12 +10,17 @@ import javafx.stage.Stage;
  */
 
 public class Main extends Application {
+
+	public static Stage stage;
+
 	public static void main(String[] args) {
 		launch(args);
 	}
 
 	@Override
 	public void start(Stage stage) throws Exception {
+		this.stage = stage;
+
 		GamePanel.getInstance().init(stage);
 	}
 }

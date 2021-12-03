@@ -1,8 +1,11 @@
 package com.ae2dms.GameObject.Sprite;
 
+import com.ae2dms.Controller.Game.GameSceneController;
 import com.ae2dms.GamePanel;
+import com.ae2dms.Main;
 import com.ae2dms.Scene.GameScene;
 import com.ae2dms.Util.Direction;
+import com.ae2dms.Util.GameStatus;
 import com.ae2dms.Util.SoundEffect;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
@@ -41,9 +44,9 @@ public class Hero extends SpriteObject {
 	protected static Image imageBubRight = new Image(Hero.class.getResource("/image/sprite/hero/BubRight.png").toString(), SIZE, SIZE, false, false);
 	protected static Image imageBub = imageBubRight;
 
-	public Hero(GameScene world, int colNum, int rowNum) {
+	public Hero(GameScene gameScene, int colNum, int rowNum) {
 		//initializes hero
-		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, SIZE, SIZE, world, imageBub);
+		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, SIZE, SIZE, gameScene, imageBub);
 		isOnAPlatform = false;
 
 		terminal_xVelocity = TERMINAL_VELOCITY_X;
@@ -56,7 +59,7 @@ public class Hero extends SpriteObject {
 		shootDelay = 0;
 		readyToCharge = false;
 
-		addKeyHandler(world.getScene());
+		addKeyHandler(Main.stage.getScene());
 	}
 
 	@Override
@@ -68,7 +71,6 @@ public class Hero extends SpriteObject {
 			imageBub = imageBubRight;
 		}
 
-//		g.drawImage(imageBub, x+240, y+20, SIZE, SIZE);
 		g.drawImage(imageBub, x, y, SIZE, SIZE);
 		if (isShielding) {
 			g.setFill(new Color(1,0, (double) (shieldTimer * ((double) 255 / SHIELD_TIME))/255, (double) (shieldTimer * ((double) 255 / SHIELD_TIME))/255));
@@ -81,7 +83,7 @@ public class Hero extends SpriteObject {
 	
 	public void shootProjectile() {
 		//makes hero shoot projectile
-		SoundEffect.play("/sound/jump.wav");
+		SoundEffect.play("/sound/shoot.wav");
 		scene.addHeroProjectile(new HeroProjectile(scene, x, y, direction));
 	}
 
@@ -185,6 +187,8 @@ public class Hero extends SpriteObject {
 		SoundEffect.play("/sound/death.wav");
 //		scene.markToReset();
 		// not mark to reset but let the game over.
+		GameSceneController.gameState = GameStatus.lose;
+
 		GamePanel.getInstance().gameOver();
 	}
 
@@ -220,6 +224,8 @@ public class Hero extends SpriteObject {
 				shieldTimer = SHIELD_TIME;
 			}
 		}
+
+		setChargeToReady();
 	}
 	
 	@Override

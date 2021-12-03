@@ -1,5 +1,6 @@
 package com.ae2dms;
 
+import com.ae2dms.Controller.Game.GameSceneController;
 import com.ae2dms.Scene.GameScene;
 import com.ae2dms.Scene.Menu;
 import javafx.scene.Scene;
@@ -26,10 +27,11 @@ public class GamePanel {
 	private Stage stage;
 
 	private static GamePanel instance = new GamePanel();
-	private GameScene gameScene = new GameScene();
+//	private GameScene gameScene = new GameScene();
+	private GameSceneController gameSceneController = new GameSceneController();
 
 
-	GamePanel() {}
+	public GamePanel() {}
 
 	public static GamePanel getInstance() { return instance; }
 
@@ -58,14 +60,20 @@ public class GamePanel {
 		stage.show();
 	}
 
-	public void gameStart() {
-		gameScene.init(stage);
+	public void gameStart() throws IOException {
+		GameScene.load();
+		gameSceneController.startGame();
+//		gameSceneController.initialize();
+
+		//		gameScene.init(stage);
 	}
 
 	public void toIndex() {
-		Menu.load(stage);
+		Menu.load();
 	}
 	public void gameOver() {
+		System.out.println("game over");
+
 //		String sound = success? "/sound/success.wav" : "/sound/aiyouwodemaya.mp3";
 //		SoundEffect.play(sound);
 //		gameScene.clear(stage);

@@ -39,9 +39,9 @@ public class EnemyProjectile extends SpriteObject {
 	@Override
 	public void drawOn(GraphicsContext g) {
 		if (isActive) {
-			g.setFill(new Color(0, 102, 0, 100));
+			g.setFill(new Color(0, 102/255, 0, 100/100));
 		} else {
-			g.setFill(new Color(0, 102, 0, 40));
+			g.setFill(new Color(0, 102/255, 0, 40/100));
 		}
 		g.fillOval(x, y, width, height);
 		g.setFill(Color.BLACK);

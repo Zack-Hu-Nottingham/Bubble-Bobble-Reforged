@@ -32,7 +32,7 @@ public class MenuController {
 
 
     @FXML
-    void mouseClickedStartGame(MouseEvent event) {
+    void mouseClickedStartGame(MouseEvent event) throws IOException {
         SoundEffect.play("/sound/click.mp3");
         GamePanel.getInstance().gameStart();
         System.out.println("start");

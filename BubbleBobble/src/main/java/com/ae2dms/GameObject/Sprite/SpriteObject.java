@@ -23,8 +23,6 @@ public abstract class SpriteObject extends GameObject {
 	public int terminal_xVelocity, terminal_yVelocity;
 	
 	public boolean canRemove;
-//	public int direction;
-
 	
 	public SpriteObject(int x, int y, int width, int height, GameScene scene, Image image) {
 		//initializes the game object
@@ -37,8 +35,6 @@ public abstract class SpriteObject extends GameObject {
 		terminal_xVelocity = 0;
 		terminal_yVelocity = TERMINAL_FALL_SPEED;
 		canRemove = false;
-//		direction = -1;
-//		Direction
 	}
 
 	public void turnAround() {

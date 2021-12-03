@@ -14,8 +14,6 @@ public class Bubble extends SpriteObject {
 	private int accel;
 	private static final int SIZE = 25;
 
-//	protected static Image fruitImage = new Image(Fruit.class.getResource("/image/apple.png").toString(), SIZE, SIZE, false, false);
-
 	protected static Image image = new Image(Bubble.class.getResource("/image/sprite/bubble/bubbled.png").toString(), SIZE, SIZE, false, false);
 	
 	public Bubble(GameScene world, int x, int y) {
@@ -38,10 +36,12 @@ public class Bubble extends SpriteObject {
 	@Override
 	public void drawOn(GraphicsContext g) {
 		if (width <= 2500) {
-			g.setFill(new Color(255, 204, 102, 255 - (int) (width * ((double) 255 / 2500))));
+			g.setFill(new Color(255/255, 204/255, 102/255, (double)(255 - (int) (width * ((double) 255 / 2500)))/255));
 		} else {
-			g.setFill(new Color(255, 204, 102, 0));
+			g.setFill(new Color(255/255, 204/255, 102/255, 0));
 		}
+		System.out.println("width: "+width+"height: "+height);
+		System.out.println("opacity: " + (double)(255 - (int) (width * ((double) 255 / 2500)))/255);
 		g.fillOval(x, y, width, height);
 		g.setFill(Color.BLACK);
 	}

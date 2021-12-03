@@ -49,7 +49,7 @@
       </Group>
 
       <fx:include fx:id="exitGamePopUp" source="exitGamePopUp.fxml" visible="false" />
-<!--      <fx:include fx:id="completeGamePopUp" source="completeGamePopup.fxml" visible="false" />-->
+      <fx:include fx:id="completeGamePopUp" source="completeGamePopup.fxml" visible="false" />
       <fx:include fx:id="loseGamePopUp" source="loseGamePopUp.fxml" visible="false" />
 
 
