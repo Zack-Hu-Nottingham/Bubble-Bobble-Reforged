@@ -4,8 +4,6 @@ import com.ae2dms.Controller.GameScene.GameSceneController;
 import com.ae2dms.GamePanel;
 import com.ae2dms.Main;
 import com.ae2dms.Scene.GameScene;
-import com.ae2dms.Util.Direction;
-import com.ae2dms.Util.GameStatus;
 import com.ae2dms.Util.SoundEffect;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
@@ -65,7 +63,7 @@ public class Hero extends SpriteObject {
 	@Override
 	public void drawOn(GraphicsContext g) {
 		//draws hero
-		if (direction == Direction.LEFT) {
+		if (direction == GameScene.Direction.LEFT) {
 			imageBub = imageBubLeft;
 		} else {
 			imageBub = imageBubRight;
@@ -110,13 +108,13 @@ public class Hero extends SpriteObject {
 				case RIGHT:
 					if (!isShielding && !isStunned) {
 						xAccel = RUN_ACCEL;
-						direction = Direction.RIGHT;
+						direction = GameScene.Direction.RIGHT;
 					}
 					break;
 				case LEFT:
 					if (!isShielding && !isStunned) {
 						xAccel = -RUN_ACCEL;
-						direction = Direction.LEFT;
+						direction = GameScene.Direction.LEFT;
 					}
 					break;
 				case UP:
@@ -147,7 +145,7 @@ public class Hero extends SpriteObject {
 				case W:
 					if (readyToCharge) {
 						this.scene.addBubble(new Bubble(this.scene, x, y));
-						SoundEffect.setToLoud();
+//						SoundEffect.setToLoud();
 						SoundEffect.play("/sound/explode.wav");
 //						SoundEffect.EXPLODE.setToLoud();
 //						SoundEffect.EXPLODE.play();
@@ -183,13 +181,13 @@ public class Hero extends SpriteObject {
 	
 	public void die() {
 		//handles death
-		SoundEffect.setToLoud();
+//		SoundEffect.setToLoud();
 		SoundEffect.play("/sound/death.wav");
 //		scene.markToReset();
 		// not mark to reset but let the game over.
-		GameSceneController.gameState = GameStatus.LOSE;
+		GameSceneController.gameState = GameScene.GameStatus.LOSE;
 
-		GamePanel.getInstance().gameOver();
+//		GamePanel.getInstance().gameOver();
 	}
 
 	public void collideWithProjectile() {

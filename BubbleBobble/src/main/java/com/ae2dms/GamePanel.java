@@ -1,10 +1,9 @@
 package com.ae2dms;
 
 import com.ae2dms.Controller.GameScene.GameSceneController;
-import com.ae2dms.Scene.GameOver;
 import com.ae2dms.Scene.GameScene;
 import com.ae2dms.Scene.Menu;
-import com.ae2dms.Util.Theme;
+import com.ae2dms.Util.SoundEffect;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -63,9 +62,9 @@ public class GamePanel {
 		stage.show();
 	}
 
-	public void gameStart(Theme theme) {
+	public void gameStart(GameScene.Theme theme, SoundEffect.Volume volume) {
 		GameScene.load();
-		gameSceneController.startGame(theme);
+		gameSceneController.startGame(theme, volume);
 //		gameSceneController.initialize();
 
 		//		gameScene.init(stage);
@@ -75,7 +74,7 @@ public class GamePanel {
 		Menu.load();
 	}
 	public void gameOver() {
-		System.out.println("game over");
+//		System.out.println("game over");
 
 //		String sound = success? "/sound/success.wav" : "/sound/aiyouwodemaya.mp3";
 //		SoundEffect.play(sound);

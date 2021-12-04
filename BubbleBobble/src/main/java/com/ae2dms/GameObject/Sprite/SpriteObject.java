@@ -2,7 +2,6 @@ package com.ae2dms.GameObject.Sprite;
 
 import com.ae2dms.GameObject.GameObject;
 import com.ae2dms.Scene.GameScene;
-import com.ae2dms.Util.Direction;
 import javafx.scene.image.Image;
 import javafx.geometry.Point2D;
 
@@ -16,7 +15,7 @@ public abstract class SpriteObject extends GameObject {
 	private static final double STATIC_FRICTION = 0.1;
 	protected static final int GRAVITY = 1;
 	private static final int TERMINAL_FALL_SPEED = 15;
-	protected Direction direction = Direction.RIGHT;
+	protected GameScene.Direction direction = GameScene.Direction.RIGHT;
 
 	public double xVelocity, yVelocity;
 	public double xAccel, yAccel;
@@ -38,10 +37,10 @@ public abstract class SpriteObject extends GameObject {
 	}
 
 	public void turnAround() {
-		if (direction == Direction.RIGHT) {
-			direction = Direction.LEFT;
+		if (direction == GameScene.Direction.RIGHT) {
+			direction = GameScene.Direction.LEFT;
 		} else {
-			direction = Direction.RIGHT;
+			direction = GameScene.Direction.RIGHT;
 		}
 	}
 
@@ -69,9 +68,9 @@ public abstract class SpriteObject extends GameObject {
 		y += yVelocity;
 
 		if (isOffScreen()) {
-			System.out.println("out");
+//			System.out.println("out");
 			if (y > scene.getHeight()) {
-				System.out.println("y>height");
+//				System.out.println("y>height");
 				y = 20;
 //				y = 0;
 			} else {
@@ -83,7 +82,6 @@ public abstract class SpriteObject extends GameObject {
 	protected void reverseDirection() {
 		//reverses game object's direction
 		xAccel *= -1;
-//		direction *= -1;
 		turnAround();
 	}
 	

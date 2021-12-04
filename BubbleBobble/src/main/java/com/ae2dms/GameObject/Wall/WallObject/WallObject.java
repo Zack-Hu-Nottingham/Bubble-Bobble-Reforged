@@ -24,7 +24,6 @@ public abstract class WallObject extends GameObject {
 
     public WallObject(GameScene world, int colNum, int rowNum) {
         super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, UNIT_SIZE, UNIT_SIZE, world, image);
-        System.out.println(scene.getTheme());
         switch (this.scene.getTheme()) {
             case RED:
                 image = red;

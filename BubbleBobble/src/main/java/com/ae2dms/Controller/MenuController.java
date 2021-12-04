@@ -4,9 +4,8 @@ import com.ae2dms.Controller.Menu.HighScoreController;
 import com.ae2dms.Controller.Menu.InformationController;
 import com.ae2dms.Controller.Menu.SettingController;
 import com.ae2dms.GamePanel;
-import com.ae2dms.Util.Difficulty;
+import com.ae2dms.Scene.GameScene;
 import com.ae2dms.Util.SoundEffect;
-import com.ae2dms.Util.Theme;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -35,10 +34,10 @@ public class MenuController {
     @FXML
     private SettingController settingController;
 
-    public static Theme theme = Theme.RED;
+    public static GameScene.Theme theme = GameScene.Theme.RED;
 
     public static SoundEffect.Volume volume = SoundEffect.Volume.MEDIUM;
-    private Difficulty difficulty = Difficulty.LOW;
+    private GameScene.Difficulty difficulty = GameScene.Difficulty.LOW;
 
 
     public void initialize() {
@@ -48,14 +47,14 @@ public class MenuController {
 
     @FXML
     void mouseClickedStartGame(MouseEvent event) throws IOException {
-        SoundEffect.play("/sound/click.mp3");
-        GamePanel.getInstance().gameStart(theme);
+//        SoundEffect.play("/sound/click.mp3");
+        GamePanel.getInstance().gameStart(theme, volume);
         System.out.println("start");
     }
 
 
     public void mouseClickedExitGame(MouseEvent mouseEvent) {
-        SoundEffect.play("/sound/click.mp3");
+//        SoundEffect.play("/sound/click.mp3");
         System.exit(0);
     }
 
@@ -90,15 +89,15 @@ public class MenuController {
         settingButton.setVisible(true);
     }
 
-    public void setTheme(Theme theme) {
+    public void setTheme(GameScene.Theme theme) {
         this.theme = theme;
     }
 
     public void setVolume(SoundEffect.Volume volume) { this.volume = volume; }
 
-    public void setDifficulty(Difficulty difficulty) { this.difficulty = difficulty; }
+    public void setDifficulty(GameScene.Difficulty difficulty) { this.difficulty = difficulty; }
 
-    public Theme getTheme() {
+    public GameScene.Theme getTheme() {
         return theme;
     }
 

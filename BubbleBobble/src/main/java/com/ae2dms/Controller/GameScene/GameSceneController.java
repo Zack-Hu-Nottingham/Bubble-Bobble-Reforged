@@ -3,9 +3,8 @@ package com.ae2dms.Controller.GameScene;
 import com.ae2dms.GamePanel;
 import com.ae2dms.Scene.GameOver;
 import com.ae2dms.Scene.GameScene;
-import com.ae2dms.Util.GameStatus;
 import com.ae2dms.Util.GameTimer;
-import com.ae2dms.Util.Theme;
+import com.ae2dms.Util.SoundEffect;
 import javafx.animation.AnimationTimer;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -34,7 +33,7 @@ public class GameSceneController {
 //    @FXML protected GameCompletePopUpController GameCompletePopUpController;
 
 
-    public static GameStatus gameState = GameStatus.READY;
+    public static GameScene.GameStatus gameState = GameScene.GameStatus.READY;
 
     private GameTimer timer = new GameTimer();
 
@@ -46,17 +45,22 @@ public class GameSceneController {
 
     GamePanel gamePanel = GamePanel.getInstance();
 
-    private Theme theme = Theme.RED;
+    private GameScene.Theme theme = GameScene.Theme.RED;
+    private SoundEffect.Volume volume = SoundEffect.Volume.MEDIUM;
+    private GameScene.Difficulty difficulty = GameScene.Difficulty.LOW;
 
-    public void startGame(Theme theme) {
+    public void startGame(GameScene.Theme theme, SoundEffect.Volume volume) {
         this.theme = theme;
         gameScene.setTheme(theme);
+//        gameScene.setVolume(volume);
+        SoundEffect.setVolume(volume);
+        gameScene.setDifficulty(difficulty);
 
         gameScene.readMap("/world/World3.txt");
 
         gameScene.getCanvas();
 
-        GameSceneController.gameState = GameStatus.PLAYING;
+        GameSceneController.gameState = GameScene.GameStatus.PLAYING;
 
         refresh.start();
 
@@ -88,7 +92,7 @@ public class GameSceneController {
 //    }
 
     public void mouseClickedBackToMenu(MouseEvent mouseEvent) {
-        gameState = GameStatus.PAUSE;
+        gameState = GameScene.GameStatus.PAUSE;
         timer.pause();
         blurEffect();
         ExitGamePopUpController.show();
@@ -97,7 +101,7 @@ public class GameSceneController {
             ExitGamePopUpController.hide();
             clearEffect();
             timer.resume();
-            gameState = GameStatus.PLAYING;
+            gameState = GameScene.GameStatus.PLAYING;
 
         });
 
