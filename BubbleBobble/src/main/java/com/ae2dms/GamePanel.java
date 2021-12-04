@@ -4,6 +4,7 @@ import com.ae2dms.Controller.GameScene.GameSceneController;
 import com.ae2dms.Scene.GameOver;
 import com.ae2dms.Scene.GameScene;
 import com.ae2dms.Scene.Menu;
+import com.ae2dms.Util.Theme;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -62,9 +63,9 @@ public class GamePanel {
 		stage.show();
 	}
 
-	public void gameStart() throws IOException {
+	public void gameStart(Theme theme) {
 		GameScene.load();
-		gameSceneController.startGame();
+		gameSceneController.startGame(theme);
 //		gameSceneController.initialize();
 
 		//		gameScene.init(stage);

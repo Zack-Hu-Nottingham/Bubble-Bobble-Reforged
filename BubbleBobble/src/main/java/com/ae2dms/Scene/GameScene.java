@@ -10,6 +10,7 @@ import com.ae2dms.GameObject.Wall.WallObject.WallUnit;
 import com.ae2dms.GameObject.Sprite.CollectEffect;
 import com.ae2dms.Main;
 import com.ae2dms.Util.GameStatus;
+import com.ae2dms.Util.Theme;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXMLLoader;
@@ -56,6 +57,8 @@ public class GameScene {
 	public void incrementBonus(int bonus) {
 		this.bonus.set(this.bonus.get()+bonus);
 	}
+
+	private Theme theme = Theme.RED;
 
 	private Stage stage;
 	public GameScene() {
@@ -395,4 +398,11 @@ public class GameScene {
 		graphicsContext = canvas.getGraphicsContext2D();
 	}
 
+	public void setTheme(Theme theme) {
+		this.theme = theme;
+	}
+
+	public Theme getTheme() {
+		return theme;
+	}
 }

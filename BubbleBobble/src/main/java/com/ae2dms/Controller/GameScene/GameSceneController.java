@@ -5,6 +5,7 @@ import com.ae2dms.Scene.GameOver;
 import com.ae2dms.Scene.GameScene;
 import com.ae2dms.Util.GameStatus;
 import com.ae2dms.Util.GameTimer;
+import com.ae2dms.Util.Theme;
 import javafx.animation.AnimationTimer;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -29,7 +30,6 @@ public class GameSceneController {
     @FXML public Group blurGroup;
     @FXML private Label currentScore;
     @FXML private Label timeSpend;
-//    exitGamePopUp
     @FXML protected ExitGamePopUpController ExitGamePopUpController;
 //    @FXML protected GameCompletePopUpController GameCompletePopUpController;
 
@@ -46,7 +46,12 @@ public class GameSceneController {
 
     GamePanel gamePanel = GamePanel.getInstance();
 
-    public void startGame() {
+    private Theme theme = Theme.RED;
+
+    public void startGame(Theme theme) {
+        this.theme = theme;
+        gameScene.setTheme(theme);
+
         gameScene.readMap("/world/World3.txt");
 
         gameScene.getCanvas();
@@ -108,7 +113,6 @@ public class GameSceneController {
         GaussianBlur gaussianBlur = new GaussianBlur();
         gaussianBlur.setRadius(22);
         blurGroup.setEffect(gaussianBlur);
-//        this.isBlur.setValue(true);
     }
 
     public void clearEffect() {
@@ -122,10 +126,7 @@ public class GameSceneController {
             switch (GameSceneController.gameState){
                 case PLAYING:
 
-//                    timeSpend.textProperty().set(String.valueOf(timeConsumed.getValue().intValue()));
                     timeConsumed.set(timeConsumed.getValue().intValue() + 1);
-                    System.out.println(timeConsumed.getValue().intValue()/60);
-//                    System.out.println(getTime());
                     gameScene.updatePosition();
                     gameScene.paintComponent();
                     break;
