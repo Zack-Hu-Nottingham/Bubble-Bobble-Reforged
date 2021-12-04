@@ -34,7 +34,7 @@ public class GameSceneController {
 //    @FXML protected GameCompletePopUpController GameCompletePopUpController;
 
 
-    public static GameStatus gameState = GameStatus.ready;
+    public static GameStatus gameState = GameStatus.READY;
 
     private GameTimer timer = new GameTimer();
 
@@ -51,7 +51,7 @@ public class GameSceneController {
 
         gameScene.getCanvas();
 
-        GameSceneController.gameState = GameStatus.playing;
+        GameSceneController.gameState = GameStatus.PLAYING;
 
         refresh.start();
 
@@ -83,7 +83,7 @@ public class GameSceneController {
 //    }
 
     public void mouseClickedBackToMenu(MouseEvent mouseEvent) {
-        gameState = GameStatus.pause;
+        gameState = GameStatus.PAUSE;
         timer.pause();
         blurEffect();
         ExitGamePopUpController.show();
@@ -92,7 +92,7 @@ public class GameSceneController {
             ExitGamePopUpController.hide();
             clearEffect();
             timer.resume();
-            gameState = GameStatus.playing;
+            gameState = GameStatus.PLAYING;
 
         });
 
@@ -120,7 +120,7 @@ public class GameSceneController {
         @Override
         public void handle(long currentTime) {
             switch (GameSceneController.gameState){
-                case playing:
+                case PLAYING:
 
 //                    timeSpend.textProperty().set(String.valueOf(timeConsumed.getValue().intValue()));
                     timeConsumed.set(timeConsumed.getValue().intValue() + 1);
@@ -130,11 +130,11 @@ public class GameSceneController {
                     gameScene.paintComponent();
                     break;
 
-                case pause:
+                case PAUSE:
                     break;
 
-                case win:
-                case lose:
+                case WIN:
+                case LOSE:
                     if (timeDelay <= 0) {
                         GameOver gameOver = new GameOver();
                         gameOver.init(gameState, timeConsumed.getValue().intValue()/60, gameScene.bonusProperty().getValue().intValue());

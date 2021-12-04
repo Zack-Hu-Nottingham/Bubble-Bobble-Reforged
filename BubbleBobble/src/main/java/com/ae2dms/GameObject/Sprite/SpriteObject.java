@@ -16,7 +16,7 @@ public abstract class SpriteObject extends GameObject {
 	private static final double STATIC_FRICTION = 0.1;
 	protected static final int GRAVITY = 1;
 	private static final int TERMINAL_FALL_SPEED = 15;
-	protected Direction direction = Direction.right;
+	protected Direction direction = Direction.RIGHT;
 
 	public double xVelocity, yVelocity;
 	public double xAccel, yAccel;
@@ -38,10 +38,10 @@ public abstract class SpriteObject extends GameObject {
 	}
 
 	public void turnAround() {
-		if (direction == Direction.right) {
-			direction = Direction.left;
+		if (direction == Direction.RIGHT) {
+			direction = Direction.LEFT;
 		} else {
-			direction = Direction.right;
+			direction = Direction.RIGHT;
 		}
 	}
 

@@ -5,6 +5,7 @@ import com.ae2dms.Controller.Menu.InformationController;
 import com.ae2dms.Controller.Menu.SettingController;
 import com.ae2dms.GamePanel;
 import com.ae2dms.Util.SoundEffect;
+import com.ae2dms.Util.Theme;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -33,7 +34,8 @@ public class MenuController {
     @FXML
     private SettingController settingController;
 
-    public Boolean isShow = false;
+    public static Theme theme = Theme.RED;
+
 
     public void initialize() {
 
@@ -84,5 +86,12 @@ public class MenuController {
         settingButton.setVisible(true);
     }
 
+    public void setTheme(Theme theme) {
+        this.theme = theme;
+    }
+
+    public Theme getTheme() {
+        return theme;
+    }
 
 }

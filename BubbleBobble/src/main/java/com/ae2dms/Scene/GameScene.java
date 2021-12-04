@@ -255,7 +255,7 @@ public class GameScene {
 		toBeRemoved.removeAll(toBeRemoved);
 
 		if (enemies.isEmpty()) {
-			GameSceneController.gameState = GameStatus.win;
+			GameSceneController.gameState = GameStatus.WIN;
 		}
 
 

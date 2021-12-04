@@ -11,7 +11,6 @@ import com.ae2dms.Util.SoundEffect;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 
 import static com.ae2dms.GamePanel.UNIT_SIZE;
 
@@ -55,7 +54,7 @@ public class Enemy extends SpriteObject {
 		
 		xAccel = 1.5;
 //		direction = 1;
-		direction = Direction.right;
+		direction = Direction.RIGHT;
 		if (Math.random() < 0.5) {
 			reverseDirection();
 		}
@@ -69,7 +68,7 @@ public class Enemy extends SpriteObject {
 
 	@Override
 	public void drawOn(GraphicsContext g) {
-		if (direction == Direction.left) {
+		if (direction == Direction.LEFT) {
 			enemyImage = enemyImageLeft;
 		} else {
 			enemyImage = enemyImageRight;
@@ -108,7 +107,7 @@ public class Enemy extends SpriteObject {
 				isBubbled = false;
 				timer = BUBBLED_FRAMES;
 				xAccel = 1.5;
-				direction = Direction.right;
+				direction = Direction.RIGHT;
 				if (Math.random() < 0.5) {
 					reverseDirection();
 				}

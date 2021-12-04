@@ -65,7 +65,7 @@ public class Hero extends SpriteObject {
 	@Override
 	public void drawOn(GraphicsContext g) {
 		//draws hero
-		if (direction == Direction.left) {
+		if (direction == Direction.LEFT) {
 			imageBub = imageBubLeft;
 		} else {
 			imageBub = imageBubRight;
@@ -110,13 +110,13 @@ public class Hero extends SpriteObject {
 				case RIGHT:
 					if (!isShielding && !isStunned) {
 						xAccel = RUN_ACCEL;
-						direction = Direction.right;
+						direction = Direction.RIGHT;
 					}
 					break;
 				case LEFT:
 					if (!isShielding && !isStunned) {
 						xAccel = -RUN_ACCEL;
-						direction = Direction.left;
+						direction = Direction.LEFT;
 					}
 					break;
 				case UP:
@@ -187,7 +187,7 @@ public class Hero extends SpriteObject {
 		SoundEffect.play("/sound/death.wav");
 //		scene.markToReset();
 		// not mark to reset but let the game over.
-		GameSceneController.gameState = GameStatus.lose;
+		GameSceneController.gameState = GameStatus.LOSE;
 
 		GamePanel.getInstance().gameOver();
 	}
