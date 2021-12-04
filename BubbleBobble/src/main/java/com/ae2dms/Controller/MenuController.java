@@ -1,7 +1,8 @@
 package com.ae2dms.Controller;
 
-import com.ae2dms.Controller.Menu.HighScoreBarController;
+import com.ae2dms.Controller.Menu.HighScoreController;
 import com.ae2dms.Controller.Menu.InformationController;
+import com.ae2dms.Controller.Menu.SettingController;
 import com.ae2dms.GamePanel;
 import com.ae2dms.Util.SoundEffect;
 import javafx.fxml.FXML;
@@ -13,6 +14,10 @@ import java.io.IOException;
 public class MenuController {
 
     @FXML
+    private ImageView highScoreButton;
+    @FXML
+    private ImageView settingButton;
+    @FXML
     private ImageView informationButton;
     @FXML
     private ImageView exitGameButton;
@@ -23,8 +28,12 @@ public class MenuController {
     private InformationController informationSceneController;
 
     @FXML
-    private HighScoreBarController highScoreSceneController;
+    private HighScoreController highScoreSceneController;
 
+    @FXML
+    private SettingController settingController;
+
+    public Boolean isShow = false;
 
     public void initialize() {
 
@@ -45,10 +54,35 @@ public class MenuController {
     }
 
     public void mouseClickedInformation(MouseEvent mouseEvent) throws IOException {
+        informationSceneController.getController(this);
         informationSceneController.show();
+//        hideButton();
     }
 
     public void mouseClickedHighScoreList(MouseEvent mouseEvent) {
+        highScoreSceneController.getController(this);
         highScoreSceneController.show();
+//        hideButton();
     }
+
+    public void mouseClickedSetting(MouseEvent mouseEvent) {
+        settingController.getController(this);
+        settingController.show();
+
+//        hideButton();
+    }
+
+    public void hideButton() {
+        informationButton.setVisible(false);
+        highScoreButton.setVisible(false);
+        settingButton.setVisible(false);
+    }
+
+    public void showButton() {
+        informationButton.setVisible(true);
+        highScoreButton.setVisible(true);
+        settingButton.setVisible(true);
+    }
+
+
 }

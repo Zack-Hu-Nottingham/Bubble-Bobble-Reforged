@@ -20,7 +20,7 @@
                         <ImageView fx:id="Level_Complete_Back_To_Menu" layoutX="50.0" layoutY="280.0" styleClass="Button">
                             <Image url="@../../image/ui/gameScene/endGamePopUp/backToMenu.png" />
                         </ImageView>
-                        <ImageView fx:id="Level_Complete_High_Score_List" fitHeight="57.0" fitWidth="232.0" layoutX="512.0" layoutY="280.0" styleClass="Button">
+                        <ImageView fx:id="Level_Complete_High_Score_List" fitHeight="57.0" fitWidth="222.0" layoutX="532.0" layoutY="280.0" styleClass="Button">
                             <Image url="@../../image/ui/gameScene/loseGamePopUp/playAgain.png" />
                         </ImageView>
                         <BorderPane layoutX="280.0" layoutY="148.0" prefHeight="106.0" prefWidth="240.0">
