@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Menu {
+
     public static void load() {
         try {
             Parent root = FXMLLoader.load(Menu.class.getResource("/fxml/menu/Menu.fxml"));

@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
  * It also can only hurt an enemy.
  */
 public class HeroProjectile extends SpriteObject {
-	private static final int SIZE = 20;
+	private static final int SIZE = 80;
 	private static final int SPEED = 15;
 //	private static final int SPEED = 15;
 	private static final int TERMINAL_VELOCITY_Y = 5;
@@ -19,13 +19,14 @@ public class HeroProjectile extends SpriteObject {
 	private boolean isActive;
 	private int activeFrames;
 	private int timer;
+//	private Theme theme;
 
 	protected static Image image = new Image(Bubble.class.getResource("/image/sprite/bubble/starBubble.png").toString(), SIZE, SIZE, false, false);
 	protected static Image blurImage = new Image(Bubble.class.getResource("/image/sprite/bubble/starBubble2.png").toString(), SIZE, SIZE, false, false);
 
 
 	public HeroProjectile(GameScene world, int x, int y, Direction direction) {
-		super(x, y, SIZE, SIZE, world, image);
+		super(x-40, y-40, SIZE, SIZE, world, image);
 		this.direction = direction;
 
 		xVelocity = SPEED;
@@ -38,6 +39,31 @@ public class HeroProjectile extends SpriteObject {
 
 	@Override
 	public void drawOn(GraphicsContext g) {
+		switch (this.scene.getTheme()) {
+			case RED:
+				image = new Image(Bubble.class.getResource("/image/sprite/bubble/red.png").toString(), SIZE, SIZE, false, false);
+				blurImage = new Image(Bubble.class.getResource("/image/sprite/bubble/blurRed.png").toString(), SIZE, SIZE, false, false);
+				break;
+
+			case BLACK:
+				image = new Image(Bubble.class.getResource("/image/sprite/bubble/black.png").toString(), SIZE, SIZE, false, false);
+				blurImage = new Image(Bubble.class.getResource("/image/sprite/bubble/blurBlack.png").toString(), SIZE, SIZE, false, false);
+				break;
+
+			case GREEN:
+				image = new Image(Bubble.class.getResource("/image/sprite/bubble/green.png").toString(), SIZE, SIZE, false, false);
+				blurImage = new Image(Bubble.class.getResource("/image/sprite/bubble/blurGreen.png").toString(), SIZE, SIZE, false, false);
+				break;
+
+			case PINK:
+				image = new Image(Bubble.class.getResource("/image/sprite/bubble/pink.png").toString(), SIZE, SIZE, false, false);
+				blurImage = new Image(Bubble.class.getResource("/image/sprite/bubble/blurPink.png").toString(), SIZE, SIZE, false, false);
+				break;
+
+			case BLUE:
+				image = new Image(Bubble.class.getResource("/image/sprite/bubble/blue.png").toString(), SIZE, SIZE, false, false);
+				blurImage = new Image(Bubble.class.getResource("/image/sprite/bubble/blurBlue.png").toString(), SIZE, SIZE, false, false);
+		}
 		if (isActive) {
 			g.drawImage(image, x, y, width, height);
 		} else {

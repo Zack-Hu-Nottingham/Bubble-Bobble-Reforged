@@ -30,7 +30,7 @@
                   </ImageView>
                   <ImageView fitHeight="84.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../image/sprite/bubble/redBubble.png" />
+                        <Image url="@../../image/sprite/bubble/red.png" />
                      </image>
                   </ImageView>
                   <VBox prefHeight="87.0" prefWidth="142.0">
@@ -59,7 +59,7 @@
                   </ImageView>
                   <ImageView fitHeight="84.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../image/sprite/bubble/pinkBubble.png" />
+                        <Image url="@../../image/sprite/bubble/pink.png" />
                      </image>
                   </ImageView>
                   <VBox prefHeight="87.0" prefWidth="142.0">
@@ -88,7 +88,7 @@
                   </ImageView>
                   <ImageView fitHeight="84.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../image/sprite/bubble/blueBubble.png" />
+                        <Image url="@../../image/sprite/bubble/blue.png" />
                      </image>
                   </ImageView>
                   <VBox prefHeight="87.0" prefWidth="142.0">
@@ -117,7 +117,7 @@
                   </ImageView>
                   <ImageView fitHeight="84.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../image/sprite/bubble/greenBubble.png" />
+                        <Image url="@../../image/sprite/bubble/green.png" />
                      </image>
                   </ImageView>
                   <VBox prefHeight="87.0" prefWidth="142.0">
@@ -146,7 +146,7 @@
                   </ImageView>
                   <ImageView fitHeight="84.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../image/sprite/bubble/darkBubble.png" />
+                        <Image url="@../../image/sprite/bubble/black.png" />
                      </image>
                   </ImageView>
                   <VBox prefHeight="87.0" prefWidth="142.0">
