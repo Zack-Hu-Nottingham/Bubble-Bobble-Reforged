@@ -1,6 +1,6 @@
 package com.ae2dms.Scene;
 
-import com.ae2dms.Controller.Game.GameSceneController;
+import com.ae2dms.Controller.GameScene.GameSceneController;
 import com.ae2dms.GameObject.Award.Award;
 import com.ae2dms.GameObject.Sprite.SpriteObject;
 import com.ae2dms.GameObject.Sprite.*;
@@ -389,6 +389,7 @@ public class GameScene {
 
 	public void getCanvas() {
 		AnchorPane root = (AnchorPane) Main.stage.getScene().getRoot();
+		System.out.println(root.getChildren());
 		Group temp = (Group) root.getChildren().get(0);
 		Canvas canvas = (Canvas) temp.getChildren().get(3);
 		graphicsContext = canvas.getGraphicsContext2D();

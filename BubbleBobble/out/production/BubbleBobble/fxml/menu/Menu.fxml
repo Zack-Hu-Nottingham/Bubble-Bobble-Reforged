@@ -4,12 +4,17 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../Global.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ae2dms.Controller.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../CSSforButton.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ae2dms.Controller.MenuController">
    <children>
 
       <ImageView fitHeight="687.0" fitWidth="1415.0" layoutX="-35.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../image/backGround/battleGround2.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="182.0" fitWidth="582.0" layoutX="684.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../image/ui/icon/bubbleBobble.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="92.0" fitWidth="225.0" layoutX="99.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
@@ -72,11 +77,6 @@
       <ImageView fx:id="colorPreference" fitHeight="50.0" fitWidth="180.0" layoutX="491.0" layoutY="670.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
          <image>
             <Image url="@../../image/ui/menu/colorPreference.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="182.0" fitWidth="582.0" layoutX="684.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../image/ui/icon/bubbleBobble.png" />
          </image>
       </ImageView>
 

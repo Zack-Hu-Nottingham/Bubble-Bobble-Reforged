@@ -1,6 +1,5 @@
 package com.ae2dms.GameObject.Award;
 
-import com.ae2dms.Controller.Game.GameSceneController;
 import com.ae2dms.GameObject.Sprite.Hero;
 import com.ae2dms.GameObject.Sprite.SpriteObject;
 import com.ae2dms.Scene.GameScene;
