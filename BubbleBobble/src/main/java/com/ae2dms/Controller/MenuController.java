@@ -4,6 +4,7 @@ import com.ae2dms.Controller.Menu.HighScoreController;
 import com.ae2dms.Controller.Menu.InformationController;
 import com.ae2dms.Controller.Menu.SettingController;
 import com.ae2dms.GamePanel;
+import com.ae2dms.Util.Difficulty;
 import com.ae2dms.Util.SoundEffect;
 import com.ae2dms.Util.Theme;
 import javafx.fxml.FXML;
@@ -35,6 +36,9 @@ public class MenuController {
     private SettingController settingController;
 
     public static Theme theme = Theme.RED;
+
+    public static SoundEffect.Volume volume = SoundEffect.Volume.MEDIUM;
+    private Difficulty difficulty = Difficulty.LOW;
 
 
     public void initialize() {
@@ -89,6 +93,10 @@ public class MenuController {
     public void setTheme(Theme theme) {
         this.theme = theme;
     }
+
+    public void setVolume(SoundEffect.Volume volume) { this.volume = volume; }
+
+    public void setDifficulty(Difficulty difficulty) { this.difficulty = difficulty; }
 
     public Theme getTheme() {
         return theme;

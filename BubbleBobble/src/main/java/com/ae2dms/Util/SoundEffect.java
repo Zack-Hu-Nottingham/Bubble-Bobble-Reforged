@@ -8,7 +8,7 @@ import javafx.scene.media.AudioClip;
  */
 public class SoundEffect {
 	
-	public static enum Volume {
+	public enum Volume {
 		MUTE, LOW, MEDIUM, HIGH
 	}
 	

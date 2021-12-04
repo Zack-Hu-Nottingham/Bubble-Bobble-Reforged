@@ -11,7 +11,7 @@
 <Pane fx:id="SettingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@../CSSforButton.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ae2dms.Controller.Menu.SettingController">
     <children>
         <ImageView fitHeight="800.0" fitWidth="1280.0">
-            <Image url="@../../image/ui/menu/setting.png" />
+            <Image url="@../../image/ui/menu/setting/setting.png" />
         </ImageView>
         <!--      <ImageView fitHeight="594.0" fitWidth="780.0" layoutX="250.0" layoutY="33.0">-->
         <!--         <Image url="@../" />-->
@@ -21,7 +21,7 @@
         </ImageView>
       <VBox layoutX="771.0" layoutY="243.0" prefHeight="418.0" prefWidth="303.0">
          <children>
-            <HBox id="redRegion" prefHeight="111.0" prefWidth="350.0" onMouseClicked="#clickRed">
+            <HBox id="redRegion" onMouseClicked="#clickRed" prefHeight="111.0" prefWidth="350.0">
                <children>
                   <ImageView fitHeight="84.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -40,9 +40,9 @@
                               <Font name="System Bold Italic" size="14.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="red" fitHeight="40.0" fitWidth="40.0"  pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="red" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
                            <image>
-                              <Image url="@../../image/ui/menu/tick.png" />
+                              <Image url="@../../image/ui/menu/setting/tick.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
@@ -50,7 +50,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox id="pinkRegion" prefHeight="100.0" prefWidth="200.0" onMouseClicked="#clickPink">
+            <HBox id="pinkRegion" onMouseClicked="#clickPink" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ImageView fitHeight="84.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -69,9 +69,9 @@
                               <Font name="System Bold Italic" size="14.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="pink" fitHeight="40.0" fitWidth="40.0"  pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="pink" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
                            <image>
-                              <Image url="@../../image/ui/menu/untick.png" />
+                              <Image url="@../../image/ui/menu/setting/untick.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
@@ -79,7 +79,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox id="blueRegion" prefHeight="100.0" prefWidth="200.0" onMouseClicked="#clickBlue">
+            <HBox id="blueRegion" onMouseClicked="#clickBlue" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ImageView fitHeight="84.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -98,9 +98,9 @@
                               <Font name="System Bold Italic" size="14.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="blue" fitHeight="40.0" fitWidth="40.0"  pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="blue" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
                            <image>
-                              <Image url="@../../image/ui/menu/untick.png" />
+                              <Image url="@../../image/ui/menu/setting/untick.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
@@ -108,7 +108,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox id="greenRegion" prefHeight="100.0" prefWidth="200.0" onMouseClicked="#clickGreen">
+            <HBox id="greenRegion" onMouseClicked="#clickGreen" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ImageView fitHeight="84.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -127,9 +127,9 @@
                               <Font name="System Bold Italic" size="14.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="green" fitHeight="40.0" fitWidth="40.0"  pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="green" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
                            <image>
-                              <Image url="@../../image/ui/menu/untick.png" />
+                              <Image url="@../../image/ui/menu/setting/untick.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
@@ -137,7 +137,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox id="blackRegion" prefHeight="100.0" prefWidth="200.0" onMouseClicked="#clickBlack">
+            <HBox id="blackRegion" onMouseClicked="#clickBlack" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ImageView fitHeight="84.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -156,9 +156,9 @@
                               <Font name="System Bold Italic" size="14.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="black" fitHeight="40.0" fitWidth="40.0"  pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="black" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
                            <image>
-                              <Image url="@../../image/ui/menu/untick.png" />
+                              <Image url="@../../image/ui/menu/setting/untick.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
@@ -168,10 +168,145 @@
             </HBox>
          </children>
       </VBox>
-      <ImageView fitHeight="74.0" fitWidth="226.0" layoutX="801.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="72.0" fitWidth="284.0" layoutX="781.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../image/ui/menu/theme.png" />
+            <Image url="@../../image/ui/menu/setting/theme.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="255.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../image/ui/menu/setting/difficulty.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="84.0" fitWidth="171.0" layoutX="278.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../image/ui/menu/setting/sound.png" />
+         </image>
+      </ImageView>
+      <HBox layoutX="192.0" layoutY="234.0" prefHeight="100.0" prefWidth="349.0">
+         <children>
+            <VBox id="high" onMouseClicked="#clickHigh" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/ui/menu/setting/high.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="high" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+                     <image>
+                        <Image url="@../../image/ui/menu/setting/untick.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox id="medium" onMouseClicked="#clickMedium" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/ui/menu/setting/medium.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="medium" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+                     <image>
+                        <Image url="@../../image/ui/menu/setting/tick.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox id="low" onMouseClicked="#clickLow" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/ui/menu/setting/low.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="low" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+                     <image>
+                        <Image url="@../../image/ui/menu/setting/untick.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox id="mute" onMouseClicked="#clickMute" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/ui/menu/setting/mute.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="mute" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+                     <image>
+                        <Image url="@../../image/ui/menu/setting/untick.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
+      <VBox layoutX="232.0" layoutY="517.0" prefHeight="200.0" prefWidth="343.0">
+         <children>
+            <HBox id="rubbish" onMouseClicked="#clickRubbish" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox prefHeight="66.0" prefWidth="37.0">
+                     <children>
+                        <ImageView fitHeight="10.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="rubbish" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+                           <image>
+                              <Image url="@../../image/ui/menu/setting/tick.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <ImageView fitHeight="65.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/ui/menu/setting/rubbish.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox id="notBad" onMouseClicked="#clickNotBad" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox prefHeight="66.0" prefWidth="37.0">
+                     <children>
+                        <ImageView fitHeight="10.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="notBad" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+                           <image>
+                              <Image url="@../../image/ui/menu/setting/untick.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <ImageView fitHeight="65.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/ui/menu/setting/notBad.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox id="monster" onMouseClicked="#clickMonster" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox prefHeight="66.0" prefWidth="37.0">
+                     <children>
+                        <ImageView fitHeight="10.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="monster" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+                           <image>
+                              <Image url="@../../image/ui/menu/setting/untick.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <ImageView fitHeight="65.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/ui/menu/setting/monster.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
     </children>
 </Pane>
