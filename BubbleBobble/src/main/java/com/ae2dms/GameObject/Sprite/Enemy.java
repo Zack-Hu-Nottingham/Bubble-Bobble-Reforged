@@ -6,7 +6,6 @@ import com.ae2dms.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallObject.WallUnit;
 import com.ae2dms.Scene.GameScene;
-import com.ae2dms.Util.Direction;
 import com.ae2dms.Util.SoundEffect;
 
 import javafx.scene.canvas.GraphicsContext;
@@ -22,11 +21,11 @@ import static com.ae2dms.GamePanel.UNIT_SIZE;
  * Enemies jump at random intervals as well.
  */
 public class Enemy extends SpriteObject {
-	private static final int WIDTH = UNIT_SIZE + 10;
-	private static final int HEIGHT = UNIT_SIZE + 10;
+	private static int WIDTH = UNIT_SIZE + 10;
+	private static int HEIGHT = UNIT_SIZE + 10;
 	private static final int JUMP_SPEED = 20;
 	private static final int TERMINAL_VELOCITY_X = 4;
-	private static final int BUBBLED_FRAMES = 300;
+	private static int BUBBLED_FRAMES = 300;
 	private static final double CHANGE_MOVEMENT_CHANCE = 0.01;
 	private static final double SHOOT_BUBBLE_CHANCE = 0.01;
 
@@ -51,10 +50,35 @@ public class Enemy extends SpriteObject {
 		isOnAPlatform = false;
 		jumpSpeed = JUMP_SPEED;
 		terminal_xVelocity = TERMINAL_VELOCITY_X;
-		
-		xAccel = 1.5;
-//		direction = 1;
-		direction = Direction.RIGHT;
+		switch (world.getDifficulty()) {
+			case LOW:
+				jumpSpeed = JUMP_SPEED-5;
+				xAccel = 1.5;
+				WIDTH = UNIT_SIZE + 10;
+				HEIGHT = UNIT_SIZE + 10;
+				BUBBLED_FRAMES = 300;
+				break;
+
+			case MEDIUM:
+				jumpSpeed = JUMP_SPEED;
+				xAccel = 2;
+				WIDTH = UNIT_SIZE + 5;
+				HEIGHT = UNIT_SIZE + 5;
+				BUBBLED_FRAMES = 200;
+
+				break;
+
+			case HIGH:
+				jumpSpeed = JUMP_SPEED+5;
+				xAccel = 2.5;
+				WIDTH = UNIT_SIZE-5;
+				HEIGHT = UNIT_SIZE-5;
+				BUBBLED_FRAMES = 100;
+
+				break;
+		}
+
+		direction = GameScene.Direction.RIGHT;
 		if (Math.random() < 0.5) {
 			reverseDirection();
 		}
@@ -68,7 +92,7 @@ public class Enemy extends SpriteObject {
 
 	@Override
 	public void drawOn(GraphicsContext g) {
-		if (direction == Direction.LEFT) {
+		if (direction == GameScene.Direction.LEFT) {
 			enemyImage = enemyImageLeft;
 		} else {
 			enemyImage = enemyImageRight;
@@ -77,8 +101,6 @@ public class Enemy extends SpriteObject {
 		g.drawImage(enemyImage, x, y, WIDTH, HEIGHT);
 		if (isBubbled) {
 			g.drawImage(bubbled, x-10, y-5, 50, 50);
-//			g.setFill(new Color((double) (timer * ((double) 255 / 300))/255, 0, 255/255, 255/255 ));
-//			g.fillRect(x - 5, y - 5, WIDTH + 10, HEIGHT + 10);
 		}
 	}
 
@@ -107,7 +129,7 @@ public class Enemy extends SpriteObject {
 				isBubbled = false;
 				timer = BUBBLED_FRAMES;
 				xAccel = 1.5;
-				direction = Direction.RIGHT;
+				direction = GameScene.Direction.RIGHT;
 				if (Math.random() < 0.5) {
 					reverseDirection();
 				}
@@ -144,7 +166,7 @@ public class Enemy extends SpriteObject {
 	public void collideWithProjectile() {
 		//handles what to do if hit with a projectile by the hero
 		if (!isBubbled) {
-			SoundEffect.setToLoud();
+//			SoundEffect.setToLoud();
 			SoundEffect.play("/sound/bubbled.wav");
 			isBubbled = true;
 			yVelocity = 0;

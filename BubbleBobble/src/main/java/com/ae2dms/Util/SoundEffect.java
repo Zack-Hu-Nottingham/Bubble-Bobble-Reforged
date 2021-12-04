@@ -23,6 +23,28 @@ public class SoundEffect {
 
 		audioClip = new AudioClip(SoundEffect.class.getResource(src).toString());
 
+		switch (volume) {
+			case LOW:
+				System.out.println("low");
+				audioClip.setVolume(0.33);
+				break;
+
+			case MEDIUM:
+				System.out.println("medium");
+				audioClip.setVolume(0.66);
+				break;
+
+			case HIGH:
+				System.out.println("high");
+				audioClip.setVolume(1);
+				break;
+
+			case MUTE:
+				System.out.println("mute");
+				audioClip.setVolume(0);
+				break;
+		}
+
 		// plays the sound effect
 		if (volume != Volume.MUTE) {
 			if (audioClip.isPlaying()) {
@@ -32,14 +54,19 @@ public class SoundEffect {
 		}
 	}
 	
-	public void setToLoop() {
-		// sets whether or not the sound effect loops
-//		clip.loop(clip.LOOP_CONTINUOUSLY);
-		audioClip.setCycleCount(AudioClip.INDEFINITE);
-	}
+//	public void setToLoop() {
+//		// sets whether or not the sound effect loops
+////		clip.loop(clip.LOOP_CONTINUOUSLY);
+//		audioClip.setCycleCount(AudioClip.INDEFINITE);
+//	}
 	
-	public static void setToLoud() {
-		// sets volume to be loud
-		volume = Volume.HIGH;
+//	public static void setToLoud() {
+//		// sets volume to be loud
+//		volume = Volume.HIGH;
+//	}
+
+	public static void setVolume(SoundEffect.Volume volume) {
+		SoundEffect.volume = volume;
+
 	}
 }

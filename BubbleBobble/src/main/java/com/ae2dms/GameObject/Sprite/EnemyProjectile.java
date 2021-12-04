@@ -2,7 +2,6 @@ package com.ae2dms.GameObject.Sprite;
 
 
 import com.ae2dms.Scene.GameScene;
-import com.ae2dms.Util.Direction;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -24,7 +23,7 @@ public class EnemyProjectile extends SpriteObject {
 	protected static Image image = new Image(Bubble.class.getResource("/image/sprite/bubble/bubbled.png").toString(), SIZE, SIZE, false, false);
 
 
-	public EnemyProjectile(GameScene world, int x, int y, Direction direction) {
+	public EnemyProjectile(GameScene world, int x, int y, GameScene.Direction direction) {
 		super(x, y, SIZE, SIZE, world, image);
 		this.direction = direction;
 
@@ -50,7 +49,7 @@ public class EnemyProjectile extends SpriteObject {
 	@Override
 	public void update() {
 		y += yVelocity;
-		if (direction == Direction.LEFT) {
+		if (direction == GameScene.Direction.LEFT) {
 			x -= xVelocity;
 		} else {
 			x += xVelocity;

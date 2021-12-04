@@ -9,8 +9,7 @@ import com.ae2dms.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallObject.WallUnit;
 import com.ae2dms.GameObject.Sprite.CollectEffect;
 import com.ae2dms.Main;
-import com.ae2dms.Util.GameStatus;
-import com.ae2dms.Util.Theme;
+import com.ae2dms.Util.SoundEffect;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXMLLoader;
@@ -49,6 +48,8 @@ public class GameScene {
 	private GraphicsContext graphicsContext;
 
 	private IntegerProperty bonus = new SimpleIntegerProperty(0);
+//	private SoundEffect.Volume volume;
+	private Difficulty difficulty;
 
 	public IntegerProperty bonusProperty() {
 		return bonus;
@@ -58,7 +59,7 @@ public class GameScene {
 		this.bonus.set(this.bonus.get()+bonus);
 	}
 
-	private Theme theme = Theme.RED;
+	private Theme theme;
 
 	private Stage stage;
 	public GameScene() {
@@ -392,7 +393,7 @@ public class GameScene {
 
 	public void getCanvas() {
 		AnchorPane root = (AnchorPane) Main.stage.getScene().getRoot();
-		System.out.println(root.getChildren());
+//		System.out.println(root.getChildren());
 		Group temp = (Group) root.getChildren().get(0);
 		Canvas canvas = (Canvas) temp.getChildren().get(3);
 		graphicsContext = canvas.getGraphicsContext2D();
@@ -404,5 +405,39 @@ public class GameScene {
 
 	public Theme getTheme() {
 		return theme;
+	}
+
+//	public void setVolume(SoundEffect.Volume volume) {
+//		SoundEffect.setVolume(volume);
+//		SoundEffect.volume
+//		this.volume = volume;
+//	}
+//
+//	public SoundEffect.Volume getVolume() {
+//		return volume;
+//	}
+
+	public void setDifficulty(Difficulty difficulty) {
+		this.difficulty = difficulty;
+	}
+
+	public GameScene.Difficulty getDifficulty() {
+		return difficulty;
+	}
+
+	public enum Difficulty {
+        LOW, MEDIUM, HIGH
+    }
+
+	public enum Theme {
+		RED, BLUE, GREEN, BLACK, PINK
+	}
+
+	public enum GameStatus {
+		READY, PLAYING, PAUSE, LOSE, WIN
+	}
+
+	public enum Direction {
+		LEFT, RIGHT
 	}
 }

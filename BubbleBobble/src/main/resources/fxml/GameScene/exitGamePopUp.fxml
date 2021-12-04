@@ -9,17 +9,14 @@
     <center>
         <Group BorderPane.alignment="CENTER">
             <children>
-                <ImageView fitHeight="359.0" fitWidth="622.0">
+                <ImageView fitHeight="359.0" fitWidth="700.0">
                     <Image url="@../../image/ui/gameScene/exitGamePopUp/confirmExit.png" />
                 </ImageView>
-                <ImageView fx:id="confirmBack" layoutX="33.0" layoutY="280.0" styleClass="Button">
+                <ImageView fx:id="confirmBack" layoutX="452.0" layoutY="288.0" styleClass="Button">
                     <Image url="@../../image/ui/gameScene/exitGamePopUp/backToGame.png" />
                 </ImageView>
-                <ImageView fx:id="confirmExit" layoutX="405.0" layoutY="280.0" styleClass="Button">
+                <ImageView fx:id="confirmExit" layoutX="61.0" layoutY="288.0" styleClass="Button">
                     <Image url="@../../image/ui/gameScene/exitGamePopUp/exitGame.png" />
-                </ImageView>
-                <ImageView layoutX="218.0" layoutY="193.0" onMouseClicked="#clickSaveGame" styleClass="Button">
-                    <Image url="@../../image/ui/gameScene/exitGamePopUp/saveGame.png" />
                 </ImageView>
             </children></Group>
     </center>

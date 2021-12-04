@@ -1,7 +1,6 @@
 package com.ae2dms.GameObject.Sprite;
 
 import com.ae2dms.Scene.GameScene;
-import com.ae2dms.Util.Direction;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -25,7 +24,7 @@ public class HeroProjectile extends SpriteObject {
 	protected static Image blurImage = new Image(Bubble.class.getResource("/image/sprite/bubble/starBubble2.png").toString(), SIZE, SIZE, false, false);
 
 
-	public HeroProjectile(GameScene world, int x, int y, Direction direction) {
+	public HeroProjectile(GameScene world, int x, int y, GameScene.Direction direction) {
 		super(x-40, y-40, SIZE, SIZE, world, image);
 		this.direction = direction;
 
@@ -74,7 +73,7 @@ public class HeroProjectile extends SpriteObject {
 	@Override
 	public void update() {
 		y += yVelocity;
-		if (direction == Direction.LEFT) {
+		if (direction == GameScene.Direction.LEFT) {
 			x -= xVelocity;
 		} else {
 			x += xVelocity;

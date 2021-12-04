@@ -40,8 +40,8 @@ public class Bubble extends SpriteObject {
 		} else {
 			g.setFill(new Color(255/255, 204/255, 102/255, 0));
 		}
-		System.out.println("width: "+width+"height: "+height);
-		System.out.println("opacity: " + (double)(255 - (int) (width * ((double) 255 / 2500)))/255);
+//		System.out.println("width: "+width+"height: "+height);
+//		System.out.println("opacity: " + (double)(255 - (int) (width * ((double) 255 / 2500)))/255);
 		g.fillOval(x, y, width, height);
 		g.setFill(Color.BLACK);
 	}
