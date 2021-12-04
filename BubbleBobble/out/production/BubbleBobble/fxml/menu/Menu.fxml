@@ -17,19 +17,19 @@
             <Image url="@../../image/ui/icon/bubbleBobble.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="92.0" fitWidth="225.0" layoutX="523.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="92.0" fitWidth="225.0" layoutX="523.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../image/ui/menu/startGameBack.png" />
          </image>
       </ImageView>
 
-      <ImageView fx:id="exitGameButton" fitHeight="78.0" fitWidth="225.0" layoutX="531.0" layoutY="411.0" onMouseClicked="#mouseClickedExitGame" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+      <ImageView fx:id="exitGameButton" fitHeight="78.0" fitWidth="225.0" layoutX="528.0" layoutY="512.0" onMouseClicked="#mouseClickedExitGame" pickOnBounds="true" preserveRatio="true" styleClass="Button">
          <image>
             <Image url="@../../image/ui/menu/exit.png" />
          </image>
       </ImageView>
 
-      <ImageView fx:id="startGameButton" fitHeight="84.0" fitWidth="212.0" layoutX="528.0" layoutY="277.0" onMouseClicked="#mouseClickedStartGame" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+      <ImageView fx:id="startGameButton" fitHeight="84.0" fitWidth="212.0" layoutX="528.0" layoutY="382.0" onMouseClicked="#mouseClickedStartGame" pickOnBounds="true" preserveRatio="true" styleClass="Button">
          <image>
             <Image url="@../../image/ui/menu/startGame.png" />
          </image>
@@ -46,19 +46,13 @@
 
 
 
-      <fx:include fx:id="highScoreScene" layoutY="665" source="HighScore.fxml" visible="false" />
+      <fx:include fx:id="highScoreScene" layoutY="665" source="HighScore.fxml" />
 
-      <fx:include fx:id="setting" layoutY="660" source="Setting.fxml" visible="false" />
+      <fx:include fx:id="setting" layoutY="660" source="Setting.fxml" />
 
-      <fx:include fx:id="informationScene" layoutY="658" source="Information.fxml" visible="false" />
+      <fx:include fx:id="informationScene" layoutY="658" source="Information.fxml" />
 
-      <ImageView fx:id="informationButton" fitHeight="104.0" fitWidth="328.0" layoutX="126.0" layoutY="660.0" onMouseClicked="#mouseClickedInformation" pickOnBounds="true" preserveRatio="true" styleClass="Button">
-         <image>
-            <Image url="@../../image/ui/menu/iInformationIcon.png" />
-         </image>
-      </ImageView>
-
-      <ImageView fx:id="highScoreButton" fitHeight="101.0" fitWidth="328.0" layoutX="811.0" layoutY="660.0" onMouseClicked="#mouseClickedHighScoreList" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+      <ImageView fx:id="highScoreButton" fitHeight="101.0" fitWidth="328.0" layoutX="767.0" layoutY="660.0" onMouseClicked="#mouseClickedHighScoreList" pickOnBounds="true" preserveRatio="true" styleClass="Button">
          <image>
             <Image url="@../../image/ui/menu/highScoreIcon.png" />
          </image>
@@ -66,6 +60,12 @@
       <ImageView fx:id="settingButton" fitHeight="104.0" fitWidth="328.0" layoutX="472.0" layoutY="657.0" onMouseClicked="#mouseClickedSetting" pickOnBounds="true" preserveRatio="true" styleClass="Button">
          <image>
             <Image url="@../../image/ui/menu/settingIcon.png" />
+         </image>
+      </ImageView>
+
+      <ImageView fx:id="informationButton" fitHeight="104.0" fitWidth="328.0" layoutX="185.0" layoutY="657.0" onMouseClicked="#mouseClickedInformation" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+         <image>
+            <Image url="@../../image/ui/menu/iInformationIcon.png" />
          </image>
       </ImageView>
 

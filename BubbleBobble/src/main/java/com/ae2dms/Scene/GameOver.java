@@ -3,11 +3,9 @@ package com.ae2dms.Scene;
 import com.ae2dms.Main;
 import com.ae2dms.Util.GameStatus;
 import com.ae2dms.Util.GameTimer;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
@@ -22,7 +20,7 @@ public class GameOver {
 //        System.out.println(time);
         this.timeConsumed = new SimpleStringProperty(GameTimer.parseToTimeFormat(timeConsumed));
         this.bonusEarned = bonusEarned;
-        if (gameStatus == GameStatus.win) {
+        if (gameStatus == GameStatus.WIN) {
             load("/fxml/GameOver/gameOverWin.fxml");
         } else {
             load("/fxml/GameOver/gameOverLose.fxml");

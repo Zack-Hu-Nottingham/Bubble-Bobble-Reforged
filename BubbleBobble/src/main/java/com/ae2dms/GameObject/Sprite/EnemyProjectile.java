@@ -50,7 +50,7 @@ public class EnemyProjectile extends SpriteObject {
 	@Override
 	public void update() {
 		y += yVelocity;
-		if (direction == Direction.left) {
+		if (direction == Direction.LEFT) {
 			x -= xVelocity;
 		} else {
 			x += xVelocity;

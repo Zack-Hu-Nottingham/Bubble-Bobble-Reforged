@@ -4,7 +4,6 @@ import com.ae2dms.Scene.GameScene;
 import com.ae2dms.Util.Direction;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 
 /**
  * The HeroProjectile class handles the specificities with the projectile being shot from a hero.
@@ -49,7 +48,7 @@ public class HeroProjectile extends SpriteObject {
 	@Override
 	public void update() {
 		y += yVelocity;
-		if (direction == Direction.left) {
+		if (direction == Direction.LEFT) {
 			x -= xVelocity;
 		} else {
 			x += xVelocity;
