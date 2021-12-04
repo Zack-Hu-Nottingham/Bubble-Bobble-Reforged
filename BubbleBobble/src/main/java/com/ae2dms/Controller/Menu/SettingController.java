@@ -1,7 +1,8 @@
 package com.ae2dms.Controller.Menu;
 
 import com.ae2dms.Controller.MenuController;
-import com.ae2dms.GameObject.Sprite.Hero;
+import com.ae2dms.Util.Difficulty;
+import com.ae2dms.Util.SoundEffect;
 import com.ae2dms.Util.Theme;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -13,6 +14,20 @@ import javafx.util.Duration;
 
 public class SettingController {
 
+    @FXML
+    private ImageView high;
+    @FXML
+    private ImageView medium;
+    @FXML
+    private ImageView low;
+    @FXML
+    private ImageView mute;
+    @FXML
+    private ImageView rubbish;
+    @FXML
+    private ImageView notBad;
+    @FXML
+    private ImageView monster;
     @FXML
     private ImageView black;
     @FXML
@@ -51,40 +66,40 @@ public class SettingController {
     }
 
 
-    private Image untick = new Image(SettingController.class.getResource("/image/ui/menu/untick.png").toString());
-    private Image tick = new Image(SettingController.class.getResource("/image/ui/menu/tick.png").toString());
+    private Image untick = new Image(SettingController.class.getResource("/image/ui/menu/setting/untick.png").toString());
+    private Image tick = new Image(SettingController.class.getResource("/image/ui/menu/setting/tick.png").toString());
 
     public void clickRed(MouseEvent mouseEvent) {
-        clearChoice();
+        clearColorChoice();
         menuController.setTheme(Theme.PINK);
         red.setImage(tick);
     }
 
     public void clickPink(MouseEvent mouseEvent) {
-        clearChoice();
+        clearColorChoice();
         menuController.setTheme(Theme.PINK);
         pink.setImage(tick);
     }
 
     public void clickBlue(MouseEvent mouseEvent) {
-        clearChoice();
+        clearColorChoice();
         menuController.setTheme(Theme.BLUE);
         blue.setImage(tick);
     }
 
     public void clickGreen(MouseEvent mouseEvent) {
-        clearChoice();
+        clearColorChoice();
         menuController.setTheme(Theme.GREEN);
         green.setImage(tick);
     }
 
     public void clickBlack(MouseEvent mouseEvent) {
-        clearChoice();
+        clearColorChoice();
         menuController.setTheme(Theme.BLACK);
         black.setImage(tick);
     }
 
-    public void clearChoice() {
+    public void clearColorChoice() {
         red.setImage(untick);
         pink.setImage(untick);
         blue.setImage(untick);
@@ -93,4 +108,69 @@ public class SettingController {
 
         menuController.setTheme(Theme.RED);
     }
+
+//    private SoundEffect.Volume volume = SoundEffect.Volume.MEDIUM;
+//    private Difficulty difficulty = Difficulty.LOW;
+
+    public void clickHigh(MouseEvent mouseEvent) {
+        clearVolumeChoice();
+        menuController.setVolume(SoundEffect.Volume.HIGH);
+        high.setImage(tick);
+    }
+
+    public void clickMedium(MouseEvent mouseEvent) {
+        clearVolumeChoice();
+        menuController.setVolume(SoundEffect.Volume.MEDIUM);
+        medium.setImage(tick);
+    }
+
+    public void clickLow(MouseEvent mouseEvent) {
+        clearVolumeChoice();
+        menuController.setVolume(SoundEffect.Volume.LOW);
+        low.setImage(tick);
+    }
+
+    public void clickMute(MouseEvent mouseEvent) {
+        clearVolumeChoice();
+        menuController.setVolume(SoundEffect.Volume.MUTE);
+        mute.setImage(tick);
+    }
+
+    public void clearVolumeChoice() {
+        high.setImage(untick);
+        medium.setImage(untick);
+        low.setImage(untick);
+        mute.setImage(untick);
+
+        menuController.setVolume(SoundEffect.Volume.MEDIUM);
+    }
+
+
+
+    public void clickRubbish(MouseEvent mouseEvent) {
+        clearDifficultyChoice();
+        menuController.setDifficulty(Difficulty.LOW);
+        rubbish.setImage(tick);
+    }
+
+    public void clickNotBad(MouseEvent mouseEvent) {
+        clearDifficultyChoice();
+        menuController.setDifficulty(Difficulty.MEDIUM);
+        notBad.setImage(tick);
+    }
+
+    public void clickMonster(MouseEvent mouseEvent) {
+        clearDifficultyChoice();
+        menuController.setDifficulty(Difficulty.HIGH);
+        monster.setImage(tick);
+    }
+
+    public void clearDifficultyChoice() {
+        rubbish.setImage(untick);
+        notBad.setImage(untick);
+        monster.setImage(untick);
+
+        menuController.setDifficulty(Difficulty.LOW);
+    }
+
 }

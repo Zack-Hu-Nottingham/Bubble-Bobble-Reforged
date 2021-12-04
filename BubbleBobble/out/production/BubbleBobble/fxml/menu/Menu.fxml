@@ -54,18 +54,18 @@
 
       <ImageView fx:id="highScoreButton" fitHeight="101.0" fitWidth="328.0" layoutX="767.0" layoutY="660.0" onMouseClicked="#mouseClickedHighScoreList" pickOnBounds="true" preserveRatio="true" styleClass="Button">
          <image>
-            <Image url="@../../image/ui/menu/highScoreIcon.png" />
+            <Image url="@../../image/ui/menu/highScore/highScoreIcon.png" />
          </image>
       </ImageView>
       <ImageView fx:id="settingButton" fitHeight="104.0" fitWidth="328.0" layoutX="472.0" layoutY="657.0" onMouseClicked="#mouseClickedSetting" pickOnBounds="true" preserveRatio="true" styleClass="Button">
          <image>
-            <Image url="@../../image/ui/menu/settingIcon.png" />
+            <Image url="@../../image/ui/menu/setting/settingIcon.png" />
          </image>
       </ImageView>
 
       <ImageView fx:id="informationButton" fitHeight="104.0" fitWidth="328.0" layoutX="185.0" layoutY="657.0" onMouseClicked="#mouseClickedInformation" pickOnBounds="true" preserveRatio="true" styleClass="Button">
          <image>
-            <Image url="@../../image/ui/menu/iInformationIcon.png" />
+            <Image url="@../../image/ui/menu/information/informationIcon.png" />
          </image>
       </ImageView>
 
