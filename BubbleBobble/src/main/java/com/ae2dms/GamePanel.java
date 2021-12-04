@@ -1,6 +1,7 @@
 package com.ae2dms;
 
-import com.ae2dms.Controller.Game.GameSceneController;
+import com.ae2dms.Controller.GameScene.GameSceneController;
+import com.ae2dms.Scene.GameOver;
 import com.ae2dms.Scene.GameScene;
 import com.ae2dms.Scene.Menu;
 import javafx.scene.Scene;
@@ -56,6 +57,7 @@ public class GamePanel {
 //		Scene scene = new Scene(root, 1280, 720);
 //		stage.setScene(scene);
 
+//		GameOver.load();
 		toIndex();
 		stage.show();
 	}
