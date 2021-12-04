@@ -12,7 +12,13 @@ import static com.ae2dms.GamePanel.UNIT_SIZE;
 
 public abstract class WallObject extends GameObject {
 
-    protected static Image image = new Image(WallUnit.class.getResource("/image/wall/wall.png").toString(), UNIT_SIZE, UNIT_SIZE, false, false);
+    protected static Image red = new Image(WallUnit.class.getResource("/image/wall/red.png").toString(), UNIT_SIZE, UNIT_SIZE, false, false);
+    protected static Image blue = new Image(WallUnit.class.getResource("/image/wall/blue.png").toString(), UNIT_SIZE, UNIT_SIZE, false, false);
+    protected static Image black = new Image(WallUnit.class.getResource("/image/wall/black.png").toString(), UNIT_SIZE, UNIT_SIZE, false, false);
+    protected static Image pink = new Image(WallUnit.class.getResource("/image/wall/pink.png").toString(), UNIT_SIZE, UNIT_SIZE, false, false);
+    protected static Image green = new Image(WallUnit.class.getResource("/image/wall/green.png").toString(), UNIT_SIZE, UNIT_SIZE, false, false);
+
+    protected static Image image = red;
 
     protected CollideStrategy strategy;
 
@@ -21,16 +27,20 @@ public abstract class WallObject extends GameObject {
         System.out.println(scene.getTheme());
         switch (this.scene.getTheme()) {
             case RED:
-                image = new Image(WallUnit.class.getResource("/image/wall/red.png").toString(), UNIT_SIZE, UNIT_SIZE, false, false);
-
+                image = red;
+                break;
             case BLACK:
-                image = new Image(WallUnit.class.getResource("/image/wall/black.png").toString(), UNIT_SIZE, UNIT_SIZE, false, false);
+                image = black;
+                break;
             case PINK:
-                image = new Image(WallUnit.class.getResource("/image/wall/pink.png").toString(), UNIT_SIZE, UNIT_SIZE, false, false);
+                image = pink;
+                break;
             case BLUE:
-                image = new Image(WallUnit.class.getResource("/image/wall/blue.png").toString(), UNIT_SIZE, UNIT_SIZE, false, false);
+                image = blue;
+                break;
             case GREEN:
-                image = new Image(WallUnit.class.getResource("/image/wall/green.png").toString(), UNIT_SIZE, UNIT_SIZE, false, false);
+                image = green;
+                break;
         }
     }
 
