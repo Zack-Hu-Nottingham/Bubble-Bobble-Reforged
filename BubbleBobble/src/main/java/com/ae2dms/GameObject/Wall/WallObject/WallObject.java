@@ -3,6 +3,7 @@ package com.ae2dms.GameObject.Wall.WallObject;
 import com.ae2dms.GameObject.GameObject;
 import com.ae2dms.GameObject.Sprite.SpriteObject;
 import com.ae2dms.GameObject.Wall.CollideStrategy.CollideStrategy;
+import com.ae2dms.GamePanel;
 import com.ae2dms.Scene.GameScene;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
@@ -24,7 +25,7 @@ public abstract class WallObject extends GameObject {
 
     public WallObject(GameScene world, int colNum, int rowNum) {
         super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, UNIT_SIZE, UNIT_SIZE, world, image);
-        switch (this.scene.getTheme()) {
+        switch (GamePanel.theme) {
             case RED:
                 image = red;
                 break;

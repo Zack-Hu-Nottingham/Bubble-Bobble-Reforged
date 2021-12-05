@@ -1,5 +1,6 @@
 package com.ae2dms.Scene;
 
+import com.ae2dms.GamePanel;
 import com.ae2dms.Main;
 import com.ae2dms.Util.GameTimer;
 import javafx.beans.property.SimpleStringProperty;
@@ -16,11 +17,11 @@ public class GameOver {
 
     public GameOver() {}
 
-    public void init(GameScene.GameStatus gameStatus, int timeConsumed, int bonusEarned) {
+    public void init(GamePanel.GameStatus gameStatus, int timeConsumed, int bonusEarned) {
         time = timeConsumed;
         this.timeConsumed = new SimpleStringProperty(GameTimer.parseToTimeFormat(timeConsumed));
         this.bonusEarned = bonusEarned;
-        if (gameStatus == GameScene.GameStatus.WIN) {
+        if (gameStatus == GamePanel.GameStatus.WIN) {
             load("/fxml/GameOver/gameOverWin.fxml");
         } else {
             load("/fxml/GameOver/gameOverLose.fxml");

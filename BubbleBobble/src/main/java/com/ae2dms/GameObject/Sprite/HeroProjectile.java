@@ -1,5 +1,6 @@
 package com.ae2dms.GameObject.Sprite;
 
+import com.ae2dms.GamePanel;
 import com.ae2dms.Scene.GameScene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -12,13 +13,11 @@ import javafx.scene.image.Image;
 public class HeroProjectile extends SpriteObject {
 	private static final int SIZE = 80;
 	private static final int SPEED = 15;
-//	private static final int SPEED = 15;
 	private static final int TERMINAL_VELOCITY_Y = 5;
 
 	private boolean isActive;
 	private int activeFrames;
 	private int timer;
-//	private Theme theme;
 
 	protected static Image image = new Image(Bubble.class.getResource("/image/sprite/bubble/starBubble.png").toString(), SIZE, SIZE, false, false);
 	protected static Image blurImage = new Image(Bubble.class.getResource("/image/sprite/bubble/starBubble2.png").toString(), SIZE, SIZE, false, false);
@@ -38,7 +37,7 @@ public class HeroProjectile extends SpriteObject {
 
 	@Override
 	public void drawOn(GraphicsContext g) {
-		switch (this.scene.getTheme()) {
+		switch (GamePanel.theme) {
 			case RED:
 				image = new Image(Bubble.class.getResource("/image/sprite/bubble/red.png").toString(), SIZE, SIZE, false, false);
 				blurImage = new Image(Bubble.class.getResource("/image/sprite/bubble/blurRed.png").toString(), SIZE, SIZE, false, false);

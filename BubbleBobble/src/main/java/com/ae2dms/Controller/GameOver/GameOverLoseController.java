@@ -1,5 +1,6 @@
 package com.ae2dms.Controller.GameOver;
 
+import com.ae2dms.GamePanel;
 import com.ae2dms.Scene.GameOver;
 import com.ae2dms.Util.GameTimer;
 import javafx.fxml.FXML;
@@ -27,8 +28,10 @@ public class GameOverLoseController {
     }
 
     public void clickBackToMenu(MouseEvent mouseEvent) {
+        GamePanel.getInstance().toMenu();
     }
 
     public void clickBackPlayAgain(MouseEvent mouseEvent) {
+        GamePanel.getInstance().gameStart();
     }
 }

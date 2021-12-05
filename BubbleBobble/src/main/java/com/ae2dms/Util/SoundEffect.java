@@ -12,14 +12,21 @@ public class SoundEffect {
 		MUTE, LOW, MEDIUM, HIGH
 	}
 	
-	public static Volume volume = Volume.LOW;
+	private Volume volume = Volume.LOW;
 
 	private static AudioClip audioClip;
 
-	public SoundEffect() {
+	// singleton
+	private static SoundEffect instance = new SoundEffect();
+
+	public static SoundEffect getInstance() {
+		return instance;
 	}
+
+	public SoundEffect() {}
+
 	
-	public static void play(String src) {
+	public void play(String src) {
 
 		audioClip = new AudioClip(SoundEffect.class.getResource(src).toString());
 
@@ -66,7 +73,8 @@ public class SoundEffect {
 //	}
 
 	public static void setVolume(SoundEffect.Volume volume) {
-		SoundEffect.volume = volume;
+		instance.volume = volume;
+//		SoundEffect.volume = volume;
 
 	}
 }

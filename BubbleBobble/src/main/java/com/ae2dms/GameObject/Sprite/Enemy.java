@@ -5,6 +5,7 @@ import com.ae2dms.GameObject.Award.AwardGenerator;
 import com.ae2dms.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallObject.WallUnit;
+import com.ae2dms.GamePanel;
 import com.ae2dms.Scene.GameScene;
 import com.ae2dms.Util.SoundEffect;
 
@@ -27,7 +28,7 @@ public class Enemy extends SpriteObject {
 	private static final int TERMINAL_VELOCITY_X = 4;
 	private static int BUBBLED_FRAMES = 300;
 	private static final double CHANGE_MOVEMENT_CHANCE = 0.01;
-	private static final double SHOOT_BUBBLE_CHANCE = 0.01;
+	private static double SHOOT_BUBBLE_CHANCE = 0.01;
 
 	boolean isBubbled;
 	int timer;
@@ -50,13 +51,14 @@ public class Enemy extends SpriteObject {
 		isOnAPlatform = false;
 		jumpSpeed = JUMP_SPEED;
 		terminal_xVelocity = TERMINAL_VELOCITY_X;
-		switch (world.getDifficulty()) {
+		switch (GamePanel.difficulty) {
 			case LOW:
 				jumpSpeed = JUMP_SPEED-5;
 				xAccel = 1.5;
 				WIDTH = UNIT_SIZE + 10;
 				HEIGHT = UNIT_SIZE + 10;
 				BUBBLED_FRAMES = 300;
+				SHOOT_BUBBLE_CHANCE = 0;
 				break;
 
 			case MEDIUM:
@@ -159,7 +161,9 @@ public class Enemy extends SpriteObject {
 
 	private void shootProjectile() {
 		// Nothing happens
-		SoundEffect.play("/sound/shoot.wav");
+		SoundEffect.getInstance().play("/sound/shoot.wav");
+
+//		SoundEffect.play("/sound/shoot.wav");
 		scene.addEnemyProjectile(new EnemyProjectile(scene, x, y, direction));
 	}
 	
@@ -167,7 +171,9 @@ public class Enemy extends SpriteObject {
 		//handles what to do if hit with a projectile by the hero
 		if (!isBubbled) {
 //			SoundEffect.setToLoud();
-			SoundEffect.play("/sound/bubbled.wav");
+			SoundEffect.getInstance().play("/sound/bubbled.wav");
+
+//			SoundEffect.play("/sound/bubbled.wav");
 			isBubbled = true;
 			yVelocity = 0;
 			xAccel = 0;
@@ -201,7 +207,8 @@ public class Enemy extends SpriteObject {
 				}
 			}
 			else if (!canRemove){
-				SoundEffect.play("/sound/pop.wav");
+				SoundEffect.getInstance().play("/sound/pop.wav");
+//				SoundEffect.play("/sound/pop.wav");
 				die();
 			}
 		}
