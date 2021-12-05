@@ -57,6 +57,8 @@ public class GameSceneController {
         gameScene.setDifficulty(difficulty);
 
         gameScene.readMap("/world/World3.txt");
+        // world/World3.txt
+        // gameRecord/records.txt
 
         gameScene.getCanvas();
 
@@ -109,7 +111,7 @@ public class GameSceneController {
             timer.stop();
             ExitGamePopUpController.hide();
             clearEffect();
-            GamePanel.getInstance().toIndex();
+            GamePanel.getInstance().toMenu();
         });
     }
 
