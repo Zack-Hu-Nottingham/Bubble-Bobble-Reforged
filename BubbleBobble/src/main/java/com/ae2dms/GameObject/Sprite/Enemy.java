@@ -161,7 +161,7 @@ public class Enemy extends SpriteObject {
 
 	private void shootProjectile() {
 		// Nothing happens
-		SoundEffect.getInstance().play("/sound/shoot.wav");
+		SoundEffect.getInstance().play("shoot");
 
 //		SoundEffect.play("/sound/shoot.wav");
 		scene.addEnemyProjectile(new EnemyProjectile(scene, x, y, direction));
@@ -171,7 +171,7 @@ public class Enemy extends SpriteObject {
 		//handles what to do if hit with a projectile by the hero
 		if (!isBubbled) {
 //			SoundEffect.setToLoud();
-			SoundEffect.getInstance().play("/sound/bubbled.wav");
+			SoundEffect.getInstance().play("bubbled");
 
 //			SoundEffect.play("/sound/bubbled.wav");
 			isBubbled = true;
@@ -207,7 +207,7 @@ public class Enemy extends SpriteObject {
 				}
 			}
 			else if (!canRemove){
-				SoundEffect.getInstance().play("/sound/pop.wav");
+				SoundEffect.getInstance().play("pop");
 //				SoundEffect.play("/sound/pop.wav");
 				die();
 			}

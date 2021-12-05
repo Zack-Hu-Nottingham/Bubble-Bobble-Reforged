@@ -68,6 +68,7 @@ public class GamePanel {
 
 	public void gameStart() {
 		GameScene.load();
+		gameSceneController = new GameSceneController();
 		gameSceneController.startGame();
 //		gameSceneController.initialize();
 

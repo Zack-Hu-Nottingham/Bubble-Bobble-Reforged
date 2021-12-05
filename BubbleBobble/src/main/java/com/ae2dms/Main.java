@@ -1,6 +1,7 @@
 package com.ae2dms;
 
 import com.ae2dms.Util.GameRecord;
+import com.ae2dms.Util.SoundEffect;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -18,6 +19,8 @@ public class Main extends Application {
 
 	public static void main(String[] args) throws IOException {
 		launch(args);
+//		SoundEffect soundEffect = new SoundEffect();
+//		soundEffect.play("bubbled");
 	}
 
 

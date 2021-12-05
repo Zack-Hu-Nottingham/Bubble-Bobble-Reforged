@@ -81,7 +81,7 @@ public class Hero extends SpriteObject {
 	
 	public void shootProjectile() {
 		//makes hero shoot projectile
-		SoundEffect.getInstance().play("/sound/shoot.wav");
+		SoundEffect.getInstance().play("shoot");
 
 //		SoundEffect.play("/sound/shoot.wav");
 		scene.addHeroProjectile(new HeroProjectile(scene, x, y, direction));
@@ -122,7 +122,7 @@ public class Hero extends SpriteObject {
 				case UP:
 					if (!isShielding && !isStunned) {
 						jump();
-						SoundEffect.getInstance().play("/sound/jump.wav");
+						SoundEffect.getInstance().play("jump");
 //						SoundEffect.play("/sound/jump.wav");
 					}
 					break;
@@ -149,7 +149,7 @@ public class Hero extends SpriteObject {
 					if (readyToCharge) {
 						this.scene.addBubble(new Bubble(this.scene, x, y));
 //						SoundEffect.setToLoud();
-						SoundEffect.getInstance().play("/sound/explode.wav");
+						SoundEffect.getInstance().play("explode");
 //						SoundEffect.play("/sound/explode.wav");
 //						SoundEffect.EXPLODE.setToLoud();
 //						SoundEffect.EXPLODE.play();
@@ -186,7 +186,7 @@ public class Hero extends SpriteObject {
 	public void die() {
 		//handles death
 //		SoundEffect.setToLoud();
-		SoundEffect.getInstance().play("/sound/death.wav");
+		SoundEffect.getInstance().play("death");
 //		SoundEffect.play("/sound/death.wav");
 //		scene.markToReset();
 		// not mark to reset but let the game over.
@@ -237,7 +237,7 @@ public class Hero extends SpriteObject {
 		yVelocity = 0;
 		if (!isOnAPlatform) {
 			isOnAPlatform = true;
-			SoundEffect.getInstance().play("/sound/land.wav");
+			SoundEffect.getInstance().play("land");
 
 //			SoundEffect.play("/sound/land.wav");
 		}
