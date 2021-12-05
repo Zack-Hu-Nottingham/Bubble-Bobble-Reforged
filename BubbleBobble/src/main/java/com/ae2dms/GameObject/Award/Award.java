@@ -47,7 +47,7 @@ public abstract class Award extends SpriteObject {
 		//checks for collision with hero and tells it what to do if it is colliding
 		if (this.overlaps(hero) && readyToCollect) {
 //			SoundEffect.setToLoud();
-			SoundEffect.getInstance().play("/sound/fruit.wav");
+			SoundEffect.getInstance().play("fruit");
 //			SoundEffect.play("/sound/fruit.wav");
 //			GameScene.score  += this.bonus;
 //			GameScene.bonus += this.bonus;

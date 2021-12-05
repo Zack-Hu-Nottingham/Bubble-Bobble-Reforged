@@ -51,6 +51,9 @@ public class GameScene {
 		return bonus;
 	}
 
+	public static int level = 1;
+	public int delay = 180;
+
 	public void incrementBonus(int bonus) {
 		this.bonus.set(this.bonus.get()+bonus);
 	}
@@ -145,7 +148,6 @@ public class GameScene {
 			}
 		}
 		for (CollectEffect collectEffect : collectEffects) {
-//			collectEffect.up
 			collectEffect.update();
 			if (collectEffect.canRemove) {
 				toBeRemoved.add(collectEffect);
@@ -250,7 +252,36 @@ public class GameScene {
 		toBeRemoved.removeAll(toBeRemoved);
 
 		if (enemies.isEmpty()) {
-			GameSceneController.gameState = GameStatus.WIN;
+			if (level == 4) {
+				GameSceneController.gameState = GameStatus.WIN;
+			} else if (level == 3){
+				if (delay == 0) {
+					readMap("/world/World4.txt");
+					level = 4;
+					delay = 180;
+				} else {
+					delay -= 1;
+				}
+
+			} else if (level == 2) {
+				if (delay == 0) {
+					readMap("/world/World3.txt");
+					level = 3;
+					delay = 180;
+				} else {
+					delay -= 1;
+				}
+
+			} else if (level == 1) {
+				if (delay == 0) {
+					readMap("/world/World2.txt");
+					level = 2;
+					delay = 180;
+				} else {
+					delay -= 1;
+				}
+
+			}
 		}
 
 
