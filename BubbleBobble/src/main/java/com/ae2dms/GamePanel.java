@@ -23,6 +23,10 @@ public class GamePanel {
 
 	public static Font smartisanMaquetteBold;
 
+//	public static SoundEffect.Volume volume = SoundEffect.Volume.MEDIUM;
+	public static Theme theme = Theme.RED;
+	public static Difficulty difficulty = Difficulty.LOW;
+
 	public static final int UNIT_SIZE = 20;
 	public static final int WIDTH = 44, HEIGHT = 30;
 	private Stage stage;
@@ -62,9 +66,9 @@ public class GamePanel {
 		stage.show();
 	}
 
-	public void gameStart(GameScene.Theme theme, SoundEffect.Volume volume) {
+	public void gameStart() {
 		GameScene.load();
-		gameSceneController.startGame(theme, volume);
+		gameSceneController.startGame();
 //		gameSceneController.initialize();
 
 		//		gameScene.init(stage);
@@ -82,4 +86,15 @@ public class GamePanel {
 //		GameOver.load(stage, success);
 	}
 
+	public enum Difficulty {
+        LOW, MEDIUM, HIGH
+    }
+
+	public enum Theme {
+		RED, BLUE, GREEN, BLACK, PINK
+	}
+
+	public enum GameStatus {
+		READY, PLAYING, PAUSE, LOSE, WIN
+	}
 }

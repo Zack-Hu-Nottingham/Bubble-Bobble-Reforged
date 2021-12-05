@@ -1,7 +1,7 @@
 package com.ae2dms.Controller.Menu;
 
 import com.ae2dms.Controller.MenuController;
-import com.ae2dms.Scene.GameScene;
+import com.ae2dms.GamePanel;
 import com.ae2dms.Util.SoundEffect;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -70,31 +70,31 @@ public class SettingController {
 
     public void clickRed(MouseEvent mouseEvent) {
         clearColorChoice();
-        menuController.setTheme(GameScene.Theme.PINK);
+        menuController.setTheme(GamePanel.Theme.PINK);
         red.setImage(tick);
     }
 
     public void clickPink(MouseEvent mouseEvent) {
         clearColorChoice();
-        menuController.setTheme(GameScene.Theme.PINK);
+        menuController.setTheme(GamePanel.Theme.PINK);
         pink.setImage(tick);
     }
 
     public void clickBlue(MouseEvent mouseEvent) {
         clearColorChoice();
-        menuController.setTheme(GameScene.Theme.BLUE);
+        menuController.setTheme(GamePanel.Theme.BLUE);
         blue.setImage(tick);
     }
 
     public void clickGreen(MouseEvent mouseEvent) {
         clearColorChoice();
-        menuController.setTheme(GameScene.Theme.GREEN);
+        menuController.setTheme(GamePanel.Theme.GREEN);
         green.setImage(tick);
     }
 
     public void clickBlack(MouseEvent mouseEvent) {
         clearColorChoice();
-        menuController.setTheme(GameScene.Theme.BLACK);
+        menuController.setTheme(GamePanel.Theme.BLACK);
         black.setImage(tick);
     }
 
@@ -105,7 +105,7 @@ public class SettingController {
         green.setImage(untick);
         black.setImage(untick);
 
-        menuController.setTheme(GameScene.Theme.RED);
+        menuController.setTheme(GamePanel.Theme.RED);
     }
 
 //    private SoundEffect.Volume volume = SoundEffect.Volume.MEDIUM;
@@ -114,22 +114,27 @@ public class SettingController {
     public void clickHigh(MouseEvent mouseEvent) {
         clearVolumeChoice();
         menuController.setVolume(SoundEffect.Volume.HIGH);
+//        System.out.println(GamePanel.volume);
+
         high.setImage(tick);
     }
 
     public void clickMedium(MouseEvent mouseEvent) {
+        System.out.println("medium");
         clearVolumeChoice();
         menuController.setVolume(SoundEffect.Volume.MEDIUM);
         medium.setImage(tick);
     }
 
     public void clickLow(MouseEvent mouseEvent) {
+        System.out.println("low");
         clearVolumeChoice();
         menuController.setVolume(SoundEffect.Volume.LOW);
         low.setImage(tick);
     }
 
     public void clickMute(MouseEvent mouseEvent) {
+        System.out.println("mute");
         clearVolumeChoice();
         menuController.setVolume(SoundEffect.Volume.MUTE);
         mute.setImage(tick);
@@ -148,19 +153,19 @@ public class SettingController {
 
     public void clickRubbish(MouseEvent mouseEvent) {
         clearDifficultyChoice();
-        menuController.setDifficulty(GameScene.Difficulty.LOW);
+        menuController.setDifficulty(GamePanel.Difficulty.LOW);
         rubbish.setImage(tick);
     }
 
     public void clickNotBad(MouseEvent mouseEvent) {
         clearDifficultyChoice();
-        menuController.setDifficulty(GameScene.Difficulty.MEDIUM);
+        menuController.setDifficulty(GamePanel.Difficulty.MEDIUM);
         notBad.setImage(tick);
     }
 
     public void clickMonster(MouseEvent mouseEvent) {
         clearDifficultyChoice();
-        menuController.setDifficulty(GameScene.Difficulty.HIGH);
+        menuController.setDifficulty(GamePanel.Difficulty.HIGH);
         monster.setImage(tick);
     }
 
@@ -169,7 +174,7 @@ public class SettingController {
         notBad.setImage(untick);
         monster.setImage(untick);
 
-        menuController.setDifficulty(GameScene.Difficulty.LOW);
+        menuController.setDifficulty(GamePanel.Difficulty.LOW);
     }
 
 }

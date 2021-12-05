@@ -4,7 +4,6 @@ import com.ae2dms.Controller.Menu.HighScoreController;
 import com.ae2dms.Controller.Menu.InformationController;
 import com.ae2dms.Controller.Menu.SettingController;
 import com.ae2dms.GamePanel;
-import com.ae2dms.Scene.GameScene;
 import com.ae2dms.Util.SoundEffect;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
@@ -34,10 +33,10 @@ public class MenuController {
     @FXML
     private SettingController settingController;
 
-    public static GameScene.Theme theme = GameScene.Theme.RED;
+    public static GamePanel.Theme theme = GamePanel.Theme.RED;
 
     public static SoundEffect.Volume volume = SoundEffect.Volume.MEDIUM;
-    private GameScene.Difficulty difficulty = GameScene.Difficulty.LOW;
+    private GamePanel.Difficulty difficulty = GamePanel.Difficulty.LOW;
 
 
     public void initialize() {
@@ -48,7 +47,7 @@ public class MenuController {
     @FXML
     void mouseClickedStartGame(MouseEvent event) throws IOException {
 //        SoundEffect.play("/sound/click.mp3");
-        GamePanel.getInstance().gameStart(theme, volume);
+        GamePanel.getInstance().gameStart();
         System.out.println("start");
     }
 
@@ -61,20 +60,17 @@ public class MenuController {
     public void mouseClickedInformation(MouseEvent mouseEvent) throws IOException {
         informationSceneController.getController(this);
         informationSceneController.show();
-//        hideButton();
     }
 
     public void mouseClickedHighScoreList(MouseEvent mouseEvent) throws IOException {
         highScoreSceneController.getController(this);
         highScoreSceneController.show();
-//        hideButton();
     }
 
     public void mouseClickedSetting(MouseEvent mouseEvent) {
         settingController.getController(this);
         settingController.show();
 
-//        hideButton();
     }
 
     public void hideButton() {
@@ -89,16 +85,12 @@ public class MenuController {
         settingButton.setVisible(true);
     }
 
-    public void setTheme(GameScene.Theme theme) {
-        this.theme = theme;
+    public void setTheme(GamePanel.Theme theme) {
+        GamePanel.theme = theme;
     }
 
-    public void setVolume(SoundEffect.Volume volume) { this.volume = volume; }
+    public void setVolume(SoundEffect.Volume volume) { SoundEffect.getInstance().setVolume(volume); }
 
-    public void setDifficulty(GameScene.Difficulty difficulty) { this.difficulty = difficulty; }
-
-    public GameScene.Theme getTheme() {
-        return theme;
-    }
+    public void setDifficulty(GamePanel.Difficulty difficulty) { GamePanel.difficulty = difficulty; }
 
 }

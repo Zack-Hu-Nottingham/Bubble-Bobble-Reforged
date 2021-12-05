@@ -18,10 +18,6 @@ import javafx.scene.input.MouseEvent;
 
 public class GameSceneController {
 
-//    public BorderPane GameCompletePopUp;
-//    @FXML
-//    protected BorderPane ExitGamePopUp;
-
     private GameScene gameScene = new GameScene();
 
     // View Node
@@ -33,7 +29,7 @@ public class GameSceneController {
 //    @FXML protected GameCompletePopUpController GameCompletePopUpController;
 
 
-    public static GameScene.GameStatus gameState = GameScene.GameStatus.READY;
+    public static GamePanel.GameStatus gameState = GamePanel.GameStatus.READY;
 
     private GameTimer timer = new GameTimer();
 
@@ -43,18 +39,9 @@ public class GameSceneController {
 
     private int timeDelay = 120;
 
-    GamePanel gamePanel = GamePanel.getInstance();
+//    GamePanel gamePanel = GamePanel.getInstance();
 
-    private GameScene.Theme theme = GameScene.Theme.RED;
-    private SoundEffect.Volume volume = SoundEffect.Volume.MEDIUM;
-    private GameScene.Difficulty difficulty = GameScene.Difficulty.LOW;
-
-    public void startGame(GameScene.Theme theme, SoundEffect.Volume volume) {
-        this.theme = theme;
-        gameScene.setTheme(theme);
-//        gameScene.setVolume(volume);
-        SoundEffect.setVolume(volume);
-        gameScene.setDifficulty(difficulty);
+    public void startGame() {
 
         gameScene.readMap("/world/World3.txt");
         // world/World3.txt
@@ -62,7 +49,7 @@ public class GameSceneController {
 
         gameScene.getCanvas();
 
-        GameSceneController.gameState = GameScene.GameStatus.PLAYING;
+        GameSceneController.gameState = GamePanel.GameStatus.PLAYING;
 
         refresh.start();
 
@@ -70,12 +57,9 @@ public class GameSceneController {
 
     public void initialize() {
 
-//        timer = new GameTimer();
-
         timer.start();
 
         timeSpend.textProperty().bind(timer.timeToDisplay);
-//        timeSpend.textProperty().bind(timeConsumed.asString());
 
         currentScore.textProperty().bind(gameScene.bonusProperty().asString());
 
@@ -85,16 +69,8 @@ public class GameSceneController {
     }
 
 
-//    public void assignData(int timeDuration, int score) {
-//        this.timeDuration = timeDuration;
-//        this.score = score;
-//s
-//        currentScore.setText(String.valueOf(score));
-//        timeSpend.setText(String.valueOf(timeDuration));
-//    }
-
     public void mouseClickedBackToMenu(MouseEvent mouseEvent) {
-        gameState = GameScene.GameStatus.PAUSE;
+        gameState = GamePanel.GameStatus.PAUSE;
         timer.pause();
         blurEffect();
         ExitGamePopUpController.show();
@@ -103,7 +79,7 @@ public class GameSceneController {
             ExitGamePopUpController.hide();
             clearEffect();
             timer.resume();
-            gameState = GameScene.GameStatus.PLAYING;
+            gameState = GamePanel.GameStatus.PLAYING;
 
         });
 
@@ -155,5 +131,4 @@ public class GameSceneController {
             }
         }
     }
-
 }

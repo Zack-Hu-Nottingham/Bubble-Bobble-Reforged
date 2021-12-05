@@ -17,12 +17,7 @@ public class Main extends Application {
 	public static Stage stage;
 
 	public static void main(String[] args) throws IOException {
-//		GameRecord gameRecord = new GameRecord();
-//		gameRecord.saveRecord("foo", 200, 30);
-//		gameRecord.readRecord();
 		launch(args);
-
-
 	}
 
 
@@ -30,7 +25,6 @@ public class Main extends Application {
 	public void start(Stage stage) throws Exception {
 
 		this.stage = stage;
-
 		GamePanel.getInstance().init(stage);
 	}
 }

@@ -1,5 +1,6 @@
 package com.ae2dms.Controller.GameOver;
 
+import com.ae2dms.GamePanel;
 import com.ae2dms.Scene.GameOver;
 import com.ae2dms.Util.GameRecord;
 import javafx.fxml.FXML;
@@ -43,8 +44,10 @@ public class GameOverWinController {
     }
 
     public void clickBackToMenu(MouseEvent mouseEvent) {
+        GamePanel.getInstance().toMenu();
     }
 
     public void clickPlayAgain(MouseEvent mouseEvent) {
+        GamePanel.getInstance().gameStart();
     }
 }

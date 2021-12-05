@@ -9,7 +9,6 @@ import com.ae2dms.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallObject.WallUnit;
 import com.ae2dms.GameObject.Sprite.CollectEffect;
 import com.ae2dms.Main;
-import com.ae2dms.Util.SoundEffect;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXMLLoader;
@@ -44,12 +43,9 @@ public class GameScene {
 	private ArrayList<Bubble> bubbles;
 	private ArrayList<CollectEffect> collectEffects;
 
-//	public Stage stage;
 	private GraphicsContext graphicsContext;
 
 	private IntegerProperty bonus = new SimpleIntegerProperty(0);
-//	private SoundEffect.Volume volume;
-	private Difficulty difficulty;
 
 	public IntegerProperty bonusProperty() {
 		return bonus;
@@ -59,9 +55,6 @@ public class GameScene {
 		this.bonus.set(this.bonus.get()+bonus);
 	}
 
-	private Theme theme;
-
-	private Stage stage;
 	public GameScene() {
 		//initializes interactableworld
 		ceilingUnits = new ArrayList<CeilingUnit>();
@@ -76,8 +69,6 @@ public class GameScene {
 		bubbles = new ArrayList<Bubble>();
 		collectEffects = new ArrayList<CollectEffect>();
 
-
-//		readMap("/world/World3.txt");
 	}
 
 	public void paintComponent() {
@@ -398,14 +389,14 @@ public class GameScene {
 		Canvas canvas = (Canvas) temp.getChildren().get(3);
 		graphicsContext = canvas.getGraphicsContext2D();
 	}
-
-	public void setTheme(Theme theme) {
-		this.theme = theme;
-	}
-
-	public Theme getTheme() {
-		return theme;
-	}
+//
+//	public void setTheme(Theme theme) {
+//		this.theme = theme;
+//	}
+//
+//	public Theme getTheme() {
+//		return theme;
+//	}
 
 //	public void setVolume(SoundEffect.Volume volume) {
 //		SoundEffect.setVolume(volume);
@@ -417,25 +408,13 @@ public class GameScene {
 //		return volume;
 //	}
 
-	public void setDifficulty(Difficulty difficulty) {
-		this.difficulty = difficulty;
-	}
+//	public void setDifficulty(Difficulty difficulty) {
+//		this.difficulty = difficulty;
+//	}
 
-	public GameScene.Difficulty getDifficulty() {
-		return difficulty;
-	}
-
-	public enum Difficulty {
-        LOW, MEDIUM, HIGH
-    }
-
-	public enum Theme {
-		RED, BLUE, GREEN, BLACK, PINK
-	}
-
-	public enum GameStatus {
-		READY, PLAYING, PAUSE, LOSE, WIN
-	}
+//	public GameScene.Difficulty getDifficulty() {
+//		return difficulty;
+//	}
 
 	public enum Direction {
 		LEFT, RIGHT
