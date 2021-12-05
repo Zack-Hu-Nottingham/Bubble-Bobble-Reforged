@@ -52,9 +52,8 @@ public class GameRecord {
     public void sortRecord() {
         for (int i = 0; i < recordNum; i++) {
 
-            for (int j = 1; j < recordNum-1; j++) {
+            for (int j = 1; j < recordNum; j++) {
                 if (score.get(j) > score.get(j-1)) {
-//                    int temp = score.get(j);
                     score.add(j-1, score.get(j));
                     score.remove(j+1);
 
@@ -83,5 +82,36 @@ public class GameRecord {
 
     public int getRecordNum() {
         return recordNum;
+    }
+
+    public void saveRecord(String userName, int score, int timeConsumed) throws IOException {
+        String filePath = "src/main/resources/gameRecord/records.txt";
+
+
+        try {
+            File file = new File(filePath);
+
+            FileOutputStream fos = null;
+
+            if (!file.exists()) {
+                file.createNewFile();
+                fos = new FileOutputStream(file);
+                System.out.println("create");
+            } else {
+                fos = new FileOutputStream(file, true);
+                System.out.println("read");
+            }
+
+            OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
+            osw.write(userName + ",");
+            osw.write(score + ",");
+            osw.write(timeConsumed+"");
+            osw.write("\r\n");
+            osw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 }

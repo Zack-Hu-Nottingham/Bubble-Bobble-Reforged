@@ -11,11 +11,13 @@ import java.io.IOException;
 
 public class GameOver {
     public static StringProperty timeConsumed;
+    public static int time;
     public static int bonusEarned = 0;
 
     public GameOver() {}
 
     public void init(GameScene.GameStatus gameStatus, int timeConsumed, int bonusEarned) {
+        time = timeConsumed;
         this.timeConsumed = new SimpleStringProperty(GameTimer.parseToTimeFormat(timeConsumed));
         this.bonusEarned = bonusEarned;
         if (gameStatus == GameScene.GameStatus.WIN) {

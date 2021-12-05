@@ -58,7 +58,7 @@ public class GamePanel {
 //		stage.setScene(scene);
 
 //		GameOver.load();
-		toIndex();
+		toMenu();
 		stage.show();
 	}
 
@@ -70,7 +70,7 @@ public class GamePanel {
 		//		gameScene.init(stage);
 	}
 
-	public void toIndex() {
+	public void toMenu() {
 		Menu.load();
 	}
 	public void gameOver() {

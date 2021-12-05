@@ -64,7 +64,7 @@ public class MenuController {
 //        hideButton();
     }
 
-    public void mouseClickedHighScoreList(MouseEvent mouseEvent) {
+    public void mouseClickedHighScoreList(MouseEvent mouseEvent) throws IOException {
         highScoreSceneController.getController(this);
         highScoreSceneController.show();
 //        hideButton();

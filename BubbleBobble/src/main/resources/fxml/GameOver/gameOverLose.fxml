@@ -16,10 +16,10 @@
                         <ImageView fitHeight="359.0" fitWidth="795.0">
                             <Image url="@../../image/ui/gameScene/loseGamePopUp/loseGamePopUp.png" />
                         </ImageView>
-                        <ImageView fx:id="Level_Complete_Back_To_Menu" layoutX="50.0" layoutY="282.0" styleClass="Button">
+                        <ImageView fx:id="backToMenu" layoutX="50.0" layoutY="282.0" onMouseClicked="#clickBackToMenu" styleClass="Button">
                             <Image url="@../../image/ui/gameScene/endGamePopUp/backToMenu.png" />
                         </ImageView>
-                        <ImageView fx:id="Level_Complete_High_Score_List" fitHeight="66.0" fitWidth="232.0" layoutX="512.0" layoutY="280.0" styleClass="Button">
+                        <ImageView fx:id="playAgain" fitHeight="66.0" fitWidth="232.0" layoutX="512.0" layoutY="280.0" onMouseClicked="#clickBackPlayAgain" styleClass="Button">
                             <Image url="@../../image/ui/gameScene/loseGamePopUp/playAgain.png" />
                         </ImageView>
                           <Label fx:id="time" alignment="CENTER" layoutX="487.0" layoutY="162.0" text="Time" textFill="#ffb45c">
