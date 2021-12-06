@@ -25,7 +25,7 @@ public class GameSceneController {
     @FXML protected ExitGamePopUpController ExitGamePopUpController;
 
 
-    public static GamePanel.GameStatus gameState = GamePanel.GameStatus.READY;
+//    public static GamePanel.GameStatus gameState = GamePanel.GameStatus.READY;
 
     private Refresh refresh = new Refresh();
 
@@ -39,15 +39,17 @@ public class GameSceneController {
 
         GamePanel.gameTimer.start();
 
+        GamePanel.level = 1;
+
         timeSpend.textProperty().bind(GamePanel.gameTimer.timeToDisplay);
 
         currentScore.textProperty().bind(GamePanel.bonus.asString());
 
         gameScene = new GameScene();
 
-        gameScene.readMap(1);
+        gameScene.readMap(GamePanel.level);
 
-        GameSceneController.gameState = GamePanel.GameStatus.PLAYING;
+        GamePanel.gameStatus = GamePanel.GameStatus.PLAYING;
 
         gameScene.getCanvas(canvas);
 
@@ -56,7 +58,7 @@ public class GameSceneController {
 
 
     public void mouseClickedBackToMenu(MouseEvent mouseEvent) {
-        gameState = GamePanel.GameStatus.PAUSE;
+        GamePanel.gameStatus = GamePanel.GameStatus.PAUSE;
         GamePanel.gameTimer.pause();
         blurEffect();
         ExitGamePopUpController.show();
@@ -65,7 +67,7 @@ public class GameSceneController {
             ExitGamePopUpController.hide();
             clearEffect();
             GamePanel.gameTimer.resume();
-            gameState = GamePanel.GameStatus.PLAYING;
+            GamePanel.gameStatus = GamePanel.GameStatus.PLAYING;
 
         });
 
@@ -91,7 +93,7 @@ public class GameSceneController {
     private class Refresh extends AnimationTimer {
         @Override
         public void handle(long currentTime) {
-            switch (GameSceneController.gameState){
+            switch (GamePanel.gameStatus){
                 case PLAYING:
                     gameScene.updatePosition();
                     gameScene.paintComponent();

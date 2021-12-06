@@ -2,7 +2,6 @@ package com.ae2dms.Util;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class GameRecord {
 
@@ -12,34 +11,36 @@ public class GameRecord {
 
     int recordNum = 0;
 
-    String gameDocument = "/gameRecord/records.txt";
+    String gameDocument = "src/main/resources/gameRecord/records.txt";
+
+    BufferedReader records;
+
+    String record = null;
 
     public GameRecord() {
     }
 
 
     public void readRecord() throws IOException {
-        InputStream input = this.getClass().getResourceAsStream(gameDocument);
-        Scanner scanner = new Scanner(input);
+        try {
+            records = new BufferedReader(new FileReader(gameDocument));
+            do {
+                record = records.readLine();
+                if (record != null) {
+                    String[] parts = record.split(",");
+                    name.add(parts[0]);
+                    score.add(Integer.valueOf(Integer.parseInt(parts[1])));
+                    timeConsumed.add(Integer.valueOf(Integer.parseInt(parts[2])));
+                    recordNum += 1;
+                }
+            } while(record != null);
+            records.close();
 
-        while(scanner.hasNextLine()) {
-            String currentRecord = scanner.nextLine();
-            System.out.println(currentRecord);
+            sortRecord();
 
-            String[] parts = currentRecord.split(",");
-            name.add(parts[0]);
-            System.out.println("part1: " +name.get(recordNum));
-
-            score.add(Integer.valueOf(Integer.parseInt(parts[1])));
-            System.out.println("part1: " +score.get(recordNum));
-            timeConsumed.add(Integer.valueOf(Integer.parseInt(parts[2])));
-            System.out.println("part1: " +timeConsumed.get(recordNum));
-            recordNum += 1;
-            System.out.println();
-
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        sortRecord();
-
     }
 
     public void sortRecord() {
@@ -87,10 +88,8 @@ public class GameRecord {
             if (!file.exists()) {
                 file.createNewFile();
                 fos = new FileOutputStream(file);
-                System.out.println("create");
             } else {
                 fos = new FileOutputStream(file, true);
-                System.out.println("read");
             }
 
             OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
@@ -99,8 +98,10 @@ public class GameRecord {
             osw.write(timeConsumed+"");
             osw.write("\r\n");
             osw.close();
+            fos.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 }

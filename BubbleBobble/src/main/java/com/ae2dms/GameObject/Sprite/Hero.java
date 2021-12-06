@@ -181,7 +181,7 @@ public class Hero extends SpriteObject {
 		//handles death
 		SoundEffect.getInstance().play("death");
 		// not mark to reset but let the game over.
-		GameSceneController.gameState = GamePanel.GameStatus.LOSE;
+		GamePanel.gameStatus = GamePanel.GameStatus.LOSE;
 	}
 
 	public void collideWithProjectile() {

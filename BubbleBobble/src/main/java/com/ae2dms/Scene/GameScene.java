@@ -8,6 +8,7 @@ import com.ae2dms.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallObject.WallUnit;
 import com.ae2dms.GameObject.Sprite.CollectEffect;
+import com.ae2dms.GamePanel;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -36,7 +37,7 @@ public class GameScene {
 
 	private GraphicsContext graphicsContext;
 
-	public static int level = 1;
+//	public static int level = 1;
 	public int delay = 180;
 
 
@@ -234,11 +235,12 @@ public class GameScene {
 
 		if (enemies.isEmpty()) {
 			if (delay == 0) {
-				level += 1;
-				if (level == 4) {
-					GameSceneController.gameState = GameStatus.WIN;
+				if (level == 3) {
+					gameStatus = GameStatus.WIN;
 				} else {
+					level += 1;
 					readMap(level);
+					delay = 180;
 				}
 			} else {
 				delay -= 1;
@@ -331,8 +333,10 @@ public class GameScene {
 		switch (level) {
 			case 1:
 				map = level1;
+				break;
 			case 2:
 				map = level2;
+				break;
 			case 3:
 				map = level3;
 		}
