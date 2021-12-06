@@ -68,11 +68,8 @@ public abstract class SpriteObject extends GameObject {
 		y += yVelocity;
 
 		if (isOffScreen()) {
-//			System.out.println("out");
 			if (y > scene.getHeight()) {
-//				System.out.println("y>height");
 				y = 20;
-//				y = 0;
 			} else {
 				y = scene.getHeight();
 			}
