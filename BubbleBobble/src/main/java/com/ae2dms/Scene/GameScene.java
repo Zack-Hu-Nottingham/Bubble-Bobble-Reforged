@@ -9,6 +9,7 @@ import com.ae2dms.Model_GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.Model_GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.Model_GameObject.Wall.WallObject.WallUnit;
 import com.ae2dms.Model_GameObject.Prompt.CollectEffect;
+import com.ae2dms.Util.SoundEffect;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import java.io.InputStream;
@@ -231,12 +232,24 @@ public class GameScene {
 		toBeRemoved.removeAll(toBeRemoved);
 
 		if (enemies.isEmpty()) {
+
+//			if (level.getValue() == 3) {
+//				if (delay = 0) {
+//
+//				}
+//			}
+
+			if (delay == 90) {
+				SoundEffect.getInstance().play("nextLevel");
+			}
 			if (delay == 0) {
 				if (level.getValue() == 3) {
 					gameStatus = GameStatus.WIN;
+					SoundEffect.getInstance().play("victory");
+					delay -= 1;
 				} else {
 					level.set(level.getValue() + 1);
-//					level.getValue() += 1;
+
 					readMap(level.getValue());
 					delay = 180;
 				}

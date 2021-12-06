@@ -9,7 +9,7 @@ import javafx.scene.media.AudioClip;
 public class SoundEffect {
 
 	private static AudioClip bubbled = new AudioClip(SoundEffect.class.getResource("/sound/bubbled.wav").toString());
-	private static AudioClip click = new AudioClip(SoundEffect.class.getResource("/sound/click.mp3").toString());
+	private static AudioClip click = new AudioClip(SoundEffect.class.getResource("/sound/click.wav").toString());
 	private static AudioClip death = new AudioClip(SoundEffect.class.getResource("/sound/death.wav").toString());
 	private static AudioClip explode = new AudioClip(SoundEffect.class.getResource("/sound/explode.wav").toString());
 	private static AudioClip fruit = new AudioClip(SoundEffect.class.getResource("/sound/fruit.wav").toString());
@@ -17,6 +17,9 @@ public class SoundEffect {
 	private static AudioClip land = new AudioClip(SoundEffect.class.getResource("/sound/land.wav").toString());
 	private static AudioClip shoot = new AudioClip(SoundEffect.class.getResource("/sound/shoot.wav").toString());
 	private static AudioClip pop = new AudioClip(SoundEffect.class.getResource("/sound/pop.wav").toString());
+	private static AudioClip victory = new AudioClip(SoundEffect.class.getResource("/sound/victory.wav").toString());
+	private static AudioClip fail = new AudioClip(SoundEffect.class.getResource("/sound/fail.wav").toString());
+	private static AudioClip nextLevel = new AudioClip(SoundEffect.class.getResource("/sound/nextLevel.wav").toString());
 
 	private AudioClip audioClip = bubbled;
 
@@ -40,7 +43,7 @@ public class SoundEffect {
 
 		// plays the sound effect
 		if (volume != Volume.MUTE) {
-			if (audioClip.isPlaying()) {
+			if (audioClip != victory && audioClip != nextLevel && audioClip.isPlaying()) {
 				audioClip.stop();
 			}
 			switch (src) {
@@ -78,26 +81,33 @@ public class SoundEffect {
 
 				case "shoot":
 					audioClip = shoot;
+					break;
+
+				case  "victory":
+					audioClip = victory;
+					break;
+
+				case "fail":
+					audioClip = fail;
+					break;
+				case "nextLevel":
+					audioClip = nextLevel;
 			}
 
 			switch (volume) {
 				case LOW:
-					System.out.println("low");
 					audioClip.setVolume(0.33);
 					break;
 
 				case MEDIUM:
-					System.out.println("medium");
 					audioClip.setVolume(0.66);
 					break;
 
 				case HIGH:
-					System.out.println("high");
 					audioClip.setVolume(1);
 					break;
 
 				case MUTE:
-					System.out.println("mute");
 					audioClip.setVolume(0);
 					break;
 			}

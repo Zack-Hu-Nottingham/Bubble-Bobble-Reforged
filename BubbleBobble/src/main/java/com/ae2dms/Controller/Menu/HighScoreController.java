@@ -3,6 +3,7 @@ package com.ae2dms.Controller.Menu;
 import com.ae2dms.Controller.MenuController;
 import com.ae2dms.Util.GameRecorder;
 import com.ae2dms.Util.GameTimer;
+import com.ae2dms.Util.SoundEffect;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -67,6 +68,8 @@ public class HighScoreController {
 
     @FXML
     public void hide() {
+        SoundEffect.getInstance().play("click");
+
         menuController.showButton();
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500), HighScoreBar);
         translateTransition.setByY(731);
@@ -83,9 +86,6 @@ public class HighScoreController {
         score = gameRecorder.getScore();
         timeConsumed = gameRecorder.getTimeConsumed();
         int recordNum = gameRecorder.getRecordNum();
-        if (recordNum == 0) {
-            ;
-        }
         if (recordNum == 1) {
             setFirstRecord();
         }

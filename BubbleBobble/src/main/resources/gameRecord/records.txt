@@ -2,3 +2,4 @@ bob,135,19
 ,150,21
 hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh,135,26
 123,215,28
+gali,440,69
