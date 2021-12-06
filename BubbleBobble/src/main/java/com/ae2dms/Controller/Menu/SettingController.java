@@ -57,6 +57,8 @@ public class SettingController {
 
     @FXML
     public void hide() {
+        SoundEffect.getInstance().play("click");
+
         menuController.showButton();
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500), SettingPane);
         translateTransition.setByY(731);
@@ -68,30 +70,40 @@ public class SettingController {
     private Image tick = new Image(SettingController.class.getResource("/image/ui/menu/setting/tick.png").toString());
 
     public void clickRed(MouseEvent mouseEvent) {
+        SoundEffect.getInstance().play("click");
+
         clearColorChoice();
         menuController.setTheme(GamePanel.Theme.PINK);
         red.setImage(tick);
     }
 
     public void clickPink(MouseEvent mouseEvent) {
+        SoundEffect.getInstance().play("click");
+
         clearColorChoice();
         menuController.setTheme(GamePanel.Theme.PINK);
         pink.setImage(tick);
     }
 
     public void clickBlue(MouseEvent mouseEvent) {
+        SoundEffect.getInstance().play("click");
+
         clearColorChoice();
         menuController.setTheme(GamePanel.Theme.BLUE);
         blue.setImage(tick);
     }
 
     public void clickGreen(MouseEvent mouseEvent) {
+        SoundEffect.getInstance().play("click");
+
         clearColorChoice();
         menuController.setTheme(GamePanel.Theme.GREEN);
         green.setImage(tick);
     }
 
     public void clickBlack(MouseEvent mouseEvent) {
+        SoundEffect.getInstance().play("click");
+
         clearColorChoice();
         menuController.setTheme(GamePanel.Theme.BLACK);
         black.setImage(tick);
@@ -108,24 +120,32 @@ public class SettingController {
     }
 
     public void clickHigh(MouseEvent mouseEvent) {
+        SoundEffect.getInstance().play("click");
+
         clearVolumeChoice();
         menuController.setVolume(SoundEffect.Volume.HIGH);
         high.setImage(tick);
     }
 
     public void clickMedium(MouseEvent mouseEvent) {
+        SoundEffect.getInstance().play("click");
+
         clearVolumeChoice();
         menuController.setVolume(SoundEffect.Volume.MEDIUM);
         medium.setImage(tick);
     }
 
     public void clickLow(MouseEvent mouseEvent) {
+        SoundEffect.getInstance().play("click");
+
         clearVolumeChoice();
         menuController.setVolume(SoundEffect.Volume.LOW);
         low.setImage(tick);
     }
 
     public void clickMute(MouseEvent mouseEvent) {
+        SoundEffect.getInstance().play("click");
+
         clearVolumeChoice();
         menuController.setVolume(SoundEffect.Volume.MUTE);
         mute.setImage(tick);
@@ -143,18 +163,25 @@ public class SettingController {
 
 
     public void clickRubbish(MouseEvent mouseEvent) {
+        System.out.println("click");
+        SoundEffect.getInstance().play("click");
+
         clearDifficultyChoice();
         menuController.setDifficulty(GamePanel.Difficulty.LOW);
         rubbish.setImage(tick);
     }
 
     public void clickNotBad(MouseEvent mouseEvent) {
+        SoundEffect.getInstance().play("click");
+
         clearDifficultyChoice();
         menuController.setDifficulty(GamePanel.Difficulty.MEDIUM);
         notBad.setImage(tick);
     }
 
     public void clickMonster(MouseEvent mouseEvent) {
+        SoundEffect.getInstance().play("click");
+
         clearDifficultyChoice();
         menuController.setDifficulty(GamePanel.Difficulty.HIGH);
         monster.setImage(tick);

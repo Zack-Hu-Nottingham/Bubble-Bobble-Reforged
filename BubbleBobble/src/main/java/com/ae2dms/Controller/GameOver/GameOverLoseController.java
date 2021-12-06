@@ -2,6 +2,7 @@ package com.ae2dms.Controller.GameOver;
 
 import com.ae2dms.GamePanel;
 import com.ae2dms.Util.GameTimer;
+import com.ae2dms.Util.SoundEffect;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -27,10 +28,14 @@ public class GameOverLoseController {
     }
 
     public void clickBackToMenu(MouseEvent mouseEvent) {
+        SoundEffect.getInstance().play("click");
+
         GamePanel.getInstance().toMenu();
     }
 
     public void clickBackPlayAgain(MouseEvent mouseEvent) {
+        SoundEffect.getInstance().play("click");
+
         GamePanel.getInstance().startGame();
     }
 }

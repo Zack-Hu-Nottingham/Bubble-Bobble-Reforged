@@ -39,6 +39,8 @@ public class MenuController {
     @FXML
     void mouseClickedStartGame(MouseEvent event) throws IOException {
 //        SoundEffect.play("/sound/click.mp3");
+        SoundEffect.getInstance().play("click");
+
         GamePanel.getInstance().startGame();
         System.out.println("start");
     }
@@ -46,20 +48,28 @@ public class MenuController {
 
     public void mouseClickedExitGame(MouseEvent mouseEvent) {
 //        SoundEffect.play("/sound/click.mp3");
+        SoundEffect.getInstance().play("click");
+
         System.exit(0);
     }
 
     public void mouseClickedInformation(MouseEvent mouseEvent) throws IOException {
+        SoundEffect.getInstance().play("click");
+
         informationSceneController.getController(this);
         informationSceneController.show();
     }
 
     public void mouseClickedHighScoreList(MouseEvent mouseEvent) throws IOException {
+        SoundEffect.getInstance().play("click");
+
         highScoreSceneController.getController(this);
         highScoreSceneController.show();
     }
 
     public void mouseClickedSetting(MouseEvent mouseEvent) {
+        SoundEffect.getInstance().play("click");
+
         settingController.getController(this);
         settingController.show();
 

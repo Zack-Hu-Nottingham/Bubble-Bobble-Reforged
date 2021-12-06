@@ -4,6 +4,7 @@ import com.ae2dms.Controller.Menu.SettingController;
 import com.ae2dms.GamePanel;
 import com.ae2dms.Util.GameRecorder;
 import com.ae2dms.Util.GameTimer;
+import com.ae2dms.Util.SoundEffect;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -35,6 +36,8 @@ public class GameOverWinController {
     private Image saved = new Image(SettingController.class.getResource("/image/ui/gameScene/endGamePopUp/savedRecord.png").toString());
     private boolean isSaved = false;
     public void clickSaveRecord(MouseEvent mouseEvent) throws IOException {
+        SoundEffect.getInstance().play("click");
+
         if (!isSaved) {
             GameRecorder gameRecorder = new GameRecorder();
             gameRecorder.saveRecord(userName.getText(), GamePanel.bonus.getValue(), GamePanel.gameTimer.getTime());
@@ -49,10 +52,14 @@ public class GameOverWinController {
     }
 
     public void clickBackToMenu(MouseEvent mouseEvent) {
+        SoundEffect.getInstance().play("click");
+
         GamePanel.getInstance().toMenu();
     }
 
     public void clickPlayAgain(MouseEvent mouseEvent) {
+        SoundEffect.getInstance().play("click");
+
         GamePanel.getInstance().startGame();
     }
 }

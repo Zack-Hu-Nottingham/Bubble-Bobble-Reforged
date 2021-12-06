@@ -3,6 +3,7 @@ package com.ae2dms.Controller.GameScene;
 import com.ae2dms.GamePanel;
 import com.ae2dms.Scene.GameScene;
 import com.ae2dms.Util.GameTimer;
+import com.ae2dms.Util.SoundEffect;
 import javafx.animation.AnimationTimer;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
@@ -39,7 +40,7 @@ public class GameSceneController {
 
         GamePanel.gameTimer.start();
 
-        GamePanel.level = new SimpleIntegerProperty(3);
+        GamePanel.level = new SimpleIntegerProperty(1);
 
         timeSpend.textProperty().bind(GamePanel.gameTimer.timeToDisplay);
 
@@ -60,12 +61,16 @@ public class GameSceneController {
 
 
     public void mouseClickedBackToMenu(MouseEvent mouseEvent) {
+        SoundEffect.getInstance().play("click");
+
         GamePanel.gameStatus = GamePanel.GameStatus.PAUSE;
         GamePanel.gameTimer.pause();
         blurEffect();
         ExitGamePopUpController.show();
 
         ExitGamePopUpController.confirmBack.setOnMouseClicked((event) -> {
+            SoundEffect.getInstance().play("click");
+
             ExitGamePopUpController.hide();
             clearEffect();
             GamePanel.gameTimer.resume();
@@ -74,6 +79,8 @@ public class GameSceneController {
         });
 
         ExitGamePopUpController.confirmExit.setOnMouseClicked((event) -> {
+            SoundEffect.getInstance().play("click");
+
             GamePanel.gameTimer.stop();
             ExitGamePopUpController.hide();
             clearEffect();
