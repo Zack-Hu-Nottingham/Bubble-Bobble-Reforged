@@ -1,6 +1,8 @@
 package com.ae2dms.Scene;
 
-import com.ae2dms.GameObject.Fruit.Fruit;
+import com.ae2dms.GameObject.Sprite.Fruit.Fruit;
+import com.ae2dms.GameObject.Sprite.Projectile.EnemyProjectile;
+import com.ae2dms.GameObject.Sprite.Projectile.HeroProjectile;
 import com.ae2dms.GameObject.Sprite.SpriteObject;
 import com.ae2dms.GameObject.Sprite.*;
 import com.ae2dms.GameObject.Wall.WallObject.CeilingUnit;
@@ -35,7 +37,6 @@ public class GameScene {
 
 	private GraphicsContext graphicsContext;
 
-//	public static int level = 1;
 	public int delay = 180;
 
 

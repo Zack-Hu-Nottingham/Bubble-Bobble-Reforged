@@ -1,6 +1,6 @@
 package com.ae2dms.GameObject.Prompt;
 
-import com.ae2dms.GameObject.Fruit.Fruit;
+import com.ae2dms.GameObject.Sprite.Fruit.Fruit;
 import com.ae2dms.GameObject.Sprite.SpriteObject;
 import com.ae2dms.Scene.GameScene;
 import javafx.scene.image.Image;

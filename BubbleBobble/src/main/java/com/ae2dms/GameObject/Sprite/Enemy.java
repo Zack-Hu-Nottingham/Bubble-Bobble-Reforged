@@ -1,7 +1,8 @@
 package com.ae2dms.GameObject.Sprite;
 
-import com.ae2dms.GameObject.Fruit.Fruit;
-import com.ae2dms.GameObject.Fruit.FruitFactory;
+import com.ae2dms.GameObject.Sprite.Fruit.Fruit;
+import com.ae2dms.GameObject.Sprite.Fruit.FruitFactory;
+import com.ae2dms.GameObject.Sprite.Projectile.EnemyProjectile;
 import com.ae2dms.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallObject.WallUnit;
@@ -67,7 +68,7 @@ public class Enemy extends SpriteObject {
 				WIDTH = UNIT_SIZE + 5;
 				HEIGHT = UNIT_SIZE + 5;
 				BUBBLED_FRAMES = 200;
-
+				SHOOT_BUBBLE_CHANCE = 0.01;
 				break;
 
 			case HIGH:
@@ -76,7 +77,7 @@ public class Enemy extends SpriteObject {
 				WIDTH = UNIT_SIZE-5;
 				HEIGHT = UNIT_SIZE-5;
 				BUBBLED_FRAMES = 100;
-
+				SHOOT_BUBBLE_CHANCE = 0.01;
 				break;
 		}
 

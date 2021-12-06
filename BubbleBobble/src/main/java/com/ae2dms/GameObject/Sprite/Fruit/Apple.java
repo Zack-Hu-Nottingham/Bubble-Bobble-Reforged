@@ -1,4 +1,4 @@
-package com.ae2dms.GameObject.Fruit;
+package com.ae2dms.GameObject.Sprite.Fruit;
 
 import com.ae2dms.Scene.GameScene;
 import javafx.scene.image.Image;

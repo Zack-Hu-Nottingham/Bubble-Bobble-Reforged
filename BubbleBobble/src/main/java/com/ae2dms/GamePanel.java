@@ -1,6 +1,5 @@
 package com.ae2dms;
 
-import com.ae2dms.Controller.GameScene.GameSceneController;
 import com.ae2dms.Util.GameTimer;
 import javafx.beans.property.IntegerProperty;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 
@@ -21,24 +19,26 @@ import java.io.IOException;
 
 public class GamePanel {
 
-	public static Theme theme = Theme.RED;
-	public static Difficulty difficulty = Difficulty.LOW;
-
-	public static final int UNIT_SIZE = 20;
-	public static final int WIDTH = 44, HEIGHT = 30;
-	private Stage stage;
+	public GamePanel() {}
 
 	private static GamePanel instance = new GamePanel();
-	private GameSceneController gameSceneController = new GameSceneController();
-
-
-	public GamePanel() {}
 
 	public static GamePanel getInstance() { return instance; }
 
+
+	public static Theme theme = Theme.RED;
+	public static Difficulty difficulty = Difficulty.LOW;
+
+	public static GameTimer gameTimer;
+	public static IntegerProperty bonus;
+	public static GameStatus gameStatus;
+	public static int level;
+
+	public static final int UNIT_SIZE = 20;
+	public static final int WIDTH = 44, HEIGHT = 30;
+
 	public void init(Stage stage) throws IOException {
 
-		this.stage = stage;
 		AnchorPane root = new AnchorPane();
 		Scene scene = new Scene(root, UNIT_SIZE * WIDTH, UNIT_SIZE * HEIGHT);
 
@@ -71,11 +71,6 @@ public class GamePanel {
 		}
 	}
 
-
-	public static GameTimer gameTimer;
-	public static IntegerProperty bonus;
-	public static GameStatus gameStatus;
-	public static int level;
 
 	public static void incrementBonus(int bonus) {
 		GamePanel.bonus.set(GamePanel.bonus.get()+bonus);

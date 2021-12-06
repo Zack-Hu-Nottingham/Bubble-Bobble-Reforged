@@ -1,5 +1,8 @@
-package com.ae2dms.GameObject.Sprite;
+package com.ae2dms.GameObject.Sprite.Projectile;
 
+import com.ae2dms.GameObject.Sprite.Bubble;
+import com.ae2dms.GameObject.Sprite.Enemy;
+import com.ae2dms.GameObject.Sprite.Hero;
 import com.ae2dms.GamePanel;
 import com.ae2dms.Scene.GameScene;
 import javafx.scene.canvas.GraphicsContext;
@@ -10,27 +13,16 @@ import javafx.scene.image.Image;
  * For example, the hero's projectile has a different color than the projectile of an enemy.
  * It also can only hurt an enemy.
  */
-public class HeroProjectile extends SpriteObject {
+public class HeroProjectile extends Projectile {
 	private static final int SIZE = 80;
-	private static final int SPEED = 15;
-	private static final int TERMINAL_VELOCITY_Y = 5;
-
-	private boolean isActive;
-	private int activeFrames;
-	private int timer;
 
 	protected static Image image = new Image(Bubble.class.getResource("/image/sprite/bubble/starBubble.png").toString(), SIZE, SIZE, false, false);
 	protected static Image blurImage = new Image(Bubble.class.getResource("/image/sprite/bubble/starBubble2.png").toString(), SIZE, SIZE, false, false);
-
 
 	public HeroProjectile(GameScene world, int x, int y, GameScene.Direction direction) {
 		super(x-40, y-40, SIZE, SIZE, world, image);
 		this.direction = direction;
 
-		xVelocity = SPEED;
-		yAccel = 0;
-
-		isActive = true;
 		activeFrames = 35;
 		timer = activeFrames;
 	}
@@ -67,57 +59,6 @@ public class HeroProjectile extends SpriteObject {
 		} else {
 			g.drawImage(blurImage, x, y, width, height);
 		}
-	}
-
-	@Override
-	public void update() {
-		y += yVelocity;
-		if (direction == GameScene.Direction.LEFT) {
-			x -= xVelocity;
-		} else {
-			x += xVelocity;
-		}
-		updateVelocity();
-
-		if(y < 25) {
-			y = 25;
-		}
-
-		if (timer < 0) {
-			isActive = false;
-		}
-
-		if (timer < -200) {
-			markToRemove();
-		}
-		timer -= 1;
-	}
-
-	private void updateVelocity() {
-		if (xVelocity > 0) {
-			xVelocity -= 0.25;
-		} else {
-			xVelocity = 0;
-		}
-
-		if (Math.abs(yVelocity) < TERMINAL_VELOCITY_Y && !isActive) {
-			yVelocity -= 0.1;
-		}
-	}
-
-	@Override
-	public void collideWithFloor() {
-		// Nothing happens
-	}
-
-	@Override
-	public void collideWithCeiling() {
-		// Nothing happens
-	}
-
-	@Override
-	public void collideWithWall() {
-		// Nothing happens
 	}
 
 	public void collideWith(Hero hero) {

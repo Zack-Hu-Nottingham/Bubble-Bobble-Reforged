@@ -1,6 +1,6 @@
 package com.ae2dms.GameObject.Sprite;
 
-import com.ae2dms.Controller.GameScene.GameSceneController;
+import com.ae2dms.GameObject.Sprite.Projectile.HeroProjectile;
 import com.ae2dms.GamePanel;
 import com.ae2dms.Main;
 import com.ae2dms.Scene.GameScene;
