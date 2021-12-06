@@ -1,17 +1,16 @@
 package com.ae2dms.Scene;
 
-import com.ae2dms.GameObject.Sprite.Fruit.Fruit;
-import com.ae2dms.GameObject.Sprite.Projectile.EnemyProjectile;
-import com.ae2dms.GameObject.Sprite.Projectile.HeroProjectile;
-import com.ae2dms.GameObject.Sprite.SpriteObject;
-import com.ae2dms.GameObject.Sprite.*;
-import com.ae2dms.GameObject.Wall.WallObject.CeilingUnit;
-import com.ae2dms.GameObject.Wall.WallObject.FloorUnit;
-import com.ae2dms.GameObject.Wall.WallObject.WallUnit;
-import com.ae2dms.GameObject.Prompt.CollectEffect;
+import com.ae2dms.Model_GameObject.Sprite.Fruit.Fruit;
+import com.ae2dms.Model_GameObject.Sprite.Projectile.EnemyProjectile;
+import com.ae2dms.Model_GameObject.Sprite.Projectile.HeroProjectile;
+import com.ae2dms.Model_GameObject.Sprite.SpriteObject;
+import com.ae2dms.Model_GameObject.Sprite.*;
+import com.ae2dms.Model_GameObject.Wall.WallObject.CeilingUnit;
+import com.ae2dms.Model_GameObject.Wall.WallObject.FloorUnit;
+import com.ae2dms.Model_GameObject.Wall.WallObject.WallUnit;
+import com.ae2dms.Model_GameObject.Prompt.CollectEffect;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -38,7 +37,6 @@ public class GameScene {
 	private GraphicsContext graphicsContext;
 
 	public int delay = 180;
-
 
 	public GameScene() {
 		//initializes interactableworld
@@ -234,11 +232,12 @@ public class GameScene {
 
 		if (enemies.isEmpty()) {
 			if (delay == 0) {
-				if (level == 3) {
+				if (level.getValue() == 3) {
 					gameStatus = GameStatus.WIN;
 				} else {
-					level += 1;
-					readMap(level);
+					level.set(level.getValue() + 1);
+//					level.getValue() += 1;
+					readMap(level.getValue());
 					delay = 180;
 				}
 			} else {

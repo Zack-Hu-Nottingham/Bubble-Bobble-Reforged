@@ -23,7 +23,7 @@ public class GameSceneController {
     @FXML private Label currentScore;
     @FXML private Label timeSpend;
     @FXML protected ExitGamePopUpController ExitGamePopUpController;
-
+    @FXML private Label levelHint;
 
 //    public static GamePanel.GameStatus gameState = GamePanel.GameStatus.READY;
 
@@ -39,15 +39,17 @@ public class GameSceneController {
 
         GamePanel.gameTimer.start();
 
-        GamePanel.level = 1;
+        GamePanel.level = new SimpleIntegerProperty(3);
 
         timeSpend.textProperty().bind(GamePanel.gameTimer.timeToDisplay);
 
         currentScore.textProperty().bind(GamePanel.bonus.asString());
 
+        levelHint.textProperty().bind(GamePanel.level.asString());
+
         gameScene = new GameScene();
 
-        gameScene.readMap(GamePanel.level);
+        gameScene.readMap(GamePanel.level.getValue());
 
         GamePanel.gameStatus = GamePanel.GameStatus.PLAYING;
 
