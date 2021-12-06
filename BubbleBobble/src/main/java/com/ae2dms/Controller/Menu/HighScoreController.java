@@ -1,7 +1,7 @@
 package com.ae2dms.Controller.Menu;
 
 import com.ae2dms.Controller.MenuController;
-import com.ae2dms.Util.GameRecord;
+import com.ae2dms.Util.GameRecorder;
 import com.ae2dms.Util.GameTimer;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -77,12 +77,12 @@ public class HighScoreController {
     private ArrayList<Integer> score;
     private ArrayList<Integer> timeConsumed;
     public void bindScore() throws IOException {
-        GameRecord gameRecord = new GameRecord();
-		gameRecord.readRecord();
-        name = gameRecord.getName();
-        score = gameRecord.getScore();
-        timeConsumed = gameRecord.getTimeConsumed();
-        int recordNum = gameRecord.getRecordNum();
+        GameRecorder gameRecorder = new GameRecorder();
+		gameRecorder.readRecord();
+        name = gameRecorder.getName();
+        score = gameRecorder.getScore();
+        timeConsumed = gameRecorder.getTimeConsumed();
+        int recordNum = gameRecorder.getRecordNum();
         if (recordNum == 0) {
             ;
         }
@@ -104,7 +104,7 @@ public class HighScoreController {
             setThirdRecord();
             setForthRecord();
         }
-        if (recordNum == 5) {
+        if (recordNum >= 5) {
             setFirstRecord();
             setSecondRecord();
             setThirdRecord();
@@ -114,35 +114,30 @@ public class HighScoreController {
     }
 
     public void setFirstRecord() {
-        System.out.println("1");
         name1.setText(name.get(0));
         score1.setText(String.valueOf(score.get(0)));
         time1.setText(GameTimer.parseToTimeFormat(timeConsumed.get(0)));
     }
 
     public void setSecondRecord() {
-        System.out.println("2");
         name2.setText(name.get(1));
         score2.setText(String.valueOf(score.get(1)));
         time2.setText(GameTimer.parseToTimeFormat(timeConsumed.get(1)));
     }
 
     public void setThirdRecord() {
-        System.out.println("3");
         name3.setText(name.get(2));
         score3.setText(String.valueOf(score.get(2)));
         time3.setText(GameTimer.parseToTimeFormat(timeConsumed.get(2)));
     }
 
     public void setForthRecord() {
-        System.out.println("4");
         name4.setText(name.get(3));
         score4.setText(String.valueOf(score.get(3)));
         time4.setText(GameTimer.parseToTimeFormat(timeConsumed.get(3)));
     }
 
     public void setFifthRecord() {
-        System.out.println("5");
         name5.setText(name.get(4));
         score5.setText(String.valueOf(score.get(4)));
         time5.setText(GameTimer.parseToTimeFormat(timeConsumed.get(4)));

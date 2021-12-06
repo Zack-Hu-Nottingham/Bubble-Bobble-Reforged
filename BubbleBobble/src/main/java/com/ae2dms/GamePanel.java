@@ -32,7 +32,7 @@ public class GamePanel {
 	public static GameTimer gameTimer;
 	public static IntegerProperty bonus;
 	public static GameStatus gameStatus;
-	public static int level;
+	public static IntegerProperty level;
 
 	public static final int UNIT_SIZE = 20;
 	public static final int WIDTH = 44, HEIGHT = 30;
@@ -56,18 +56,18 @@ public class GamePanel {
 	}
 
 	public void startGame() {
-		loadHelper("/fxml/GameScene/gameScene.fxml");
+		loadHelper("/View_fxml/GameScene/gameScene.fxml");
 	}
 
 	public void toMenu() {
-		loadHelper("/fxml/menu/Menu.fxml");
+		loadHelper("/View_fxml/menu/Menu.fxml");
 	}
 
 	public void gameOver() {
 		if (gameStatus == GameStatus.WIN) {
-			loadHelper("/fxml/GameOver/gameOverWin.fxml");
+			loadHelper("/View_fxml/GameOver/gameOverWin.fxml");
 		} else {
-			loadHelper("/fxml/GameOver/gameOverLose.fxml");
+			loadHelper("/View_fxml/GameOver/gameOverLose.fxml");
 		}
 	}
 
