@@ -17,8 +17,6 @@ public class ExitGamePopUpController {
     @FXML
     public ImageView confirmExit;
 
-    public void clickSaveGame(MouseEvent mouseEvent) {}
-
     public void show() { AnimationHelper.popUp(ConfirmPane); }
 
 

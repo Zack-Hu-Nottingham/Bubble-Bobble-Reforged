@@ -20,16 +20,4 @@ public class CeilingUnit extends WallObject {
 	public void collideWith(SpriteObject obj) {
 		strategy.collideWith(obj, this);
 	}
-
-//	public CeilingUnit(GameScene world, int colNum, int rowNum) {
-//		super(world, colNum, rowNum);
-//
-//	}
-//
-//	public void collideWith(SpriteObject obj) {
-//		if (overlaps(obj)) {
-//			moveBelowUnit(obj);
-//			obj.collideWithCeiling();
-//		}
-//	}
 }

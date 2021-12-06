@@ -15,7 +15,6 @@ public class AnimationHelper {
         scaleTransition.setFromY(0.03);
         scaleTransition.setToX(1);
         scaleTransition.setToY(1);
-//        scaleTransition.setInterpolator(Interpolator.EASE_BOTH);
         scaleTransition.setInterpolator(Interpolator.LINEAR);
         scaleTransition.play();
     }

@@ -2,6 +2,7 @@ package com.ae2dms.GameObject.Award;
 
 import com.ae2dms.GameObject.Sprite.Hero;
 import com.ae2dms.GameObject.Sprite.SpriteObject;
+import com.ae2dms.GamePanel;
 import com.ae2dms.Scene.GameScene;
 import com.ae2dms.GameObject.Sprite.CollectEffect;
 import com.ae2dms.Util.SoundEffect;
@@ -20,9 +21,6 @@ public abstract class Award extends SpriteObject {
 	protected int bonus;
 	public CollectEffect collectEffect ;
 
-//	protected Image awardImage;
-
-
 
 	public Award(int x, int y, GameScene world, Image image) {
 		//initializes fruit
@@ -37,31 +35,14 @@ public abstract class Award extends SpriteObject {
 		super.update();
 	}
 
-//	@Override
-//	public void drawOn(GraphicsContext g) {
-//		//draws fruit
-//		g.drawImage(awardImage, x, y, SIZE, SIZE);
-//	}
 	
 	public void collideWith(Hero hero) {
 		//checks for collision with hero and tells it what to do if it is colliding
 		if (this.overlaps(hero) && readyToCollect) {
-//			SoundEffect.setToLoud();
 			SoundEffect.getInstance().play("fruit");
-//			SoundEffect.play("/sound/fruit.wav");
-//			GameScene.score  += this.bonus;
-//			GameScene.bonus += this.bonus;
-//			this.x;
-//			this.y;
 			collectEffect = new CollectEffect(x, y, scene, null, bonus);
 			scene.addCollectEffect(this.collectEffect);
-			// 不规范
-//			collectEffect.canRemove = true;
-//			this.collectEffect
-
-//			hero.
-//			GameSceneController.bonus.set(String.valueOf(GameScene.bonus));
-			scene.incrementBonus(bonus);
+			GamePanel.incrementBonus(bonus);
 			readyToCollect = false;
 			markToRemove();
 		}

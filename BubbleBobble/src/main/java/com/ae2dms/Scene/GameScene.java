@@ -8,18 +8,9 @@ import com.ae2dms.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallObject.WallUnit;
 import com.ae2dms.GameObject.Sprite.CollectEffect;
-import com.ae2dms.Main;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -45,18 +36,9 @@ public class GameScene {
 
 	private GraphicsContext graphicsContext;
 
-	private IntegerProperty bonus = new SimpleIntegerProperty(0);
-
-	public IntegerProperty bonusProperty() {
-		return bonus;
-	}
-
 	public static int level = 1;
 	public int delay = 180;
 
-	public void incrementBonus(int bonus) {
-		this.bonus.set(this.bonus.get()+bonus);
-	}
 
 	public GameScene() {
 		//initializes interactableworld
@@ -76,7 +58,6 @@ public class GameScene {
 
 	public void paintComponent() {
 		//paints everything on the world
-//		GraphicsContext g2 = (GraphicsContext) g;
 		graphicsContext.clearRect(0, 0, 1280, 720);
 
 		for (CeilingUnit ceilingUnit : ceilingUnits) {
@@ -252,40 +233,21 @@ public class GameScene {
 		toBeRemoved.removeAll(toBeRemoved);
 
 		if (enemies.isEmpty()) {
-			if (level == 4) {
-				GameSceneController.gameState = GameStatus.WIN;
-			} else if (level == 3){
-				if (delay == 0) {
-					readMap("/world/World4.txt");
-					level = 4;
-					delay = 180;
+			if (delay == 0) {
+				level += 1;
+				if (level == 4) {
+					GameSceneController.gameState = GameStatus.WIN;
 				} else {
-					delay -= 1;
+					readMap(level);
 				}
-
-			} else if (level == 2) {
-				if (delay == 0) {
-					readMap("/world/World3.txt");
-					level = 3;
-					delay = 180;
-				} else {
-					delay -= 1;
-				}
-
-			} else if (level == 1) {
-				if (delay == 0) {
-					readMap("/world/World2.txt");
-					level = 2;
-					delay = 180;
-				} else {
-					delay -= 1;
-				}
-
+			} else {
+				delay -= 1;
+			}
 			}
 		}
 
 
-	}
+
 
 	public void addCeilingUnit(CeilingUnit ceilingUnit) {
 		ceilingUnits.add(ceilingUnit);
@@ -359,13 +321,23 @@ public class GameScene {
 		collectEffects.remove(obj);
 	}
 
-//	public void markToReset() {
-//		//sets boolean to make sure the world is ready to be reset
-//		readyToReset = true;
-//	}
 
-	public void readMap(String mapName) {
-		InputStream input = this.getClass().getResourceAsStream(mapName);
+	public void readMap(int level) {
+		String level1 = "/world/World1.txt";
+		String level2 = "/world/World2.txt";
+		String level3 = "/world/World3.txt";
+		String map = level1;
+
+		switch (level) {
+			case 1:
+				map = level1;
+			case 2:
+				map = level2;
+			case 3:
+				map = level3;
+		}
+
+		InputStream input = this.getClass().getResourceAsStream(map);
 		Scanner scanner = new Scanner(input);
 
 		clearContents();
@@ -389,7 +361,6 @@ public class GameScene {
 			}
 		}
 		scanner.close();
-
 	}
 
 	public int getHeight() {
@@ -400,52 +371,9 @@ public class GameScene {
 		return WIDTH * UNIT_SIZE;
 	}
 
-//	public Scene getScene() { return stage.getScene(); }
-
-
-	public static void load() {
-		AnchorPane root = null;
-        try {
-		root = FXMLLoader.load(Menu.class.getResource("/fxml/GameScene/gameScene.fxml"));
-		Main.stage.getScene().setRoot(root);
-		} catch (IOException e) {
-            e.printStackTrace();
-        }
-	}
-
-	public void getCanvas() {
-		AnchorPane root = (AnchorPane) Main.stage.getScene().getRoot();
-//		System.out.println(root.getChildren());
-		Group temp = (Group) root.getChildren().get(0);
-		Canvas canvas = (Canvas) temp.getChildren().get(3);
+	public void getCanvas(Canvas canvas) {
 		graphicsContext = canvas.getGraphicsContext2D();
 	}
-//
-//	public void setTheme(Theme theme) {
-//		this.theme = theme;
-//	}
-//
-//	public Theme getTheme() {
-//		return theme;
-//	}
-
-//	public void setVolume(SoundEffect.Volume volume) {
-//		SoundEffect.setVolume(volume);
-//		SoundEffect.volume
-//		this.volume = volume;
-//	}
-//
-//	public SoundEffect.Volume getVolume() {
-//		return volume;
-//	}
-
-//	public void setDifficulty(Difficulty difficulty) {
-//		this.difficulty = difficulty;
-//	}
-
-//	public GameScene.Difficulty getDifficulty() {
-//		return difficulty;
-//	}
 
 	public enum Direction {
 		LEFT, RIGHT

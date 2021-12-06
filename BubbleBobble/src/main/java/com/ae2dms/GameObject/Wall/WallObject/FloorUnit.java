@@ -21,25 +21,4 @@ public class FloorUnit extends WallObject {
 	public void collideWith(SpriteObject obj) {
 		strategy.collideWith(obj, this);
 	}
-
-//	public FloorUnit(GameScene world, int colNum, int rowNum) {
-//		super(world, colNum, rowNum);
-//	}
-//
-//	public void collideWith(SpriteObject obj) {
-//
-//		double top = obj.getY();
-//		double bottom = top + obj.getHeight();
-//		if (overlaps(obj) && obj.yVelocity > 0) {
-//			if (bottom < y + height) {
-//				moveAboveUnit(obj);
-//				obj.collideWithFloor();
-//			}
-//			if (top > y){
-//				moveBelowUnit(obj);
-//				obj.collideWithCeiling();
-//			}
-//		}
-//	}
-
 }
