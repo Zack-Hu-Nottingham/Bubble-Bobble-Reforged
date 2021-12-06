@@ -72,15 +72,5 @@
             </plugin>
         </plugins>
 
-        <resources>
-            <resource>
-                <directory>sound</directory>
-                <includes>
-                    <include>**/*.wav</include>
-                    <include>**/*.mp3</include>
-                </includes>
-            </resource>
-            ...
-        </resources>
     </build>
 </project>

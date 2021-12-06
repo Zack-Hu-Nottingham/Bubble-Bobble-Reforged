@@ -18,13 +18,13 @@ module com.example.bubblebobble {
     opens com.ae2dms.Controller.Menu to javafx.fxml;
     exports com.ae2dms.Controller.GameScene;
     opens com.ae2dms.Controller.GameScene to javafx.fxml;
-    exports com.ae2dms.GameObject.Sprite;
-    opens com.ae2dms.GameObject.Sprite to javafx.fxml;
+    exports com.ae2dms.Model_GameObject.Sprite;
+    opens com.ae2dms.Model_GameObject.Sprite to javafx.fxml;
     exports com.ae2dms.Controller.GameOver;
     opens com.ae2dms.Controller.GameOver to javafx.fxml;
-    exports com.ae2dms.GameObject.Prompt;
-    opens com.ae2dms.GameObject.Prompt to javafx.fxml;
-    exports com.ae2dms.GameObject.Sprite.Projectile;
-    opens com.ae2dms.GameObject.Sprite.Projectile to javafx.fxml;
+    exports com.ae2dms.Model_GameObject.Prompt;
+    opens com.ae2dms.Model_GameObject.Prompt to javafx.fxml;
+    exports com.ae2dms.Model_GameObject.Sprite.Projectile;
+    opens com.ae2dms.Model_GameObject.Sprite.Projectile to javafx.fxml;
 
 }

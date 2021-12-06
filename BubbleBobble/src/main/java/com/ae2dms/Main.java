@@ -1,7 +1,6 @@
 package com.ae2dms;
 
-import com.ae2dms.Util.GameRecord;
-import com.ae2dms.Util.SoundEffect;
+import com.ae2dms.Util.GameRecorder;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -18,9 +17,9 @@ public class Main extends Application {
 	public static Stage stage;
 
 	public static void main(String[] args) throws IOException {
-//		GameRecord gameRecord = new GameRecord();
+//		GameRecorder gameRecorder = new GameRecorder();
 //		gameRecord.saveRecord("foo", 200, 15);
-//		gameRecord.readRecord();
+//		gameRecorder.readRecord();
 		launch(args);
 	}
 
