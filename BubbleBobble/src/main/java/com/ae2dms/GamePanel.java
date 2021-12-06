@@ -21,7 +21,6 @@ import java.io.IOException;
 
 public class GamePanel {
 
-//	public static SoundEffect.Volume volume = SoundEffect.Volume.MEDIUM;
 	public static Theme theme = Theme.RED;
 	public static Difficulty difficulty = Difficulty.LOW;
 
@@ -58,7 +57,6 @@ public class GamePanel {
 
 	public void startGame() {
 		loadHelper("/fxml/GameScene/gameScene.fxml");
-
 	}
 
 	public void toMenu() {

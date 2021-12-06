@@ -18,6 +18,9 @@ public class Main extends Application {
 	public static Stage stage;
 
 	public static void main(String[] args) throws IOException {
+//		GameRecord gameRecord = new GameRecord();
+//		gameRecord.saveRecord("foo", 200, 15);
+//		gameRecord.readRecord();
 		launch(args);
 	}
 
