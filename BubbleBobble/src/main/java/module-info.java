@@ -10,7 +10,6 @@ module com.example.bubblebobble {
     exports com.ae2dms;
     exports com.ae2dms.Scene;
     opens com.ae2dms.Scene to javafx.fxml;
-//    opens com.ae2dms.GameScene to javafx.fxml;
     exports com.ae2dms.Controller;
     opens com.ae2dms.Controller to javafx.fxml;
     exports com.ae2dms.Util;
@@ -19,8 +18,6 @@ module com.example.bubblebobble {
     opens com.ae2dms.Controller.Menu to javafx.fxml;
     exports com.ae2dms.Controller.GameScene;
     opens com.ae2dms.Controller.GameScene to javafx.fxml;
-//    exports com.ae2dms.Controller.GameScene.PopUp;
-//    opens com.ae2dms.Controller.GameScene.PopUp to javafx.fxml;
     exports com.ae2dms.GameObject.Sprite;
     opens com.ae2dms.GameObject.Sprite to javafx.fxml;
     exports com.ae2dms.Controller.GameOver;

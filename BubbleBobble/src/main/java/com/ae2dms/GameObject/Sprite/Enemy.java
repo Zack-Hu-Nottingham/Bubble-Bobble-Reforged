@@ -162,18 +162,14 @@ public class Enemy extends SpriteObject {
 	private void shootProjectile() {
 		// Nothing happens
 		SoundEffect.getInstance().play("shoot");
-
-//		SoundEffect.play("/sound/shoot.wav");
 		scene.addEnemyProjectile(new EnemyProjectile(scene, x, y, direction));
 	}
 	
 	public void collideWithProjectile() {
 		//handles what to do if hit with a projectile by the hero
 		if (!isBubbled) {
-//			SoundEffect.setToLoud();
 			SoundEffect.getInstance().play("bubbled");
 
-//			SoundEffect.play("/sound/bubbled.wav");
 			isBubbled = true;
 			yVelocity = 0;
 			xAccel = 0;
@@ -188,11 +184,9 @@ public class Enemy extends SpriteObject {
 	
 	void die() {
 		//handles what to do on death
-//		scene.addFruit(new Fruit(x, y, scene));
 		AwardGenerator awardGenerator = new AwardGenerator();
 		Award award = awardGenerator.getFruit(x, y, scene);
 		scene.addFruit(award);
-//		scene.addCollectEffect(award.collectEffect);
 		markToRemove();
 	}
 
@@ -208,7 +202,6 @@ public class Enemy extends SpriteObject {
 			}
 			else if (!canRemove){
 				SoundEffect.getInstance().play("pop");
-//				SoundEffect.play("/sound/pop.wav");
 				die();
 			}
 		}

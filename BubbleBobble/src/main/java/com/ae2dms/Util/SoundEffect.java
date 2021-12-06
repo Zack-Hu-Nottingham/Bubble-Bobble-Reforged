@@ -105,23 +105,14 @@ public class SoundEffect {
 			audioClip.play();
 		}
 	}
-
-
 	
 //	public void setToLoop() {
 //		// sets whether or not the sound effect loops
 ////		clip.loop(clip.LOOP_CONTINUOUSLY);
 //		audioClip.setCycleCount(AudioClip.INDEFINITE);
 //	}
-	
-//	public static void setToLoud() {
-//		// sets volume to be loud
-//		volume = Volume.HIGH;
-//	}
 
 	public static void setVolume(SoundEffect.Volume volume) {
-		instance.volume = volume;
-//		SoundEffect.volume = volume;
-
+		SoundEffect.instance.volume = volume;
 	}
 }

@@ -22,24 +22,4 @@ public class WallUnit extends WallObject {
 		strategy.collideWith(obj, this);
 	}
 
-//	public WallUnit(GameScene world, int colNum, int rowNum) {
-//		super(world, colNum, rowNum);
-//
-//	}
-//
-//	public void collideWith(SpriteObject obj) {
-//		double center = obj.x + obj.getWidth()/2;
-//		if (overlaps(obj)) {
-//			if (center > getHitbox().getMinX()+getHitbox().getWidth()/2) {
-//				moveRightOfUnit(obj);
-//				obj.collideWithWall();
-//			} else if (center < getHitbox().getMinX()+getHitbox().getWidth()/2){
-//				moveLeftOfUnit(obj);
-//				obj.collideWithWall();
-//			} else {
-//				moveBelowUnit(obj);
-//				obj.collideWithCeiling();
-//			}
-//		}
-//	}
 }

@@ -1,13 +1,13 @@
 package com.ae2dms;
 
 import com.ae2dms.Controller.GameScene.GameSceneController;
-import com.ae2dms.Scene.GameScene;
-import com.ae2dms.Scene.Menu;
-import com.ae2dms.Util.SoundEffect;
+import com.ae2dms.Util.GameTimer;
+import javafx.beans.property.IntegerProperty;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,8 +21,6 @@ import java.io.IOException;
 
 public class GamePanel {
 
-	public static Font smartisanMaquetteBold;
-
 //	public static SoundEffect.Volume volume = SoundEffect.Volume.MEDIUM;
 	public static Theme theme = Theme.RED;
 	public static Difficulty difficulty = Difficulty.LOW;
@@ -32,7 +30,6 @@ public class GamePanel {
 	private Stage stage;
 
 	private static GamePanel instance = new GamePanel();
-//	private GameScene gameScene = new GameScene();
 	private GameSceneController gameSceneController = new GameSceneController();
 
 
@@ -42,49 +39,57 @@ public class GamePanel {
 
 	public void init(Stage stage) throws IOException {
 
-//		smartisanMaquetteBold = Font.loadFont(Main.class.getResourceAsStream("/font/SmartisanMaquetteBold.ttf"), 20);
-
 		this.stage = stage;
 		AnchorPane root = new AnchorPane();
 		Scene scene = new Scene(root, UNIT_SIZE * WIDTH, UNIT_SIZE * HEIGHT);
 
 		stage.setTitle("Bubble Bobble");
-		String imgUrl = GamePanel.class.getResource("/image/ui/icon/icon.jpg").toString();
-		stage.getIcons().add(new Image(imgUrl));
+		String iconURL = GamePanel.class.getResource("/image/ui/icon/icon.jpg").toString();
+		stage.getIcons().add(new Image(iconURL));
 
 		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.setWidth(1294);
 		stage.setHeight(750);
 
-//		Parent root = FXMLLoader.load(Menu.class.getResource("/fxml/exitGamePopUp.fxml"));
-//		Scene scene = new Scene(root, 1280, 720);
-//		stage.setScene(scene);
-
-//		GameOver.load();
 		toMenu();
 		stage.show();
 	}
 
-	public void gameStart() {
-		GameScene.load();
-		gameSceneController = new GameSceneController();
-		gameSceneController.startGame();
-//		gameSceneController.initialize();
+	public void startGame() {
+		loadHelper("/fxml/GameScene/gameScene.fxml");
 
-		//		gameScene.init(stage);
 	}
 
 	public void toMenu() {
-		Menu.load();
+		loadHelper("/fxml/menu/Menu.fxml");
 	}
-	public void gameOver() {
-//		System.out.println("game over");
 
-//		String sound = success? "/sound/success.wav" : "/sound/aiyouwodemaya.mp3";
-//		SoundEffect.play(sound);
-//		gameScene.clear(stage);
-//		GameOver.load(stage, success);
+	public void gameOver() {
+		if (gameStatus == GameStatus.WIN) {
+			loadHelper("/fxml/GameOver/gameOverWin.fxml");
+		} else {
+			loadHelper("/fxml/GameOver/gameOverLose.fxml");
+		}
+	}
+
+
+	public static GameTimer gameTimer;
+	public static IntegerProperty bonus;
+	public static GameStatus gameStatus;
+	public static int level;
+
+	public static void incrementBonus(int bonus) {
+		GamePanel.bonus.set(GamePanel.bonus.get()+bonus);
+	}
+
+	public void loadHelper(String fxmlPath) {
+		try {
+			Parent root = FXMLLoader.load(GamePanel.class.getResource(fxmlPath));
+			Main.stage.getScene().setRoot(root);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public enum Difficulty {

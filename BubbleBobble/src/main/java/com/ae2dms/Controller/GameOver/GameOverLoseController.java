@@ -1,7 +1,6 @@
 package com.ae2dms.Controller.GameOver;
 
 import com.ae2dms.GamePanel;
-import com.ae2dms.Scene.GameOver;
 import com.ae2dms.Util.GameTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -23,8 +22,8 @@ public class GameOverLoseController {
     public ImageView playAgain;
 
     public void initialize() {
-        time.textProperty().bind(GameOver.timeConsumed);
-        score.textProperty().set(String.valueOf(GameOver.bonusEarned));
+        time.textProperty().set(GameTimer.parseToTimeFormat(GamePanel.gameTimer.getTime()));
+        score.textProperty().set(GamePanel.bonus.getValue().toString());
     }
 
     public void clickBackToMenu(MouseEvent mouseEvent) {
@@ -32,6 +31,6 @@ public class GameOverLoseController {
     }
 
     public void clickBackPlayAgain(MouseEvent mouseEvent) {
-        GamePanel.getInstance().gameStart();
+        GamePanel.getInstance().startGame();
     }
 }

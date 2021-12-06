@@ -40,13 +40,6 @@ public class GameRecord {
         }
         sortRecord();
 
-        System.out.println(name);
-        System.out.println(score);
-        System.out.println(timeConsumed);
-        for (int i = 0; i<getRecordNum(); i++) {
-            System.out.println(GameTimer.parseToTimeFormat(timeConsumed.get(i)));
-        }
-
     }
 
     public void sortRecord() {
@@ -87,10 +80,8 @@ public class GameRecord {
     public void saveRecord(String userName, int score, int timeConsumed) throws IOException {
         String filePath = "src/main/resources/gameRecord/records.txt";
 
-
         try {
             File file = new File(filePath);
-
             FileOutputStream fos = null;
 
             if (!file.exists()) {
@@ -111,7 +102,5 @@ public class GameRecord {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 }

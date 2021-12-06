@@ -61,7 +61,6 @@ public class SettingController {
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500), SettingPane);
         translateTransition.setByY(731);
         translateTransition.play();
-//        SettingPane.setVisible(false);
     }
 
 
@@ -108,33 +107,25 @@ public class SettingController {
         menuController.setTheme(GamePanel.Theme.RED);
     }
 
-//    private SoundEffect.Volume volume = SoundEffect.Volume.MEDIUM;
-//    private Difficulty difficulty = Difficulty.LOW;
-
     public void clickHigh(MouseEvent mouseEvent) {
         clearVolumeChoice();
         menuController.setVolume(SoundEffect.Volume.HIGH);
-//        System.out.println(GamePanel.volume);
-
         high.setImage(tick);
     }
 
     public void clickMedium(MouseEvent mouseEvent) {
-        System.out.println("medium");
         clearVolumeChoice();
         menuController.setVolume(SoundEffect.Volume.MEDIUM);
         medium.setImage(tick);
     }
 
     public void clickLow(MouseEvent mouseEvent) {
-        System.out.println("low");
         clearVolumeChoice();
         menuController.setVolume(SoundEffect.Volume.LOW);
         low.setImage(tick);
     }
 
     public void clickMute(MouseEvent mouseEvent) {
-        System.out.println("mute");
         clearVolumeChoice();
         menuController.setVolume(SoundEffect.Volume.MUTE);
         mute.setImage(tick);

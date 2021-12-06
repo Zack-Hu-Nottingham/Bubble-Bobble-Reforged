@@ -71,7 +71,6 @@ public class HighScoreController {
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500), HighScoreBar);
         translateTransition.setByY(731);
         translateTransition.play();
-//        HighScoreBar.setVisible(false);
     }
 
     private ArrayList<String > name;
@@ -148,6 +147,4 @@ public class HighScoreController {
         score5.setText(String.valueOf(score.get(4)));
         time5.setText(GameTimer.parseToTimeFormat(timeConsumed.get(4)));
     }
-
-
 }

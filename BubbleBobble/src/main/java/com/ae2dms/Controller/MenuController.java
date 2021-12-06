@@ -33,21 +33,13 @@ public class MenuController {
     @FXML
     private SettingController settingController;
 
-    public static GamePanel.Theme theme = GamePanel.Theme.RED;
-
-    public static SoundEffect.Volume volume = SoundEffect.Volume.MEDIUM;
-    private GamePanel.Difficulty difficulty = GamePanel.Difficulty.LOW;
-
-
     public void initialize() {
-
     }
-
 
     @FXML
     void mouseClickedStartGame(MouseEvent event) throws IOException {
 //        SoundEffect.play("/sound/click.mp3");
-        GamePanel.getInstance().gameStart();
+        GamePanel.getInstance().startGame();
         System.out.println("start");
     }
 

@@ -83,7 +83,6 @@ public class Hero extends SpriteObject {
 		//makes hero shoot projectile
 		SoundEffect.getInstance().play("shoot");
 
-//		SoundEffect.play("/sound/shoot.wav");
 		scene.addHeroProjectile(new HeroProjectile(scene, x, y, direction));
 	}
 
@@ -123,7 +122,6 @@ public class Hero extends SpriteObject {
 					if (!isShielding && !isStunned) {
 						jump();
 						SoundEffect.getInstance().play("jump");
-//						SoundEffect.play("/sound/jump.wav");
 					}
 					break;
 				case E:
@@ -148,11 +146,7 @@ public class Hero extends SpriteObject {
 				case W:
 					if (readyToCharge) {
 						this.scene.addBubble(new Bubble(this.scene, x, y));
-//						SoundEffect.setToLoud();
 						SoundEffect.getInstance().play("explode");
-//						SoundEffect.play("/sound/explode.wav");
-//						SoundEffect.EXPLODE.setToLoud();
-//						SoundEffect.EXPLODE.play();
 						readyToCharge = false;
 					}
 					break;
@@ -185,14 +179,9 @@ public class Hero extends SpriteObject {
 	
 	public void die() {
 		//handles death
-//		SoundEffect.setToLoud();
 		SoundEffect.getInstance().play("death");
-//		SoundEffect.play("/sound/death.wav");
-//		scene.markToReset();
 		// not mark to reset but let the game over.
 		GameSceneController.gameState = GamePanel.GameStatus.LOSE;
-
-//		GamePanel.getInstance().gameOver();
 	}
 
 	public void collideWithProjectile() {
@@ -238,8 +227,6 @@ public class Hero extends SpriteObject {
 		if (!isOnAPlatform) {
 			isOnAPlatform = true;
 			SoundEffect.getInstance().play("land");
-
-//			SoundEffect.play("/sound/land.wav");
 		}
 	}
 

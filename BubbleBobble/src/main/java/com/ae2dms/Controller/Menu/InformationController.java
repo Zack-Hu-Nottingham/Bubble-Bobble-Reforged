@@ -32,7 +32,5 @@ public class InformationController {
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500), InformationPane);
         translateTransition.setByY(732);
         translateTransition.play();
-
-//        InformationPane.setVisible(false);
     }
 }

@@ -1,12 +1,9 @@
 package com.ae2dms.Controller.GameScene;
 
 import com.ae2dms.GamePanel;
-import com.ae2dms.Scene.GameOver;
 import com.ae2dms.Scene.GameScene;
 import com.ae2dms.Util.GameTimer;
-import com.ae2dms.Util.SoundEffect;
 import javafx.animation.AnimationTimer;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
@@ -18,7 +15,7 @@ import javafx.scene.input.MouseEvent;
 
 public class GameSceneController {
 
-    private GameScene gameScene = new GameScene();
+    private GameScene gameScene;
 
     // View Node
     @FXML private Canvas canvas;
@@ -26,65 +23,54 @@ public class GameSceneController {
     @FXML private Label currentScore;
     @FXML private Label timeSpend;
     @FXML protected ExitGamePopUpController ExitGamePopUpController;
-//    @FXML protected GameCompletePopUpController GameCompletePopUpController;
 
 
     public static GamePanel.GameStatus gameState = GamePanel.GameStatus.READY;
-
-    private GameTimer timer = new GameTimer();
-
-    private IntegerProperty timeConsumed = new SimpleIntegerProperty(0);
 
     private Refresh refresh = new Refresh();
 
     private int timeDelay = 120;
 
-//    GamePanel gamePanel = GamePanel.getInstance();
+    public void initialize() {
 
-    public void startGame() {
+        GamePanel.gameTimer = new GameTimer();
 
-        gameScene.readMap("/world/World3.txt");
-        // world/World3.txt
-        // gameRecord/records.txt
+        GamePanel.bonus = new SimpleIntegerProperty(0);
 
-        gameScene.getCanvas();
+        GamePanel.gameTimer.start();
+
+        timeSpend.textProperty().bind(GamePanel.gameTimer.timeToDisplay);
+
+        currentScore.textProperty().bind(GamePanel.bonus.asString());
+
+        gameScene = new GameScene();
+
+        gameScene.readMap(1);
 
         GameSceneController.gameState = GamePanel.GameStatus.PLAYING;
 
+        gameScene.getCanvas(canvas);
+
         refresh.start();
-
-    }
-
-    public void initialize() {
-
-        timer.start();
-
-        timeSpend.textProperty().bind(timer.timeToDisplay);
-
-        currentScore.textProperty().bind(gameScene.bonusProperty().asString());
-
-    }
-    public int getTime() {
-        return timeConsumed.getValue().intValue();
     }
 
 
     public void mouseClickedBackToMenu(MouseEvent mouseEvent) {
         gameState = GamePanel.GameStatus.PAUSE;
-        timer.pause();
+        GamePanel.gameTimer.pause();
         blurEffect();
         ExitGamePopUpController.show();
 
         ExitGamePopUpController.confirmBack.setOnMouseClicked((event) -> {
             ExitGamePopUpController.hide();
             clearEffect();
-            timer.resume();
+            GamePanel.gameTimer.resume();
             gameState = GamePanel.GameStatus.PLAYING;
 
         });
 
         ExitGamePopUpController.confirmExit.setOnMouseClicked((event) -> {
-            timer.stop();
+            GamePanel.gameTimer.stop();
             ExitGamePopUpController.hide();
             clearEffect();
             GamePanel.getInstance().toMenu();
@@ -107,20 +93,14 @@ public class GameSceneController {
         public void handle(long currentTime) {
             switch (GameSceneController.gameState){
                 case PLAYING:
-
-                    timeConsumed.set(timeConsumed.getValue().intValue() + 1);
                     gameScene.updatePosition();
                     gameScene.paintComponent();
-                    break;
-
-                case PAUSE:
                     break;
 
                 case WIN:
                 case LOSE:
                     if (timeDelay <= 0) {
-                        GameOver gameOver = new GameOver();
-                        gameOver.init(gameState, timeConsumed.getValue().intValue()/60, gameScene.bonusProperty().getValue().intValue());
+                        GamePanel.getInstance().gameOver();
                         stop();
                     } else {
                         gameScene.updatePosition();

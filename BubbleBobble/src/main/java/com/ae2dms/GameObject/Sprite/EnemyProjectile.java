@@ -54,7 +54,6 @@ public class EnemyProjectile extends SpriteObject {
 		} else {
 			x += xVelocity;
 		}
-//		x += xVelocity * direction;
 		updateVelocity();
 
 		if(y < 25) {
