@@ -1,14 +1,12 @@
 package com.ae2dms.Scene;
 
-import com.ae2dms.Controller.GameScene.GameSceneController;
-import com.ae2dms.GameObject.Award.Award;
+import com.ae2dms.GameObject.Fruit.Fruit;
 import com.ae2dms.GameObject.Sprite.SpriteObject;
 import com.ae2dms.GameObject.Sprite.*;
 import com.ae2dms.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallObject.WallUnit;
-import com.ae2dms.GameObject.Sprite.CollectEffect;
-import com.ae2dms.GamePanel;
+import com.ae2dms.GameObject.Prompt.CollectEffect;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -30,7 +28,7 @@ public class GameScene {
 	private ArrayList<Enemy> enemies;
 	private ArrayList<HeroProjectile> heroProjectiles;
 	private ArrayList<EnemyProjectile> enemyProjectiles;
-	private ArrayList<Award> fruits;
+	private ArrayList<Fruit> fruits;
 	private ArrayList<SpriteObject> toBeRemoved;
 	private ArrayList<Bubble> bubbles;
 	private ArrayList<CollectEffect> collectEffects;
@@ -50,7 +48,7 @@ public class GameScene {
 		enemies = new ArrayList<Enemy>();
 		heroProjectiles = new ArrayList<HeroProjectile>();
 		enemyProjectiles = new ArrayList<EnemyProjectile>();
-		fruits = new ArrayList<Award>();
+		fruits = new ArrayList<Fruit>();
 		toBeRemoved = new ArrayList<SpriteObject>();
 		bubbles = new ArrayList<Bubble>();
 		collectEffects = new ArrayList<CollectEffect>();
@@ -82,7 +80,7 @@ public class GameScene {
 		for (HeroProjectile heroProjectile : heroProjectiles) {
 			heroProjectile.drawOn(graphicsContext);
 		}
-		for (Award fruit : fruits) {
+		for (Fruit fruit : fruits) {
 			fruit.drawOn(graphicsContext);
 		}
 		for (Bubble bubble : bubbles) {
@@ -116,7 +114,7 @@ public class GameScene {
 				toBeRemoved.add(heroProjectile);
 			}
 		}
-		for (Award fruit : fruits) {
+		for (Fruit fruit : fruits) {
 			fruit.update();
 			if (fruit.canRemove) {
 				toBeRemoved.add(fruit);
@@ -146,7 +144,7 @@ public class GameScene {
 				ceilingUnit.collideWith(enemy);
 				enemy.collideWith(ceilingUnit);
 			}
-			for (Award fruit : fruits) {
+			for (Fruit fruit : fruits) {
 				ceilingUnit.collideWith(fruit);
 			}
 			for (EnemyProjectile enemyProjectile : enemyProjectiles) {
@@ -164,7 +162,7 @@ public class GameScene {
 				floorUnit.collideWith(enemy);
 				enemy.collideWith(floorUnit);
 			}
-			for (Award fruit : fruits) {
+			for (Fruit fruit : fruits) {
 				floorUnit.collideWith(fruit);
 			}
 			for (EnemyProjectile enemyProjectile : enemyProjectiles) {
@@ -182,7 +180,7 @@ public class GameScene {
 				wallUnit.collideWith(enemy);
 				enemy.collideWith(wallUnit);
 			}
-			for (Award fruit : fruits) {
+			for (Fruit fruit : fruits) {
 				wallUnit.collideWith(fruit);
 			}
 			for (EnemyProjectile enemyProjectile : enemyProjectiles) {
@@ -216,7 +214,7 @@ public class GameScene {
 			}
 		}
 		// Fruits intiate collisions with Heroes
-		for (Award fruit : fruits) {
+		for (Fruit fruit : fruits) {
 			for (Hero hero : heroes) {
 				fruit.collideWith(hero);
 			}
@@ -283,7 +281,7 @@ public class GameScene {
 		enemyProjectiles.add(enemyProjectile);
 	}
 
-	public void addFruit(Award fruit) {
+	public void addFruit(Fruit fruit) {
 		//adds fruit on bubble pop
 		fruits.add(fruit);
 	}

@@ -1,7 +1,7 @@
 package com.ae2dms.GameObject.Sprite;
 
-import com.ae2dms.GameObject.Award.Award;
-import com.ae2dms.GameObject.Award.AwardGenerator;
+import com.ae2dms.GameObject.Fruit.Fruit;
+import com.ae2dms.GameObject.Fruit.FruitFactory;
 import com.ae2dms.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.GameObject.Wall.WallObject.WallUnit;
@@ -184,9 +184,12 @@ public class Enemy extends SpriteObject {
 	
 	void die() {
 		//handles what to do on death
-		AwardGenerator awardGenerator = new AwardGenerator();
-		Award award = awardGenerator.getFruit(x, y, scene);
-		scene.addFruit(award);
+		FruitFactory fruitFactory = new FruitFactory();
+
+		Double fruitType = Math.random();
+
+		Fruit fruit = fruitFactory.getFruit(x, y, scene, fruitType);
+		scene.addFruit(fruit);
 		markToRemove();
 	}
 

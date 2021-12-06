@@ -1,6 +1,7 @@
-package com.ae2dms.GameObject.Sprite;
+package com.ae2dms.GameObject.Prompt;
 
-import com.ae2dms.GameObject.Award.Award;
+import com.ae2dms.GameObject.Fruit.Fruit;
+import com.ae2dms.GameObject.Sprite.SpriteObject;
 import com.ae2dms.Scene.GameScene;
 import javafx.scene.image.Image;
 
@@ -15,16 +16,16 @@ public class CollectEffect extends SpriteObject {
         timer = activeFrames;
         switch (bonus) {
             case 30:
-                this.image = new Image(Award.class.getResource("/image/award/bonus30.png").toString(), 30, 30, false, false);
+                this.image = new Image(Fruit.class.getResource("/image/award/bonus30.png").toString(), 30, 30, false, false);
                 break;
             case 35:
-                this.image = new Image(Award.class.getResource("/image/award/bonus35.png").toString(), 30, 30, false, false);
+                this.image = new Image(Fruit.class.getResource("/image/award/bonus35.png").toString(), 30, 30, false, false);
                 break;
             case 40:
-                this.image = new Image(Award.class.getResource("/image/award/bonus40.png").toString(), 30, 30, false, false);
+                this.image = new Image(Fruit.class.getResource("/image/award/bonus40.png").toString(), 30, 30, false, false);
                 break;
             case 100:
-                this.image = new Image(Award.class.getResource("/image/award/bonus100.png").toString(), 30, 30, false, false);
+                this.image = new Image(Fruit.class.getResource("/image/award/bonus100.png").toString(), 30, 30, false, false);
         }
     }
 
