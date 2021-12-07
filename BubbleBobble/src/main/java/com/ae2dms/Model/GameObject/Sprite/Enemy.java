@@ -40,8 +40,8 @@ public class Enemy extends SpriteObject {
 	private boolean isOnAPlatform;
 	private double jumpSpeed;
 
-	protected static Image enemyImageRight = new Image(Enemy.class.getResource("/image/sprite/enemy/enemy01Right.png").toString(), WIDTH, HEIGHT, false, false);
-	protected static Image enemyImageLeft = new Image(Enemy.class.getResource("/image/sprite/enemy/enemy01Left.png").toString(), WIDTH, HEIGHT, false, false);
+	protected static Image enemyImageRight = new Image(Enemy.class.getResource("/image/sprite/enemy/enemyRight.png").toString(), WIDTH, HEIGHT, false, false);
+	protected static Image enemyImageLeft = new Image(Enemy.class.getResource("/image/sprite/enemy/enemyLeft.png").toString(), WIDTH, HEIGHT, false, false);
 	protected static Image enemyImage = enemyImageRight;
 
 	protected static Image bubbled = new Image(Bubble.class.getResource("/image/sprite/bubble/bubbled.png").toString(), 40, 40, false, false);
@@ -104,7 +104,9 @@ public class Enemy extends SpriteObject {
 		//draws mook
 		g.drawImage(enemyImage, x, y, WIDTH, HEIGHT);
 		if (isBubbled) {
+			g.setGlobalAlpha((double) timer/150);
 			g.drawImage(bubbled, x-10, y-5, 50, 50);
+			g.setGlobalAlpha(1);
 		}
 	}
 
@@ -186,11 +188,7 @@ public class Enemy extends SpriteObject {
 	
 	void die() {
 		//handles what to do on death
-
 		FruitFactory enemyDropFruitFactory = new EnemyDropFruitFactory();
-//		FruitFactory fruitFactory = new FruitFactory();
-
-//		Double fruitType = Math.random();
 		Fruit fruit = enemyDropFruitFactory.getFruit(x, y, scene);
 		scene.addFruit(fruit);
 		markToRemove();

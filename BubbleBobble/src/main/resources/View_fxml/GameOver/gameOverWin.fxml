@@ -17,7 +17,7 @@
                         <ImageView fitHeight="359.0" fitWidth="795.0">
                             <Image url="@../../image/ui/gameScene/endGamePopUp/gameComplete.png" />
                         </ImageView>
-                        <ImageView fx:id="backToMenu" fitHeight="63.0" fitWidth="218.0" layoutX="43.0" layoutY="278.0" onMouseClicked="#clickBackToMenu" styleClass="Button">
+                        <ImageView fx:id="backToMenu" fitHeight="62.0" fitWidth="214.0" layoutX="43.0" layoutY="278.0" onMouseClicked="#clickBackToMenu" styleClass="Button">
                             <Image url="@../../image/ui/gameScene/endGamePopUp/backToMenu.png" />
                         </ImageView>
                         <ImageView fx:id="playAgain" fitHeight="62.0" fitWidth="214.0" layoutX="540.0" layoutY="278.0" onMouseClicked="#clickPlayAgain" styleClass="Button">
