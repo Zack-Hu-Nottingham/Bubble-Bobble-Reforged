@@ -3,6 +3,7 @@ package com.ae2dms.Controller.GameScene;
 import com.ae2dms.GamePanel;
 import com.ae2dms.Scene.GameScene;
 import com.ae2dms.Util.GameTimer;
+import com.ae2dms.Util.MapReader;
 import com.ae2dms.Util.SoundEffect;
 import javafx.animation.AnimationTimer;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -30,6 +31,8 @@ public class GameSceneController {
 
     private Refresh refresh = new Refresh();
 
+    private MapReader mapReader;
+
     private int timeDelay = 120;
 
     public void initialize() {
@@ -50,7 +53,13 @@ public class GameSceneController {
 
         gameScene = new GameScene();
 
-        gameScene.readMap(GamePanel.level.getValue());
+        mapReader = MapReader.getInstance();
+
+        mapReader.setGameScene(gameScene);
+
+        mapReader.readMap(GamePanel.level.getValue());
+
+//        gameScene.readMap(GamePanel.level.getValue());
 
         GamePanel.gameStatus = GamePanel.GameStatus.PLAYING;
 

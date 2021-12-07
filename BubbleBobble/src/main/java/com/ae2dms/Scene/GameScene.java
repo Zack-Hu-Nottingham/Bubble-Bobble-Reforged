@@ -9,11 +9,13 @@ import com.ae2dms.Model_GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.Model_GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.Model_GameObject.Wall.WallObject.WallUnit;
 import com.ae2dms.Model_GameObject.Prompt.CollectEffect;
+import com.ae2dms.Util.MapReader;
 import com.ae2dms.Util.SoundEffect;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 import static com.ae2dms.GamePanel.*;
@@ -37,6 +39,8 @@ public class GameScene {
 
 	private GraphicsContext graphicsContext;
 
+	private MapReader mapReader;
+
 	public int delay = 180;
 
 	public GameScene() {
@@ -53,6 +57,8 @@ public class GameScene {
 		bubbles = new ArrayList<Bubble>();
 		collectEffects = new ArrayList<CollectEffect>();
 
+		mapReader = MapReader.getInstance();
+		mapReader.setGameScene(this);
 	}
 
 	public void paintComponent() {
@@ -250,7 +256,8 @@ public class GameScene {
 				} else {
 					level.set(level.getValue() + 1);
 
-					readMap(level.getValue());
+					mapReader.readMap(level.getValue());
+//					readMap(level.getValue());
 					delay = 180;
 				}
 			} else {
@@ -258,8 +265,6 @@ public class GameScene {
 			}
 			}
 		}
-
-
 
 
 	public void addCeilingUnit(CeilingUnit ceilingUnit) {
@@ -274,12 +279,12 @@ public class GameScene {
 		wallUnits.add(wallUnit);
 	}
 
-	void addHero(Hero hero) {
+	public void addHero(Hero hero) {
 		//adds a hero to the map
 		heroes.add(hero);
 	}
 
-	void addEnemy(Enemy enemy) {
+	public void addEnemy(Enemy enemy) {
 		//adds a mook to the map
 		enemies.add(enemy);
 	}
@@ -334,49 +339,6 @@ public class GameScene {
 		collectEffects.remove(obj);
 	}
 
-
-	public void readMap(int level) {
-		String level1 = "/world/World1.txt";
-		String level2 = "/world/World2.txt";
-		String level3 = "/world/World3.txt";
-		String map = level1;
-
-		switch (level) {
-			case 1:
-				map = level1;
-				break;
-			case 2:
-				map = level2;
-				break;
-			case 3:
-				map = level3;
-		}
-
-		InputStream input = this.getClass().getResourceAsStream(map);
-		Scanner scanner = new Scanner(input);
-
-		clearContents();
-		for (int row = 0; row < HEIGHT; row++) {
-			String currentLine = scanner.next();
-			for (int col = 0; col < WIDTH; col++) {
-				if (currentLine.charAt(col) == '*') {
-					addFloorUnit(new FloorUnit(this, col, row));
-				} else if (currentLine.charAt(col) == 'H') {
-					addHero(new Hero(this, col, row));
-				} else if (currentLine.charAt(col) == '|') {
-					addWallUnit(new WallUnit(this, col, row));
-				} else if (currentLine.charAt(col) == '_') {
-					addCeilingUnit(new CeilingUnit(this, col, row));
-				} else if (currentLine.charAt(col) == 'M') {
-					addEnemy(new Enemy(this, col, row));
-				}
-			}
-			if (scanner.hasNextLine()) {
-				scanner.nextLine();
-			}
-		}
-		scanner.close();
-	}
 
 	public int getHeight() {
 		return HEIGHT * UNIT_SIZE;
