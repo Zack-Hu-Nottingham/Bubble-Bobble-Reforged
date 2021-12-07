@@ -3,3 +3,5 @@ bob,135,19
 hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh,135,26
 123,215,28
 gali,440,69
+fof,590,65
+bob,380,83
