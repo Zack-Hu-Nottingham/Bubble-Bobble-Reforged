@@ -51,6 +51,11 @@
                                 </Label>
                             </center>
                         </BorderPane>
+                  <ImageView fx:id="viewHighScore" fitHeight="150.0" fitWidth="200.0" layoutX="301.0" layoutY="284.0" onMouseClicked="#clickViewHighScore" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+                     <image>
+                        <Image url="@../../image/ui/gameScene/endGamePopUp/viewHighScore.png" />
+                     </image>
+                  </ImageView>
                     </children>
                 </Group>
             </children>

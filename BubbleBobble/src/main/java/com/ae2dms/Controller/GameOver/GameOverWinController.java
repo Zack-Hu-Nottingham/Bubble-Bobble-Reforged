@@ -62,4 +62,8 @@ public class GameOverWinController {
 
         GamePanel.getInstance().startGame();
     }
+
+    public void clickViewHighScore(MouseEvent mouseEvent) {
+        GamePanel.getInstance().viewHighScore();
+    }
 }

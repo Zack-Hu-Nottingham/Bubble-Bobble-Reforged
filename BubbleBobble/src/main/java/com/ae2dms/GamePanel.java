@@ -72,6 +72,10 @@ public class GamePanel {
 		}
 	}
 
+	public void viewHighScore() {
+		loadHelper("/View_fxml/GameOver/HighScore.fxml");
+	}
+
 
 	public static void incrementBonus(int bonus) {
 		GamePanel.bonus.set(GamePanel.bonus.get()+bonus);
