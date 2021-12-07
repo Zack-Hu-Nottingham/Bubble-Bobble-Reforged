@@ -1,18 +1,18 @@
 package com.ae2dms.Util;
 
 import com.ae2dms.GamePanel;
-import com.ae2dms.Model_GameObject.Prompt.CollectEffect;
-import com.ae2dms.Model_GameObject.Sprite.Bubble;
-import com.ae2dms.Model_GameObject.Sprite.Enemy;
-import com.ae2dms.Model_GameObject.Sprite.Fruit.Fruit;
-import com.ae2dms.Model_GameObject.Sprite.Hero;
-import com.ae2dms.Model_GameObject.Sprite.Projectile.EnemyProjectile;
-import com.ae2dms.Model_GameObject.Sprite.Projectile.HeroProjectile;
-import com.ae2dms.Model_GameObject.Sprite.SpriteObject;
-import com.ae2dms.Model_GameObject.Wall.WallObject.CeilingUnit;
-import com.ae2dms.Model_GameObject.Wall.WallObject.FloorUnit;
-import com.ae2dms.Model_GameObject.Wall.WallObject.WallUnit;
-import com.ae2dms.Scene.GameScene;
+import com.ae2dms.Model.GameObject.Prompt.CollectEffect;
+import com.ae2dms.Model.GameObject.Sprite.Bubble;
+import com.ae2dms.Model.GameObject.Sprite.Enemy;
+import com.ae2dms.Model.GameObject.Sprite.Fruit.Fruit;
+import com.ae2dms.Model.GameObject.Sprite.Hero;
+import com.ae2dms.Model.GameObject.Sprite.Projectile.EnemyProjectile;
+import com.ae2dms.Model.GameObject.Sprite.Projectile.HeroProjectile;
+import com.ae2dms.Model.GameObject.Sprite.SpriteObject;
+import com.ae2dms.Model.GameObject.Wall.WallObject.CeilingUnit;
+import com.ae2dms.Model.GameObject.Wall.WallObject.FloorUnit;
+import com.ae2dms.Model.GameObject.Wall.WallObject.WallUnit;
+import com.ae2dms.Model.Scene.GameScene;
 import javafx.scene.canvas.GraphicsContext;
 
 import static com.ae2dms.GamePanel.gameStatus;

@@ -1,6 +1,5 @@
 package com.ae2dms.Controller.Menu;
 
-import com.ae2dms.Controller.MenuController;
 import com.ae2dms.Util.GameRecorder;
 import com.ae2dms.Util.GameTimer;
 import com.ae2dms.Util.SoundEffect;

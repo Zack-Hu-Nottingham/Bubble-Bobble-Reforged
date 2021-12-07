@@ -1,10 +1,8 @@
 package com.ae2dms.Controller.GameScene;
 
 import com.ae2dms.GamePanel;
-import com.ae2dms.Scene.GameScene;
-import com.ae2dms.Util.GameScenePainter;
+import com.ae2dms.Model.Scene.GameScene;
 import com.ae2dms.Util.GameTimer;
-import com.ae2dms.Util.MapReader;
 import com.ae2dms.Util.SoundEffect;
 import javafx.animation.AnimationTimer;
 import javafx.beans.property.SimpleIntegerProperty;

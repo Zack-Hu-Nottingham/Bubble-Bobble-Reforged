@@ -1,6 +1,5 @@
 package com.ae2dms.Controller.Menu;
 
-import com.ae2dms.Controller.MenuController;
 import com.ae2dms.Util.SoundEffect;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
