@@ -158,9 +158,11 @@ public class Hero extends SpriteObject {
 					break;
 				case W:
 					if (readyToCharge) {
+						GamePanel.chargeLevel = 0;
+						readyToCharge = false;
 						this.scene.addBubble(new Bubble(this.scene, x, y));
 						SoundEffect.getInstance().play("explode");
-						readyToCharge = false;
+//						readyToCharge = false;
 					}
 					break;
 			}
@@ -229,8 +231,9 @@ public class Hero extends SpriteObject {
 				shieldTimer = SHIELD_TIME;
 			}
 		}
-
-		setChargeToReady();
+		if (GamePanel.chargeLevel >= 4) {
+			setChargeToReady();
+		}
 	}
 	
 	@Override

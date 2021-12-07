@@ -20,6 +20,14 @@ public class GameRecorder {
     public GameRecorder() {
     }
 
+    public int getHighestScore() throws IOException {
+        readRecord();
+        if (score.isEmpty()) {
+            return 0;
+        } else {
+            return score.get(0);
+        }
+    }
 
     public void readRecord() throws IOException {
         try {

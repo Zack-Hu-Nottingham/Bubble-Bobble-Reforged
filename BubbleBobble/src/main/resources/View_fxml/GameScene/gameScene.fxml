@@ -6,6 +6,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../CSSforButton.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ae2dms.Controller.GameScene.GameSceneController">
@@ -54,6 +55,50 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="788.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+               <image>
+                  <Image url="@../../image/ui/gameScene/bestRecord.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="295.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+               <image>
+                  <Image url="@../../image/ui/gameScene/charge.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="chargeState" alignment="CENTER" layoutX="318.0" layoutY="41.0" text="Charging" textFill="#fffdfd">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="cover1" fitHeight="17.0" fitWidth="8.0" layoutX="427.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../image/ui/gameScene/cover.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="cover2" fitHeight="17.0" fitWidth="8.0" layoutX="434.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../image/ui/gameScene/cover.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="cover3" fitHeight="17.0" fitWidth="8.0" layoutX="441.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../image/ui/gameScene/cover.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="cover4" fitHeight="17.0" fitWidth="8.0" layoutX="449.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../image/ui/gameScene/cover.png" />
+               </image>
+            </ImageView>
+            <BorderPane layoutX="839.0" layoutY="-45.0" prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <Label fx:id="bestRecord" alignment="CENTER" contentDisplay="CENTER" text="0" textFill="#d3b087" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </center>
+            </BorderPane>
 
          </children>
       </Group>

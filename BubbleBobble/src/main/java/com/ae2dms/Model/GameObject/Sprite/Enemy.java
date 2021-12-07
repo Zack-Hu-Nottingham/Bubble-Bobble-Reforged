@@ -188,6 +188,8 @@ public class Enemy extends SpriteObject {
 	
 	void die() {
 		//handles what to do on death
+		GamePanel.chargeLevel += 1;
+		System.out.println(GamePanel.chargeLevel);
 		FruitFactory enemyDropFruitFactory = new EnemyDropFruitFactory();
 		Fruit fruit = enemyDropFruitFactory.getFruit(x, y, scene);
 		scene.addFruit(fruit);
