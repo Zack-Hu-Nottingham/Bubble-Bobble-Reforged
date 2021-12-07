@@ -28,13 +28,7 @@ public class GameSceneController {
     @FXML protected ExitGamePopUpController ExitGamePopUpController;
     @FXML private Label levelHint;
 
-//    public static GamePanel.GameStatus gameState = GamePanel.GameStatus.READY;
-
     private Refresh refresh = new Refresh();
-
-    private MapReader mapReader;
-
-    private GameScenePainter gameScenePainter;
 
     private int timeDelay = 120;
 
@@ -48,29 +42,18 @@ public class GameSceneController {
 
         GamePanel.level = new SimpleIntegerProperty(1);
 
+        gameScene = new GameScene();
+
+        gameScene.getCanvas(canvas);
+
+
         timeSpend.textProperty().bind(GamePanel.gameTimer.timeToDisplay);
 
         currentScore.textProperty().bind(GamePanel.bonus.asString());
 
         levelHint.textProperty().bind(GamePanel.level.asString());
 
-        gameScene = new GameScene();
-
-        mapReader = MapReader.getInstance();
-
-        mapReader.setGameScene(gameScene);
-
-        mapReader.readMap(GamePanel.level.getValue());
-
-        gameScenePainter = GameScenePainter.getInstance();
-
-        gameScenePainter.setGameScene(gameScene);
-
-//        gameScene.readMap(GamePanel.level.getValue());
-
         GamePanel.gameStatus = GamePanel.GameStatus.PLAYING;
-
-        gameScene.getCanvas(canvas);
 
         refresh.start();
     }
@@ -120,9 +103,7 @@ public class GameSceneController {
         public void handle(long currentTime) {
             switch (GamePanel.gameStatus){
                 case PLAYING:
-                    gameScene.updatePosition();
-//                    GameScenePainter.getInstance()
-                    gameScenePainter.paintComponent();
+                    gameScene.getGameScenePainter().paintComponent();
                     break;
 
                 case WIN:
@@ -131,8 +112,7 @@ public class GameSceneController {
                         GamePanel.getInstance().gameOver();
                         stop();
                     } else {
-                        gameScene.updatePosition();
-                        gameScenePainter.paintComponent();
+                        gameScene.getGameScenePainter().paintComponent();
                         timeDelay -= 1;
                     }
                     break;
