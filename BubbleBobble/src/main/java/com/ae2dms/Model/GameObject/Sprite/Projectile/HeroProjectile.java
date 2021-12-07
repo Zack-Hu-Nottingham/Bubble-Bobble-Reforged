@@ -17,19 +17,19 @@ public class HeroProjectile extends Projectile {
 	private static final int SIZE = 80;
 
 	private static Image red = new Image(Bubble.class.getResource("/image/sprite/bubble/red.png").toString(), SIZE, SIZE, false, false);
-	private static Image blurRed = new Image(Bubble.class.getResource("/image/sprite/bubble/blurRed.png").toString(), SIZE, SIZE, false, false);
+	private static Image blurRed = new Image(Bubble.class.getResource("/image/sprite/bubble/blurBubble/blurRed.png").toString(), SIZE, SIZE, false, false);
 	private static Image black = new Image(Bubble.class.getResource("/image/sprite/bubble/black.png").toString(), SIZE, SIZE, false, false);
-	private static Image blurBlack = new Image(Bubble.class.getResource("/image/sprite/bubble/blurBlack.png").toString(), SIZE, SIZE, false, false);
+	private static Image blurBlack = new Image(Bubble.class.getResource("/image/sprite/bubble/blurBubble/blurBlack.png").toString(), SIZE, SIZE, false, false);
 	private static Image green = new Image(Bubble.class.getResource("/image/sprite/bubble/green.png").toString(), SIZE, SIZE, false, false);
-	private static Image blurGreen = new Image(Bubble.class.getResource("/image/sprite/bubble/blurGreen.png").toString(), SIZE, SIZE, false, false);
+	private static Image blurGreen = new Image(Bubble.class.getResource("/image/sprite/bubble/blurBubble/blurGreen.png").toString(), SIZE, SIZE, false, false);
 	private static Image pink = new Image(Bubble.class.getResource("/image/sprite/bubble/pink.png").toString(), SIZE, SIZE, false, false);
-	private static Image blurPink = new Image(Bubble.class.getResource("/image/sprite/bubble/blurPink.png").toString(), SIZE, SIZE, false, false);
+	private static Image blurPink = new Image(Bubble.class.getResource("/image/sprite/bubble/blurBubble/blurPink.png").toString(), SIZE, SIZE, false, false);
 	private static Image blue = new Image(Bubble.class.getResource("/image/sprite/bubble/blue.png").toString(), SIZE, SIZE, false, false);
-	private static Image blurBlue = new Image(Bubble.class.getResource("/image/sprite/bubble/blurBlue.png").toString(), SIZE, SIZE, false, false);
+	private static Image blurBlue = new Image(Bubble.class.getResource("/image/sprite/bubble/blurBubble/blurBlue.png").toString(), SIZE, SIZE, false, false);
 
 
-	private static Image image = new Image(Bubble.class.getResource("/image/sprite/bubble/starBubble.png").toString(), SIZE, SIZE, false, false);
-	private static Image blurImage = new Image(Bubble.class.getResource("/image/sprite/bubble/starBubble2.png").toString(), SIZE, SIZE, false, false);
+	private static Image image = red;
+	private static Image blurImage = blurRed;
 
 	public HeroProjectile(GameScene world, int x, int y, GameScene.Direction direction) {
 		super(x-40, y-40, SIZE, SIZE, world, image);

@@ -8,7 +8,10 @@ import com.ae2dms.Util.SoundEffect;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 import static com.ae2dms.GamePanel.UNIT_SIZE;
@@ -69,14 +72,24 @@ public class Hero extends SpriteObject {
 			imageBub = imageBubRight;
 		}
 
-		g.drawImage(imageBub, x, y, SIZE, SIZE);
 		if (isShielding) {
-			g.setFill(new Color(1,0, (double) (shieldTimer * ((double) 255 / SHIELD_TIME))/255, (double) (shieldTimer * ((double) 255 / SHIELD_TIME))/255));
-			g.fillOval(x - 10, y - 10, SIZE + 20, SIZE + 20);
+			g.drawImage(imageBub, x, y, SIZE, SIZE);
+			Image shield = new Image(Hero.class.getResource("/image/sprite/hero/shield.png").toString(), SIZE, SIZE, false, false);
+			g.setGlobalAlpha((double) (shieldTimer * ((double) 255 / SHIELD_TIME))/255);
+			g.drawImage(shield, x, y, width, height);
+			g.setGlobalAlpha(1);
+
 		} else if (isStunned) {
-			g.setFill(Color.MAGENTA);
-			g.fillRect(x, y, SIZE, SIZE);
+			g.setGlobalAlpha(0.5);
+			g.drawImage(imageBub, x, y, SIZE, SIZE);
+			g.setGlobalAlpha(1);
+		}else if (GamePanel.gameStatus == GamePanel.GameStatus.LOSE) {
+
+		} else {
+			g.drawImage(imageBub, x, y, SIZE, SIZE);
+
 		}
+
 	}
 	
 	public void shootProjectile() {

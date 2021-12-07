@@ -16,16 +16,16 @@ public class CollectEffect extends SpriteObject {
         timer = activeFrames;
         switch (bonus) {
             case 30:
-                this.image = new Image(Fruit.class.getResource("/image/fruit/bonus30.png").toString(), 30, 30, false, false);
+                this.image = new Image(Fruit.class.getResource("/image/fruit/collectEffect/bonus30.png").toString(), 30, 30, false, false);
                 break;
             case 35:
-                this.image = new Image(Fruit.class.getResource("/image/fruit/bonus35.png").toString(), 30, 30, false, false);
+                this.image = new Image(Fruit.class.getResource("/image/fruit/collectEffect/bonus35.png").toString(), 30, 30, false, false);
                 break;
             case 40:
-                this.image = new Image(Fruit.class.getResource("/image/fruit/bonus40.png").toString(), 30, 30, false, false);
+                this.image = new Image(Fruit.class.getResource("/image/fruit/collectEffect/bonus40.png").toString(), 30, 30, false, false);
                 break;
             case 100:
-                this.image = new Image(Fruit.class.getResource("/image/fruit/bonus100.png").toString(), 30, 30, false, false);
+                this.image = new Image(Fruit.class.getResource("/image/fruit/collectEffect/bonus100.png").toString(), 30, 30, false, false);
         }
     }
 

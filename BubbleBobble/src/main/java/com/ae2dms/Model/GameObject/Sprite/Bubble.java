@@ -14,7 +14,7 @@ public class Bubble extends SpriteObject {
 	private int accel;
 	private static final int SIZE = 25;
 
-	protected static Image image = new Image(Bubble.class.getResource("/image/sprite/bubble/bubbled.png").toString(), SIZE, SIZE, false, false);
+	protected static Image image = new Image(Bubble.class.getResource("/image/sprite/bubble/explosion.png").toString(), SIZE, SIZE, false, false);
 	
 	public Bubble(GameScene world, int x, int y) {
 		super(x, y, 0, 0, world, image);
@@ -36,12 +36,12 @@ public class Bubble extends SpriteObject {
 	@Override
 	public void drawOn(GraphicsContext g) {
 		if (width <= 2500) {
-			g.setFill(new Color(255/255, 204/255, 102/255, (double)(255 - (int) (width * ((double) 255 / 2500)))/255));
+			g.setGlobalAlpha((double)(255 - (int) (width * ((double) 255 / 2500)))/255);
+			g.drawImage(image, x, y, width, height);
+			g.setGlobalAlpha(1);
 		} else {
-			g.setFill(new Color(255/255, 204/255, 102/255, 0));
+			g.drawImage(image, x, y, width, height);
 		}
-		g.fillOval(x, y, width, height);
-		g.setFill(Color.BLACK);
 	}
 
 	@Override
