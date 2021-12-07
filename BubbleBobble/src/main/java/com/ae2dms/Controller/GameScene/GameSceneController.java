@@ -2,6 +2,7 @@ package com.ae2dms.Controller.GameScene;
 
 import com.ae2dms.GamePanel;
 import com.ae2dms.Model.Scene.GameScene;
+import com.ae2dms.Util.GameRecorder;
 import com.ae2dms.Util.GameTimer;
 import com.ae2dms.Util.SoundEffect;
 import javafx.animation.AnimationTimer;
@@ -50,6 +51,10 @@ public class GameSceneController {
         GamePanel.level = new SimpleIntegerProperty(1);
 
         GamePanel.chargeLevel = 0;
+
+        GameRecorder gameRecorder = new GameRecorder();
+
+        bestRecord.setText(String.valueOf(gameRecorder.getHighestScore()));
 
         gameScene = new GameScene();
 
