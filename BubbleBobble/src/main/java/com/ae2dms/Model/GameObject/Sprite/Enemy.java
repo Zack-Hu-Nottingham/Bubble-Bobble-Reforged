@@ -1,7 +1,8 @@
 package com.ae2dms.Model.GameObject.Sprite;
 
 import com.ae2dms.Model.GameObject.Sprite.Fruit.Fruit;
-import com.ae2dms.Model.GameObject.Sprite.Fruit.FruitFactory;
+import com.ae2dms.Model.GameObject.Sprite.Fruit.fruitFactory.EnemyDropFruitFactory;
+import com.ae2dms.Model.GameObject.Sprite.Fruit.fruitFactory.FruitFactory;
 import com.ae2dms.Model.GameObject.Sprite.Projectile.EnemyProjectile;
 import com.ae2dms.Model.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.Model.GameObject.Wall.WallObject.FloorUnit;
@@ -185,11 +186,12 @@ public class Enemy extends SpriteObject {
 	
 	void die() {
 		//handles what to do on death
-		FruitFactory fruitFactory = new FruitFactory();
 
-		Double fruitType = Math.random();
+		FruitFactory enemyDropFruitFactory = new EnemyDropFruitFactory();
+//		FruitFactory fruitFactory = new FruitFactory();
 
-		Fruit fruit = fruitFactory.getFruit(x, y, scene, fruitType);
+//		Double fruitType = Math.random();
+		Fruit fruit = enemyDropFruitFactory.getFruit(x, y, scene);
 		scene.addFruit(fruit);
 		markToRemove();
 	}
