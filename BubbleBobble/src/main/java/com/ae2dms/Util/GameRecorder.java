@@ -20,7 +20,7 @@ public class GameRecorder {
     public GameRecorder() {
     }
 
-    public int getHighestScore() throws IOException {
+    public int getHighestScore(){
         readRecord();
         if (score.isEmpty()) {
             return 0;
@@ -29,7 +29,7 @@ public class GameRecorder {
         }
     }
 
-    public void readRecord() throws IOException {
+    public void readRecord() {
         try {
             records = new BufferedReader(new FileReader(gameDocument));
             String[] parts = null;
