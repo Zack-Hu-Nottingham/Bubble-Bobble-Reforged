@@ -25,6 +25,7 @@ import static com.ae2dms.GamePanel.*;
  * updating positions, checking for collisions, and removing objects.
  */
 public class GameScene {
+
 	private ArrayList<CeilingUnit> ceilingUnits;
 	private ArrayList<FloorUnit> floorUnits;
 	private ArrayList<WallUnit> wallUnits;
@@ -37,7 +38,105 @@ public class GameScene {
 	private ArrayList<Bubble> bubbles;
 	private ArrayList<CollectEffect> collectEffects;
 
+
+	public ArrayList<CeilingUnit> getCeilingUnits() {
+		return ceilingUnits;
+	}
+
+	public void setCeilingUnits(ArrayList<CeilingUnit> ceilingUnits) {
+		this.ceilingUnits = ceilingUnits;
+	}
+
+	public ArrayList<FloorUnit> getFloorUnits() {
+		return floorUnits;
+	}
+
+	public void setFloorUnits(ArrayList<FloorUnit> floorUnits) {
+		this.floorUnits = floorUnits;
+	}
+
+	public ArrayList<WallUnit> getWallUnits() {
+		return wallUnits;
+	}
+
+	public void setWallUnits(ArrayList<WallUnit> wallUnits) {
+		this.wallUnits = wallUnits;
+	}
+
+	public ArrayList<Hero> getHeroes() {
+		return heroes;
+	}
+
+	public void setHeroes(ArrayList<Hero> heroes) {
+		this.heroes = heroes;
+	}
+
+	public ArrayList<Enemy> getEnemies() {
+		return enemies;
+	}
+
+	public void setEnemies(ArrayList<Enemy> enemies) {
+		this.enemies = enemies;
+	}
+
+	public ArrayList<HeroProjectile> getHeroProjectiles() {
+		return heroProjectiles;
+	}
+
+	public void setHeroProjectiles(ArrayList<HeroProjectile> heroProjectiles) {
+		this.heroProjectiles = heroProjectiles;
+	}
+
+	public ArrayList<EnemyProjectile> getEnemyProjectiles() {
+		return enemyProjectiles;
+	}
+
+	public void setEnemyProjectiles(ArrayList<EnemyProjectile> enemyProjectiles) {
+		this.enemyProjectiles = enemyProjectiles;
+	}
+
+	public ArrayList<Fruit> getFruits() {
+		return fruits;
+	}
+
+	public void setFruits(ArrayList<Fruit> fruits) {
+		this.fruits = fruits;
+	}
+
+	public ArrayList<SpriteObject> getToBeRemoved() {
+		return toBeRemoved;
+	}
+
+	public void setToBeRemoved(ArrayList<SpriteObject> toBeRemoved) {
+		this.toBeRemoved = toBeRemoved;
+	}
+
+	public ArrayList<Bubble> getBubbles() {
+		return bubbles;
+	}
+
+	public void setBubbles(ArrayList<Bubble> bubbles) {
+		this.bubbles = bubbles;
+	}
+
+	public ArrayList<CollectEffect> getCollectEffects() {
+		return collectEffects;
+	}
+
+	public void setCollectEffects(ArrayList<CollectEffect> collectEffects) {
+		this.collectEffects = collectEffects;
+	}
+
+	public GraphicsContext getGraphicsContext() {
+		return graphicsContext;
+	}
+
+	public void setGraphicsContext(GraphicsContext graphicsContext) {
+		this.graphicsContext = graphicsContext;
+	}
+
 	private GraphicsContext graphicsContext;
+
 
 	private MapReader mapReader;
 
@@ -61,41 +160,6 @@ public class GameScene {
 		mapReader.setGameScene(this);
 	}
 
-	public void paintComponent() {
-		//paints everything on the world
-		graphicsContext.clearRect(0, 0, 1280, 720);
-
-		for (CeilingUnit ceilingUnit : ceilingUnits) {
-			ceilingUnit.drawOn(graphicsContext);
-		}
-		for (FloorUnit floorUnit : floorUnits) {
-			floorUnit.drawOn(graphicsContext);
-		}
-		for (WallUnit wallUnit : wallUnits) {
-			wallUnit.drawOn(graphicsContext);
-		}
-		for (Hero hero : heroes) {
-			hero.drawOn(graphicsContext);
-		}
-		for (Enemy enemy : enemies) {
-			enemy.drawOn(graphicsContext);
-		}
-		for (EnemyProjectile enemyProjectile : enemyProjectiles) {
-			enemyProjectile.drawOn(graphicsContext);
-		}
-		for (HeroProjectile heroProjectile : heroProjectiles) {
-			heroProjectile.drawOn(graphicsContext);
-		}
-		for (Fruit fruit : fruits) {
-			fruit.drawOn(graphicsContext);
-		}
-		for (Bubble bubble : bubbles) {
-			bubble.drawOn(graphicsContext);
-		}
-		for (CollectEffect collectEffect : collectEffects) {
-			collectEffect.drawOn(graphicsContext);
-		}
-	}
 
 	public void updatePosition() {
 		//updates positions of everything on screen

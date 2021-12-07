@@ -2,6 +2,7 @@ package com.ae2dms.Controller.GameScene;
 
 import com.ae2dms.GamePanel;
 import com.ae2dms.Scene.GameScene;
+import com.ae2dms.Util.GameScenePainter;
 import com.ae2dms.Util.GameTimer;
 import com.ae2dms.Util.MapReader;
 import com.ae2dms.Util.SoundEffect;
@@ -33,6 +34,8 @@ public class GameSceneController {
 
     private MapReader mapReader;
 
+    private GameScenePainter gameScenePainter;
+
     private int timeDelay = 120;
 
     public void initialize() {
@@ -58,6 +61,10 @@ public class GameSceneController {
         mapReader.setGameScene(gameScene);
 
         mapReader.readMap(GamePanel.level.getValue());
+
+        gameScenePainter = GameScenePainter.getInstance();
+
+        gameScenePainter.setGameScene(gameScene);
 
 //        gameScene.readMap(GamePanel.level.getValue());
 
@@ -114,7 +121,8 @@ public class GameSceneController {
             switch (GamePanel.gameStatus){
                 case PLAYING:
                     gameScene.updatePosition();
-                    gameScene.paintComponent();
+//                    GameScenePainter.getInstance()
+                    gameScenePainter.paintComponent();
                     break;
 
                 case WIN:
@@ -124,7 +132,7 @@ public class GameSceneController {
                         stop();
                     } else {
                         gameScene.updatePosition();
-                        gameScene.paintComponent();
+                        gameScenePainter.paintComponent();
                         timeDelay -= 1;
                     }
                     break;
