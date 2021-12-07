@@ -1,12 +1,11 @@
 package com.ae2dms.Util;
 
-import com.ae2dms.GamePanel;
-import com.ae2dms.Model_GameObject.Sprite.Enemy;
-import com.ae2dms.Model_GameObject.Sprite.Hero;
-import com.ae2dms.Model_GameObject.Wall.WallObject.CeilingUnit;
-import com.ae2dms.Model_GameObject.Wall.WallObject.FloorUnit;
-import com.ae2dms.Model_GameObject.Wall.WallObject.WallUnit;
-import com.ae2dms.Scene.GameScene;
+import com.ae2dms.Model.GameObject.Sprite.Enemy;
+import com.ae2dms.Model.GameObject.Sprite.Hero;
+import com.ae2dms.Model.GameObject.Wall.WallObject.CeilingUnit;
+import com.ae2dms.Model.GameObject.Wall.WallObject.FloorUnit;
+import com.ae2dms.Model.GameObject.Wall.WallObject.WallUnit;
+import com.ae2dms.Model.Scene.GameScene;
 
 import java.io.InputStream;
 import java.util.Scanner;
