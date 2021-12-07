@@ -11,12 +11,20 @@ import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
 import javafx.scene.effect.GaussianBlur;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 
 public class GameSceneController {
 
     private GameScene gameScene;
+
+    @FXML public Label bestRecord;
+    @FXML public Label chargeState;
+    @FXML public ImageView cover1;
+    @FXML public ImageView cover2;
+    @FXML public ImageView cover3;
+    @FXML public ImageView cover4;
 
     // View Node
     @FXML private Canvas canvas;
@@ -25,6 +33,7 @@ public class GameSceneController {
     @FXML private Label timeSpend;
     @FXML protected ExitGamePopUpController ExitGamePopUpController;
     @FXML private Label levelHint;
+
 
     private Refresh refresh = new Refresh();
 
@@ -40,10 +49,11 @@ public class GameSceneController {
 
         GamePanel.level = new SimpleIntegerProperty(1);
 
+        GamePanel.chargeLevel = 0;
+
         gameScene = new GameScene();
 
         gameScene.getCanvas(canvas);
-
 
         timeSpend.textProperty().bind(GamePanel.gameTimer.timeToDisplay);
 
@@ -95,6 +105,13 @@ public class GameSceneController {
         blurGroup.setEffect(null);
     }
 
+    public void clearCharge() {
+        cover1.setOpacity(1);
+        cover2.setOpacity(1);
+        cover3.setOpacity(1);
+        cover4.setOpacity(1);
+    }
+
 
     private class Refresh extends AnimationTimer {
         @Override
@@ -114,6 +131,23 @@ public class GameSceneController {
                         timeDelay -= 1;
                     }
                     break;
+            }
+
+            if (GamePanel.chargeLevel == 0) {
+                clearCharge();
+            }
+            if (GamePanel.chargeLevel >= 1) {
+                cover1.setOpacity(0);
+            }
+            if(GamePanel.chargeLevel >= 2) {
+                cover2.setOpacity(0);
+            }
+            if(GamePanel.chargeLevel >= 3) {
+                cover3.setOpacity(0);
+            }
+            if (GamePanel.chargeLevel >= 4) {
+                cover4.setOpacity(0);
+                chargeState.setText("Ready");
             }
         }
     }
