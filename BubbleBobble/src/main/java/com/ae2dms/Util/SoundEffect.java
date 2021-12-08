@@ -43,7 +43,7 @@ public class SoundEffect {
 
 		// plays the sound effect
 		if (volume != Volume.MUTE) {
-			if (audioClip != victory && audioClip != nextLevel && audioClip.isPlaying()) {
+			if (audioClip != death && audioClip != victory && audioClip != nextLevel && audioClip.isPlaying()) {
 				audioClip.stop();
 			}
 			switch (src) {
