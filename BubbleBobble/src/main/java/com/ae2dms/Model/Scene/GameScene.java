@@ -215,6 +215,7 @@ public class GameScene {
 		bubbles.remove(obj);
 		collectEffects.remove(obj);
 		bosses.remove(obj);
+		bossProjectiles.remove(obj);
 	}
 
 
