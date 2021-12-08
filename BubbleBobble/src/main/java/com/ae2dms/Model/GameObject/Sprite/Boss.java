@@ -64,7 +64,7 @@ public class Boss extends SpriteObject{
         terminal_xVelocity = TERMINAL_VELOCITY_X;
         switch (GamePanel.difficulty) {
             case LOW:
-                sizeRange = 30;
+                sizeRange = 15;
                 jumpSpeed = JUMP_SPEED-5;
                 xAccel = 1.5;
                 WIDTH = UNIT_SIZE + sizeRange;
@@ -116,12 +116,16 @@ public class Boss extends SpriteObject{
             enemyImage = bossRightImage;
         }
         //draws mook
-        g.drawImage(enemyImage, x, y, WIDTH, HEIGHT);
         if (isBubbled) {
+            g.drawImage(enemyImage, x, y, WIDTH, HEIGHT);
+
             g.setGlobalAlpha((double) timer/150);
             g.drawImage(bubbled, x-10, y-5, 50+sizeRange, 50+sizeRange);
             g.setGlobalAlpha(1);
+        } else {
+            g.drawImage(enemyImage, x, y-sizeRange/2, WIDTH, HEIGHT);
         }
+
     }
 
     @Override
