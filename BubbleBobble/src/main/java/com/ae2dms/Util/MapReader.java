@@ -1,5 +1,6 @@
 package com.ae2dms.Util;
 
+import com.ae2dms.Model.GameObject.Sprite.Boss;
 import com.ae2dms.Model.GameObject.Sprite.Enemy;
 import com.ae2dms.Model.GameObject.Sprite.Hero;
 import com.ae2dms.Model.GameObject.Wall.WallObject.CeilingUnit;
@@ -63,6 +64,8 @@ public class MapReader {
                     gameScene.addCeilingUnit(new CeilingUnit(gameScene, col, row));
                 } else if (currentLine.charAt(col) == 'M') {
                     gameScene.addEnemy(new Enemy(gameScene, col, row));
+                } else if (currentLine.charAt(col) == 'B') {
+                    gameScene.addBoss(new Boss(gameScene, col, row));
                 }
             }
             if (scanner.hasNextLine()) {

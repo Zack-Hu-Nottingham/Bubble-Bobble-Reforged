@@ -46,9 +46,9 @@ public class GameRecorder {
             } while(record != null);
             records.close();
             sortRecord();
-            System.out.println(name);
-            System.out.println(score);
-            System.out.println(timeConsumed);
+//            System.out.println(name);
+//            System.out.println(score);
+//            System.out.println(timeConsumed);
 
         } catch (IOException e) {
             e.printStackTrace();

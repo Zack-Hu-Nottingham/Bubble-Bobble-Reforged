@@ -2,6 +2,7 @@ package com.ae2dms.Model.Scene;
 
 import com.ae2dms.GamePanel;
 import com.ae2dms.Model.GameObject.Sprite.Fruit.Fruit;
+import com.ae2dms.Model.GameObject.Sprite.Projectile.BossProjectile;
 import com.ae2dms.Model.GameObject.Sprite.Projectile.EnemyProjectile;
 import com.ae2dms.Model.GameObject.Sprite.Projectile.HeroProjectile;
 import com.ae2dms.Model.GameObject.Sprite.SpriteObject;
@@ -37,6 +38,11 @@ public class GameScene {
 	private ArrayList<Bubble> bubbles;
 	private ArrayList<CollectEffect> collectEffects;
 
+
+	private ArrayList<BossProjectile> bossProjectiles;
+
+	private ArrayList<Boss> bosses;
+
 	private GraphicsContext graphicsContext;
 	private MapReader mapReader;
 	private GameScenePainter gameScenePainter;
@@ -70,6 +76,10 @@ public class GameScene {
 		return enemyProjectiles;
 	}
 
+	public ArrayList<BossProjectile> getBossProjectiles() {
+		return bossProjectiles;
+	}
+
 	public ArrayList<Fruit> getFruits() {
 		return fruits;
 	}
@@ -86,6 +96,10 @@ public class GameScene {
 		return collectEffects;
 	}
 
+	public ArrayList<Boss> getBosses() {
+		return bosses;
+	}
+
 	public GraphicsContext getGraphicsContext() {
 		return graphicsContext;
 	}
@@ -93,6 +107,8 @@ public class GameScene {
 	public MapReader getMapReader() { return mapReader; }
 
 	public GameScenePainter getGameScenePainter() {	return gameScenePainter; }
+
+
 
 	public GameScene() {
 		//initializes interactableworld
@@ -107,6 +123,8 @@ public class GameScene {
 		toBeRemoved = new ArrayList<SpriteObject>();
 		bubbles = new ArrayList<Bubble>();
 		collectEffects = new ArrayList<CollectEffect>();
+		bosses = new ArrayList<Boss>();
+		bossProjectiles = new ArrayList<BossProjectile>();
 
 		mapReader = MapReader.getInstance();
 
@@ -151,6 +169,11 @@ public class GameScene {
 		enemyProjectiles.add(enemyProjectile);
 	}
 
+	public void addBossProjectile(BossProjectile bossProjectile) {
+		//adds a projectile to where necessary
+		bossProjectiles.add(bossProjectile);
+	}
+
 	public void addFruit(Fruit fruit) {
 		//adds fruit on bubble pop
 		fruits.add(fruit);
@@ -164,6 +187,8 @@ public class GameScene {
 	public void addCollectEffect(CollectEffect collectEffect) {
 		collectEffects.add(collectEffect);
 	}
+
+	public void addBoss(Boss boss) { bosses.add(boss); }
 
 	public void clearContents() {
 		//clears everything from the screen
@@ -189,6 +214,7 @@ public class GameScene {
 		fruits.remove(obj);
 		bubbles.remove(obj);
 		collectEffects.remove(obj);
+		bosses.remove(obj);
 	}
 
 

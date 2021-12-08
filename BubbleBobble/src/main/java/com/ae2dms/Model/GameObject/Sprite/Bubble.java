@@ -65,4 +65,10 @@ public class Bubble extends SpriteObject {
 		}
 	}
 
+	public void collideWith(Boss boss) {
+		if (this.overlaps(boss)) {
+			boss.collideWithProjectile();
+		}
+	}
+
 }

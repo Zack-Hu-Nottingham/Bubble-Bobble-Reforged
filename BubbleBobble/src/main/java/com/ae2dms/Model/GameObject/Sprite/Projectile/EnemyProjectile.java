@@ -1,6 +1,7 @@
 package com.ae2dms.Model.GameObject.Sprite.Projectile;
 
 
+import com.ae2dms.Model.GameObject.Sprite.Boss;
 import com.ae2dms.Model.GameObject.Sprite.Bubble;
 import com.ae2dms.Model.GameObject.Sprite.Enemy;
 import com.ae2dms.Model.GameObject.Sprite.Hero;
@@ -44,6 +45,9 @@ public class EnemyProjectile extends Projectile {
 	}
 
 	public void collideWith(Enemy enemy) {
+		//Nothing happens
+	}
+	public void collideWith(Boss boss) {
 		//Nothing happens
 	}
 }

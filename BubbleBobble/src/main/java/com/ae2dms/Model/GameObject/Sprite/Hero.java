@@ -83,7 +83,7 @@ public class Hero extends SpriteObject {
 			g.setGlobalAlpha(0.5);
 			g.drawImage(imageBub, x, y, SIZE, SIZE);
 			g.setGlobalAlpha(1);
-		}else if (GamePanel.gameStatus == GamePanel.GameStatus.LOSE) {
+//		}else if (GamePanel.gameStatus == GamePanel.GameStatus.LOSE) {
 
 		} else {
 			g.drawImage(imageBub, x, y, SIZE, SIZE);
