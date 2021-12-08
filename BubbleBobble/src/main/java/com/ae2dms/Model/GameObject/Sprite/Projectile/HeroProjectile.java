@@ -1,5 +1,6 @@
 package com.ae2dms.Model.GameObject.Sprite.Projectile;
 
+import com.ae2dms.Model.GameObject.Sprite.Boss;
 import com.ae2dms.Model.GameObject.Sprite.Bubble;
 import com.ae2dms.Model.GameObject.Sprite.Enemy;
 import com.ae2dms.Model.GameObject.Sprite.Hero;
@@ -78,8 +79,16 @@ public class HeroProjectile extends Projectile {
 	}
 
 	public void collideWith(Enemy enemy) {
-		if (this.overlaps(enemy) && isActive) {
+		if (this.overlaps(enemy) && isActive && !enemy.isBubbled()) {
 			enemy.collideWithProjectile();
+			markToRemove();
+		}
+	}
+
+	public void collideWith(Boss boss) {
+		if (this.overlaps(boss) && isActive && !boss.isBubbled()) {
+			boss.collideWithProjectile();
+			markToRemove();
 		}
 	}
 }

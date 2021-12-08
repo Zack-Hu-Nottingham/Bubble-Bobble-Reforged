@@ -32,6 +32,7 @@ public class Enemy extends SpriteObject {
 	private static final double CHANGE_MOVEMENT_CHANCE = 0.01;
 	private static double SHOOT_BUBBLE_CHANCE = 0.01;
 
+
 	boolean isBubbled;
 	int timer;
 	int pointValue;
@@ -189,12 +190,17 @@ public class Enemy extends SpriteObject {
 	void die() {
 		//handles what to do on death
 		GamePanel.chargeLevel += 1;
-		System.out.println(GamePanel.chargeLevel);
+//		System.out.println(GamePanel.chargeLevel);
 		FruitFactory enemyDropFruitFactory = new EnemyDropFruitFactory();
 		Fruit fruit = enemyDropFruitFactory.getFruit(x, y, scene);
 		scene.addFruit(fruit);
 		markToRemove();
 	}
+
+	public boolean isBubbled() {
+		return isBubbled;
+	}
+
 
 	public void collideWith(Hero hero) {
 		//handles collision with hero and what to do

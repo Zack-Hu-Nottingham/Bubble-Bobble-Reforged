@@ -2,13 +2,11 @@ package com.ae2dms.Util;
 
 import com.ae2dms.GamePanel;
 import com.ae2dms.Model.GameObject.Prompt.CollectEffect;
-import com.ae2dms.Model.GameObject.Sprite.Bubble;
-import com.ae2dms.Model.GameObject.Sprite.Enemy;
+import com.ae2dms.Model.GameObject.Sprite.*;
 import com.ae2dms.Model.GameObject.Sprite.Fruit.Fruit;
-import com.ae2dms.Model.GameObject.Sprite.Hero;
+import com.ae2dms.Model.GameObject.Sprite.Projectile.BossProjectile;
 import com.ae2dms.Model.GameObject.Sprite.Projectile.EnemyProjectile;
 import com.ae2dms.Model.GameObject.Sprite.Projectile.HeroProjectile;
-import com.ae2dms.Model.GameObject.Sprite.SpriteObject;
 import com.ae2dms.Model.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.Model.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.Model.GameObject.Wall.WallObject.WallUnit;
@@ -73,6 +71,12 @@ public class GameScenePainter {
         for (CollectEffect collectEffect : gameScene.getCollectEffects()) {
             collectEffect.drawOn(graphicsContext);
         }
+        for (Boss boss : gameScene.getBosses()) {
+            boss.drawOn(graphicsContext);
+        }
+        for (BossProjectile bossProjectile : gameScene.getBossProjectiles()) {
+            bossProjectile.drawOn(graphicsContext);
+        }
     }
 
 
@@ -118,6 +122,18 @@ public class GameScenePainter {
                 gameScene.getToBeRemoved().add(collectEffect);
             }
         }
+        for (Boss boss : gameScene.getBosses()) {
+            boss.update();
+            if(boss.canRemove) {
+                gameScene.getToBeRemoved().add(boss);
+            }
+        }
+        for (BossProjectile bossProjectile : gameScene.getBossProjectiles()) {
+            bossProjectile.update();
+            if (bossProjectile.canRemove) {
+                gameScene.getToBeRemoved().add(bossProjectile);
+            }
+        }
 
         // Colliding...
         // Units initiate collisions with Heroes, Enemies, and Fruits
@@ -138,6 +154,10 @@ public class GameScenePainter {
             for (HeroProjectile heroProjectile : gameScene.getHeroProjectiles()) {
                 ceilingUnit.collideWith(heroProjectile);
             }
+            for (Boss boss : gameScene.getBosses()) {
+                ceilingUnit.collideWith(boss);
+                boss.collideWith(ceilingUnit);
+            }
         }
         for (FloorUnit floorUnit: gameScene.getFloorUnits()) {
             for (Hero hero : gameScene.getHeroes()) {
@@ -155,6 +175,10 @@ public class GameScenePainter {
             }
             for (HeroProjectile heroProjectile : gameScene.getHeroProjectiles()) {
                 floorUnit.collideWith(heroProjectile);
+            }
+            for (Boss boss : gameScene.getBosses()) {
+                floorUnit.collideWith(boss);
+                boss.collideWith(floorUnit);
             }
         }
         for (WallUnit wallUnit : gameScene.getWallUnits()) {
@@ -174,11 +198,20 @@ public class GameScenePainter {
             for (HeroProjectile heroProjectile : gameScene.getHeroProjectiles()) {
                 wallUnit.collideWith(heroProjectile);
             }
+            for (Boss boss : gameScene.getBosses()) {
+                wallUnit.collideWith(boss);
+                boss.collideWith(wallUnit);
+            }
         }
         // Enemies initiate collisions with Heroes
         for (Enemy enemy : gameScene.getEnemies()) {
             for (Hero hero : gameScene.getHeroes()) {
                 enemy.collideWith(hero);
+            }
+        }
+        for (Boss boss : gameScene.getBosses()) {
+            for (Hero hero : gameScene.getHeroes()) {
+                boss.collideWith(hero);
             }
         }
         // HeroProjectiles initiate collisions with Heroes and Enemies
@@ -189,6 +222,9 @@ public class GameScenePainter {
             for (Enemy enemy : gameScene.getEnemies()) {
                 heroProjectile.collideWith(enemy);
             }
+            for (Boss boss : gameScene.getBosses()) {
+                heroProjectile.collideWith(boss);
+            }
         }
         for (EnemyProjectile enemyProjectile  : gameScene.getEnemyProjectiles()) {
             for (Hero hero : gameScene.getHeroes()) {
@@ -196,6 +232,20 @@ public class GameScenePainter {
             }
             for (Enemy enemy : gameScene.getEnemies()) {
                 enemyProjectile.collideWith(enemy);
+            }
+            for (Boss boss : gameScene.getBosses()) {
+                enemyProjectile.collideWith(boss);
+            }
+        }
+        for (BossProjectile bossProjectile  : gameScene.getBossProjectiles()) {
+            for (Hero hero : gameScene.getHeroes()) {
+                bossProjectile.collideWith(hero);
+            }
+            for (Enemy enemy : gameScene.getEnemies()) {
+                bossProjectile.collideWith(enemy);
+            }
+            for (Boss boss : gameScene.getBosses()) {
+                bossProjectile.collideWith(boss);
             }
         }
         // Fruits intiate collisions with Heroes
@@ -207,6 +257,12 @@ public class GameScenePainter {
         for (Bubble bubble : gameScene.getBubbles()) {
             for (Enemy enemy : gameScene.getEnemies()) {
                 bubble.collideWith(enemy);
+            }
+            for (Boss boss : gameScene.getBosses()) {
+                if (!boss.isBombed) {
+                    bubble.collideWith(boss);
+                    boss.isBombed = true;
+                }
             }
         }
 
@@ -228,10 +284,14 @@ public class GameScenePainter {
                 SoundEffect.getInstance().play("nextLevel");
             }
             if (delay == 0) {
-                if (level.getValue() == 3) {
-                    gameStatus = GamePanel.GameStatus.WIN;
-                    SoundEffect.getInstance().play("victory");
-                    delay -= 1;
+                if (level.getValue() == 3 ) {
+                    if (gameScene.getBosses().isEmpty()) {
+                        gameStatus = GamePanel.GameStatus.WIN;
+                        SoundEffect.getInstance().play("victory");
+                        delay -= 1;
+                    }
+//                    System.out.println("boss empty");
+
                 } else {
                     level.set(level.getValue() + 1);
                     gameScene.getMapReader().readMap(level.getValue());
