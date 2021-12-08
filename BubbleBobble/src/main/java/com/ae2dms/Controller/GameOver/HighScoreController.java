@@ -52,31 +52,6 @@ public class HighScoreController {
     @FXML
     private Pane HighScoreBar;
 
-    @FXML
-    MenuController menuController;
-
-    public void getController(MenuController menuController) {
-        this.menuController = menuController;
-    }
-//
-//    public void show() throws IOException {
-//        menuController.hideButton();
-//        HighScoreBar.setVisible(true);
-//        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500), HighScoreBar);
-//        translateTransition.setByY(-731);
-//        bindScore();
-//        translateTransition.play();
-//    }
-//
-//    @FXML
-//    public void hide() {
-//        SoundEffect.getInstance().play("click");
-//
-//        menuController.showButton();
-//        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500), HighScoreBar);
-//        translateTransition.setByY(731);
-//        translateTransition.play();
-//    }
     public void initialize() throws IOException {
         bindScore();
     }
@@ -148,7 +123,7 @@ public class HighScoreController {
         time5.setText(GameTimer.parseToTimeFormat(timeConsumed.get(4)));
     }
 
-    public void backToMenu(MouseEvent mouseEvent) {
-        GamePanel.getInstance().toMenu();
+    public void back(MouseEvent mouseEvent) {
+        GamePanel.getInstance().gameOver();
     }
 }

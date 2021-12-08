@@ -123,7 +123,7 @@ public class Boss extends SpriteObject{
             g.drawImage(bubbled, x-10, y-5, 50+sizeRange, 50+sizeRange);
             g.setGlobalAlpha(1);
         } else {
-            g.drawImage(enemyImage, x, y-sizeRange/2, WIDTH, HEIGHT);
+            g.drawImage(enemyImage, x, y, WIDTH, HEIGHT);
         }
 
     }
