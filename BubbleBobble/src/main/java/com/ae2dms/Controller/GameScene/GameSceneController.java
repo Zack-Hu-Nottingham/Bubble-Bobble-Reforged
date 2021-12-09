@@ -48,7 +48,7 @@ public class GameSceneController {
 
         GamePanel.gameTimer.start();
 
-        GamePanel.level = new SimpleIntegerProperty(3);
+        GamePanel.level = new SimpleIntegerProperty(1);
 
         GamePanel.chargeLevel = 0;
 

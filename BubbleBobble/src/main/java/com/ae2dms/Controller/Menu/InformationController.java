@@ -19,8 +19,9 @@ public class InformationController {
     }
 
     public void show() {
-        menuController.hideButton();
         InformationPane.setVisible(true);
+
+        menuController.hideButton();
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500), InformationPane);
         translateTransition.setByY(-732);
         translateTransition.play();

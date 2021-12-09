@@ -1,6 +1,7 @@
 package com.ae2dms.Util;
 
 import javafx.animation.Animation;
+import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.property.SimpleStringProperty;
@@ -10,7 +11,9 @@ import javafx.util.Duration;
 
 public class GameTimer {
 
+//    private AnimationTimer timer;
     private Timeline timer;
+    private int foo = 0;
 
     private int seconds = 0;
 
@@ -24,6 +27,23 @@ public class GameTimer {
         timer.play();
     }
 
+//    public void start() {
+//        seconds = 0;
+//        timer = new AnimationTimer() {
+//            @Override
+//            public void handle(long l) {
+//                foo ++;
+//                seconds = foo % 60;
+//            }
+//        };
+//        timer.start();
+
+//        timer = new Timeline(new KeyFrame(Duration.millis(1000), event -> timeToDisplay.set(parseToTimeFormat(++seconds))));
+//        timer.setCycleCount(Animation.INDEFINITE);
+//        timer.play();
+//    }
+
+
     public void stop(){
         if (timer != null) {
             timer.stop();
@@ -36,10 +56,12 @@ public class GameTimer {
 
 
     public void pause() {
+//        timer.stop();
         timer.pause();
     }
 
     public void resume() {
+//        timer.start();
         timer.play();
     }
 

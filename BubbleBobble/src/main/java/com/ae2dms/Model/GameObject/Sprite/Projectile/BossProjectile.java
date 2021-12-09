@@ -7,7 +7,6 @@ import com.ae2dms.Model.GameObject.Sprite.Hero;
 import com.ae2dms.Model.Scene.GameScene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 
 /**
  * The EnemyProjectile class handles the specificities with the projectile being shot from an enemy.
@@ -40,7 +39,10 @@ public class BossProjectile extends Projectile {
     }
 
     public void collideWith(Hero hero) {
+        System.out.println(this.overlaps(hero));
+        System.out.println(isActive);
         if(this.overlaps(hero) && isActive) {
+            System.out.println("shoot");
             hero.collideWithProjectile();
         }
     }

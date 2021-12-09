@@ -8,9 +8,11 @@ import com.ae2dms.Model.Scene.GameScene;
 
 public class EnemyDropFruitFactory extends FruitFactory{
 
+    Double typeOfFruit;
+
     @Override
     public Fruit getFruit(int x, int y, GameScene gameScene) {
-        Double typeOfFruit = Math.random();
+        typeOfFruit = Math.random();
         if (typeOfFruit < 0.33) {
             return new Apple(x, y, gameScene);
         } else if (typeOfFruit < 0.66) {

@@ -46,6 +46,7 @@ public class MenuController {
         SoundEffect.getInstance().play("click");
 
         System.exit(0);
+
     }
 
     public void mouseClickedInformation(MouseEvent mouseEvent) throws IOException {

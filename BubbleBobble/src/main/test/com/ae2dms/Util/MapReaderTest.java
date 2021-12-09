@@ -30,6 +30,10 @@ class MapReaderTest extends ApplicationTest {
         stage.setScene(scene);
     }
 
+//<<<<<<< Updated upstream
+//=======
+
+//>>>>>>> Stashed changes
     @Test
     void readMapOne() {
         MapReader mapReader = MapReader.getInstance();

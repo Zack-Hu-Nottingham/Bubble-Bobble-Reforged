@@ -13,12 +13,12 @@ import static com.ae2dms.GamePanel.UNIT_SIZE;
 
 public abstract class WallObject extends GameObject {
 
-    protected Image image;
-
+//    protected Image image;
+    static Image image = new Image(WallObject.class.getResource("/image/wall/red.png").toString(), UNIT_SIZE, UNIT_SIZE, false, false);
     protected CollideStrategy strategy;
 
     public WallObject(GameScene world, int colNum, int rowNum) {
-        super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, UNIT_SIZE, UNIT_SIZE, world, null);
+        super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, UNIT_SIZE, UNIT_SIZE, world, image);
 
         WallImageFactory wallImageFactory = new WallImageFactory();
         image = wallImageFactory.getWallImage(GamePanel.theme);

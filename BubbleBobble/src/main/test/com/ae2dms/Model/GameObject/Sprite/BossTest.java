@@ -33,7 +33,6 @@ class BossTest extends ApplicationTest{
     }
 
 
-
     @Test
     void collideWithProjectile() throws NoSuchFieldException, IllegalAccessException {
 //        MapReader mapReader = MapReader.getInstance();

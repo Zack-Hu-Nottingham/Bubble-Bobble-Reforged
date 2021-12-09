@@ -1,15 +1,4 @@
-bob,135,19
-,150,21
-hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh,135,26
-123,215,28
-gali,440,69
-fof,590,65
-bob,380,83
-fii,455,63
-zack,375,76
-456,125,22
-zixiang Hu,150,18
-,135,13
-bala,130,21
-jkl,240,20
-8888,235,29
+Zixiang Hu,200,106
+Bryan,360,60
+Yu Heng,300,54
+Bob,500,50

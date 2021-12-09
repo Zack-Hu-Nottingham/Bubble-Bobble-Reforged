@@ -121,4 +121,10 @@ public class MenuTest {
 
         robot.clickOn("#back");
     }
+
+    @Test
+    void exit(FxRobot robot) {
+        robot.doubleClickOn("#exitGameButton");
+    }
+
 }

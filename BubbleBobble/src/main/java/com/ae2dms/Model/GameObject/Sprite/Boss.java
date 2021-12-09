@@ -181,7 +181,7 @@ public class Boss extends SpriteObject{
         }
     }
 
-    private void shootProjectile() {
+    public void shootProjectile() {
         // Nothing happens
         SoundEffect.getInstance().play("shoot");
 
@@ -190,16 +190,6 @@ public class Boss extends SpriteObject{
     }
 
     public void collideWithProjectile() {
-        //handles what to do if hit with a projectile by the hero
-//        if (!isBubbled) {
-//            SoundEffect.getInstance().play("bubbled");
-//
-//            isBubbled = true;
-//            yVelocity = 0;
-//            xAccel = 0;
-//            yAccel = -0.1;
-//        }
-
         damage ++;
         System.out.println("damage: "+damage);
         if (!isBubbled && damage >= life) {

@@ -200,9 +200,12 @@ public class Hero extends SpriteObject {
 	}
 
 	public void collideWithProjectile() {
+		System.out.println(isShielding);
 		//handles collision with projectiles
 		if (!isShielding) {
 			die();
+			System.out.println("die");
+
 		}
 	}
 	@Override

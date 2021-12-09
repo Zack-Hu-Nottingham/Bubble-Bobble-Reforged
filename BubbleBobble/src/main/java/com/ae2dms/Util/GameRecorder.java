@@ -35,7 +35,6 @@ public class GameRecorder {
             String[] parts = null;
             do {
                 record = records.readLine();
-                System.out.println(record);
                 if (record != null) {
                     parts = record.split(",");
                     name.add(parts[0]);
@@ -46,9 +45,6 @@ public class GameRecorder {
             } while(record != null);
             records.close();
             sortRecord();
-//            System.out.println(name);
-//            System.out.println(score);
-//            System.out.println(timeConsumed);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -90,7 +86,7 @@ public class GameRecorder {
         return recordNum;
     }
 
-    public void saveRecord(String userName, int score, int timeConsumed) throws IOException {
+    public void saveRecord(String userName, int score, int timeConsumed) {
         String filePath = "src/main/resources/gameRecord/records.txt";
 
         try {

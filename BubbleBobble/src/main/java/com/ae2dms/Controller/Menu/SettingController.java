@@ -47,8 +47,9 @@ public class SettingController {
     }
 
     public void show() {
-        menuController.hideButton();
         SettingPane.setVisible(true);
+
+        menuController.hideButton();
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500), SettingPane);
         translateTransition.setByY(-731);
         translateTransition.play();

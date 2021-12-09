@@ -57,8 +57,9 @@ public class HighScoreController {
     }
 
     public void show() throws IOException {
-        menuController.hideButton();
         HighScoreBar.setVisible(true);
+
+        menuController.hideButton();
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500), HighScoreBar);
         translateTransition.setByY(-731);
         bindScore();

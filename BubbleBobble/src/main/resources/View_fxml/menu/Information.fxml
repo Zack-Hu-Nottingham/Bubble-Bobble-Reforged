@@ -12,35 +12,35 @@
 <!--      <ImageView fitHeight="594.0" fitWidth="780.0" layoutX="250.0" layoutY="33.0">-->
 <!--         <Image url="@../" />-->
 <!--      </ImageView>-->
-      <ImageView fitHeight="36.0" fitWidth="51.0" layoutX="94.0" layoutY="132.0" onMouseClicked="#hide" styleClass="Button">
+      <ImageView fx:id="back" fitHeight="36.0" fitWidth="51.0" layoutX="94.0" layoutY="132.0" onMouseClicked="#hide" styleClass="Button">
          <Image url="@../../image/ui/menu/close.png" />
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="838.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+      <ImageView fx:id="w" fitHeight="80.0" fitWidth="80.0" layoutX="838.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
          <image>
             <Image url="@../../image/ui/menu/information/W.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="1066.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+      <ImageView fx:id="right" fitHeight="70.0" fitWidth="70.0" layoutX="1066.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
          <image>
             <Image url="@../../image/ui/menu/information/right.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="768.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+      <ImageView fx:id="left" fitHeight="70.0" fitWidth="70.0" layoutX="768.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
          <image>
             <Image url="@../../image/ui/menu/information/left.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="998.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+      <ImageView fx:id="e" fitHeight="80.0" fitWidth="80.0" layoutX="998.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
          <image>
             <Image url="@../../image/ui/menu/information/E.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="921.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+      <ImageView fx:id="up" fitHeight="70.0" fitWidth="70.0" layoutX="921.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
          <image>
             <Image url="@../../image/ui/menu/information/up.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="856.0" layoutY="487.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+      <ImageView fx:id="space" fitHeight="150.0" fitWidth="200.0" layoutX="856.0" layoutY="487.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
          <image>
             <Image url="@../../image/ui/menu/information/space.png" />
          </image>
