@@ -2,7 +2,7 @@ package com.ae2dms.model.gameObject.sprite.fruit.fruitFactory;
 
 import com.ae2dms.model.gameObject.sprite.fruit.fruits.Apple;
 import com.ae2dms.model.gameObject.sprite.fruit.fruits.Banana;
-import com.ae2dms.model.gameObject.sprite.fruit.Fruit;
+import com.ae2dms.model.gameObject.sprite.fruit.fruits.Fruit;
 import com.ae2dms.model.gameObject.sprite.fruit.fruits.StrawBerry;
 import com.ae2dms.model.scene.GameScene;
 

@@ -1,6 +1,5 @@
 package com.ae2dms.model.gameObject.sprite.fruit.fruits;
 
-import com.ae2dms.model.gameObject.sprite.fruit.Fruit;
 import com.ae2dms.model.scene.GameScene;
 import javafx.scene.image.Image;
 

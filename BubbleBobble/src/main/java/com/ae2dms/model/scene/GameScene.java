@@ -3,7 +3,7 @@ package com.ae2dms.model.scene;
 import com.ae2dms.model.gameObject.sprite.character.Boss;
 import com.ae2dms.model.gameObject.sprite.character.Enemy;
 import com.ae2dms.model.gameObject.sprite.character.Hero;
-import com.ae2dms.model.gameObject.sprite.fruit.Fruit;
+import com.ae2dms.model.gameObject.sprite.fruit.fruits.Fruit;
 import com.ae2dms.model.gameObject.sprite.projectile.BossProjectile;
 import com.ae2dms.model.gameObject.sprite.projectile.Bubble;
 import com.ae2dms.model.gameObject.sprite.projectile.EnemyProjectile;

@@ -1,4 +1,4 @@
-package com.ae2dms.model.gameObject.sprite.fruit;
+package com.ae2dms.model.gameObject.sprite.fruit.fruits;
 
 import com.ae2dms.model.gameObject.sprite.character.Hero;
 import com.ae2dms.model.gameObject.sprite.SpriteObject;

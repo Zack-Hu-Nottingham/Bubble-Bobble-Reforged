@@ -2,7 +2,7 @@ package com.ae2dms.model.gameObject.sprite.character;
 
 import com.ae2dms.GamePanel;
 import com.ae2dms.model.gameObject.sprite.projectile.Bubble;
-import com.ae2dms.model.gameObject.sprite.fruit.Fruit;
+import com.ae2dms.model.gameObject.sprite.fruit.fruits.Fruit;
 import com.ae2dms.model.gameObject.sprite.fruit.fruitFactory.BossDropFruitFactory;
 import com.ae2dms.model.gameObject.sprite.fruit.fruitFactory.FruitFactory;
 import com.ae2dms.model.gameObject.sprite.projectile.BossProjectile;
