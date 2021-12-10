@@ -13,8 +13,8 @@ public class Banana extends Fruit {
     /**
      * Instantiates a new Banana.
      *
-     * @param x     the x
-     * @param y     the y
+     * @param x         the x
+     * @param y         the y
      * @param gameScene the gameScene
      */
     public Banana(double x, double y, GameScene gameScene) {

@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * The type High score controller.
+ * The controller of highScore scene.
  */
 public class HighScoreController {
 

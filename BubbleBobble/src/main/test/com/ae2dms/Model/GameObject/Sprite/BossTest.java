@@ -20,7 +20,6 @@ class BossTest extends ApplicationTest{
     public void start(Stage stage) throws Exception {
         super.start(stage);
         GamePanel.stage = stage;
-//        Main.stage = stage;
 
         AnchorPane root = new AnchorPane();
         Scene scene = new Scene(root, 24 * 20, 24 * 30);
@@ -34,8 +33,6 @@ class BossTest extends ApplicationTest{
 
     @Test
     void collideWithProjectile() throws NoSuchFieldException, IllegalAccessException {
-
-        GamePanel.level = new SimpleIntegerProperty(1);
 
         GameScene gameScene = new GameScene();
         Boss boss = new Boss(new GameScene(), 5, 5);
@@ -58,14 +55,13 @@ class BossTest extends ApplicationTest{
 
     @Test
     void die() throws NoSuchFieldException, IllegalAccessException {
-        GamePanel.level = new SimpleIntegerProperty(1);
 
         GameScene gameScene = new GameScene();
         Boss boss = new Boss(gameScene, 5, 5);
         gameScene.addBoss(boss);
 
         boss.die();
-        Assertions.assertEquals(1, GamePanel.chargeLevel);
+        Assertions.assertEquals(1, gameScene.chargeLevel);
         Assertions.assertEquals(1, gameScene.getFruits().size());
 
         Field canRemove = Boss.class.getSuperclass().getDeclaredField("canRemove");
@@ -76,8 +72,6 @@ class BossTest extends ApplicationTest{
 
     @Test
     void isBubbled() throws NoSuchFieldException, IllegalAccessException {
-
-        GamePanel.level = new SimpleIntegerProperty(1);
 
         GameScene gameScene = new GameScene();
         Boss boss = new Boss(gameScene, 5, 5);
@@ -90,8 +84,6 @@ class BossTest extends ApplicationTest{
 
     @Test
     void shootProjectile() {
-
-        GamePanel.level = new SimpleIntegerProperty(1);
 
         GameScene gameScene = new GameScene();
         Boss boss = new Boss(gameScene, 5, 5);

@@ -12,6 +12,9 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * The controller of High score page.
+ */
 public class HighScoreController {
 
     @FXML
@@ -49,13 +52,26 @@ public class HighScoreController {
     @FXML
     private Pane HighScoreBar;
 
+    /**
+     * The Menu controller.
+     */
     @FXML
-    MenuController menuController;
+    private MenuController menuController;
 
+    /**
+     * Gets controller.
+     *
+     * @param menuController the menu controller
+     */
     public void getController(MenuController menuController) {
         this.menuController = menuController;
     }
 
+    /**
+     * Show.
+     *
+     * @throws IOException the io exception
+     */
     public void show() throws IOException {
         HighScoreBar.setVisible(true);
 
@@ -66,6 +82,9 @@ public class HighScoreController {
         translateTransition.play();
     }
 
+    /**
+     * Hide.
+     */
     @FXML
     public void hide() {
         SoundEffect.getInstance().play("click");
@@ -79,6 +98,12 @@ public class HighScoreController {
     private ArrayList<String > name;
     private ArrayList<Integer> score;
     private ArrayList<Integer> timeConsumed;
+
+    /**
+     * Bind score.
+     *
+     * @throws IOException the io exception
+     */
     public void bindScore() throws IOException {
         GameRecorder gameRecorder = new GameRecorder();
 		gameRecorder.readRecord();

@@ -19,7 +19,6 @@ class CollectEffectTest extends ApplicationTest {
     public void start(Stage stage) throws Exception {
         super.start(stage);
         GamePanel.stage = stage;
-//        Main.stage = stage;
 
         AnchorPane root = new AnchorPane();
         Scene scene = new Scene(root, 24 * 20, 24 * 30);
@@ -45,7 +44,6 @@ class CollectEffectTest extends ApplicationTest {
 
     @Test
     void testConstructor() {
-        GamePanel.level = new SimpleIntegerProperty(1);
 
         GameScene gameScene = new GameScene();
 

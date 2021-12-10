@@ -10,6 +10,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
+/**
+ * The controller of Setting page.
+ */
 public class SettingController {
 
     @FXML
@@ -36,16 +39,30 @@ public class SettingController {
     private ImageView pink;
     @FXML
     private ImageView red;
+    /**
+     * The Setting pane.
+     */
     @FXML
     Pane SettingPane;
 
+    /**
+     * The Menu controller.
+     */
     @FXML
     MenuController menuController;
 
+    /**
+     * Gets controller.
+     *
+     * @param menuController the menu controller
+     */
     public void getController(MenuController menuController) {
        this.menuController = menuController;
     }
 
+    /**
+     * Show.
+     */
     public void show() {
         SettingPane.setVisible(true);
 
@@ -55,6 +72,9 @@ public class SettingController {
         translateTransition.play();
     }
 
+    /**
+     * Hide.
+     */
     @FXML
     public void hide() {
         SoundEffect.getInstance().play("click");
@@ -69,6 +89,11 @@ public class SettingController {
     private Image untick = new Image(SettingController.class.getResource("/image/ui/menu/setting/untick.png").toString());
     private Image tick = new Image(SettingController.class.getResource("/image/ui/menu/setting/tick.png").toString());
 
+    /**
+     * Click red.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void clickRed(MouseEvent mouseEvent) {
         SoundEffect.getInstance().play("click");
 
@@ -77,6 +102,11 @@ public class SettingController {
         red.setImage(tick);
     }
 
+    /**
+     * Click pink.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void clickPink(MouseEvent mouseEvent) {
         SoundEffect.getInstance().play("click");
 
@@ -85,6 +115,11 @@ public class SettingController {
         pink.setImage(tick);
     }
 
+    /**
+     * Click blue.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void clickBlue(MouseEvent mouseEvent) {
         SoundEffect.getInstance().play("click");
 
@@ -93,6 +128,11 @@ public class SettingController {
         blue.setImage(tick);
     }
 
+    /**
+     * Click green.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void clickGreen(MouseEvent mouseEvent) {
         SoundEffect.getInstance().play("click");
 
@@ -101,6 +141,11 @@ public class SettingController {
         green.setImage(tick);
     }
 
+    /**
+     * Click black.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void clickBlack(MouseEvent mouseEvent) {
         SoundEffect.getInstance().play("click");
 
@@ -109,6 +154,9 @@ public class SettingController {
         black.setImage(tick);
     }
 
+    /**
+     * Clear color choice.
+     */
     public void clearColorChoice() {
         red.setImage(untick);
         pink.setImage(untick);
@@ -119,6 +167,11 @@ public class SettingController {
         menuController.setTheme(GamePanel.Theme.RED);
     }
 
+    /**
+     * Click high.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void clickHigh(MouseEvent mouseEvent) {
         SoundEffect.getInstance().play("click");
 
@@ -127,6 +180,11 @@ public class SettingController {
         high.setImage(tick);
     }
 
+    /**
+     * Click medium.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void clickMedium(MouseEvent mouseEvent) {
         SoundEffect.getInstance().play("click");
 
@@ -135,6 +193,11 @@ public class SettingController {
         medium.setImage(tick);
     }
 
+    /**
+     * Click low.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void clickLow(MouseEvent mouseEvent) {
         SoundEffect.getInstance().play("click");
 
@@ -143,6 +206,11 @@ public class SettingController {
         low.setImage(tick);
     }
 
+    /**
+     * Click mute.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void clickMute(MouseEvent mouseEvent) {
         SoundEffect.getInstance().play("click");
 
@@ -151,6 +219,9 @@ public class SettingController {
         mute.setImage(tick);
     }
 
+    /**
+     * Clear volume choice.
+     */
     public void clearVolumeChoice() {
         high.setImage(untick);
         medium.setImage(untick);
@@ -161,7 +232,11 @@ public class SettingController {
     }
 
 
-
+    /**
+     * Click rubbish.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void clickRubbish(MouseEvent mouseEvent) {
         SoundEffect.getInstance().play("click");
 
@@ -170,6 +245,11 @@ public class SettingController {
         rubbish.setImage(tick);
     }
 
+    /**
+     * Click not bad.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void clickNotBad(MouseEvent mouseEvent) {
         SoundEffect.getInstance().play("click");
 
@@ -178,6 +258,11 @@ public class SettingController {
         notBad.setImage(tick);
     }
 
+    /**
+     * Click monster.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void clickMonster(MouseEvent mouseEvent) {
         SoundEffect.getInstance().play("click");
 
@@ -186,6 +271,9 @@ public class SettingController {
         monster.setImage(tick);
     }
 
+    /**
+     * Clear difficulty choice.
+     */
     public void clearDifficultyChoice() {
         rubbish.setImage(untick);
         notBad.setImage(untick);

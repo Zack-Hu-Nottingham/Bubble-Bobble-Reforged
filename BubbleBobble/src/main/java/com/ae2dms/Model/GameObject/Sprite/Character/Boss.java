@@ -248,7 +248,7 @@ public class Boss extends SpriteObject {
      */
     public void die() {
         //handles what to do on death
-        GamePanel.chargeLevel += 1;
+        getScene().chargeLevel += 1;
         FruitFactory bossDropFruitFactory = new BossDropFruitFactory();
         Fruit fruit = bossDropFruitFactory.getFruit(getX(), getY(), this.getScene());
         this.getScene().addFruit(fruit);

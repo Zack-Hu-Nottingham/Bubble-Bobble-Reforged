@@ -19,6 +19,11 @@ public class GameTimer {
 
     private StringProperty timeToDisplay = new SimpleStringProperty("00:00");
 
+    /**
+     * Time to display property string property.
+     *
+     * @return the string property
+     */
     public StringProperty timeToDisplayProperty() {
         return timeToDisplay;
     }
@@ -64,7 +69,6 @@ public class GameTimer {
     public int getTime() {
         return seconds;
     }
-
 
 
     /**

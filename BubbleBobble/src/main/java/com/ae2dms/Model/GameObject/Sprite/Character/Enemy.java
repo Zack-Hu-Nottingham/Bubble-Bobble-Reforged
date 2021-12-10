@@ -35,18 +35,39 @@ public class Enemy extends SpriteObject {
 	private static double SHOOT_BUBBLE_CHANCE = 0.01;
 
 
+	/**
+	 * The Is bubbled.
+	 */
 	boolean isBubbled;
+	/**
+	 * The Timer.
+	 */
 	int timer;
+	/**
+	 * The Point value.
+	 */
 	int pointValue;
 	private boolean turningAwayFromShield;
 	private int turningAwayCount;
 	private boolean isOnAPlatform;
 	private int jumpSpeed;
 
+	/**
+	 * The constant enemyImageRight.
+	 */
 	protected static Image enemyImageRight = new Image(Enemy.class.getResource("/image/sprite/enemy/enemyRight.png").toString(), WIDTH, HEIGHT, false, false);
+	/**
+	 * The constant enemyImageLeft.
+	 */
 	protected static Image enemyImageLeft = new Image(Enemy.class.getResource("/image/sprite/enemy/enemyLeft.png").toString(), WIDTH, HEIGHT, false, false);
+	/**
+	 * The constant enemyImage.
+	 */
 	protected static Image enemyImage = enemyImageRight;
 
+	/**
+	 * The constant bubbled.
+	 */
 	protected static Image bubbled = new Image(Bubble.class.getResource("/image/sprite/bubble/bubbled.png").toString(), 40, 40, false, false);
 
 //	@Override
@@ -54,9 +75,16 @@ public class Enemy extends SpriteObject {
 //
 //	}
 
-	public Enemy(GameScene world, int colNum, int rowNum) {
+	/**
+	 * Instantiates a new Enemy.
+	 *
+	 * @param gameScene  the gameScene
+	 * @param colNum the col num
+	 * @param rowNum the row num
+	 */
+	public Enemy(GameScene gameScene, int colNum, int rowNum) {
 		//initializes enemy
-		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, WIDTH, HEIGHT, world, enemyImage);
+		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, WIDTH, HEIGHT, gameScene, enemyImage);
 		isOnAPlatform = false;
 		jumpSpeed = JUMP_SPEED;
 		terminal_xVelocity = TERMINAL_VELOCITY_X;
@@ -176,7 +204,10 @@ public class Enemy extends SpriteObject {
 		SoundEffect.getInstance().play("shoot");
 		this.getScene().addEnemyProjectile(new EnemyProjectile(this.getScene(), getX(), getY(), direction));
 	}
-	
+
+	/**
+	 * Collide with projectile.
+	 */
 	public void collideWithProjectile() {
 		//handles what to do if hit with a projectile by the hero
 		if (!isBubbled) {
@@ -193,10 +224,13 @@ public class Enemy extends SpriteObject {
 		//handles what to do on collision with a wall
 		reverseDirection();
 	}
-	
+
+	/**
+	 * Die.
+	 */
 	void die() {
 		//handles what to do on death
-		GamePanel.chargeLevel += 1;
+		this.getScene().chargeLevel += 1;
 //		System.out.println(GamePanel.chargeLevel);
 		FruitFactory enemyDropFruitFactory = new EnemyDropFruitFactory();
 		Fruit fruit = enemyDropFruitFactory.getFruit(getX(), getY(), this.getScene());
@@ -204,11 +238,21 @@ public class Enemy extends SpriteObject {
 		markToRemove();
 	}
 
+	/**
+	 * Is bubbled boolean.
+	 *
+	 * @return the boolean
+	 */
 	public boolean isBubbled() {
 		return isBubbled;
 	}
 
 
+	/**
+	 * Collide with.
+	 *
+	 * @param hero the hero
+	 */
 	public void collideWith(Hero hero) {
 		//handles collision with hero and what to do
 		if (this.overlaps(hero)) {
@@ -233,6 +277,11 @@ public class Enemy extends SpriteObject {
 		}
 	}
 
+	/**
+	 * Collide with.
+	 *
+	 * @param unit the unit
+	 */
 	public void collideWith(CeilingUnit unit) {
 		//handles unit collision
 		if (this.overlaps(unit)) {
@@ -243,6 +292,11 @@ public class Enemy extends SpriteObject {
 		}
 	}
 
+	/**
+	 * Collide with.
+	 *
+	 * @param floorUnit the floor unit
+	 */
 	public void collideWith(FloorUnit floorUnit) {
 		//handles unit collision
 		if (this.overlaps(floorUnit)) {
@@ -253,6 +307,11 @@ public class Enemy extends SpriteObject {
 		}
 	}
 
+	/**
+	 * Collide with.
+	 *
+	 * @param wallUnit the wall unit
+	 */
 	public void collideWith(WallUnit wallUnit) {
 		//handles unit collision
 		if (this.overlaps(wallUnit)) {

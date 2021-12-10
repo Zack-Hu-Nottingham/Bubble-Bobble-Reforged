@@ -14,10 +14,8 @@ import java.io.IOException;
 /**
  * The GamePanel is the director of this program, which contains
  * the global variable of the game, like difficulty and theme. It
- *
- * The GamePanel is where the entire game is constantly updated.
- * After every few milliseconds, GamePanel calls the methods that update its InteractableWorld,
- * then repaints the window to display the new drawn graphics.
+ * contains method that can switch the scene, for example from
+ * menu page to game scene, from game scene to game over scene
  */
 public class GamePanel {
 
@@ -34,36 +32,28 @@ public class GamePanel {
 
 
 	/**
-	 * The  theme.
+	 * The theme of the game (shared among the whole game).
 	 */
 	public static Theme theme = Theme.RED;
 	/**
-	 * The constant difficulty.
+	 * The difficulty of the game (shared among the whole game).
 	 */
 	public static Difficulty difficulty = Difficulty.LOW;
 
 	/**
-	 * The constant gameTimer.
+	 * The gameTimer that records the time of the game (shared among the whole game).
 	 */
 	public static GameTimer gameTimer;
 	/**
-	 * The constant bonus.
+	 * The bonus earned through the game (shared among the whole game).
 	 */
 	public static IntegerProperty bonus;
 	/**
-	 * The constant gameStatus.
+	 * The gameStatus of the game (shared among the whole game).
 	 */
 	public static GameStatus gameStatus;
 	/**
-	 * The constant level.
-	 */
-	public static IntegerProperty level;
-	/**
-	 * The constant chargeLevel.
-	 */
-	public static int chargeLevel;
-	/**
-	 * The constant stage.
+	 * The stage of the program.
 	 */
 	public static Stage stage;
 
@@ -74,7 +64,8 @@ public class GamePanel {
 	/**
 	 * The constant WIDTH.
 	 */
-	public static final int WIDTH = 44, /**
+	public static final int WIDTH = 44,
+	/**
 	 * The Height.
 	 */
 	HEIGHT = 30;
@@ -167,7 +158,18 @@ public class GamePanel {
 	 * chance to shoot bubble would vary.
 	 */
 	public enum Difficulty {
-		LOW, MEDIUM, HIGH
+		/**
+		 * Low difficulty.
+		 */
+		LOW,
+		/**
+		 * Medium difficulty.
+		 */
+		MEDIUM,
+		/**
+		 * High difficulty.
+		 */
+		HIGH
     }
 
 	/**
@@ -175,7 +177,26 @@ public class GamePanel {
 	 * The theme would decide the wall's style and the bubble's style
 	 */
 	public enum Theme {
-		RED, BLUE, GREEN, BLACK, PINK
+		/**
+		 * Red theme.
+		 */
+		RED,
+		/**
+		 * Blue theme.
+		 */
+		BLUE,
+		/**
+		 * Green theme.
+		 */
+		GREEN,
+		/**
+		 * Black theme.
+		 */
+		BLACK,
+		/**
+		 * Pink theme.
+		 */
+		PINK
 	}
 
 	/**
@@ -183,6 +204,25 @@ public class GamePanel {
 	 * status gameScene(the model) would have different behavior.
 	 */
 	public enum GameStatus {
-		READY, PLAYING, PAUSE, LOSE, WIN
+		/**
+		 * Ready game status.
+		 */
+		READY,
+		/**
+		 * Playing game status.
+		 */
+		PLAYING,
+		/**
+		 * Pause game status.
+		 */
+		PAUSE,
+		/**
+		 * Lose game status.
+		 */
+		LOSE,
+		/**
+		 * Win game status.
+		 */
+		WIN
 	}
 }

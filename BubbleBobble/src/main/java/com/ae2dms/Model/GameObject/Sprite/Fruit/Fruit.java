@@ -18,11 +18,25 @@ public abstract class Fruit extends SpriteObject {
 	private static final int TERMINAL_VELOCITY_Y = 10;
 	
 	private boolean readyToCollect;
-	protected int bonus;
-	public CollectEffect collectEffect ;
+    /**
+     * The Bonus.
+     */
+    protected int bonus;
+    /**
+     * The Collect effect.
+     */
+    public CollectEffect collectEffect ;
 
 
-	public Fruit(double x, double y, GameScene world, Image image) {
+    /**
+     * Instantiates a new Fruit.
+     *
+     * @param x     the x
+     * @param y     the y
+     * @param world the world
+     * @param image the image
+     */
+    public Fruit(double x, double y, GameScene world, Image image) {
 		//initializes fruit
 		super(x, y, SIZE, SIZE, world, image);
 //		this.awardImage = fruitImage;
@@ -35,8 +49,13 @@ public abstract class Fruit extends SpriteObject {
 		super.update();
 	}
 
-	
-	public void collideWith(Hero hero) {
+
+    /**
+     * Collide with.
+     *
+     * @param hero the hero
+     */
+    public void collideWith(Hero hero) {
 		//checks for collision with hero and tells it what to do if it is colliding
 		if (this.overlaps(hero) && readyToCollect) {
 			SoundEffect.getInstance().play("fruit");

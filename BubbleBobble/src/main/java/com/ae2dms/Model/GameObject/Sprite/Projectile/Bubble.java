@@ -16,19 +16,19 @@ public class Bubble extends SpriteObject {
 	private int accel;
 	private static final int SIZE = 25;
 
-	/**
-	 * The image of the bubble.
-	 */
-	protected static Image image = new Image(Bubble.class.getResource("/image/sprite/bubble/explosion.png").toString(), SIZE, SIZE, false, false);
+    /**
+     * The image of the bubble.
+     */
+    protected static Image image = new Image(Bubble.class.getResource("/image/sprite/bubble/explosion.png").toString(), SIZE, SIZE, false, false);
 
-	/**
-	 * Instantiates a new Bubble.
-	 *
-	 * @param gameScene the gamescene that the bubble in
-	 * @param x     the x-coordinate of bubble
-	 * @param y     the y-coordinate of bubble
-	 */
-	public Bubble(GameScene gameScene, double x, double y) {
+    /**
+     * Instantiates a new Bubble.
+     *
+     * @param gameScene the gamescene that the bubble in
+     * @param x         the x-coordinate of bubble
+     * @param y         the y-coordinate of bubble
+     */
+    public Bubble(GameScene gameScene, double x, double y) {
 		super(x, y, 0, 0, gameScene, image);
 		accel = 1;
 	}
@@ -71,23 +71,23 @@ public class Bubble extends SpriteObject {
 		// Nothing happens
 	}
 
-	/**
-	 * Bubble collide with enemy.
-	 *
-	 * @param enemy the enemy
-	 */
-	public void collideWith(Enemy enemy) {
+    /**
+     * Bubble collide with enemy.
+     *
+     * @param enemy the enemy
+     */
+    public void collideWith(Enemy enemy) {
 		if (this.overlaps(enemy)) {
 			enemy.collideWithProjectile();
 		}
 	}
 
-	/**
-	 * Collide with.
-	 *
-	 * @param boss the boss
-	 */
-	public void collideWith(Boss boss) {
+    /**
+     * Collide with.
+     *
+     * @param boss the boss
+     */
+    public void collideWith(Boss boss) {
 		if (this.overlaps(boss)) {
 			boss.collideWithProjectile();
 		}

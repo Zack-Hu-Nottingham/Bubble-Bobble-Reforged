@@ -13,8 +13,8 @@ public class StrawBerry extends Fruit {
     /**
      * Instantiates a new Straw berry.
      *
-     * @param x     the x
-     * @param y     the y
+     * @param x         the x
+     * @param y         the y
      * @param gameScene the gameScene
      */
     public StrawBerry(double x, double y, GameScene gameScene) {

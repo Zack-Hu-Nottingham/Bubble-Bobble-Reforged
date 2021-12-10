@@ -31,15 +31,15 @@ public class HeroProjectile extends Projectile {
 	private static Image image = red;
 	private static Image blurImage = blurRed;
 
-	/**
-	 * Instantiates a new Hero projectile.
-	 *
-	 * @param gameScene the gameScene that projectile belongs to
-	 * @param x         the x-coordinate of projectile
-	 * @param y         the y-coordinate of projectile
-	 * @param direction the direction of projectile
-	 */
-	public HeroProjectile(GameScene gameScene, double x, double y, GameScene.Direction direction) {
+    /**
+     * Instantiates a new Hero projectile.
+     *
+     * @param gameScene the gameScene that projectile belongs to
+     * @param x         the x-coordinate of projectile
+     * @param y         the y-coordinate of projectile
+     * @param direction the direction of projectile
+     */
+    public HeroProjectile(GameScene gameScene, double x, double y, GameScene.Direction direction) {
 		super(x-40, y-40, SIZE, SIZE, gameScene, image);
 		this.direction = direction;
 
@@ -81,33 +81,33 @@ public class HeroProjectile extends Projectile {
 		}
 	}
 
-	/**
-	 * Collide with hero.
-	 *
-	 * @param hero the hero
-	 */
-	public void collideWith(Hero hero) {
+    /**
+     * Collide with hero.
+     *
+     * @param hero the hero
+     */
+    public void collideWith(Hero hero) {
 		// Nothing happens
 	}
 
-	/**
-	 * Collide with enemy.
-	 *
-	 * @param enemy the enemy
-	 */
-	public void collideWith(Enemy enemy) {
+    /**
+     * Collide with enemy.
+     *
+     * @param enemy the enemy
+     */
+    public void collideWith(Enemy enemy) {
 		if (this.overlaps(enemy) && isActive && !enemy.isBubbled()) {
 			enemy.collideWithProjectile();
 			markToRemove();
 		}
 	}
 
-	/**
-	 * Collide with boss.
-	 *
-	 * @param boss the boss
-	 */
-	public void collideWith(Boss boss) {
+    /**
+     * Collide with boss.
+     *
+     * @param boss the boss
+     */
+    public void collideWith(Boss boss) {
 		if (this.overlaps(boss) && isActive && !boss.isBubbled()) {
 			boss.collideWithProjectile();
 			markToRemove();
