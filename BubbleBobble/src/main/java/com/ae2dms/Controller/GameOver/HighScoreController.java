@@ -15,6 +15,9 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * The type High score controller.
+ */
 public class HighScoreController {
 
     @FXML
@@ -52,6 +55,11 @@ public class HighScoreController {
     @FXML
     private Pane HighScoreBar;
 
+    /**
+     * Initialize the highScore controller.
+     *
+     * @throws IOException the io exception
+     */
     public void initialize() throws IOException {
         bindScore();
     }
@@ -59,6 +67,12 @@ public class HighScoreController {
     private ArrayList<String > name;
     private ArrayList<Integer> score;
     private ArrayList<Integer> timeConsumed;
+
+    /**
+     * Get records from records.txt and bind them with the score labels in fxml.
+     *
+     * @throws IOException the io exception
+     */
     public void bindScore() throws IOException {
         GameRecorder gameRecorder = new GameRecorder();
 		gameRecorder.readRecord();
@@ -93,36 +107,56 @@ public class HighScoreController {
         }
     }
 
+    /**
+     * Set the first row of record.
+     */
     public void setFirstRecord() {
         name1.setText(name.get(0));
         score1.setText(String.valueOf(score.get(0)));
         time1.setText(GameTimer.parseToTimeFormat(timeConsumed.get(0)));
     }
 
+    /**
+     * Set the second row of record.
+     */
     public void setSecondRecord() {
         name2.setText(name.get(1));
         score2.setText(String.valueOf(score.get(1)));
         time2.setText(GameTimer.parseToTimeFormat(timeConsumed.get(1)));
     }
 
+    /**
+     * Set the third row of record.
+     */
     public void setThirdRecord() {
         name3.setText(name.get(2));
         score3.setText(String.valueOf(score.get(2)));
         time3.setText(GameTimer.parseToTimeFormat(timeConsumed.get(2)));
     }
 
+    /**
+     * Set the forth row of record.
+     */
     public void setForthRecord() {
         name4.setText(name.get(3));
         score4.setText(String.valueOf(score.get(3)));
         time4.setText(GameTimer.parseToTimeFormat(timeConsumed.get(3)));
     }
 
+    /**
+     * Set the fifth row of record.
+     */
     public void setFifthRecord() {
         name5.setText(name.get(4));
         score5.setText(String.valueOf(score.get(4)));
         time5.setText(GameTimer.parseToTimeFormat(timeConsumed.get(4)));
     }
 
+    /**
+     * Handle the action that user click back to last scene.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void back(MouseEvent mouseEvent) {
         GamePanel.getInstance().gameOver();
     }
