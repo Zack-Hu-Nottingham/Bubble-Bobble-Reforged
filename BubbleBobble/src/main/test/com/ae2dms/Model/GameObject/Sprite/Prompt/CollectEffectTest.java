@@ -1,7 +1,7 @@
-package com.ae2dms.Model.GameObject.Sprite.Prompt;
+package com.ae2dms.model.gameObject.sprite.prompt;
 
 import com.ae2dms.GamePanel;
-import com.ae2dms.Model.Scene.GameScene;
+import com.ae2dms.model.scene.GameScene;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;

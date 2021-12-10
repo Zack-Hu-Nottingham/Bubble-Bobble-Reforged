@@ -1,4 +1,4 @@
-package com.ae2dms.Util;
+package com.ae2dms.util;
 
 import com.ae2dms.GamePanel;
 import com.ae2dms.Main;

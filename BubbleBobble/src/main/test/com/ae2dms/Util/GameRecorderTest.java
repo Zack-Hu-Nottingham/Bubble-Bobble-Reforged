@@ -1,4 +1,4 @@
-package com.ae2dms.Util;
+package com.ae2dms.util;
 
 import org.junit.jupiter.api.*;
 

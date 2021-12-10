@@ -8,23 +8,23 @@ module com.example.bubblebobble {
 
     opens com.ae2dms to javafx.fxml;
     exports com.ae2dms;
-    exports com.ae2dms.Model.Scene;
-    opens com.ae2dms.Model.Scene to javafx.fxml;
-    exports com.ae2dms.Util;
-    opens com.ae2dms.Util to javafx.fxml;
-    exports com.ae2dms.Controller.Menu;
-    opens com.ae2dms.Controller.Menu to javafx.fxml;
-    exports com.ae2dms.Controller.GameScene;
-    opens com.ae2dms.Controller.GameScene to javafx.fxml;
-    exports com.ae2dms.Model.GameObject.Sprite;
-    opens com.ae2dms.Model.GameObject.Sprite to javafx.fxml;
-    exports com.ae2dms.Controller.GameOver;
-    opens com.ae2dms.Controller.GameOver to javafx.fxml;
-    exports com.ae2dms.Model.GameObject.Sprite.Prompt;
-    opens com.ae2dms.Model.GameObject.Sprite.Prompt to javafx.fxml;
-    exports com.ae2dms.Model.GameObject.Sprite.Projectile;
-    opens com.ae2dms.Model.GameObject.Sprite.Projectile to javafx.fxml;
-    exports com.ae2dms.Model.GameObject.Sprite.Character;
-    opens com.ae2dms.Model.GameObject.Sprite.Character to javafx.fxml;
+    exports com.ae2dms.model.scene;
+    opens com.ae2dms.model.scene to javafx.fxml;
+    exports com.ae2dms.util;
+    opens com.ae2dms.util to javafx.fxml;
+    exports com.ae2dms.controller.menu;
+    opens com.ae2dms.controller.menu to javafx.fxml;
+    exports com.ae2dms.controller.gameScene;
+    opens com.ae2dms.controller.gameScene to javafx.fxml;
+    exports com.ae2dms.model.gameObject.sprite;
+    opens com.ae2dms.model.gameObject.sprite to javafx.fxml;
+    exports com.ae2dms.controller.gameOver;
+    opens com.ae2dms.controller.gameOver to javafx.fxml;
+    exports com.ae2dms.model.gameObject.sprite.prompt;
+    opens com.ae2dms.model.gameObject.sprite.prompt to javafx.fxml;
+    exports com.ae2dms.model.gameObject.sprite.projectile;
+    opens com.ae2dms.model.gameObject.sprite.projectile to javafx.fxml;
+    exports com.ae2dms.model.gameObject.sprite.character;
+    opens com.ae2dms.model.gameObject.sprite.character to javafx.fxml;
 
 }

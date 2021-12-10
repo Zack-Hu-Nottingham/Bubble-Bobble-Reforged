@@ -1,6 +1,6 @@
 package com.ae2dms;
 
-import com.ae2dms.Util.GameTimer;
+import com.ae2dms.util.GameTimer;
 import javafx.beans.property.IntegerProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

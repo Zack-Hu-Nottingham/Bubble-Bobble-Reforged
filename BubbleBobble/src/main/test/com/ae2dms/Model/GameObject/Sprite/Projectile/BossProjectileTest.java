@@ -1,8 +1,8 @@
-package com.ae2dms.Model.GameObject.Sprite.Projectile;
+package com.ae2dms.model.gameObject.sprite.projectile;
 
 import com.ae2dms.GamePanel;
-import com.ae2dms.Model.GameObject.Sprite.Character.Hero;
-import com.ae2dms.Model.Scene.GameScene;
+import com.ae2dms.model.gameObject.sprite.character.Hero;
+import com.ae2dms.model.scene.GameScene;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;

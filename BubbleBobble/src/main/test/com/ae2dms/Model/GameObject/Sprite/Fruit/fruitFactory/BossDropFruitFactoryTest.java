@@ -1,11 +1,11 @@
-package com.ae2dms.Model.GameObject.Sprite.Fruit.fruitFactory;
+package com.ae2dms.model.gameObject.sprite.fruit.fruitFactory;
 
-import com.ae2dms.Model.GameObject.Sprite.Fruit.Fruit;
+import com.ae2dms.model.gameObject.sprite.fruit.Fruit;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.ae2dms.Model.GameObject.Sprite.Fruit.fruit.Lucky;
+import com.ae2dms.model.gameObject.sprite.fruit.fruits.Lucky;
 import org.testfx.framework.junit5.ApplicationTest;
 
 import static org.hamcrest.CoreMatchers.instanceOf;

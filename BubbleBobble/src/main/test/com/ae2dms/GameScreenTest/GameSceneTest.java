@@ -2,7 +2,7 @@ package com.ae2dms.GameScreenTest;
 
 import com.ae2dms.GamePanel;
 import com.ae2dms.Main;
-import com.ae2dms.Util.GameRecorder;
+import com.ae2dms.util.GameRecorder;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

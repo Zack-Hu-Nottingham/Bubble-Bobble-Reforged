@@ -1,9 +1,9 @@
-package com.ae2dms.Model.GameObject.Sprite.Fruit.fruitFactory;
+package com.ae2dms.model.gameObject.sprite.fruit.fruitFactory;
 
-import com.ae2dms.Model.GameObject.Sprite.Fruit.*;
-import com.ae2dms.Model.GameObject.Sprite.Fruit.fruit.Apple;
-import com.ae2dms.Model.GameObject.Sprite.Fruit.fruit.Banana;
-import com.ae2dms.Model.GameObject.Sprite.Fruit.fruit.StrawBerry;
+import com.ae2dms.model.gameObject.sprite.fruit.*;
+import com.ae2dms.model.gameObject.sprite.fruit.fruits.Apple;
+import com.ae2dms.model.gameObject.sprite.fruit.fruits.Banana;
+import com.ae2dms.model.gameObject.sprite.fruit.fruits.StrawBerry;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
