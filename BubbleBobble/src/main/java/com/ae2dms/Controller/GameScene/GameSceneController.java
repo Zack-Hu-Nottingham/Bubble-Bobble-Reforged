@@ -16,30 +16,62 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 
+/**
+ * The type Game scene controller.
+ */
 public class GameSceneController {
 
     private GameScene gameScene;
 
+    /**
+     * The Best record.
+     */
     @FXML public Label bestRecord;
+    /**
+     * The Charge state.
+     */
     @FXML public Label chargeState;
+    /**
+     * The Cover 1.
+     */
     @FXML public ImageView cover1;
+    /**
+     * The Cover 2.
+     */
     @FXML public ImageView cover2;
+    /**
+     * The Cover 3.
+     */
     @FXML public ImageView cover3;
+    /**
+     * The Cover 4.
+     */
     @FXML public ImageView cover4;
 
     // View Node
     @FXML private Canvas canvas;
+    /**
+     * The Blur group.
+     */
     @FXML public Group blurGroup;
     @FXML private Label currentScore;
     @FXML private Label timeSpend;
+    /**
+     * The Exit game pop up controller.
+     */
     @FXML protected ExitGamePopUpController ExitGamePopUpController;
     @FXML private Label levelHint;
 
 
-    private Refresh refresh = new Refresh();
+    private Refresher refresher = new Refresher();
 
     private int timeDelay = 120;
 
+    /**
+     * Initialize the gameScene controller, which initialize a set of
+     * settings that is important for game and then initialize the
+     * game.
+     */
     public void initialize() {
 
         GamePanel.gameTimer = new GameTimer();
@@ -68,10 +100,15 @@ public class GameSceneController {
 
         GamePanel.gameStatus = GamePanel.GameStatus.PLAYING;
 
-        refresh.start();
+        refresher.start();
     }
 
 
+    /**
+     * Handle the action that user click back to menu.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void mouseClickedBackToMenu(MouseEvent mouseEvent) {
         SoundEffect.getInstance().play("click");
 
@@ -106,10 +143,16 @@ public class GameSceneController {
         blurGroup.setEffect(gaussianBlur);
     }
 
+    /**
+     * Clear the blur effect that apply on the blurGroup.
+     */
     public void clearEffect() {
         blurGroup.setEffect(null);
     }
 
+    /**
+     * Clear charge.
+     */
     public void clearCharge() {
         cover1.setOpacity(1);
         cover2.setOpacity(1);
@@ -118,7 +161,7 @@ public class GameSceneController {
     }
 
 
-    private class Refresh extends AnimationTimer {
+    private class Refresher extends AnimationTimer {
         @Override
         public void handle(long currentTime) {
             switch (GamePanel.gameStatus){

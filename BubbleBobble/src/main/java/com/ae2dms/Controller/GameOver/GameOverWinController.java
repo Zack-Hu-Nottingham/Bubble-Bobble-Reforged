@@ -14,16 +14,31 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
+/**
+ * The controller of gameOver win scene
+ */
 public class GameOverWinController {
+    /**
+     * The Back to menu button(implement with Imageview).
+     */
     @FXML
     public ImageView backToMenu;
 
+    /**
+     * The Play again button (implement with Imageview).
+     */
     @FXML
     public ImageView playAgain;
 
+    /**
+     * The text field that let player enter his name.
+     */
     @FXML
     public TextField userName;
 
+    /**
+     * The Save record button (implement with Imageview).
+     */
     @FXML
     public ImageView saveRecord;
 
@@ -35,6 +50,13 @@ public class GameOverWinController {
 
     private Image saved = new Image(SettingController.class.getResource("/image/ui/gameScene/endGamePopUp/savedRecord.png").toString());
     private boolean isSaved = false;
+
+    /**
+     * Handles the action that user click save records button.
+     *
+     * @param mouseEvent the mouse event
+     * @throws IOException the io exception
+     */
     public void clickSaveRecord(MouseEvent mouseEvent) throws IOException {
         SoundEffect.getInstance().play("click");
 
@@ -46,23 +68,41 @@ public class GameOverWinController {
         }
     }
 
+    /**
+     * Initialize the controller and set the label "score" and "time" with corresponding value.
+     */
     public void initialize() {
         time.textProperty().set(GameTimer.parseToTimeFormat(GamePanel.gameTimer.getTime()));
         score.textProperty().set(GamePanel.bonus.getValue().toString());
     }
 
+    /**
+     * Handle the action that user click back to menu button.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void clickBackToMenu(MouseEvent mouseEvent) {
         SoundEffect.getInstance().play("click");
 
         GamePanel.getInstance().toMenu();
     }
 
+    /**
+     * Handle the action that user click play again button.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void clickPlayAgain(MouseEvent mouseEvent) {
         SoundEffect.getInstance().play("click");
 
         GamePanel.getInstance().startGame();
     }
 
+    /**
+     * Handle the action that user click view high score cutton.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void clickViewHighScore(MouseEvent mouseEvent) {
         GamePanel.getInstance().viewHighScore();
     }
