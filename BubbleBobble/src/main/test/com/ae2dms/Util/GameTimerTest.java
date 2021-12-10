@@ -1,5 +1,6 @@
 package com.ae2dms.Util;
 
+import com.ae2dms.GamePanel;
 import com.ae2dms.Main;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
@@ -17,44 +18,13 @@ class GameTimerTest extends ApplicationTest {
     @Override
     public void start(Stage stage) throws Exception {
         super.start(stage);
-        Main.stage = stage;
+        GamePanel.stage = stage;
+//        Main.stage = stage;
 
         AnchorPane root = new AnchorPane();
         Scene scene = new Scene(root, 24 * 20, 24 * 30);
         stage.setScene(scene);
     }
-
-//    @Test
-//    void start() {
-//        GameTimer gameTimer = new GameTimer();
-//        gameTimer.start();
-//        Assertions.assertNotEquals(gameTimer.getTime(), 0);
-//    }
-//
-//    @Test
-//    void testStop() {
-//        GameTimer gameTimer = new GameTimer();
-//        gameTimer.start();
-//
-//        try {
-//            wait(1);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//
-//        int time1 = gameTimer.getTime();
-//        gameTimer.stop();
-//
-//        try {
-//            wait(1);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//
-//        int time2 = gameTimer.getTime();
-//
-//        Assertions.assertEquals(time1, time2);
-//    }
 
 
     @Test

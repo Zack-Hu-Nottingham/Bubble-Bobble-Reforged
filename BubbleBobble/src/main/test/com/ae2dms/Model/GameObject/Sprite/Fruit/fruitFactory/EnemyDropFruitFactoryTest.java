@@ -33,7 +33,6 @@ class EnemyDropFruitFactoryTest extends ApplicationTest {
 
         fruit = enemyDropFruitFactory.getFruit(50, 50, null);
 
-        System.out.println(fruit.getClass());
         if (fruit.getClass().equals(Banana.class)) {
             assertThat(fruit, instanceOf(Banana.class));
         } else if (fruit.getClass().equals(Apple.class)) {

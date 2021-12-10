@@ -8,6 +8,7 @@ import javafx.scene.media.AudioClip;
  */
 public class SoundEffect {
 
+	private static AudioClip BGM;
 	private static AudioClip bubbled = new AudioClip(SoundEffect.class.getResource("/sound/bubbled.wav").toString());
 	private static AudioClip click = new AudioClip(SoundEffect.class.getResource("/sound/click.wav").toString());
 	private static AudioClip death = new AudioClip(SoundEffect.class.getResource("/sound/death.wav").toString());

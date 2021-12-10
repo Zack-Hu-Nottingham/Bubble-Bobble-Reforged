@@ -17,25 +17,25 @@ public class GameOverLoseController {
      * The Time consumed to play the game.
      */
     @FXML
-    public Label time;
+    private Label time;
 
     /**
      * The Score earned through the game.
      */
     @FXML
-    public Label score;
+    private Label score;
 
     /**
      * The Back to menu button (implement with Imageview).
      */
     @FXML
-    public ImageView backToMenu;
+    private ImageView backToMenu;
 
     /**
      * The Play again button (implement with Imageview).
      */
     @FXML
-    public ImageView playAgain;
+    private ImageView playAgain;
 
     /**
      * Initialize the controller and set time and score on the screen.

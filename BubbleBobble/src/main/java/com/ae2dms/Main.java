@@ -1,6 +1,5 @@
 package com.ae2dms;
 
-import com.ae2dms.Util.GameRecorder;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -14,12 +13,9 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-	public static Stage stage;
+//	public static Stage stage;
 
 	public static void main(String[] args) throws IOException {
-//		GameRecorder gameRecorder = new GameRecorder();
-//		gameRecord.saveRecord("foo", 200, 15);
-//		gameRecorder.readRecord();
 		launch(args);
 	}
 
@@ -27,7 +23,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 
-		this.stage = stage;
+//		this.stage = stage;
 		GamePanel.getInstance().init(stage);
 	}
 }

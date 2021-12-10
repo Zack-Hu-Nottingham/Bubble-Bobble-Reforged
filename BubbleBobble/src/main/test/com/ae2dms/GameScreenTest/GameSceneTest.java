@@ -3,18 +3,11 @@ package com.ae2dms.GameScreenTest;
 import com.ae2dms.GamePanel;
 import com.ae2dms.Main;
 import com.ae2dms.Util.GameRecorder;
-import com.ae2dms.Util.SoundEffect;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxAssert;
@@ -26,14 +19,13 @@ import org.testfx.matcher.control.LabeledMatchers;
 
 import java.io.IOException;
 
-import java.io.IOException;
-
 @ExtendWith(ApplicationExtension.class)
 public class GameSceneTest extends ApplicationTest {
 
     @Start
     public void start(Stage stage) throws IOException {
-        Main.stage = stage;
+        GamePanel.stage = stage;
+//        Main.stage = stage;
         AnchorPane anchorPane = new AnchorPane();
         Scene scene = new Scene(anchorPane, 1280, 720);
 

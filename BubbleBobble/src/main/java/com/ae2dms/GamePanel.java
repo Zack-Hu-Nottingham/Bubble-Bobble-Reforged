@@ -34,11 +34,13 @@ public class GamePanel {
 	public static GameStatus gameStatus;
 	public static IntegerProperty level;
 	public static int chargeLevel;
+	public static Stage stage;
 
 	public static final int UNIT_SIZE = 20;
 	public static final int WIDTH = 44, HEIGHT = 30;
 
 	public void init(Stage stage) throws IOException {
+		this.stage = stage;
 
 		AnchorPane root = new AnchorPane();
 		Scene scene = new Scene(root, UNIT_SIZE * WIDTH, UNIT_SIZE * HEIGHT);
@@ -84,7 +86,8 @@ public class GamePanel {
 	public void loadHelper(String fxmlPath) {
 		try {
 			Parent root = FXMLLoader.load(GamePanel.class.getResource(fxmlPath));
-			Main.stage.getScene().setRoot(root);
+			stage.getScene().setRoot(root);
+//			Main.stage.getScene().setRoot(root);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

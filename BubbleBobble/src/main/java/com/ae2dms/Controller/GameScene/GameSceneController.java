@@ -26,34 +26,34 @@ public class GameSceneController {
     /**
      * The Best record.
      */
-    @FXML public Label bestRecord;
+    @FXML private Label bestRecord;
     /**
      * The Charge state.
      */
-    @FXML public Label chargeState;
+    @FXML private Label chargeState;
     /**
      * The Cover 1.
      */
-    @FXML public ImageView cover1;
+    @FXML private ImageView cover1;
     /**
      * The Cover 2.
      */
-    @FXML public ImageView cover2;
+    @FXML private ImageView cover2;
     /**
      * The Cover 3.
      */
-    @FXML public ImageView cover3;
+    @FXML private ImageView cover3;
     /**
      * The Cover 4.
      */
-    @FXML public ImageView cover4;
+    @FXML private ImageView cover4;
 
     // View Node
     @FXML private Canvas canvas;
     /**
      * The Blur group.
      */
-    @FXML public Group blurGroup;
+    @FXML private Group blurGroup;
     @FXML private Label currentScore;
     @FXML private Label timeSpend;
     /**
@@ -146,14 +146,14 @@ public class GameSceneController {
     /**
      * Clear the blur effect that apply on the blurGroup.
      */
-    public void clearEffect() {
+    private void clearEffect() {
         blurGroup.setEffect(null);
     }
 
     /**
      * Clear charge.
      */
-    public void clearCharge() {
+    private void clearCharge() {
         cover1.setOpacity(1);
         cover2.setOpacity(1);
         cover3.setOpacity(1);

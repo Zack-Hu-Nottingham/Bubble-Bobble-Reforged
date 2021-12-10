@@ -5,21 +5,14 @@ import com.ae2dms.GamePanel;
 import com.ae2dms.Main;
 import com.ae2dms.Util.SoundEffect;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.testfx.api.FxAssert;
 import org.testfx.api.FxRobot;
-import org.testfx.framework.junit.ApplicationTest;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
@@ -28,22 +21,13 @@ import java.lang.reflect.Field;
 
 @ExtendWith(ApplicationExtension.class)
 public class MenuTest {
-//    private ImageView
-//    @BeforeAll
-//    private static void foo() {
-//        try {
-//            ApplicationTest.launch(Main.class);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     @Start
     private void start(Stage stage) throws IOException {
-        Main.stage = stage;
+        GamePanel.stage = stage;
+//        Main.stage = stage;
         AnchorPane anchorPane = new AnchorPane();
         Scene scene = new Scene(anchorPane, 1280, 720);
-//        SoundEffect soundEffect = SoundEffect.getInstance();
 
         stage.setScene(scene);
         Parent root = FXMLLoader.load(GamePanel.class.getResource("/View_fxml/menu/Menu.fxml"));
@@ -57,14 +41,14 @@ public class MenuTest {
 
         robot.doubleClickOn("#informationButton");
 
-        robot.clickOn("#w");
-        robot.clickOn("#e");
-        robot.clickOn("#up");
-        robot.clickOn("#right");
-        robot.clickOn("#left");
-        robot.clickOn("#space");
+        robot.doubleClickOn("#w");
+        robot.doubleClickOn("#e");
+        robot.doubleClickOn("#up");
+        robot.doubleClickOn("#right");
+        robot.doubleClickOn("#left");
+        robot.doubleClickOn("#space");
 
-        robot.clickOn("#back");
+        robot.doubleClickOn("#back");
 
     }
 

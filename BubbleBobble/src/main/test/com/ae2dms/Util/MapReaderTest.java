@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
-import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 
@@ -23,17 +22,14 @@ class MapReaderTest extends ApplicationTest {
     @Override
     public void start(Stage stage) throws Exception {
         super.start(stage);
-        Main.stage = stage;
+        GamePanel.stage = stage;
+//        Main.stage = stage;
 
         AnchorPane root = new AnchorPane();
         Scene scene = new Scene(root, 24 * 20, 24 * 30);
         stage.setScene(scene);
     }
 
-//<<<<<<< Updated upstream
-//=======
-
-//>>>>>>> Stashed changes
     @Test
     void readMapOne() {
         MapReader mapReader = MapReader.getInstance();

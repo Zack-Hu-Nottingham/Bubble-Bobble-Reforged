@@ -24,7 +24,8 @@ class BossProjectileTest extends ApplicationTest {
     @Override
     public void start(Stage stage) throws Exception {
         super.start(stage);
-        Main.stage = stage;
+        GamePanel.stage = stage;
+//        Main.stage = stage;
 
         AnchorPane root = new AnchorPane();
         Scene scene = new Scene(root, 24 * 20, 24 * 30);
@@ -44,13 +45,11 @@ class BossProjectileTest extends ApplicationTest {
         when(bossProjectile.overlaps(hero)).thenReturn(true);
         bossProjectile.isActive = true;
 
-//        System.out.println(bossProjectile.overlaps(hero));
         bossProjectile.collideWith(hero);
         Field field = hero.getClass().getDeclaredField("isShielding");
         field.setAccessible(true);
         field.setBoolean(hero, false);
 
-//        System.out.println(hero.);
         Assertions.assertNotEquals(GamePanel.GameStatus.WIN, GamePanel.gameStatus);
     }
 

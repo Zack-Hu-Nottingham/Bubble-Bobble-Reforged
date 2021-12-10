@@ -60,7 +60,8 @@ public class Hero extends SpriteObject {
 		shootDelay = 0;
 		readyToCharge = false;
 
-		addKeyHandler(Main.stage.getScene());
+//		addKeyHandler(Main.stage.getScene());
+		addKeyHandler(GamePanel.stage.getScene());
 	}
 
 	@Override
