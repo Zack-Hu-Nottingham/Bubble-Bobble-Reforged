@@ -113,31 +113,31 @@ public class HighScoreController {
         }
     }
 
-    public void setFirstRecord() {
+    private void setFirstRecord() {
         name1.setText(name.get(0));
         score1.setText(String.valueOf(score.get(0)));
         time1.setText(GameTimer.parseToTimeFormat(timeConsumed.get(0)));
     }
 
-    public void setSecondRecord() {
+    private void setSecondRecord() {
         name2.setText(name.get(1));
         score2.setText(String.valueOf(score.get(1)));
         time2.setText(GameTimer.parseToTimeFormat(timeConsumed.get(1)));
     }
 
-    public void setThirdRecord() {
+    private void setThirdRecord() {
         name3.setText(name.get(2));
         score3.setText(String.valueOf(score.get(2)));
         time3.setText(GameTimer.parseToTimeFormat(timeConsumed.get(2)));
     }
 
-    public void setForthRecord() {
+    private void setForthRecord() {
         name4.setText(name.get(3));
         score4.setText(String.valueOf(score.get(3)));
         time4.setText(GameTimer.parseToTimeFormat(timeConsumed.get(3)));
     }
 
-    public void setFifthRecord() {
+    private void setFifthRecord() {
         name5.setText(name.get(4));
         score5.setText(String.valueOf(score.get(4)));
         time5.setText(GameTimer.parseToTimeFormat(timeConsumed.get(4)));

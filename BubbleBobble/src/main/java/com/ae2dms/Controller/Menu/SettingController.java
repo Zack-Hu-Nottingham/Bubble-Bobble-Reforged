@@ -163,7 +163,6 @@ public class SettingController {
 
 
     public void clickRubbish(MouseEvent mouseEvent) {
-        System.out.println("click");
         SoundEffect.getInstance().play("click");
 
         clearDifficultyChoice();

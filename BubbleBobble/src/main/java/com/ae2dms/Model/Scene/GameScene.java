@@ -37,10 +37,7 @@ public class GameScene {
 	private ArrayList<SpriteObject> toBeRemoved;
 	private ArrayList<Bubble> bubbles;
 	private ArrayList<CollectEffect> collectEffects;
-
-
 	private ArrayList<BossProjectile> bossProjectiles;
-
 	private ArrayList<Boss> bosses;
 
 	private GraphicsContext graphicsContext;
@@ -104,38 +101,27 @@ public class GameScene {
 		return graphicsContext;
 	}
 
-	public MapReader getMapReader() { return mapReader; }
-
-	public GameScenePainter getGameScenePainter() {	return gameScenePainter; }
-
-
-
-	public GameScene() {
-		//initializes interactableworld
-		ceilingUnits = new ArrayList<CeilingUnit>();
-		floorUnits = new ArrayList<FloorUnit>();
-		wallUnits = new ArrayList<WallUnit>();
-		heroes = new ArrayList<Hero>();
-		enemies = new ArrayList<Enemy>();
-		heroProjectiles = new ArrayList<HeroProjectile>();
-		enemyProjectiles = new ArrayList<EnemyProjectile>();
-		fruits = new ArrayList<Fruit>();
-		toBeRemoved = new ArrayList<SpriteObject>();
-		bubbles = new ArrayList<Bubble>();
-		collectEffects = new ArrayList<CollectEffect>();
-		bosses = new ArrayList<Boss>();
-		bossProjectiles = new ArrayList<BossProjectile>();
-
-		mapReader = MapReader.getInstance();
-
-		mapReader.setGameScene(this);
-
-		mapReader.readMap(GamePanel.level.getValue());
-
-		gameScenePainter = GameScenePainter.getInstance();
-
-		gameScenePainter.setGameScene(this);
+	public MapReader getMapReader() {
+		return mapReader;
 	}
+
+	public GameScenePainter getGameScenePainter() {
+		return gameScenePainter;
+	}
+
+	public int getHeight() {
+		return HEIGHT * UNIT_SIZE;
+	}
+
+	public int getWidth() {
+		return WIDTH * UNIT_SIZE;
+	}
+
+	public void getCanvas(Canvas canvas) {
+		graphicsContext = canvas.getGraphicsContext2D();
+	}
+
+
 
 	public void addCeilingUnit(CeilingUnit ceilingUnit) {
 		ceilingUnits.add(ceilingUnit);
@@ -190,6 +176,34 @@ public class GameScene {
 
 	public void addBoss(Boss boss) { bosses.add(boss); }
 
+
+	public GameScene() {
+		//initializes interactableworld
+		ceilingUnits = new ArrayList<CeilingUnit>();
+		floorUnits = new ArrayList<FloorUnit>();
+		wallUnits = new ArrayList<WallUnit>();
+		heroes = new ArrayList<Hero>();
+		enemies = new ArrayList<Enemy>();
+		heroProjectiles = new ArrayList<HeroProjectile>();
+		enemyProjectiles = new ArrayList<EnemyProjectile>();
+		fruits = new ArrayList<Fruit>();
+		toBeRemoved = new ArrayList<SpriteObject>();
+		bubbles = new ArrayList<Bubble>();
+		collectEffects = new ArrayList<CollectEffect>();
+		bosses = new ArrayList<Boss>();
+		bossProjectiles = new ArrayList<BossProjectile>();
+
+		mapReader = MapReader.getInstance();
+
+		mapReader.setGameScene(this);
+
+		mapReader.readMap(GamePanel.level.getValue());
+
+		gameScenePainter = GameScenePainter.getInstance();
+
+		gameScenePainter.setGameScene(this);
+	}
+
 	public void clearContents() {
 		//clears everything from the screen
 		ceilingUnits.removeAll(ceilingUnits);
@@ -218,18 +232,6 @@ public class GameScene {
 		bossProjectiles.remove(obj);
 	}
 
-
-	public int getHeight() {
-		return HEIGHT * UNIT_SIZE;
-	}
-
-	public int getWidth() {
-		return WIDTH * UNIT_SIZE;
-	}
-
-	public void getCanvas(Canvas canvas) {
-		graphicsContext = canvas.getGraphicsContext2D();
-	}
 
 	public enum Direction {
 		LEFT, RIGHT

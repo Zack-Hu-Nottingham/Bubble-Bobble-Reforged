@@ -21,7 +21,8 @@ class CollectEffectTest extends ApplicationTest {
     @Override
     public void start(Stage stage) throws Exception {
         super.start(stage);
-        Main.stage = stage;
+        GamePanel.stage = stage;
+//        Main.stage = stage;
 
         AnchorPane root = new AnchorPane();
         Scene scene = new Scene(root, 24 * 20, 24 * 30);

@@ -1,30 +1,30 @@
 package com.ae2dms;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.framework.junit5.Start;
 
 import java.io.IOException;
 
-import static com.ae2dms.Main.stage;
-import static org.junit.jupiter.api.Assertions.*;
+import static com.ae2dms.GamePanel.stage;
+//import static com.ae2dms.Main.stage;
 
 class GamePanelTest extends ApplicationTest {
 
 
     @Start
     public void start(Stage stage) throws IOException {
-        Main.stage = stage;
+        GamePanel.stage = stage;
+//        Main.stage = stage;
         AnchorPane anchorPane = new AnchorPane();
         Scene scene = new Scene(anchorPane, 1280, 720);
-//        SoundEffect soundEffect = SoundEffect.getInstance();
 
         stage.setScene(scene);
         Parent root = FXMLLoader.load(GamePanel.class.getResource("/View_fxml/menu/Menu.fxml"));
@@ -40,25 +40,13 @@ class GamePanelTest extends ApplicationTest {
 
 
 //    @Test
-//    public void init() throws IOException {
+//    void startGame() {
 //        GamePanel gamePanel = GamePanel.getInstance();
-//        gamePanel.init(stage);
-//        Assertions.assertNotNull(stage.getIcons());
-//        Assertions.assertNotNull(stage.getScene());
-//        Assertions.assertEquals(stage.getTitle(), "Bubble Bobble");
-//        Assertions.assertEquals(stage.getWidth(), 1294);
-//        Assertions.assertEquals(stage.getHeight(), 750);
+//        gamePanel.startGame();
+//        Assertions.assertNotNull(stage.getScene().getRoot());
+//
+//
 //    }
-
-    @Test
-    void startGame() {
-        GamePanel gamePanel = GamePanel.getInstance();
-        gamePanel.startGame();
-        Assertions.assertNotNull(stage.getScene().getRoot());
-
-
-//        GamePanel.
-    }
 
     @Test
     void toMenu() {
@@ -66,6 +54,7 @@ class GamePanelTest extends ApplicationTest {
         gamePanel.toMenu();
         Assertions.assertNotNull(stage.getScene().getRoot());
     }
+
 
     @Test
     void gameOver() {
@@ -83,30 +72,8 @@ class GamePanelTest extends ApplicationTest {
 
     @Test
     void incrementBonus() {
-    }
-
-
-    @Test
-    void testStartGame() {
-    }
-
-    @Test
-    void testToMenu() {
-    }
-
-    @Test
-    void testGameOver() {
-    }
-
-    @Test
-    void testViewHighScore() {
-    }
-
-    @Test
-    void testIncrementBonus() {
-    }
-
-    @Test
-    void testLoadHelper() {
+        GamePanel.bonus = new SimpleIntegerProperty(0);
+        GamePanel.incrementBonus(50);
+        Assertions.assertEquals(GamePanel.bonus.intValue(), 50);
     }
 }

@@ -22,25 +22,25 @@ public class GameOverWinController {
      * The Back to menu button(implement with Imageview).
      */
     @FXML
-    public ImageView backToMenu;
+    private ImageView backToMenu;
 
     /**
      * The Play again button (implement with Imageview).
      */
     @FXML
-    public ImageView playAgain;
+    private ImageView playAgain;
 
     /**
      * The text field that let player enter his name.
      */
     @FXML
-    public TextField userName;
+    private TextField userName;
 
     /**
      * The Save record button (implement with Imageview).
      */
     @FXML
-    public ImageView saveRecord;
+    private ImageView saveRecord;
 
     @FXML
     private Label time;

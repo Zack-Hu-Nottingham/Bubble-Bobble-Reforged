@@ -9,7 +9,7 @@ import javafx.util.Duration;
 public class InformationController {
 
     @FXML
-    public Pane InformationPane;
+    private Pane InformationPane;
 
     @FXML
     MenuController menuController;

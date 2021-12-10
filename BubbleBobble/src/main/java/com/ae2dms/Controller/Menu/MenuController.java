@@ -38,7 +38,6 @@ public class MenuController {
         SoundEffect.getInstance().play("click");
 
         GamePanel.getInstance().startGame();
-        System.out.println("start");
     }
 
 
