@@ -15,7 +15,7 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 
 /**
- * The controller of gameOver win scene
+ * The controller of gameOver win scene.
  */
 public class GameOverWinController {
     /**

@@ -24,7 +24,7 @@ public class BossProjectile extends Projectile {
     /**
      * Instantiates a new Boss projectile.
      *
-     * @param gameScene     the gameScene that the projectile belongs to
+     * @param gameScene the gameScene that the projectile belongs to
      * @param x         the x-coordinate of projectile
      * @param y         the y-coordinate of projectile
      * @param direction the direction

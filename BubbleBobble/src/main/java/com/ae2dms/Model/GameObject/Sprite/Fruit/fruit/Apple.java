@@ -13,8 +13,8 @@ public class Apple extends Fruit {
     /**
      * Instantiates a new Apple.
      *
-     * @param x     the x
-     * @param y     the y
+     * @param x         the x
+     * @param y         the y
      * @param gameScene the gameScene
      */
     public Apple(double x, double y, GameScene gameScene) {

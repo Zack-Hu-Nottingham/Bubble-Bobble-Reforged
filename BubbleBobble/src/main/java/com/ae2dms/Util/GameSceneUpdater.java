@@ -17,7 +17,6 @@ import com.ae2dms.Model.GameObject.Wall.WallObject.WallUnit;
 import com.ae2dms.Model.Scene.GameScene;
 
 import static com.ae2dms.GamePanel.gameStatus;
-import static com.ae2dms.GamePanel.level;
 
 /**
  * The type Game scene updater.
@@ -253,15 +252,15 @@ public class GameSceneUpdater {
                 SoundEffect.getInstance().play("nextLevel");
                 delay -= 1;
             } else if (delay == 0) {
-                if (level.getValue() == 3 ) {
+                if (gameScene.level.getValue() == 3 ) {
                     if (gameScene.getBosses().isEmpty()) {
                         gameStatus = GamePanel.GameStatus.WIN;
                         SoundEffect.getInstance().play("victory");
                         delay -= 1;
                     }
                 } else {
-                    level.set(level.getValue() + 1);
-                    gameScene.getMapReader().readMap(level.getValue());
+                    gameScene.level.set(gameScene.level.getValue() + 1);
+                    gameScene.getMapReader().readMap(gameScene.level.getValue());
                     delay = 180;
                 }
             } else {

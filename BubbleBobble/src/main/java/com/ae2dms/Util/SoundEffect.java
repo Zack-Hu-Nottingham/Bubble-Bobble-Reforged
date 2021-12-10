@@ -25,11 +25,26 @@ public class SoundEffect {
 
 	private AudioClip audioClip = bubbled;
 
-	/**
-	 * The enumeration of Volume.
-	 */
-	public enum Volume {
-		MUTE, LOW, MEDIUM, HIGH
+    /**
+     * The enumeration of Volume.
+     */
+    public enum Volume {
+        /**
+         * Mute volume.
+         */
+        MUTE,
+        /**
+         * Low volume.
+         */
+        LOW,
+        /**
+         * Medium volume.
+         */
+        MEDIUM,
+        /**
+         * High volume.
+         */
+        HIGH
 	}
 	
 	private Volume volume = Volume.LOW;
@@ -38,22 +53,22 @@ public class SoundEffect {
 
 	private static SoundEffect instance = new SoundEffect();
 
-	/**
-	 * Gets instance of sound effect.
-	 *
-	 * @return the instance
-	 */
-	public static SoundEffect getInstance() {
+    /**
+     * Gets instance of sound effect.
+     *
+     * @return the instance
+     */
+    public static SoundEffect getInstance() {
 		return instance;
 	}
 
 
-	/**
-	 * Play the required sound with specific volume.
-	 *
-	 * @param src the src
-	 */
-	public void play(String src) {
+    /**
+     * Play the required sound with specific volume.
+     *
+     * @param src the src
+     */
+    public void play(String src) {
 
 		// plays the sound effect
 		if (volume != Volume.MUTE) {
@@ -136,12 +151,12 @@ public class SoundEffect {
 //		audioClip.setCycleCount(AudioClip.INDEFINITE);
 //	}
 
-	/**
-	 * Sets volume of the sound effect.
-	 *
-	 * @param volume the volume
-	 */
-	public static void setVolume(SoundEffect.Volume volume) {
+    /**
+     * Sets volume of the sound effect.
+     *
+     * @param volume the volume
+     */
+    public static void setVolume(SoundEffect.Volume volume) {
 		SoundEffect.instance.volume = volume;
 	}
 }

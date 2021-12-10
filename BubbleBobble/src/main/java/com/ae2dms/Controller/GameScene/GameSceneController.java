@@ -17,15 +17,12 @@ import javafx.scene.input.MouseEvent;
 
 
 /**
- * The type Game scene controller.
+ * The controller of Game scene.
  */
 public class GameSceneController {
 
     private GameScene gameScene;
 
-    /**
-     * The Best record.
-     */
     @FXML private Label bestRecord;
     /**
      * The Charge state.
@@ -80,10 +77,6 @@ public class GameSceneController {
 
         GamePanel.gameTimer.start();
 
-        GamePanel.level = new SimpleIntegerProperty(1);
-
-        GamePanel.chargeLevel = 0;
-
         GameRecorder gameRecorder = new GameRecorder();
 
         bestRecord.setText(String.valueOf(gameRecorder.getHighestScore()));
@@ -96,7 +89,7 @@ public class GameSceneController {
 
         currentScore.textProperty().bind(GamePanel.bonus.asString());
 
-        levelHint.textProperty().bind(GamePanel.level.asString());
+        levelHint.textProperty().bind(gameScene.level.asString());
 
         GamePanel.gameStatus = GamePanel.GameStatus.PLAYING;
 
@@ -151,7 +144,7 @@ public class GameSceneController {
     }
 
     /**
-     * Clear charge.
+     * Clear charge status.
      */
     private void clearCharge() {
         cover1.setOpacity(1);
@@ -181,19 +174,19 @@ public class GameSceneController {
                     break;
             }
 
-            if (GamePanel.chargeLevel == 0) {
+            if (gameScene.chargeLevel == 0) {
                 clearCharge();
             }
-            if (GamePanel.chargeLevel >= 1) {
+            if (gameScene.chargeLevel >= 1) {
                 cover1.setOpacity(0);
             }
-            if(GamePanel.chargeLevel >= 2) {
+            if(gameScene.chargeLevel >= 2) {
                 cover2.setOpacity(0);
             }
-            if(GamePanel.chargeLevel >= 3) {
+            if(gameScene.chargeLevel >= 3) {
                 cover3.setOpacity(0);
             }
-            if (GamePanel.chargeLevel >= 4) {
+            if (gameScene.chargeLevel >= 4) {
                 cover4.setOpacity(0);
                 chargeState.setText("Ready");
             }

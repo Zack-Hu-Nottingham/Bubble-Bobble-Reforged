@@ -13,14 +13,14 @@ import com.ae2dms.Model.Scene.GameScene;
  */
 public class FloorUnit extends WallObject {
 
-	/**
-	 * Instantiates a new Floor unit.
-	 *
-	 * @param gameScene  the gameScene
-	 * @param colNum the col num
-	 * @param rowNum the row num
-	 */
-	public FloorUnit(GameScene gameScene, int colNum, int rowNum) {
+    /**
+     * Instantiates a new Floor unit.
+     *
+     * @param gameScene the gameScene
+     * @param colNum    the col num
+     * @param rowNum    the row num
+     */
+    public FloorUnit(GameScene gameScene, int colNum, int rowNum) {
 		super(gameScene, colNum, rowNum);
 		strategy = new CollideWithFloor();
 	}

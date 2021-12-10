@@ -17,15 +17,15 @@ import javafx.scene.paint.Color;
 public class EnemyProjectile extends Projectile {
 	private static final int SIZE = 20;
 
-	/**
-	 * Instantiates a new Enemy projectile.
-	 *
-	 * @param gameScene the gameScene that projectile belongs to
-	 * @param x         the x-coordinate of projectile
-	 * @param y         the y-coordinate of projectile
-	 * @param direction the direction of projectile
-	 */
-	public EnemyProjectile(GameScene gameScene, double x, double y, GameScene.Direction direction) {
+    /**
+     * Instantiates a new Enemy projectile.
+     *
+     * @param gameScene the gameScene that projectile belongs to
+     * @param x         the x-coordinate of projectile
+     * @param y         the y-coordinate of projectile
+     * @param direction the direction of projectile
+     */
+    public EnemyProjectile(GameScene gameScene, double x, double y, GameScene.Direction direction) {
 		super(x, y, SIZE, SIZE, gameScene, null);
 		activeFrames = 20;
 		timer = activeFrames;
@@ -42,32 +42,32 @@ public class EnemyProjectile extends Projectile {
 		g.setFill(Color.BLACK);
 	}
 
-	/**
-	 * Collide with hero.
-	 *
-	 * @param hero the hero
-	 */
-	public void collideWith(Hero hero) {
+    /**
+     * Collide with hero.
+     *
+     * @param hero the hero
+     */
+    public void collideWith(Hero hero) {
 		if(this.overlaps(hero) && isActive) {
 			hero.collideWithProjectile();
 		}
 	}
 
-	/**
-	 * Collide with enemy.
-	 *
-	 * @param enemy the enemy
-	 */
-	public void collideWith(Enemy enemy) {
+    /**
+     * Collide with enemy.
+     *
+     * @param enemy the enemy
+     */
+    public void collideWith(Enemy enemy) {
 		//Nothing happens
 	}
 
-	/**
-	 * Collide with boss.
-	 *
-	 * @param boss the boss
-	 */
-	public void collideWith(Boss boss) {
+    /**
+     * Collide with boss.
+     *
+     * @param boss the boss
+     */
+    public void collideWith(Boss boss) {
 		//Nothing happens
 	}
 }

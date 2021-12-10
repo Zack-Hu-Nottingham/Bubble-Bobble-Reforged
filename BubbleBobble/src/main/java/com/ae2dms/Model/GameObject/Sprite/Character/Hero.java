@@ -38,11 +38,27 @@ public class Hero extends SpriteObject {
 	private boolean isOnAPlatform;
 	private int jumpSpeed;
 
-	protected static Image imageBubLeft = new Image(Hero.class.getResource("/image/sprite/hero/BubLeft.png").toString(), SIZE, SIZE, false, false);
-	protected static Image imageBubRight = new Image(Hero.class.getResource("/image/sprite/hero/BubRight.png").toString(), SIZE, SIZE, false, false);
-	protected static Image imageBub = imageBubRight;
+    /**
+     * The constant imageBubLeft.
+     */
+    protected static Image imageBubLeft = new Image(Hero.class.getResource("/image/sprite/hero/BubLeft.png").toString(), SIZE, SIZE, false, false);
+    /**
+     * The constant imageBubRight.
+     */
+    protected static Image imageBubRight = new Image(Hero.class.getResource("/image/sprite/hero/BubRight.png").toString(), SIZE, SIZE, false, false);
+    /**
+     * The constant imageBub.
+     */
+    protected static Image imageBub = imageBubRight;
 
-	public Hero(GameScene gameScene, int colNum, int rowNum) {
+    /**
+     * Instantiates a new Hero.
+     *
+     * @param gameScene the game scene
+     * @param colNum    the col num
+     * @param rowNum    the row num
+     */
+    public Hero(GameScene gameScene, int colNum, int rowNum) {
 		//initializes hero
 		super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, SIZE, SIZE, gameScene, imageBub);
 		isOnAPlatform = false;
@@ -89,15 +105,21 @@ public class Hero extends SpriteObject {
 		}
 
 	}
-	
-	public void shootProjectile() {
+
+    /**
+     * Shoot projectile.
+     */
+    public void shootProjectile() {
 		//makes hero shoot projectile
 		SoundEffect.getInstance().play("shoot");
 
 		this.getScene().addHeroProjectile(new HeroProjectile(this.getScene(), getX(), getY(), direction));
 	}
 
-	void collideWithMook() {
+    /**
+     * Collide with mook.
+     */
+    void collideWithMook() {
 		//handles colliding with a mook
 		if (!isShielding) {
 			die();
@@ -114,7 +136,12 @@ public class Hero extends SpriteObject {
 		}
 	}
 
-	public void addKeyHandler(Scene scene) {
+    /**
+     * Add key handler.
+     *
+     * @param scene the scene
+     */
+    public void addKeyHandler(Scene scene) {
 		scene.setOnKeyPressed(event -> {
 			KeyCode keyCode = event.getCode();
 			switch (keyCode) {
@@ -157,7 +184,7 @@ public class Hero extends SpriteObject {
 					break;
 				case W:
 					if (readyToCharge) {
-						GamePanel.chargeLevel = 0;
+						this.getScene().chargeLevel = 0;
 						readyToCharge = false;
 						this.getScene().addBubble(new Bubble(this.getScene(), getX(), getY()));
 						SoundEffect.getInstance().play("explode");
@@ -190,15 +217,21 @@ public class Hero extends SpriteObject {
 	public void collideWithWall() {
 		// Nothing happens
 	}
-	
-	public void die() {
+
+    /**
+     * Die.
+     */
+    public void die() {
 		//handles death
 		SoundEffect.getInstance().play("death");
 		// not mark to reset but let the game over.
 		GamePanel.gameStatus = GamePanel.GameStatus.LOSE;
 	}
 
-	public void collideWithProjectile() {
+    /**
+     * Collide with projectile.
+     */
+    public void collideWithProjectile() {
 		System.out.println(isShielding);
 		//handles collision with projectiles
 		if (!isShielding) {
@@ -233,7 +266,7 @@ public class Hero extends SpriteObject {
 				shieldTimer = SHIELD_TIME;
 			}
 		}
-		if (GamePanel.chargeLevel >= 4) {
+		if (getScene().chargeLevel >= 4) {
 			setChargeToReady();
 		}
 	}
@@ -253,12 +286,20 @@ public class Hero extends SpriteObject {
 
 	}
 
-	public boolean getShielding() {
+    /**
+     * Gets shielding.
+     *
+     * @return the shielding
+     */
+    public boolean getShielding() {
 		//gets whether or not the hero is shielding on this frame and returns it
 		return isShielding;
 	}
-	
-	public void setChargeToReady() {
+
+    /**
+     * Sets charge to ready.
+     */
+    public void setChargeToReady() {
 		//sets whether or not the hero is ready to charge the charge shot
 		readyToCharge = true;
 	}

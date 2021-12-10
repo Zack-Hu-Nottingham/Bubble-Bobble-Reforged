@@ -3,13 +3,15 @@ package com.ae2dms.Controller.GameOver;
 import com.ae2dms.GamePanel;
 import com.ae2dms.Util.GameTimer;
 import com.ae2dms.Util.SoundEffect;
+//import javafx.fxml.FXML;
+//import javafx.fxml.FXML;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 /**
- * The controller of gameOver lose scene
+ * The controller of gameOver lose scene.
  */
 public class GameOverLoseController {
 

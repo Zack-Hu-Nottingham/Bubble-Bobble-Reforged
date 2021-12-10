@@ -13,8 +13,8 @@ public class Lucky extends Fruit {
     /**
      * Instantiates a new Lucky.
      *
-     * @param x     the x
-     * @param y     the y
+     * @param x         the x
+     * @param y         the y
      * @param gameScene the gameScene
      */
     public Lucky(double x, double y, GameScene gameScene) {
