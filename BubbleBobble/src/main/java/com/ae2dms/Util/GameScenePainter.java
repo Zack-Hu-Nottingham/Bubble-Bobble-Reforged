@@ -1,7 +1,10 @@
 package com.ae2dms.Util;
 
-import com.ae2dms.Model.GameObject.Prompt.CollectEffect;
-import com.ae2dms.Model.GameObject.Sprite.*;
+import com.ae2dms.Model.GameObject.Sprite.Character.Boss;
+import com.ae2dms.Model.GameObject.Sprite.Character.Enemy;
+import com.ae2dms.Model.GameObject.Sprite.Character.Hero;
+import com.ae2dms.Model.GameObject.Sprite.Projectile.Bubble;
+import com.ae2dms.Model.GameObject.Sprite.Prompt.CollectEffect;
 import com.ae2dms.Model.GameObject.Sprite.Fruit.Fruit;
 import com.ae2dms.Model.GameObject.Sprite.Projectile.BossProjectile;
 import com.ae2dms.Model.GameObject.Sprite.Projectile.EnemyProjectile;
@@ -12,11 +15,22 @@ import com.ae2dms.Model.GameObject.Wall.WallObject.WallUnit;
 import com.ae2dms.Model.Scene.GameScene;
 import javafx.scene.canvas.GraphicsContext;
 
+/**
+ * The painter for game scene, which has an updater for .
+ */
 public class GameScenePainter {
+    /**
+     * Instantiates a new Game scene painter.
+     */
     GameScenePainter() {}
 
     private static GameScenePainter instance = new GameScenePainter();
 
+    /**
+     * Gets instance of gameScenePainter.
+     *
+     * @return the instance
+     */
     public static GameScenePainter getInstance() {
         return instance;
     }
@@ -24,12 +38,21 @@ public class GameScenePainter {
     private GameScene gameScene;
     private GraphicsContext graphicsContext;
 
+    /**
+     * Sets the specific game scene of this .
+     *
+     * @param gameScene the game scene
+     */
     public void setGameScene(GameScene gameScene) {
         this.gameScene = gameScene;
     }
 
     private GameSceneUpdater gameSceneUpdater = GameSceneUpdater.getInstance();
 
+    /**
+     * Paint the game scene component according to the arraylist of sub-models
+     * in game scene.
+     */
     public void paintComponent() {
         //paints everything on the world
         graphicsContext = gameScene.getGraphicsContext();

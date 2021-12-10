@@ -1,9 +1,11 @@
-package com.ae2dms.Model.GameObject.Sprite;
+package com.ae2dms.Model.GameObject.Sprite.Projectile;
 
+import com.ae2dms.Model.GameObject.Sprite.Character.Boss;
+import com.ae2dms.Model.GameObject.Sprite.Character.Enemy;
+import com.ae2dms.Model.GameObject.Sprite.SpriteObject;
 import com.ae2dms.Model.Scene.GameScene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 
 /**
  * The com.ae2dms.GameObject.Objects.Bubble class handles everything with the main.Hero's special ability, named the bubble.
@@ -14,33 +16,43 @@ public class Bubble extends SpriteObject {
 	private int accel;
 	private static final int SIZE = 25;
 
+	/**
+	 * The image of the bubble.
+	 */
 	protected static Image image = new Image(Bubble.class.getResource("/image/sprite/bubble/explosion.png").toString(), SIZE, SIZE, false, false);
-	
-	public Bubble(GameScene world, int x, int y) {
-		super(x, y, 0, 0, world, image);
+
+	/**
+	 * Instantiates a new Bubble.
+	 *
+	 * @param gameScene the gamescene that the bubble in
+	 * @param x     the x-coordinate of bubble
+	 * @param y     the y-coordinate of bubble
+	 */
+	public Bubble(GameScene gameScene, double x, double y) {
+		super(x, y, 0, 0, gameScene, image);
 		accel = 1;
 	}
 
 	@Override
 	public void update() {
-		if (width >= 2500) {
+		if (getWidth() >= 2500) {
 			markToRemove();
 		}
-		x -= accel / 2;
-		y -= accel / 2;
-		width += accel;
-		height += accel;
+		setX(getX() - accel / 2);
+		setY(getY() - accel / 2);
+		setWidth(getWidth() + accel);
+		setHeight(getHeight() + accel);
 		accel += 1;
 	}
 	
 	@Override
 	public void drawOn(GraphicsContext g) {
-		if (width <= 2500) {
-			g.setGlobalAlpha((double)(255 - (int) (width * ((double) 255 / 2500)))/255);
-			g.drawImage(image, x, y, width, height);
+		if (getWidth() <= 2500) {
+			g.setGlobalAlpha((double)(255 - (int) (getWidth() * ((double) 255 / 2500)))/255);
+			g.drawImage(image, getX(), getY(), getWidth(), getHeight());
 			g.setGlobalAlpha(1);
 		} else {
-			g.drawImage(image, x, y, width, height);
+			g.drawImage(image, getX(), getY(), getWidth(), getHeight());
 		}
 	}
 
@@ -58,13 +70,23 @@ public class Bubble extends SpriteObject {
 	public void collideWithWall() {
 		// Nothing happens
 	}
-	
+
+	/**
+	 * Bubble collide with enemy.
+	 *
+	 * @param enemy the enemy
+	 */
 	public void collideWith(Enemy enemy) {
 		if (this.overlaps(enemy)) {
 			enemy.collideWithProjectile();
 		}
 	}
 
+	/**
+	 * Collide with.
+	 *
+	 * @param boss the boss
+	 */
 	public void collideWith(Boss boss) {
 		if (this.overlaps(boss)) {
 			boss.collideWithProjectile();

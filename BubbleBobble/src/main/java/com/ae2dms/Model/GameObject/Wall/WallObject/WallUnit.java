@@ -12,8 +12,15 @@ import com.ae2dms.Model.Scene.GameScene;
  */
 public class WallUnit extends WallObject {
 
-	public WallUnit(GameScene world, int colNum, int rowNum) {
-		super(world, colNum, rowNum);
+	/**
+	 * Instantiates a new Wall unit.
+	 *
+	 * @param gameScene  the gameScene
+	 * @param colNum the col num
+	 * @param rowNum the row num
+	 */
+	public WallUnit(GameScene gameScene, int colNum, int rowNum) {
+		super(gameScene, colNum, rowNum);
 		strategy = new CollideWithWall();
 	}
 

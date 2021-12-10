@@ -3,23 +3,55 @@ package com.ae2dms.Util;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * The type Game recorder.
+ */
 public class GameRecorder {
 
-    ArrayList<String> name = new ArrayList<>();
-    ArrayList<Integer> score = new ArrayList<>();
-    ArrayList<Integer> timeConsumed = new ArrayList<>();
+    /**
+     * The record keeper's name.
+     */
+    private ArrayList<String> name = new ArrayList<>();
+    /**
+     * The record keeper's score.
+     */
+    private ArrayList<Integer> score = new ArrayList<>();
+    /**
+     * The Time consumed of that record.
+     */
+    private ArrayList<Integer> timeConsumed = new ArrayList<>();
 
+    /**
+     * The total number of records.
+     */
     int recordNum = 0;
 
+    /**
+     * The Game document's url.
+     */
     String gameDocument = "src/main/resources/gameRecord/records.txt";
 
-    BufferedReader records;
+    /**
+     * The Records.
+     */
+    BufferedReader bufferedReader;
 
+    /**
+     * One piece of Record, which contains: name, score and time consumed.
+     */
     String record = null;
 
+    /**
+     * Instantiates a new Game recorder.
+     */
     public GameRecorder() {
     }
 
+    /**
+     * Get highest score int.
+     *
+     * @return the int
+     */
     public int getHighestScore(){
         readRecord();
         if (score.isEmpty()) {
@@ -29,12 +61,15 @@ public class GameRecorder {
         }
     }
 
+    /**
+     * Read record.
+     */
     public void readRecord() {
         try {
-            records = new BufferedReader(new FileReader(gameDocument));
+            bufferedReader = new BufferedReader(new FileReader(gameDocument));
             String[] parts = null;
             do {
-                record = records.readLine();
+                record = bufferedReader.readLine();
                 if (record != null) {
                     parts = record.split(",");
                     name.add(parts[0]);
@@ -43,7 +78,7 @@ public class GameRecorder {
                     recordNum += 1;
                 }
             } while(record != null);
-            records.close();
+            bufferedReader.close();
             sortRecord();
 
         } catch (IOException e) {
@@ -51,6 +86,9 @@ public class GameRecorder {
         }
     }
 
+    /**
+     * Sort the record that read from records.txt according to its score.
+     */
     public void sortRecord() {
         for (int i = 0; i < recordNum; i++) {
 
@@ -70,27 +108,54 @@ public class GameRecorder {
 
     }
 
+    /**
+     * Gets the arraylist of name, which is sorted by score in sortRecord().
+     *
+     * @return the name
+     */
     public ArrayList<String> getName() {
         return name;
     }
 
+    /**
+     * Gets the arraylist of score, which is sorted from high to low.
+     *
+     * @return the score
+     */
     public ArrayList<Integer> getScore() {
         return score;
     }
 
+    /**
+     * Gets time consumed.
+     *
+     * @return the time consumed
+     */
     public ArrayList<Integer> getTimeConsumed() {
         return timeConsumed;
     }
 
+    /**
+     * Gets the total number of records.
+     *
+     * @return the record num
+     */
     public int getRecordNum() {
         return recordNum;
     }
 
+    /**
+     * Save the specific record into file.
+     *
+     * @param userName     the user name
+     * @param score        the score
+     * @param timeConsumed the time consumed
+     */
     public void saveRecord(String userName, int score, int timeConsumed) {
-        String filePath = "src/main/resources/gameRecord/records.txt";
+//        String filePath = "src/main/resources/gameRecord/records.txt";
 
         try {
-            File file = new File(filePath);
+            File file = new File(gameDocument);
             FileOutputStream fos = null;
 
             if (!file.exists()) {

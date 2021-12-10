@@ -1,18 +1,15 @@
-package com.ae2dms.Model.GameObject.Sprite;
+package com.ae2dms.Model.GameObject.Sprite.Character;
 
+import com.ae2dms.Model.GameObject.Sprite.Projectile.Bubble;
 import com.ae2dms.Model.GameObject.Sprite.Projectile.HeroProjectile;
 import com.ae2dms.GamePanel;
-import com.ae2dms.Main;
+import com.ae2dms.Model.GameObject.Sprite.SpriteObject;
 import com.ae2dms.Model.Scene.GameScene;
 import com.ae2dms.Util.SoundEffect;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 
 import static com.ae2dms.GamePanel.UNIT_SIZE;
 
@@ -39,7 +36,7 @@ public class Hero extends SpriteObject {
 	private int shootDelay;
 	private boolean readyToCharge;
 	private boolean isOnAPlatform;
-	private double jumpSpeed;
+	private int jumpSpeed;
 
 	protected static Image imageBubLeft = new Image(Hero.class.getResource("/image/sprite/hero/BubLeft.png").toString(), SIZE, SIZE, false, false);
 	protected static Image imageBubRight = new Image(Hero.class.getResource("/image/sprite/hero/BubRight.png").toString(), SIZE, SIZE, false, false);
@@ -74,20 +71,20 @@ public class Hero extends SpriteObject {
 		}
 
 		if (isShielding) {
-			g.drawImage(imageBub, x, y, SIZE, SIZE);
+			g.drawImage(imageBub, this.getX(), this.getY(), SIZE, SIZE);
 			Image shield = new Image(Hero.class.getResource("/image/sprite/hero/shield.png").toString(), SIZE, SIZE, false, false);
 			g.setGlobalAlpha((double) (shieldTimer * ((double) 255 / SHIELD_TIME))/255);
-			g.drawImage(shield, x, y, width, height);
+			g.drawImage(shield, this.getX(), this.getY(), getWidth(), getHeight());
 			g.setGlobalAlpha(1);
 
 		} else if (isStunned) {
 			g.setGlobalAlpha(0.5);
-			g.drawImage(imageBub, x, y, SIZE, SIZE);
+			g.drawImage(imageBub, getX(), getY(), SIZE, SIZE);
 			g.setGlobalAlpha(1);
 //		}else if (GamePanel.gameStatus == GamePanel.GameStatus.LOSE) {
 
 		} else {
-			g.drawImage(imageBub, x, y, SIZE, SIZE);
+			g.drawImage(imageBub, getX(), getY(), SIZE, SIZE);
 
 		}
 
@@ -97,7 +94,7 @@ public class Hero extends SpriteObject {
 		//makes hero shoot projectile
 		SoundEffect.getInstance().play("shoot");
 
-		scene.addHeroProjectile(new HeroProjectile(scene, x, y, direction));
+		this.getScene().addHeroProjectile(new HeroProjectile(this.getScene(), getX(), getY(), direction));
 	}
 
 	void collideWithMook() {
@@ -110,7 +107,8 @@ public class Hero extends SpriteObject {
 	private void jump() {
 		//handles jumping
 		if (isOnAPlatform) {
-			y -= 1;
+//			y -= 1;
+			setY(getY()-1);
 			yVelocity = -jumpSpeed;
 			isOnAPlatform = false;
 		}
@@ -161,7 +159,7 @@ public class Hero extends SpriteObject {
 					if (readyToCharge) {
 						GamePanel.chargeLevel = 0;
 						readyToCharge = false;
-						this.scene.addBubble(new Bubble(this.scene, x, y));
+						this.getScene().addBubble(new Bubble(this.getScene(), getX(), getY()));
 						SoundEffect.getInstance().play("explode");
 //						readyToCharge = false;
 					}

@@ -12,8 +12,15 @@ import com.ae2dms.Model.Scene.GameScene;
  */
 public class CeilingUnit extends WallObject {
 
-	public CeilingUnit(GameScene world, int colNum, int rowNum) {
-		super(world, colNum, rowNum);
+	/**
+	 * Instantiates a new Ceiling unit.
+	 *
+	 * @param gameScene  the gameScene that this ceiling is displayed on
+	 * @param colNum the col num that this ceiling would be placed
+	 * @param rowNum the row num that this ceiling would be placed
+	 */
+	public CeilingUnit(GameScene gameScene, int colNum, int rowNum) {
+		super(gameScene, colNum, rowNum);
 		strategy = new CollideWithCeiling();
 	}
 

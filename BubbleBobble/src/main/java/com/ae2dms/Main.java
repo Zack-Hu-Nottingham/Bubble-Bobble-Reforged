@@ -7,13 +7,11 @@ import java.io.IOException;
 
 
 /**
- * Main creates a JFrame and adds a com.ae2dms.GamePanel to that frame.
- * The size of the GamePanel is determined here.
+ * Main launch the game, then hand over the control to game panel(the director
+ * of this program) and passing the stage as parameter to the game panel.
  */
 
 public class Main extends Application {
-
-//	public static Stage stage;
 
 	public static void main(String[] args) throws IOException {
 		launch(args);
@@ -22,8 +20,6 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-
-//		this.stage = stage;
 		GamePanel.getInstance().init(stage);
 	}
 }

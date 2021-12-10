@@ -1,6 +1,7 @@
 package com.ae2dms.Util;
 
 import javafx.scene.media.AudioClip;
+
 /**
  * SoundEffect handles the game's SFX.
  * Classes that want to use SFX will call the static variables in this enum and
@@ -24,22 +25,34 @@ public class SoundEffect {
 
 	private AudioClip audioClip = bubbled;
 
+	/**
+	 * The enumeration of Volume.
+	 */
 	public enum Volume {
 		MUTE, LOW, MEDIUM, HIGH
 	}
 	
 	private Volume volume = Volume.LOW;
 
+	private SoundEffect() {}
 
-	// singleton
 	private static SoundEffect instance = new SoundEffect();
 
+	/**
+	 * Gets instance of sound effect.
+	 *
+	 * @return the instance
+	 */
 	public static SoundEffect getInstance() {
 		return instance;
 	}
 
-	public SoundEffect() {}
 
+	/**
+	 * Play the required sound with specific volume.
+	 *
+	 * @param src the src
+	 */
 	public void play(String src) {
 
 		// plays the sound effect
@@ -123,6 +136,11 @@ public class SoundEffect {
 //		audioClip.setCycleCount(AudioClip.INDEFINITE);
 //	}
 
+	/**
+	 * Sets volume of the sound effect.
+	 *
+	 * @param volume the volume
+	 */
 	public static void setVolume(SoundEffect.Volume volume) {
 		SoundEffect.instance.volume = volume;
 	}

@@ -8,16 +8,24 @@ import javafx.beans.property.StringProperty;
 import javafx.util.Duration;
 
 
+/**
+ * The timer of the game, which records how long player spend to finish the game.
+ */
 public class GameTimer {
 
     private Timeline timer;
-    private int foo = 0;
 
     private int seconds = 0;
 
+    private StringProperty timeToDisplay = new SimpleStringProperty("00:00");
 
-    public StringProperty timeToDisplay = new SimpleStringProperty("00:00");
+    public StringProperty timeToDisplayProperty() {
+        return timeToDisplay;
+    }
 
+    /**
+     * Start the timer.
+     */
     public void start() {
         seconds = 0;
         timer = new Timeline(new KeyFrame(Duration.millis(1000), event -> timeToDisplay.set(parseToTimeFormat(++seconds))));
@@ -25,26 +33,46 @@ public class GameTimer {
         timer.play();
     }
 
-
+    /**
+     * Stop the timer.
+     */
     public void stop(){
         if (timer != null) {
             timer.stop();
         }
     }
 
+    /**
+     * Pause the timer.
+     */
+    public void pause() {
+        timer.pause();
+    }
+
+    /**
+     * Resume the timer.
+     */
+    public void resume() {
+        timer.play();
+    }
+
+    /**
+     * Gets total time consumed in integer format.
+     *
+     * @return the time
+     */
     public int getTime() {
         return seconds;
     }
 
 
-    public void pause() {
-        timer.pause();
-    }
 
-    public void resume() {
-        timer.play();
-    }
-
+    /**
+     * Parse to time format string.
+     *
+     * @param seconds the seconds
+     * @return the string
+     */
     public static String parseToTimeFormat(int seconds) {
         Integer minute = seconds / 60;
         String minuteString = "0" + minute.toString();

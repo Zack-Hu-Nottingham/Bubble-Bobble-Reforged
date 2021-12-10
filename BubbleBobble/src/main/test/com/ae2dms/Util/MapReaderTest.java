@@ -1,10 +1,9 @@
 package com.ae2dms.Util;
 
 import com.ae2dms.GamePanel;
-import com.ae2dms.Main;
-import com.ae2dms.Model.GameObject.Sprite.Boss;
-import com.ae2dms.Model.GameObject.Sprite.Enemy;
-import com.ae2dms.Model.GameObject.Sprite.Hero;
+import com.ae2dms.Model.GameObject.Sprite.Character.Boss;
+import com.ae2dms.Model.GameObject.Sprite.Character.Enemy;
+import com.ae2dms.Model.GameObject.Sprite.Character.Hero;
 import com.ae2dms.Model.Scene.GameScene;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Scene;
@@ -33,7 +32,7 @@ class MapReaderTest extends ApplicationTest {
     @Test
     void readMapOne() {
         MapReader mapReader = MapReader.getInstance();
-        GamePanel gamePanel = new GamePanel();
+//        GamePanel gamePanel = new GamePanel();
 
         GamePanel.level = new SimpleIntegerProperty(1);
         GameScene gameScene = new GameScene();

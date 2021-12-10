@@ -1,10 +1,9 @@
 package com.ae2dms.Model.GameObject.Sprite.Projectile;
 
 
-import com.ae2dms.Model.GameObject.Sprite.Boss;
-import com.ae2dms.Model.GameObject.Sprite.Bubble;
-import com.ae2dms.Model.GameObject.Sprite.Enemy;
-import com.ae2dms.Model.GameObject.Sprite.Hero;
+import com.ae2dms.Model.GameObject.Sprite.Character.Boss;
+import com.ae2dms.Model.GameObject.Sprite.Character.Enemy;
+import com.ae2dms.Model.GameObject.Sprite.Character.Hero;
 import com.ae2dms.Model.Scene.GameScene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -18,11 +17,16 @@ import javafx.scene.paint.Color;
 public class EnemyProjectile extends Projectile {
 	private static final int SIZE = 20;
 
-	protected static Image image = new Image(Bubble.class.getResource("/image/sprite/bubble/bubbled.png").toString(), SIZE, SIZE, false, false);
-
-
-	public EnemyProjectile(GameScene world, int x, int y, GameScene.Direction direction) {
-		super(x, y, SIZE, SIZE, world, image);
+	/**
+	 * Instantiates a new Enemy projectile.
+	 *
+	 * @param gameScene the gameScene that projectile belongs to
+	 * @param x         the x-coordinate of projectile
+	 * @param y         the y-coordinate of projectile
+	 * @param direction the direction of projectile
+	 */
+	public EnemyProjectile(GameScene gameScene, double x, double y, GameScene.Direction direction) {
+		super(x, y, SIZE, SIZE, gameScene, null);
 		activeFrames = 20;
 		timer = activeFrames;
 	}
@@ -34,19 +38,35 @@ public class EnemyProjectile extends Projectile {
 		} else {
 			g.setFill(new Color(0, 102/255, 0, 40/100));
 		}
-		g.fillOval(x, y, width, height);
+		g.fillOval(getX(), getY(), getWidth(), getHeight());
 		g.setFill(Color.BLACK);
 	}
 
+	/**
+	 * Collide with hero.
+	 *
+	 * @param hero the hero
+	 */
 	public void collideWith(Hero hero) {
 		if(this.overlaps(hero) && isActive) {
 			hero.collideWithProjectile();
 		}
 	}
 
+	/**
+	 * Collide with enemy.
+	 *
+	 * @param enemy the enemy
+	 */
 	public void collideWith(Enemy enemy) {
 		//Nothing happens
 	}
+
+	/**
+	 * Collide with boss.
+	 *
+	 * @param boss the boss
+	 */
 	public void collideWith(Boss boss) {
 		//Nothing happens
 	}

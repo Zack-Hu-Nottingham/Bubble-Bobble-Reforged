@@ -1,9 +1,8 @@
 package com.ae2dms.Model.GameObject.Sprite.Projectile;
 
-import com.ae2dms.Model.GameObject.Sprite.Boss;
-import com.ae2dms.Model.GameObject.Sprite.Bubble;
-import com.ae2dms.Model.GameObject.Sprite.Enemy;
-import com.ae2dms.Model.GameObject.Sprite.Hero;
+import com.ae2dms.Model.GameObject.Sprite.Character.Boss;
+import com.ae2dms.Model.GameObject.Sprite.Character.Enemy;
+import com.ae2dms.Model.GameObject.Sprite.Character.Hero;
 import com.ae2dms.GamePanel;
 import com.ae2dms.Model.Scene.GameScene;
 import javafx.scene.canvas.GraphicsContext;
@@ -32,8 +31,16 @@ public class HeroProjectile extends Projectile {
 	private static Image image = red;
 	private static Image blurImage = blurRed;
 
-	public HeroProjectile(GameScene world, int x, int y, GameScene.Direction direction) {
-		super(x-40, y-40, SIZE, SIZE, world, image);
+	/**
+	 * Instantiates a new Hero projectile.
+	 *
+	 * @param gameScene the gameScene that projectile belongs to
+	 * @param x         the x-coordinate of projectile
+	 * @param y         the y-coordinate of projectile
+	 * @param direction the direction of projectile
+	 */
+	public HeroProjectile(GameScene gameScene, double x, double y, GameScene.Direction direction) {
+		super(x-40, y-40, SIZE, SIZE, gameScene, image);
 		this.direction = direction;
 
 		activeFrames = 35;
@@ -68,16 +75,26 @@ public class HeroProjectile extends Projectile {
 				blurImage = blurBlue;
 		}
 		if (isActive) {
-			g.drawImage(image, x, y, width, height);
+			g.drawImage(image, getX(), getY(), getWidth(), getHeight());
 		} else {
-			g.drawImage(blurImage, x, y, width, height);
+			g.drawImage(blurImage, getX(), getY(), getWidth(), getHeight());
 		}
 	}
 
+	/**
+	 * Collide with hero.
+	 *
+	 * @param hero the hero
+	 */
 	public void collideWith(Hero hero) {
 		// Nothing happens
 	}
 
+	/**
+	 * Collide with enemy.
+	 *
+	 * @param enemy the enemy
+	 */
 	public void collideWith(Enemy enemy) {
 		if (this.overlaps(enemy) && isActive && !enemy.isBubbled()) {
 			enemy.collideWithProjectile();
@@ -85,6 +102,11 @@ public class HeroProjectile extends Projectile {
 		}
 	}
 
+	/**
+	 * Collide with boss.
+	 *
+	 * @param boss the boss
+	 */
 	public void collideWith(Boss boss) {
 		if (this.overlaps(boss) && isActive && !boss.isBubbled()) {
 			boss.collideWithProjectile();

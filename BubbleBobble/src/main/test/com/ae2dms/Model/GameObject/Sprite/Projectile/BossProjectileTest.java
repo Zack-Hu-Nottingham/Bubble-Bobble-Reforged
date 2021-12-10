@@ -1,8 +1,7 @@
 package com.ae2dms.Model.GameObject.Sprite.Projectile;
 
 import com.ae2dms.GamePanel;
-import com.ae2dms.Main;
-import com.ae2dms.Model.GameObject.Sprite.Hero;
+import com.ae2dms.Model.GameObject.Sprite.Character.Hero;
 import com.ae2dms.Model.Scene.GameScene;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Scene;
@@ -14,7 +13,6 @@ import org.testfx.framework.junit5.ApplicationTest;
 
 import java.lang.reflect.Field;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -34,7 +32,7 @@ class BossProjectileTest extends ApplicationTest {
 
     @Test
     void collideWithHero() throws NoSuchFieldException, IllegalAccessException {
-        GamePanel gamePanel = new GamePanel();
+//        GamePanel gamePanel = new GamePanel();
         GamePanel.level = new SimpleIntegerProperty(1);
 
         GameScene gameScene = new GameScene();

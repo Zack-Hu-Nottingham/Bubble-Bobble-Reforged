@@ -10,11 +10,11 @@ public class CollideWithFloor implements CollideStrategy {
         double top = sprite.getY();
         double bottom = top + sprite.getHeight();
         if (wall.overlaps(sprite) && sprite.yVelocity > 0) {
-            if (bottom < wall.y + wall.height) {
+            if (bottom < wall.getY() + wall.getHeight()) {
                 wall.moveAboveUnit(sprite);
                 sprite.collideWithFloor();
             }
-            if (top > wall.y){
+            if (top > wall.getY()){
                 wall.moveBelowUnit(sprite);
                 sprite.collideWithCeiling();
             }

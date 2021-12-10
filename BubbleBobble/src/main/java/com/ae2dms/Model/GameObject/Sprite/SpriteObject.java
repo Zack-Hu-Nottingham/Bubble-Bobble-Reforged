@@ -12,18 +12,64 @@ import javafx.geometry.Point2D;
  * must implement methods for collisions with every type of Unit.
  */
 public abstract class SpriteObject extends GameObject {
+
 	private static final double STATIC_FRICTION = 0.1;
+	/**
+	 * The constant GRAVITY that apply to all the spriteObject.
+	 */
 	protected static final int GRAVITY = 1;
 	private static final int TERMINAL_FALL_SPEED = 15;
+	/**
+	 * The Direction of each spriteObject, which would be used to decide
+	 * which image of sprite would be displayed.
+	 */
 	protected GameScene.Direction direction = GameScene.Direction.RIGHT;
 
-	public double xVelocity, yVelocity;
-	public double xAccel, yAccel;
-	public int terminal_xVelocity, terminal_yVelocity;
-	
+	/**
+	 * The horizontal velocity of object.
+	 */
+	public double xVelocity;
+
+	/**
+	 * The vertical velocity of object.
+	 */
+	public double yVelocity;
+
+	/**
+	 * The horizontal acceleration.
+	 */
+	public double xAccel;
+
+	/**
+	 * The vertical acceleration.
+	 */
+	public double yAccel;
+
+	/**
+	 * The max horizontal velocity.
+	 */
+	public int terminal_xVelocity;
+	/**
+	 * The max vertical velocity.
+	 */
+	public int terminal_yVelocity;
+
+	/**
+	 * The boolean which decides if the object can be removed.
+	 */
 	public boolean canRemove;
-	
-	public SpriteObject(int x, int y, int width, int height, GameScene scene, Image image) {
+
+	/**
+	 * Instantiates a new Sprite object.
+	 *
+	 * @param x      the x
+	 * @param y      the y
+	 * @param width  the width
+	 * @param height the height
+	 * @param scene  the scene
+	 * @param image  the image
+	 */
+	public SpriteObject(double x, double y, int width, int height, GameScene scene, Image image) {
 		//initializes the game object
 		super(x, y, width, height, scene, image);
 
@@ -36,6 +82,9 @@ public abstract class SpriteObject extends GameObject {
 		canRemove = false;
 	}
 
+	/**
+	 * Turn around the sprite object.
+	 */
 	public void turnAround() {
 		if (direction == GameScene.Direction.RIGHT) {
 			direction = GameScene.Direction.LEFT;
@@ -44,10 +93,25 @@ public abstract class SpriteObject extends GameObject {
 		}
 	}
 
+	/**
+	 * Object collide with floor.
+	 */
 	public abstract void collideWithFloor();
+
+	/**
+	 *Object collide with ceiling.
+	 */
 	public abstract void collideWithCeiling();
+
+	/**
+	 * Object collide with wall.
+	 */
 	public abstract void collideWithWall();
-	
+
+	/**
+	 * Update the status of the sprite object, which includes
+	 * update speed, x-coordinate, y-coordinate.
+	 */
 	protected void update() {
 		//general update method of every game object
 		if (Math.abs(xVelocity) < terminal_xVelocity) {
@@ -59,63 +123,62 @@ public abstract class SpriteObject extends GameObject {
 			} else {
 				xVelocity -= 1;
 			}
-			x += xVelocity;
+			setX(getX() + xVelocity);
 		}
 		
 		if (yVelocity < terminal_yVelocity) {
 			yVelocity += yAccel;
 		}
-		y += yVelocity;
+		setY(getY() + yVelocity);
 
 		if (isOffScreen()) {
-			if (y > scene.getHeight()) {
-				y = 20;
+			if (getY() > getScene().getHeight()) {
+				setY(20);
 			} else {
-				y = scene.getHeight();
+				setY(getScene().getHeight());
 			}
 		}
 	}
-	
+
+	/**
+	 * Reverse direction of sprite object.
+	 */
 	protected void reverseDirection() {
 		//reverses game object's direction
 		xAccel *= -1;
 		turnAround();
 	}
-	
-	public double getX() {
-		//returns x coordinate of upper left corner
-		return x;
-	}
-	public double getY() {
-		//returns y coordinate of upper left corner
-		return y;
-	}
-	public double getWidth() {
-		//returns width
-		return width;
-	}
-	public double getHeight() {
-		//returns height
-		return height;
-	}
-	
+
+	/**
+	 * Mark that this sprite can be removed.
+	 */
 	protected void markToRemove() {
 		//sets whether or not something can be removed
 		canRemove = true;
 	}
 
+	/**
+	 * Decides if the sprite is off screen.
+	 *
+	 * @return the boolean
+	 */
 	protected boolean isOffScreen() {
 		//checks if something is offscreen
-		boolean xLow = x + width < 0;
-		boolean xHigh = x > scene.getWidth();
-		boolean yLow = y + height < 0;
-		boolean yHigh = y > scene.getHeight();
+		boolean xLow = getX() + getWidth() < 0;
+		boolean xHigh = getX() > getScene().getWidth();
+		boolean yLow = getY() + getHeight() < 0;
+		boolean yHigh = getY() > getScene().getHeight();
 		return xLow || xHigh || yLow || yHigh;
 	}
-	
+
+	/**
+	 * Move the sprite object to the required point.
+	 *
+	 * @param point the point
+	 */
 	public void moveTo(Point2D point) {
 		//moves object to a point
-		x = (int) point.getX();
-		y = (int) point.getY();
+		setX((int) point.getX());
+		setY((int) point.getY());
 	}
 }

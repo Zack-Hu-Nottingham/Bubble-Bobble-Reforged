@@ -7,7 +7,7 @@ public class CollideWithWall implements CollideStrategy {
 
     @Override
     public void collideWith(SpriteObject sprite, WallObject wall) {
-        double center = sprite.x + sprite.getWidth()/2;
+        double center = sprite.getX() + sprite.getWidth()/2;
         if (wall.overlaps(sprite)) {
             if (center > wall.getHitbox().getMinX()+wall.getHitbox().getWidth()/2) {
                 wall.moveRightOfUnit(sprite);

@@ -1,7 +1,7 @@
 package com.ae2dms.Model.GameObject.Sprite;
 
 import com.ae2dms.GamePanel;
-import com.ae2dms.Main;
+import com.ae2dms.Model.GameObject.Sprite.Character.Boss;
 import com.ae2dms.Model.Scene.GameScene;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Scene;
