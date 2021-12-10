@@ -1,6 +1,9 @@
 package com.ae2dms.Model.GameObject.Sprite.Fruit.fruitFactory;
 
 import com.ae2dms.Model.GameObject.Sprite.Fruit.*;
+import com.ae2dms.Model.GameObject.Sprite.Fruit.fruit.Apple;
+import com.ae2dms.Model.GameObject.Sprite.Fruit.fruit.Banana;
+import com.ae2dms.Model.GameObject.Sprite.Fruit.fruit.StrawBerry;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
@@ -26,10 +29,6 @@ class EnemyDropFruitFactoryTest extends ApplicationTest {
         fruit = null;
         fruit = enemyDropFruitFactory.getFruit(111, 66, null);
         assertNotNull(fruit);
-
-
-        Field field = EnemyDropFruitFactory.class.getDeclaredField("typeOfFruit");
-        field.set(enemyDropFruitFactory, 0.2);
 
         fruit = enemyDropFruitFactory.getFruit(50, 50, null);
 

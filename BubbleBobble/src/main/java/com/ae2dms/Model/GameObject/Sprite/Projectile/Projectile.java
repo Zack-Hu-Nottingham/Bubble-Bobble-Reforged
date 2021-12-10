@@ -4,16 +4,48 @@ import com.ae2dms.Model.GameObject.Sprite.SpriteObject;
 import com.ae2dms.Model.Scene.GameScene;
 import javafx.scene.image.Image;
 
+/**
+ * The abstract class projectile, which defines a lot of parameters that could
+ * be shared among all kinds of projectile.
+ */
 public abstract class Projectile extends SpriteObject {
 
+    /**
+     * The constant SPEED, the speed of projectile.
+     */
     protected static final int SPEED = 15;
+
+    /**
+     * The constant TERMINAL_VELOCITY_Y, the max vertical velocity.
+     */
     protected static final int TERMINAL_VELOCITY_Y = 5;
 
+    /**
+     * The boolean flag tells if the bubble is on active status.
+     */
     protected boolean isActive;
+
+    /**
+     * The number of frames that the bubble is active.
+     */
     protected int activeFrames;
+
+    /**
+     * The Timer which counts how long the projectile stays active.
+     */
     protected int timer;
 
-    public Projectile(int x, int y, int width, int height, GameScene scene, Image image) {
+    /**
+     * Instantiates a new Projectile.
+     *
+     * @param x      the x-coordinate of projectile
+     * @param y      the y-coordinate of projectile
+     * @param width  the width
+     * @param height the height
+     * @param scene  the scene that the projectile belongs to
+     * @param image  the image of projectile
+     */
+    public Projectile(double x, double y, int width, int height, GameScene scene, Image image) {
         super(x, y, width, height, scene, image);
 
         this.direction = direction;
@@ -27,16 +59,16 @@ public abstract class Projectile extends SpriteObject {
 
     @Override
     public void update() {
-        y += yVelocity;
+        setY(getY() + yVelocity);
         if (direction == GameScene.Direction.LEFT) {
-            x -= xVelocity;
+            setX(getX() - xVelocity);
         } else {
-            x += xVelocity;
+            setX(getX() + xVelocity);
         }
         updateVelocity();
 
-        if(y < 25) {
-            y = 25;
+        if(getY() < 25) {
+            setY(25);
         }
 
         if (timer < 0) {

@@ -1,9 +1,8 @@
 package com.ae2dms.Model.GameObject.Sprite.Projectile;
 
-import com.ae2dms.Model.GameObject.Sprite.Boss;
-import com.ae2dms.Model.GameObject.Sprite.Bubble;
-import com.ae2dms.Model.GameObject.Sprite.Enemy;
-import com.ae2dms.Model.GameObject.Sprite.Hero;
+import com.ae2dms.Model.GameObject.Sprite.Character.Boss;
+import com.ae2dms.Model.GameObject.Sprite.Character.Enemy;
+import com.ae2dms.Model.GameObject.Sprite.Character.Hero;
 import com.ae2dms.Model.Scene.GameScene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -16,11 +15,22 @@ import javafx.scene.image.Image;
 public class BossProjectile extends Projectile {
     private static final int SIZE = 20;
 
+    /**
+     * The image of boss's projectile.
+     */
     protected static Image image = new Image(Bubble.class.getResource("/image/sprite/bubble/bossBubble.png").toString(), SIZE, SIZE, false, false);
 
 
-    public BossProjectile(GameScene world, int x, int y, GameScene.Direction direction) {
-        super(x, y, SIZE, SIZE, world, image);
+    /**
+     * Instantiates a new Boss projectile.
+     *
+     * @param gameScene     the gameScene that the projectile belongs to
+     * @param x         the x-coordinate of projectile
+     * @param y         the y-coordinate of projectile
+     * @param direction the direction
+     */
+    public BossProjectile(GameScene gameScene, double x, double y, GameScene.Direction direction) {
+        super(x, y, SIZE, SIZE, gameScene, image);
         activeFrames = 20;
         timer = activeFrames;
         this.direction = direction;
@@ -29,15 +39,20 @@ public class BossProjectile extends Projectile {
     @Override
     public void drawOn(GraphicsContext g) {
         if (isActive) {
-            g.drawImage(image, x, y, width, height);
+            g.drawImage(image, getX(), getY(), getWidth(), getHeight());
         } else {
             g.setGlobalAlpha(0.4);
-            g.drawImage(image, x, y, width, height);
+            g.drawImage(image, getX(), getY(), getWidth(), getHeight());
             g.setGlobalAlpha(1);
         }
 
     }
 
+    /**
+     * Collide with hero.
+     *
+     * @param hero the hero
+     */
     public void collideWith(Hero hero) {
         System.out.println(this.overlaps(hero));
         System.out.println(isActive);
@@ -47,10 +62,20 @@ public class BossProjectile extends Projectile {
         }
     }
 
+    /**
+     * Collide with enemy.
+     *
+     * @param enemy the enemy
+     */
     public void collideWith(Enemy enemy) {
         //Nothing happens
     }
 
+    /**
+     * Collide with boss.
+     *
+     * @param boss the boss
+     */
     public void collideWith(Boss boss) {
         //Nothing happens
     }

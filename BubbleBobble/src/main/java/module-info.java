@@ -20,9 +20,11 @@ module com.example.bubblebobble {
     opens com.ae2dms.Model.GameObject.Sprite to javafx.fxml;
     exports com.ae2dms.Controller.GameOver;
     opens com.ae2dms.Controller.GameOver to javafx.fxml;
-    exports com.ae2dms.Model.GameObject.Prompt;
-    opens com.ae2dms.Model.GameObject.Prompt to javafx.fxml;
+    exports com.ae2dms.Model.GameObject.Sprite.Prompt;
+    opens com.ae2dms.Model.GameObject.Sprite.Prompt to javafx.fxml;
     exports com.ae2dms.Model.GameObject.Sprite.Projectile;
     opens com.ae2dms.Model.GameObject.Sprite.Projectile to javafx.fxml;
+    exports com.ae2dms.Model.GameObject.Sprite.Character;
+    opens com.ae2dms.Model.GameObject.Sprite.Character to javafx.fxml;
 
 }

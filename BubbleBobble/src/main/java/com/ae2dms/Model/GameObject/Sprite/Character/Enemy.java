@@ -1,9 +1,11 @@
-package com.ae2dms.Model.GameObject.Sprite;
+package com.ae2dms.Model.GameObject.Sprite.Character;
 
+import com.ae2dms.Model.GameObject.Sprite.Projectile.Bubble;
 import com.ae2dms.Model.GameObject.Sprite.Fruit.Fruit;
 import com.ae2dms.Model.GameObject.Sprite.Fruit.fruitFactory.EnemyDropFruitFactory;
 import com.ae2dms.Model.GameObject.Sprite.Fruit.fruitFactory.FruitFactory;
 import com.ae2dms.Model.GameObject.Sprite.Projectile.EnemyProjectile;
+import com.ae2dms.Model.GameObject.Sprite.SpriteObject;
 import com.ae2dms.Model.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.Model.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.Model.GameObject.Wall.WallObject.WallUnit;
@@ -39,7 +41,7 @@ public class Enemy extends SpriteObject {
 	private boolean turningAwayFromShield;
 	private int turningAwayCount;
 	private boolean isOnAPlatform;
-	private double jumpSpeed;
+	private int jumpSpeed;
 
 	protected static Image enemyImageRight = new Image(Enemy.class.getResource("/image/sprite/enemy/enemyRight.png").toString(), WIDTH, HEIGHT, false, false);
 	protected static Image enemyImageLeft = new Image(Enemy.class.getResource("/image/sprite/enemy/enemyLeft.png").toString(), WIDTH, HEIGHT, false, false);
@@ -47,6 +49,10 @@ public class Enemy extends SpriteObject {
 
 	protected static Image bubbled = new Image(Bubble.class.getResource("/image/sprite/bubble/bubbled.png").toString(), 40, 40, false, false);
 
+//	@Override
+//	public void update() {
+//
+//	}
 
 	public Enemy(GameScene world, int colNum, int rowNum) {
 		//initializes enemy
@@ -103,10 +109,10 @@ public class Enemy extends SpriteObject {
 			enemyImage = enemyImageRight;
 		}
 		//draws mook
-		g.drawImage(enemyImage, x, y, WIDTH, HEIGHT);
+		g.drawImage(enemyImage, getX(), getY(), WIDTH, HEIGHT);
 		if (isBubbled) {
 			g.setGlobalAlpha((double) timer/150);
-			g.drawImage(bubbled, x-10, y-5, 50, 50);
+			g.drawImage(bubbled, getX()-10, getY()-5, 50, 50);
 			g.setGlobalAlpha(1);
 		}
 	}
@@ -158,7 +164,8 @@ public class Enemy extends SpriteObject {
 	private void jump() {
 		//handles jumping
 		if (isOnAPlatform) {
-			y -= 1;
+//			y -= 1;
+			setY(getY()-1);
 			yVelocity = -jumpSpeed;
 			isOnAPlatform = false;
 		}
@@ -167,7 +174,7 @@ public class Enemy extends SpriteObject {
 	private void shootProjectile() {
 		// Nothing happens
 		SoundEffect.getInstance().play("shoot");
-		scene.addEnemyProjectile(new EnemyProjectile(scene, x, y, direction));
+		this.getScene().addEnemyProjectile(new EnemyProjectile(this.getScene(), getX(), getY(), direction));
 	}
 	
 	public void collideWithProjectile() {
@@ -192,8 +199,8 @@ public class Enemy extends SpriteObject {
 		GamePanel.chargeLevel += 1;
 //		System.out.println(GamePanel.chargeLevel);
 		FruitFactory enemyDropFruitFactory = new EnemyDropFruitFactory();
-		Fruit fruit = enemyDropFruitFactory.getFruit(x, y, scene);
-		scene.addFruit(fruit);
+		Fruit fruit = enemyDropFruitFactory.getFruit(getX(), getY(), this.getScene());
+		this.getScene().addFruit(fruit);
 		markToRemove();
 	}
 

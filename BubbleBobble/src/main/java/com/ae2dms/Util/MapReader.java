@@ -1,8 +1,8 @@
 package com.ae2dms.Util;
 
-import com.ae2dms.Model.GameObject.Sprite.Boss;
-import com.ae2dms.Model.GameObject.Sprite.Enemy;
-import com.ae2dms.Model.GameObject.Sprite.Hero;
+import com.ae2dms.Model.GameObject.Sprite.Character.Boss;
+import com.ae2dms.Model.GameObject.Sprite.Character.Enemy;
+import com.ae2dms.Model.GameObject.Sprite.Character.Hero;
 import com.ae2dms.Model.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.Model.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.Model.GameObject.Wall.WallObject.WallUnit;
@@ -14,22 +14,40 @@ import java.util.Scanner;
 import static com.ae2dms.GamePanel.HEIGHT;
 import static com.ae2dms.GamePanel.WIDTH;
 
+/**
+ * Map reader, which reads the map and according to the map add elements to the gameScene.
+ */
 public class MapReader {
 
-    MapReader() {}
+    private MapReader() {}
 
     private static MapReader instance = new MapReader();
 
+    /**
+     * Gets the instance of mapReader.
+     *
+     * @return the instance
+     */
     public static MapReader getInstance() {
         return instance;
     }
 
     private GameScene gameScene;
 
+    /**
+     * Sets game scene of the map reader and later would add elements to this game scene.
+     *
+     * @param gameScene the game scene
+     */
     public void setGameScene(GameScene gameScene) {
         this.gameScene = gameScene;
     }
 
+    /**
+     * According to the required level read the corresponding map to the game scene.
+     *
+     * @param level the level
+     */
     public void readMap(int level) {
         String level1 = "/world/World1.txt";
         String level2 = "/world/World2.txt";

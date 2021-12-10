@@ -1,10 +1,10 @@
 package com.ae2dms.Model.GameObject.Sprite.Fruit;
 
-import com.ae2dms.Model.GameObject.Sprite.Hero;
+import com.ae2dms.Model.GameObject.Sprite.Character.Hero;
 import com.ae2dms.Model.GameObject.Sprite.SpriteObject;
 import com.ae2dms.GamePanel;
 import com.ae2dms.Model.Scene.GameScene;
-import com.ae2dms.Model.GameObject.Prompt.CollectEffect;
+import com.ae2dms.Model.GameObject.Sprite.Prompt.CollectEffect;
 import com.ae2dms.Util.SoundEffect;
 import javafx.scene.image.Image;
 
@@ -22,7 +22,7 @@ public abstract class Fruit extends SpriteObject {
 	public CollectEffect collectEffect ;
 
 
-	public Fruit(int x, int y, GameScene world, Image image) {
+	public Fruit(double x, double y, GameScene world, Image image) {
 		//initializes fruit
 		super(x, y, SIZE, SIZE, world, image);
 //		this.awardImage = fruitImage;
@@ -40,8 +40,8 @@ public abstract class Fruit extends SpriteObject {
 		//checks for collision with hero and tells it what to do if it is colliding
 		if (this.overlaps(hero) && readyToCollect) {
 			SoundEffect.getInstance().play("fruit");
-			collectEffect = new CollectEffect(x, y, scene, null, bonus);
-			scene.addCollectEffect(this.collectEffect);
+			collectEffect = new CollectEffect(getX(), getY(), getScene(), null, bonus);
+			getScene().addCollectEffect(this.collectEffect);
 			GamePanel.incrementBonus(bonus);
 			readyToCollect = false;
 			markToRemove();

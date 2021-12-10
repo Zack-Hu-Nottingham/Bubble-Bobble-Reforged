@@ -1,16 +1,19 @@
 package com.ae2dms.Model.Scene;
 
 import com.ae2dms.GamePanel;
+import com.ae2dms.Model.GameObject.Sprite.Character.Boss;
+import com.ae2dms.Model.GameObject.Sprite.Character.Enemy;
+import com.ae2dms.Model.GameObject.Sprite.Character.Hero;
 import com.ae2dms.Model.GameObject.Sprite.Fruit.Fruit;
 import com.ae2dms.Model.GameObject.Sprite.Projectile.BossProjectile;
+import com.ae2dms.Model.GameObject.Sprite.Projectile.Bubble;
 import com.ae2dms.Model.GameObject.Sprite.Projectile.EnemyProjectile;
 import com.ae2dms.Model.GameObject.Sprite.Projectile.HeroProjectile;
 import com.ae2dms.Model.GameObject.Sprite.SpriteObject;
-import com.ae2dms.Model.GameObject.Sprite.*;
 import com.ae2dms.Model.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.Model.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.Model.GameObject.Wall.WallObject.WallUnit;
-import com.ae2dms.Model.GameObject.Prompt.CollectEffect;
+import com.ae2dms.Model.GameObject.Sprite.Prompt.CollectEffect;
 import com.ae2dms.Util.GameScenePainter;
 import com.ae2dms.Util.MapReader;
 import javafx.scene.canvas.Canvas;
@@ -21,6 +24,11 @@ import java.util.ArrayList;
 import static com.ae2dms.GamePanel.*;
 
 /**
+ * GameScene is an overall model, its controller is GameSceneController,
+ * with GameScene.fxml as view. GameScene contains smaller model such as hero,
+ * enemy, furit.. it maintains a set of array of these smaller models, and when
+ * gameScene is initialized all these small models would be initialized as well.
+ * <p>
  * InteractableWorld handles all of the game's operations:
  * updating positions, checking for collisions, and removing objects.
  */
@@ -45,138 +53,297 @@ public class GameScene {
 	private GameScenePainter gameScenePainter;
 
 
+	/**
+	 * Gets ceiling units.
+	 *
+	 * @return the ceiling units
+	 */
 	public ArrayList<CeilingUnit> getCeilingUnits() {
 		return ceilingUnits;
 	}
 
+	/**
+	 * Gets floor units.
+	 *
+	 * @return the floor units
+	 */
 	public ArrayList<FloorUnit> getFloorUnits() {
 		return floorUnits;
 	}
 
+	/**
+	 * Gets wall units.
+	 *
+	 * @return the wall units
+	 */
 	public ArrayList<WallUnit> getWallUnits() {
 		return wallUnits;
 	}
 
+	/**
+	 * Gets heroes.
+	 *
+	 * @return the heroes
+	 */
 	public ArrayList<Hero> getHeroes() {
 		return heroes;
 	}
 
+	/**
+	 * Gets enemies.
+	 *
+	 * @return the enemies
+	 */
 	public ArrayList<Enemy> getEnemies() {
 		return enemies;
 	}
 
+	/**
+	 * Gets hero projectiles.
+	 *
+	 * @return the hero projectiles
+	 */
 	public ArrayList<HeroProjectile> getHeroProjectiles() {
 		return heroProjectiles;
 	}
 
+	/**
+	 * Gets enemy projectiles.
+	 *
+	 * @return the enemy projectiles
+	 */
 	public ArrayList<EnemyProjectile> getEnemyProjectiles() {
 		return enemyProjectiles;
 	}
 
+	/**
+	 * Gets boss projectiles.
+	 *
+	 * @return the boss projectiles
+	 */
 	public ArrayList<BossProjectile> getBossProjectiles() {
 		return bossProjectiles;
 	}
 
+	/**
+	 * Gets fruits.
+	 *
+	 * @return the fruits
+	 */
 	public ArrayList<Fruit> getFruits() {
 		return fruits;
 	}
 
+	/**
+	 * Gets to be removed.
+	 *
+	 * @return the to be removed
+	 */
 	public ArrayList<SpriteObject> getToBeRemoved() {
 		return toBeRemoved;
 	}
 
+	/**
+	 * Gets bubbles.
+	 *
+	 * @return the bubbles
+	 */
 	public ArrayList<Bubble> getBubbles() {
 		return bubbles;
 	}
 
+	/**
+	 * Gets collect effects.
+	 *
+	 * @return the collect effects
+	 */
 	public ArrayList<CollectEffect> getCollectEffects() {
 		return collectEffects;
 	}
 
+	/**
+	 * Gets bosses.
+	 *
+	 * @return the bosses
+	 */
 	public ArrayList<Boss> getBosses() {
 		return bosses;
 	}
 
+	/**
+	 * Gets graphics context.
+	 *
+	 * @return the graphics context
+	 */
 	public GraphicsContext getGraphicsContext() {
 		return graphicsContext;
 	}
 
+	/**
+	 * Gets map reader.
+	 *
+	 * @return the map reader
+	 */
 	public MapReader getMapReader() {
 		return mapReader;
 	}
 
+	/**
+	 * Gets game scene painter.
+	 *
+	 * @return the game scene painter
+	 */
 	public GameScenePainter getGameScenePainter() {
 		return gameScenePainter;
 	}
 
+	/**
+	 * Gets height.
+	 *
+	 * @return the height
+	 */
 	public int getHeight() {
 		return HEIGHT * UNIT_SIZE;
 	}
 
+	/**
+	 * Gets width.
+	 *
+	 * @return the width
+	 */
 	public int getWidth() {
 		return WIDTH * UNIT_SIZE;
 	}
 
+	/**
+	 * Gets canvas.
+	 *
+	 * @param canvas the canvas
+	 */
 	public void getCanvas(Canvas canvas) {
 		graphicsContext = canvas.getGraphicsContext2D();
 	}
 
 
-
+	/**
+	 * Add ceiling unit.
+	 *
+	 * @param ceilingUnit the ceiling unit
+	 */
 	public void addCeilingUnit(CeilingUnit ceilingUnit) {
 		ceilingUnits.add(ceilingUnit);
 	}
 
+	/**
+	 * Add floor unit.
+	 *
+	 * @param floorUnit the floor unit
+	 */
 	public void addFloorUnit(FloorUnit floorUnit) {
 		floorUnits.add(floorUnit);
 	}
 
+	/**
+	 * Add wall unit.
+	 *
+	 * @param wallUnit the wall unit
+	 */
 	public void addWallUnit(WallUnit wallUnit) {
 		wallUnits.add(wallUnit);
 	}
 
+	/**
+	 * Add hero.
+	 *
+	 * @param hero the hero
+	 */
 	public void addHero(Hero hero) {
 		//adds a hero to the map
 		heroes.add(hero);
 	}
 
+	/**
+	 * Add enemy.
+	 *
+	 * @param enemy the enemy
+	 */
 	public void addEnemy(Enemy enemy) {
 		//adds a mook to the map
 		enemies.add(enemy);
 	}
 
+	/**
+	 * Add hero projectile.
+	 *
+	 * @param heroProjectile the hero projectile
+	 */
 	public void addHeroProjectile(HeroProjectile heroProjectile) {
 		//adds a projectile to where necessary
 		heroProjectiles.add(heroProjectile);
 	}
 
+	/**
+	 * Add enemy projectile.
+	 *
+	 * @param enemyProjectile the enemy projectile
+	 */
 	public void addEnemyProjectile(EnemyProjectile enemyProjectile) {
 		//adds a projectile to where necessary
 		enemyProjectiles.add(enemyProjectile);
 	}
 
+	/**
+	 * Add boss projectile.
+	 *
+	 * @param bossProjectile the boss projectile
+	 */
 	public void addBossProjectile(BossProjectile bossProjectile) {
 		//adds a projectile to where necessary
 		bossProjectiles.add(bossProjectile);
 	}
 
+	/**
+	 * Add fruit.
+	 *
+	 * @param fruit the fruit
+	 */
 	public void addFruit(Fruit fruit) {
 		//adds fruit on bubble pop
 		fruits.add(fruit);
 	}
 
+	/**
+	 * Add bubble.
+	 *
+	 * @param bubble the bubble
+	 */
 	public void addBubble(Bubble bubble) {
 		//adds special bubble
 		bubbles.add(bubble);
 	}
 
+	/**
+	 * Add collect effect.
+	 *
+	 * @param collectEffect the collect effect
+	 */
 	public void addCollectEffect(CollectEffect collectEffect) {
 		collectEffects.add(collectEffect);
 	}
 
+	/**
+	 * Add boss.
+	 *
+	 * @param boss the boss
+	 */
 	public void addBoss(Boss boss) { bosses.add(boss); }
 
 
+	/**
+	 * Instantiates a new Game scene, which would initialize all the
+	 * sub-models that might be used according to map. And it would
+	 * initialize an gamePainter to constantly refresh the game scene.
+	 */
 	public GameScene() {
 		//initializes interactableworld
 		ceilingUnits = new ArrayList<CeilingUnit>();
@@ -204,6 +371,9 @@ public class GameScene {
 		gameScenePainter.setGameScene(this);
 	}
 
+	/**
+	 * Remove all the objects to clear all the sub-models in GameScene.
+	 */
 	public void clearContents() {
 		//clears everything from the screen
 		ceilingUnits.removeAll(ceilingUnits);
@@ -216,6 +386,11 @@ public class GameScene {
 		fruits.removeAll(fruits);
 	}
 
+	/**
+	 * Remove object from the corresponding arraylist.
+	 *
+	 * @param obj the obj
+	 */
 	public void remove(SpriteObject obj) {
 		//removes a single object from the screen
 		ceilingUnits.remove(obj);
@@ -233,6 +408,10 @@ public class GameScene {
 	}
 
 
+	/**
+	 * The enumeration direction, which is used to represent the direction of sprite
+	 * such as hero, enemy and boss.
+	 */
 	public enum Direction {
 		LEFT, RIGHT
 	}

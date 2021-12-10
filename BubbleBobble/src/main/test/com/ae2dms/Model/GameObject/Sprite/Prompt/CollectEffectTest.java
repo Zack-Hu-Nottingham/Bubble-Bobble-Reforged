@@ -1,12 +1,9 @@
-package com.ae2dms.Model.GameObject.Prompt;
+package com.ae2dms.Model.GameObject.Sprite.Prompt;
 
 import com.ae2dms.GamePanel;
-import com.ae2dms.Main;
-import com.ae2dms.Model.GameObject.Sprite.Fruit.Fruit;
 import com.ae2dms.Model.Scene.GameScene;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
@@ -58,10 +55,10 @@ class CollectEffectTest extends ApplicationTest {
         CollectEffect collectEffect100 = new CollectEffect(5, 5, gameScene, null, 30);
 
 
-        assertNotNull(collectEffect30.image);
-        assertNotNull(collectEffect35.image);
-        assertNotNull(collectEffect40.image);
-        assertNotNull(collectEffect100.image);
+        assertNotNull(collectEffect30.getImage());
+        assertNotNull(collectEffect35.getImage());
+        assertNotNull(collectEffect40.getImage());
+        assertNotNull(collectEffect100.getImage());
     }
 
 }

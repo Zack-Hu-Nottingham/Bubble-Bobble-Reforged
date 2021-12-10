@@ -1,7 +1,11 @@
 package com.ae2dms.Util;
 
 import com.ae2dms.GamePanel;
-import com.ae2dms.Model.GameObject.Prompt.CollectEffect;
+import com.ae2dms.Model.GameObject.Sprite.Character.Boss;
+import com.ae2dms.Model.GameObject.Sprite.Character.Enemy;
+import com.ae2dms.Model.GameObject.Sprite.Character.Hero;
+import com.ae2dms.Model.GameObject.Sprite.Projectile.Bubble;
+import com.ae2dms.Model.GameObject.Sprite.Prompt.CollectEffect;
 import com.ae2dms.Model.GameObject.Sprite.*;
 import com.ae2dms.Model.GameObject.Sprite.Fruit.Fruit;
 import com.ae2dms.Model.GameObject.Sprite.Projectile.BossProjectile;
@@ -15,24 +19,42 @@ import com.ae2dms.Model.Scene.GameScene;
 import static com.ae2dms.GamePanel.gameStatus;
 import static com.ae2dms.GamePanel.level;
 
+/**
+ * The type Game scene updater.
+ */
 public class GameSceneUpdater {
 
-    GameSceneUpdater() {}
+    private GameSceneUpdater() {}
 
     private static GameSceneUpdater instance = new GameSceneUpdater();
 
+    /**
+     * Gets instance of GameSceneUpdater.
+     *
+     * @return the instance
+     */
     public static GameSceneUpdater getInstance() {
         return instance;
     }
 
     private GameScene gameScene;
 
+    /**
+     * Sets game scene to be updated.
+     *
+     * @param gameScene the game scene
+     */
     public void setGameScene(GameScene gameScene) {
         this.gameScene = gameScene;
     }
 
     private int delay = 180;
 
+    /**
+     * Invoke the update method in each element in gameScene, and at the end
+     * check if all the enemy is killed. If all are killed, play the corresponding
+     * music and set the game status to win.
+     */
     public void updatePosition() {
         //updates positions of everything on screen
         for (Hero hero : gameScene.getHeroes()) {
@@ -227,9 +249,9 @@ public class GameSceneUpdater {
 
         // end game logic
         if (gameScene.getEnemies().isEmpty()) {
-
             if (delay == 90) {
                 SoundEffect.getInstance().play("nextLevel");
+                delay -= 1;
             } else if (delay == 0) {
                 if (level.getValue() == 3 ) {
                     if (gameScene.getBosses().isEmpty()) {

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.ae2dms.Model.GameObject.Sprite.Fruit.Lucky;
+import com.ae2dms.Model.GameObject.Sprite.Fruit.fruit.Lucky;
 import org.testfx.framework.junit5.ApplicationTest;
 
 import static org.hamcrest.CoreMatchers.instanceOf;

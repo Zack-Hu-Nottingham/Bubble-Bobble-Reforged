@@ -1,12 +1,12 @@
-package com.ae2dms.Model.GameObject.Sprite;
+package com.ae2dms.Model.GameObject.Sprite.Character;
 
 import com.ae2dms.GamePanel;
+import com.ae2dms.Model.GameObject.Sprite.Projectile.Bubble;
 import com.ae2dms.Model.GameObject.Sprite.Fruit.Fruit;
 import com.ae2dms.Model.GameObject.Sprite.Fruit.fruitFactory.BossDropFruitFactory;
-import com.ae2dms.Model.GameObject.Sprite.Fruit.fruitFactory.EnemyDropFruitFactory;
 import com.ae2dms.Model.GameObject.Sprite.Fruit.fruitFactory.FruitFactory;
 import com.ae2dms.Model.GameObject.Sprite.Projectile.BossProjectile;
-import com.ae2dms.Model.GameObject.Sprite.Projectile.EnemyProjectile;
+import com.ae2dms.Model.GameObject.Sprite.SpriteObject;
 import com.ae2dms.Model.GameObject.Wall.WallObject.CeilingUnit;
 import com.ae2dms.Model.GameObject.Wall.WallObject.FloorUnit;
 import com.ae2dms.Model.GameObject.Wall.WallObject.WallUnit;
@@ -25,7 +25,7 @@ import static com.ae2dms.GamePanel.UNIT_SIZE;
  * Enemies jump at random intervals as well.
  */
 //public class Enemy extends SpriteObject {
-public class Boss extends SpriteObject{
+public class Boss extends SpriteObject {
 
     private static int WIDTH = UNIT_SIZE + 10;
     private static int HEIGHT = UNIT_SIZE + 10;
@@ -35,30 +35,62 @@ public class Boss extends SpriteObject{
     private static final double CHANGE_MOVEMENT_CHANCE = 0.01;
     private static double SHOOT_BUBBLE_CHANCE = 0.01;
 
+    /**
+     * The boolean which tells if boss is bubbled.
+     */
     boolean isBubbled;
+
+    /**
+     * The Timer for how long the boss is bubbled.
+     */
     int timer;
-    int pointValue;
+
     private boolean turningAwayFromShield;
     private int turningAwayCount;
     private boolean isOnAPlatform;
-    private double jumpSpeed;
+    private int jumpSpeed;
 
 
     private int sizeRange;
     private int life;
     private int damage;
+
+    /**
+     * The Is bombed flag which tells if the boss already being attacked by hero's ultimate bubble.
+     */
     public boolean isBombed;
 
+    /**
+     * The image of boss turns right.
+     */
     protected static Image bossRightImage = new Image(Enemy.class.getResource("/image/sprite/enemy/bossRight.png").toString(), WIDTH, HEIGHT, false, false);
+
+    /**
+     * The image of boss turns left.
+     */
     protected static Image bossLeftImage = new Image(Enemy.class.getResource("/image/sprite/enemy/bossLeft.png").toString(), WIDTH, HEIGHT, false, false);
+
+    /**
+     * The image of boss that is currently using.
+     */
     protected static Image enemyImage = bossRightImage;
 
+    /**
+     * The image of boss being bubbled.
+     */
     protected static Image bubbled = new Image(Bubble.class.getResource("/image/sprite/bubble/bubbled.png").toString(), 40, 40, false, false);
 
 
-    public Boss(GameScene world, int colNum, int rowNum) {
+    /**
+     * Instantiates a new Boss.
+     *
+     * @param gameScene the gameScene that boss in
+     * @param colNum    the column that boss would be placed
+     * @param rowNum    the row that boss would be placed
+     */
+    public Boss(GameScene gameScene, int colNum, int rowNum) {
         //initializes enemy
-        super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, WIDTH, HEIGHT, world, enemyImage);
+        super(colNum * UNIT_SIZE, rowNum * UNIT_SIZE, WIDTH, HEIGHT, gameScene, enemyImage);
         isOnAPlatform = false;
         jumpSpeed = JUMP_SPEED;
         terminal_xVelocity = TERMINAL_VELOCITY_X;
@@ -103,7 +135,6 @@ public class Boss extends SpriteObject{
 
         isBubbled = false;
         timer = BUBBLED_FRAMES;
-        pointValue = 150;
         turningAwayFromShield = false;
         turningAwayCount = 10;
     }
@@ -117,13 +148,13 @@ public class Boss extends SpriteObject{
         }
         //draws mook
         if (isBubbled) {
-            g.drawImage(enemyImage, x, y, WIDTH, HEIGHT);
+            g.drawImage(enemyImage, getX(), getY(), WIDTH, HEIGHT);
 
             g.setGlobalAlpha((double) timer/150);
-            g.drawImage(bubbled, x-10, y-5, 50+sizeRange, 50+sizeRange);
+            g.drawImage(bubbled, getX()-10, getY()-5, 50+sizeRange, 50+sizeRange);
             g.setGlobalAlpha(1);
         } else {
-            g.drawImage(enemyImage, x, y, WIDTH, HEIGHT);
+            g.drawImage(enemyImage, getX(), getY(), WIDTH, HEIGHT);
         }
 
     }
@@ -175,20 +206,27 @@ public class Boss extends SpriteObject{
     private void jump() {
         //handles jumping
         if (isOnAPlatform) {
-            y -= 1;
+//            y -= 1;
+            setY(getY()-1);
             yVelocity = -jumpSpeed;
             isOnAPlatform = false;
         }
     }
 
+    /**
+     * Shoot boss's projectile.
+     */
     public void shootProjectile() {
         // Nothing happens
         SoundEffect.getInstance().play("shoot");
 
         System.out.println(direction);
-        scene.addBossProjectile(new BossProjectile(scene, x, y, direction));
+        this.getScene().addBossProjectile(new BossProjectile(this.getScene(), getX(), getY(), direction));
     }
 
+    /**
+     * Boss collide with hero's projectile.
+     */
     public void collideWithProjectile() {
         damage ++;
         System.out.println("damage: "+damage);
@@ -205,20 +243,33 @@ public class Boss extends SpriteObject{
         reverseDirection();
     }
 
-    void die() {
+    /**
+     * Handles that boss is killed.
+     */
+    public void die() {
         //handles what to do on death
         GamePanel.chargeLevel += 1;
         FruitFactory bossDropFruitFactory = new BossDropFruitFactory();
-        Fruit fruit = bossDropFruitFactory.getFruit(x, y, scene);
-        scene.addFruit(fruit);
+        Fruit fruit = bossDropFruitFactory.getFruit(getX(), getY(), this.getScene());
+        this.getScene().addFruit(fruit);
         markToRemove();
     }
 
+    /**
+     * Return the boss whether is bubbled.
+     *
+     * @return the boolean
+     */
     public boolean isBubbled() {
         return isBubbled;
     }
 
 
+    /**
+     * Boss collide with hero.
+     *
+     * @param hero the hero
+     */
     public void collideWith(Hero hero) {
         //handles collision with hero and what to do
         if (this.overlaps(hero)) {
@@ -243,6 +294,11 @@ public class Boss extends SpriteObject{
         }
     }
 
+    /**
+     * Collide with ceiling.
+     *
+     * @param unit the unit
+     */
     public void collideWith(CeilingUnit unit) {
         //handles unit collision
         if (this.overlaps(unit)) {
@@ -253,6 +309,11 @@ public class Boss extends SpriteObject{
         }
     }
 
+    /**
+     * Collide with floor.
+     *
+     * @param floorUnit the floor unit
+     */
     public void collideWith(FloorUnit floorUnit) {
         //handles unit collision
         if (this.overlaps(floorUnit)) {
@@ -263,6 +324,11 @@ public class Boss extends SpriteObject{
         }
     }
 
+    /**
+     * Collide with wallUnit.
+     *
+     * @param wallUnit the wall unit
+     */
     public void collideWith(WallUnit wallUnit) {
         //handles unit collision
         if (this.overlaps(wallUnit)) {

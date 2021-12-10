@@ -92,7 +92,7 @@ public class GameSceneController {
 
         gameScene.getCanvas(canvas);
 
-        timeSpend.textProperty().bind(GamePanel.gameTimer.timeToDisplay);
+        timeSpend.textProperty().bind(GamePanel.gameTimer.timeToDisplayProperty());
 
         currentScore.textProperty().bind(GamePanel.bonus.asString());
 
