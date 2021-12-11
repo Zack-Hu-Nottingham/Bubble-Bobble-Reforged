@@ -8,10 +8,9 @@ import com.ae2dms.model.gameObject.sprite.prompt.CollectEffect;
 import com.ae2dms.util.SoundEffect;
 import javafx.scene.image.Image;
 
-
 /**
- * The Fruit class handles how the fruit is created and interacts with the hero.
- * The fruits are created after a bubble containing an enemy is popped.
+ * The abstract class Fruit defines the fields/method that is
+ * same for all kinds of fruit.
  */
 public abstract class Fruit extends SpriteObject {
 	private static final int SIZE = 30;
@@ -39,7 +38,6 @@ public abstract class Fruit extends SpriteObject {
     public Fruit(double x, double y, GameScene world, Image image) {
 		//initializes fruit
 		super(x, y, SIZE, SIZE, world, image);
-//		this.awardImage = fruitImage;
 		terminal_yVelocity = TERMINAL_VELOCITY_Y;
 		readyToCollect = false;
 	}

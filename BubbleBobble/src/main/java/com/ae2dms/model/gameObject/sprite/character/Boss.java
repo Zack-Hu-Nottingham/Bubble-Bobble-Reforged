@@ -19,12 +19,10 @@ import static com.ae2dms.GamePanel.UNIT_SIZE;
 
 
 /**
- * An Enemy is a non-controllable com.ae2dms.GameObject.GameObject that kills the main.Hero whenever it or its projectile comes in contact.
- * Enemies are able to be bubbled and free themselves from these bubbles after a period of time.
- * Enemies change direction at random intervals, when hitting a wall, and when hitting the main.Hero's shield.
- * Enemies jump at random intervals as well.
+ * Boss is also non-controllable, and only after four shoots would boss be bubbled.
+ * If boss is not killed during the bubbled period, it would free from it and gain another 4 lives.
  */
-//public class Enemy extends SpriteObject {
+
 public class Boss extends SpriteObject {
 
     private static int WIDTH = UNIT_SIZE + 10;
@@ -206,7 +204,6 @@ public class Boss extends SpriteObject {
     private void jump() {
         //handles jumping
         if (isOnAPlatform) {
-//            y -= 1;
             setY(getY()-1);
             yVelocity = -jumpSpeed;
             isOnAPlatform = false;

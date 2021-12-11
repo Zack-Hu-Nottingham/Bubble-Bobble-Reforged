@@ -25,13 +25,12 @@ import java.util.ArrayList;
 import static com.ae2dms.GamePanel.*;
 
 /**
- * GameScene is an overall model, its controller is GameSceneController,
- * with GameScene.fxml as view. GameScene contains smaller model such as hero,
- * enemy, furit.. it maintains a set of array of these smaller models, and when
- * gameScene is initialized all these small models would be initialized as well.
- * <p>
- * InteractableWorld handles all of the game's operations:
- * updating positions, checking for collisions, and removing objects.
+ * GameScene is an overall model(container for concrete model),
+ * its controller is GameSceneController, with GameScene.fxml as view.
+ * GameScene contains smaller model such as hero, enemy, fruit.
+ * it maintains a set of array of these smaller models, and when
+ * gameScene is initialized all these small models would be initialized.
+ *
  */
 public class GameScene {
 
@@ -55,18 +54,6 @@ public class GameScene {
 
 
 
-//	/**
-//	 * The gameTimer that records the time of the game.
-//	 */
-//	public static GameTimer gameTimer;
-//	/**
-//	 * The bonus earned through the game.
-//	 */
-//	public static IntegerProperty bonus;
-	/**
-	 * The gameStatus of the game.
-	 */
-	public static GameStatus gameStatus;
 	/**
 	 * The level of the current game.
 	 */

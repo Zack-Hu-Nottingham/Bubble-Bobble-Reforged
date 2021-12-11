@@ -6,7 +6,10 @@ import com.ae2dms.model.scene.GameScene;
 import javafx.scene.image.Image;
 
 /**
- * The type Collect effect.
+ * The collect effect of fruits.
+ * When different kinds of fruit are collected,
+ * different effect would pop up, which tip
+ * the user how much bonus it worth.
  */
 public class CollectEffect extends SpriteObject {
 

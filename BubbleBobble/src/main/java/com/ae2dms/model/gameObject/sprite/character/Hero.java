@@ -15,8 +15,8 @@ import static com.ae2dms.GamePanel.UNIT_SIZE;
 
 
 /**
- * A Hero is a com.ae2dms.GameObject.GameObject that is controllable by the player.
- * Of all the com.ae2dms.GameObject.GameObject, only Hero has KeyBindings.
+ * A Hero is a com.ae2dms.model.gameObject.sprite.character that is controllable by the player.
+ * Of all the com.ae2dms.model.gameObject.sprite.character, only Hero has KeyBindings.
  * Hero can shoot HeroProjectiles, shield from attacks, trigger a special attack and
  * collect Fruits for points.
  */

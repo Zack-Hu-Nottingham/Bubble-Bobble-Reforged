@@ -5,8 +5,8 @@ import com.ae2dms.model.scene.GameScene;
 import javafx.scene.image.Image;
 
 /**
- * The abstract class projectile, which defines a lot of parameters that could
- * be shared among all kinds of projectile.
+ * The abstract class projectile, which defines parameters/properties/method that
+ * are same for all kinds of projectile.
  */
 public abstract class Projectile extends SpriteObject {
 

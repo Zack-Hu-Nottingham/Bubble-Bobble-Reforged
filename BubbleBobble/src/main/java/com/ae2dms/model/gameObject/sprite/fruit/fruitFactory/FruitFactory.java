@@ -4,7 +4,7 @@ import com.ae2dms.model.gameObject.sprite.fruit.fruits.Fruit;
 import com.ae2dms.model.scene.GameScene;
 
 /**
- * The type Fruit factory.
+ * The abstract class Fruit factory, which defines the behavior of fruit factory.
  */
 public abstract class FruitFactory {
 

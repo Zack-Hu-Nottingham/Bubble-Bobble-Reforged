@@ -5,7 +5,7 @@ import com.ae2dms.model.gameObject.sprite.fruit.fruits.Lucky;
 import com.ae2dms.model.scene.GameScene;
 
 /**
- * The type Boss drop fruit factory.
+ * The fruit factory that creates fruit that only drop when boss is killed.
  */
 public class BossDropFruitFactory extends FruitFactory{
 

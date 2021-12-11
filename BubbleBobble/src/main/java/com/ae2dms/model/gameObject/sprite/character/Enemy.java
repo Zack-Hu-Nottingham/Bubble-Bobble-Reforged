@@ -20,7 +20,7 @@ import static com.ae2dms.GamePanel.UNIT_SIZE;
 
 
 /**
- * An Enemy is a non-controllable com.ae2dms.GameObject.GameObject that kills the main.Hero whenever it or its projectile comes in contact.
+ * An Enemy is a non-controllable com.ae2dms.model.gameObject.sprite.character that kills the main.Hero whenever it or its projectile comes in contact.
  * Enemies are able to be bubbled and free themselves from these bubbles after a period of time.
  * Enemies change direction at random intervals, when hitting a wall, and when hitting the main.Hero's shield.
  * Enemies jump at random intervals as well.

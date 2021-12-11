@@ -7,7 +7,7 @@ import javafx.scene.Node;
 import javafx.util.Duration;
 
 /**
- * Animation helper, which implements the complicated animation for nodes.
+ * Animation helper, which implements the pop up and fadeOut animation for nodes.
  */
 public class AnimationHelper {
 

@@ -16,7 +16,8 @@ import com.ae2dms.model.scene.GameScene;
 import javafx.scene.canvas.GraphicsContext;
 
 /**
- * The painter for game scene, which has an updater for .
+ * The painter for game scene, which initialize an updater inside and would
+ * update all the models in game scene before refresh.
  */
 public class GameScenePainter {
     /**

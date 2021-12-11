@@ -7,7 +7,7 @@ import com.ae2dms.model.gameObject.sprite.fruit.fruits.StrawBerry;
 import com.ae2dms.model.scene.GameScene;
 
 /**
- * The type Enemy drop fruit factory.
+ * The fruit factory that creates fruit that would drop when enemy is killed.
  */
 public class EnemyDropFruitFactory extends FruitFactory{
 

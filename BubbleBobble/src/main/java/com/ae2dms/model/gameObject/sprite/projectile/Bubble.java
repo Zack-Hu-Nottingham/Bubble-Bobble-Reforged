@@ -8,9 +8,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 /**
- * The com.ae2dms.GameObject.Objects.Bubble class handles everything with the main.Hero's special ability, named the bubble.
- * It begins at the hero, and grows covering the whole screen.
- * Once it collides with an enemy, that enemy is bubbled.
+ * Bubble is the ultimate ability of Bub, which would be ready if
+ * four enemies are killed, and once shot, it would cause damage
+ * to all the enemies on game scene.
  */
 public class Bubble extends SpriteObject {
 	private int accel;

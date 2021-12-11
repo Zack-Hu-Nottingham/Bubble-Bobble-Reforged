@@ -3,8 +3,8 @@ package com.ae2dms.util;
 import javafx.scene.media.AudioClip;
 
 /**
- * SoundEffect handles the game's SFX.
- * Classes that want to use SFX will call the static variables in this enum and
+ * SoundEffect handles the game's sound effect.
+ * Classes that want to play soundEffect will call the static variables in this class and
  * play them via the play() method.
  */
 public class SoundEffect {

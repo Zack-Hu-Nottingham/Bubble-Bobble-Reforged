@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * The type Game recorder.
+ * The recorder of the game both read and write the records.
  */
 public class GameRecorder {
 

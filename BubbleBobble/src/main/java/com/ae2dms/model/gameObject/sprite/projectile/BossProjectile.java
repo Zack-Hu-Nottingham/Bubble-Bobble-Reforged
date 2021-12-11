@@ -8,6 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 /**
+ * Boss projectile
  * The EnemyProjectile class handles the specificities with the projectile being shot from an enemy.
  * For example, the enemy's projectile has a different color than the projectile of a hero.
  * It also can only hurt a hero.

@@ -19,7 +19,8 @@ import com.ae2dms.model.scene.GameScene;
 import static com.ae2dms.GamePanel.gameStatus;
 
 /**
- * The type Game scene updater.
+ * The Game scene updater, which takes a game scene and invoke the update method
+ * of all the models in game scene.
  */
 public class GameSceneUpdater {
 

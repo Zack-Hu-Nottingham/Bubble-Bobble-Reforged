@@ -12,7 +12,7 @@ import javafx.scene.image.Image;
 import static com.ae2dms.GamePanel.UNIT_SIZE;
 
 /**
- * The type Wall object.
+ * The abstract Wall object defines the method that are same for all the wall objects.
  */
 public abstract class WallObject extends GameObject {
 

@@ -6,9 +6,9 @@ import javafx.scene.image.Image;
 import javafx.geometry.Point2D;
 
 /**
- * GameObjects are the objects on the InteractableWorld screen.
- * Every GameObject has a velocity, acceleration, position, direction, and dimensions.
- * GameObjects can detect if they are overlapping another GameObject and
+ * SpriteObjects are objects that can move, so each object would
+ * have its x-speed, y-speed, update method and would collide with walls
+ * SpriteObjects can detect if they are overlapping another SpriteObjects and
  * must implement methods for collisions with every type of Unit.
  */
 public abstract class SpriteObject extends GameObject {

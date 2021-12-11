@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import static com.ae2dms.GamePanel.UNIT_SIZE;
 
 /**
- * The type Wall image factory.
+ * The Wall image factory, returns wall image according to the gameTheme.
  */
 public class WallImageFactory {
 
@@ -36,18 +36,18 @@ public class WallImageFactory {
     /**
      * The Wall image.
      */
-    protected ArrayList<Image> wallImage;
+    protected ArrayList<Image> wallImages;
 
     /**
      * Instantiates a new Wall image factory.
      */
     WallImageFactory() {
-        wallImage = new ArrayList<>();
-        wallImage.add(red);
-        wallImage.add(blue);
-        wallImage.add(black);
-        wallImage.add(pink);
-        wallImage.add(green);
+        wallImages = new ArrayList<>();
+        wallImages.add(red);
+        wallImages.add(blue);
+        wallImages.add(black);
+        wallImages.add(pink);
+        wallImages.add(green);
     }
 
     /**
@@ -60,19 +60,19 @@ public class WallImageFactory {
         switch (GamePanel.theme) {
 
             case BLUE:
-                return wallImage.get(1);
+                return wallImages.get(1);
 
             case BLACK:
-                return wallImage.get(2);
+                return wallImages.get(2);
 
             case PINK:
-                return wallImage.get(3);
+                return wallImages.get(3);
 
             case GREEN:
-                return wallImage.get(4);
+                return wallImages.get(4);
 
             default:
-                return wallImage.get(0);
+                return wallImages.get(0);
         }
     }
 }

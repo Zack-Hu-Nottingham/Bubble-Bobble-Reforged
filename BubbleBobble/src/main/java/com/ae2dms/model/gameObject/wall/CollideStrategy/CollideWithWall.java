@@ -4,7 +4,7 @@ import com.ae2dms.model.gameObject.sprite.SpriteObject;
 import com.ae2dms.model.gameObject.wall.WallObject.WallObject;
 
 /**
- * The type Collide with wall.
+ * The collide strategy of wall.
  */
 public class CollideWithWall implements CollideStrategy {
 

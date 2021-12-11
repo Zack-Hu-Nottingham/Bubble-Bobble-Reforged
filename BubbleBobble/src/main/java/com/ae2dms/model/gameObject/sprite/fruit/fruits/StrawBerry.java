@@ -4,7 +4,7 @@ import com.ae2dms.model.scene.GameScene;
 import javafx.scene.image.Image;
 
 /**
- * Killing an enemy has a 20% chance of dropping strawBerry where strawBerry's bonus is 30.
+ * Killing an enemy has a 20% chance of dropping strawBerry where strawBerry's bonus is 40.
  */
 public class StrawBerry extends Fruit {
     private static Image awardImage = new Image(Fruit.class.getResource("/image/fruit/strawBerry.png").toString(), 30, 30, false, false);
