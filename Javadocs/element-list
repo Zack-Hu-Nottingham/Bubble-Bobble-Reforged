@@ -1,0 +1,16 @@
+module:com.example.bubblebobble
+com.ae2dms
+com.ae2dms.controller.gameOver
+com.ae2dms.controller.gameScene
+com.ae2dms.controller.menu
+com.ae2dms.model.gameObject
+com.ae2dms.model.gameObject.sprite
+com.ae2dms.model.gameObject.sprite.character
+com.ae2dms.model.gameObject.sprite.fruit.fruitFactory
+com.ae2dms.model.gameObject.sprite.fruit.fruits
+com.ae2dms.model.gameObject.sprite.projectile
+com.ae2dms.model.gameObject.sprite.prompt
+com.ae2dms.model.gameObject.wall.CollideStrategy
+com.ae2dms.model.gameObject.wall.WallObject
+com.ae2dms.model.scene
+com.ae2dms.util
