@@ -248,16 +248,23 @@ public class GameSceneUpdater {
         gameScene.getToBeRemoved().removeAll(gameScene.getToBeRemoved());
 
         // end game logic
-        if (gameScene.getEnemies().isEmpty()) {
+        if (gameScene.getEnemies().isEmpty() && gameStatus != GamePanel.GameStatus.WIN) {
+            System.out.println(delay);
+//            System.out.println("isEmpty");
             if (delay == 90) {
                 SoundEffect.getInstance().play("nextLevel");
                 delay -= 1;
             } else if (delay == 0) {
                 if (gameScene.level.getValue() == 3 ) {
                     if (gameScene.getBosses().isEmpty()) {
+                        System.out.println("no boss");
                         gameStatus = GamePanel.GameStatus.WIN;
                         SoundEffect.getInstance().play("victory");
-                        delay -= 1;
+                        delay = 180;
+//                        delay -= 1;
+//                        if (delay == -110) {
+//                            delay = 190;
+//                        }
                     }
                 } else {
                     gameScene.level.set(gameScene.level.getValue() + 1);

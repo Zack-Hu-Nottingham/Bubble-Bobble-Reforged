@@ -26,10 +26,6 @@ class BossTest extends ApplicationTest{
         stage.setScene(scene);
     }
 
-    @Test
-    void update() {
-    }
-
 
     @Test
     void collideWithProjectile() throws NoSuchFieldException, IllegalAccessException {

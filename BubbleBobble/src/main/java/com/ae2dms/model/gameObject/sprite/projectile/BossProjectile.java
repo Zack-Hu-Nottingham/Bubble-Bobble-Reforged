@@ -55,10 +55,7 @@ public class BossProjectile extends Projectile {
      * @param hero the hero
      */
     public void collideWith(Hero hero) {
-        System.out.println(this.overlaps(hero));
-        System.out.println(isActive);
         if(this.overlaps(hero) && isActive) {
-            System.out.println("shoot");
             hero.collideWithProjectile();
         }
     }

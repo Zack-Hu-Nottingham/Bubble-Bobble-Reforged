@@ -10,7 +10,7 @@ com.ae2dms.model.gameObject.sprite.fruit.fruitFactory
 com.ae2dms.model.gameObject.sprite.fruit.fruits
 com.ae2dms.model.gameObject.sprite.projectile
 com.ae2dms.model.gameObject.sprite.prompt
-com.ae2dms.model.gameObject.wall.CollideStrategy
-com.ae2dms.model.gameObject.wall.WallObject
+com.ae2dms.model.gameObject.wall.collideStrategy
+com.ae2dms.model.gameObject.wall.wallObject
 com.ae2dms.model.scene
 com.ae2dms.util

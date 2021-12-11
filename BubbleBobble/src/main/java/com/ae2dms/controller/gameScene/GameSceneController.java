@@ -1,6 +1,7 @@
 package com.ae2dms.controller.gameScene;
 
 import com.ae2dms.GamePanel;
+import com.ae2dms.model.gameObject.sprite.character.Boss;
 import com.ae2dms.model.scene.GameScene;
 import com.ae2dms.util.GameRecorder;
 import com.ae2dms.util.GameTimer;
@@ -44,6 +45,12 @@ public class GameSceneController {
      * The Cover 4.
      */
     @FXML private ImageView cover4;
+
+    @FXML
+    private ImageView blank;
+
+    @FXML
+    private Label bossLife;
 
     // View Node
     @FXML private Canvas canvas;
@@ -153,6 +160,38 @@ public class GameSceneController {
         cover4.setOpacity(1);
     }
 
+    private void setChargeState() {
+
+        if (gameScene.chargeLevel == 0) {
+            clearCharge();
+        }
+        if (gameScene.chargeLevel >= 1) {
+            cover1.setOpacity(0);
+        }
+        if(gameScene.chargeLevel >= 2) {
+            cover2.setOpacity(0);
+        }
+        if(gameScene.chargeLevel >= 3) {
+            cover3.setOpacity(0);
+        }
+        if (gameScene.chargeLevel >= 4) {
+            cover4.setOpacity(0);
+            chargeState.setText("Ready");
+        }
+    }
+
+    private void setBossLife() {
+        if (gameScene.level.getValue() == 3) {
+            if (!blank.visibleProperty().getValue()) {
+                blank.setVisible(true);
+            }
+            if (!gameScene.getBosses().isEmpty()) {
+                Boss boss = gameScene.getBosses().get(0);
+                bossLife.setText("Boss life: "+String.valueOf(boss.getLife()-boss.getDamage()));
+            }
+        }
+    }
+
 
     private class Refresher extends AnimationTimer {
         @Override
@@ -173,23 +212,8 @@ public class GameSceneController {
                     }
                     break;
             }
-
-            if (gameScene.chargeLevel == 0) {
-                clearCharge();
-            }
-            if (gameScene.chargeLevel >= 1) {
-                cover1.setOpacity(0);
-            }
-            if(gameScene.chargeLevel >= 2) {
-                cover2.setOpacity(0);
-            }
-            if(gameScene.chargeLevel >= 3) {
-                cover3.setOpacity(0);
-            }
-            if (gameScene.chargeLevel >= 4) {
-                cover4.setOpacity(0);
-                chargeState.setText("Ready");
-            }
+            setChargeState();
+            setBossLife();
         }
     }
 }

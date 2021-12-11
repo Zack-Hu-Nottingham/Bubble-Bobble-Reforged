@@ -50,6 +50,15 @@ public class Boss extends SpriteObject {
 
 
     private int sizeRange;
+
+    public int getLife() {
+        return life;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
     private int life;
     private int damage;
 
@@ -180,6 +189,7 @@ public class Boss extends SpriteObject {
             timer -= 1;
             if (timer <= 0) {
                 isBubbled = false;
+                damage = 0;
                 timer = BUBBLED_FRAMES;
                 xAccel = 1.5;
                 direction = GameScene.Direction.RIGHT;
@@ -217,7 +227,6 @@ public class Boss extends SpriteObject {
         // Nothing happens
         SoundEffect.getInstance().play("shoot");
 
-        System.out.println(direction);
         this.getScene().addBossProjectile(new BossProjectile(this.getScene(), getX(), getY(), direction));
     }
 
@@ -226,7 +235,6 @@ public class Boss extends SpriteObject {
      */
     public void collideWithProjectile() {
         damage ++;
-        System.out.println("damage: "+damage);
         if (!isBubbled && damage >= life) {
             isBubbled = true;
             yVelocity = 0;
