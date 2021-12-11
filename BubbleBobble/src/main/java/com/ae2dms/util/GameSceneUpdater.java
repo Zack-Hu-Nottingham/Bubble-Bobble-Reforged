@@ -7,13 +7,13 @@ import com.ae2dms.model.gameObject.sprite.character.Hero;
 import com.ae2dms.model.gameObject.sprite.projectile.Bubble;
 import com.ae2dms.model.gameObject.sprite.prompt.CollectEffect;
 import com.ae2dms.model.gameObject.sprite.*;
-import com.ae2dms.model.gameObject.sprite.fruit.fruits.Fruit;
+import com.ae2dms.model.gameObject.sprite.fruit.Fruit;
 import com.ae2dms.model.gameObject.sprite.projectile.BossProjectile;
 import com.ae2dms.model.gameObject.sprite.projectile.EnemyProjectile;
 import com.ae2dms.model.gameObject.sprite.projectile.HeroProjectile;
-import com.ae2dms.model.gameObject.wall.WallObject.CeilingUnit;
-import com.ae2dms.model.gameObject.wall.WallObject.FloorUnit;
-import com.ae2dms.model.gameObject.wall.WallObject.WallUnit;
+import com.ae2dms.model.gameObject.wall.wallObject.CeilingUnit;
+import com.ae2dms.model.gameObject.wall.wallObject.FloorUnit;
+import com.ae2dms.model.gameObject.wall.wallObject.WallUnit;
 import com.ae2dms.model.scene.GameScene;
 
 import static com.ae2dms.GamePanel.gameStatus;

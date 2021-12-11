@@ -27,26 +27,26 @@ class GamePanelTest extends ApplicationTest {
         Scene scene = new Scene(anchorPane, 1280, 720);
 
         stage.setScene(scene);
-        Parent root = FXMLLoader.load(GamePanel.class.getResource("/View_fxml/menu/Menu.fxml"));
+        Parent root = FXMLLoader.load(GamePanel.class.getResource("/view_fxml/menu/Menu.fxml"));
         stage.getScene().setRoot(root);
         stage.show();
     }
 
     @Test
     void loadHelper() {
-        GamePanel.getInstance().loadHelper("/View_fxml/menu/Menu.fxml");
+        GamePanel.getInstance().loadHelper("/view_fxml/menu/Menu.fxml");
         Assertions.assertNotNull(stage.getScene().getRoot());
     }
 
 
-//    @Test
-//    void startGame() {
-//        GamePanel gamePanel = GamePanel.getInstance();
-//        gamePanel.startGame();
-//        Assertions.assertNotNull(stage.getScene().getRoot());
-//
-//
-//    }
+    @Test
+    void startGame() {
+        GamePanel gamePanel = GamePanel.getInstance();
+        gamePanel.startGame();
+        Assertions.assertNotNull(stage.getScene().getRoot());
+
+
+    }
 
     @Test
     void toMenu() {

@@ -30,7 +30,8 @@ class BossProjectileTest extends ApplicationTest {
     }
 
     @Test
-    void collideWithHero() throws NoSuchFieldException, IllegalAccessException {
+    void
+    collideWithHero() throws NoSuchFieldException, IllegalAccessException {
 
         GameScene gameScene = new GameScene();
 

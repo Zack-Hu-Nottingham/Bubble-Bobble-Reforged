@@ -1,7 +1,6 @@
 package com.ae2dms.controller.gameScene;
 
 import com.ae2dms.GamePanel;
-import com.ae2dms.Main;
 import com.ae2dms.util.GameRecorder;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,7 +29,7 @@ public class GameSceneControllerTest extends ApplicationTest {
         Scene scene = new Scene(anchorPane, 1280, 720);
 
         stage.setScene(scene);
-        Parent root = FXMLLoader.load(GamePanel.class.getResource("/View_fxml/menu/Menu.fxml"));
+        Parent root = FXMLLoader.load(GamePanel.class.getResource("/view_fxml/menu/Menu.fxml"));
         stage.getScene().setRoot(root);
         stage.show();
     }

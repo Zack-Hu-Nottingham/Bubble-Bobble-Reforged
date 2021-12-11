@@ -100,14 +100,14 @@ public class GamePanel {
 	 * Load the gameScene's fxml and hand over control to its controller.
 	 */
 	public void startGame() {
-		loadHelper("/View_fxml/GameScene/gameScene.fxml");
+		loadHelper("/view_fxml/GameScene/gameScene.fxml");
 	}
 
 	/**
 	 * Load the menuScene's fxml and hand over control to its controller.
 	 */
 	public void toMenu() {
-		loadHelper("/View_fxml/menu/Menu.fxml");
+		loadHelper("/view_fxml/menu/Menu.fxml");
 	}
 
 	/**
@@ -115,9 +115,9 @@ public class GamePanel {
 	 */
 	public void gameOver() {
 		if (gameStatus == GameStatus.WIN) {
-			loadHelper("/View_fxml/GameOver/gameOverWin.fxml");
+			loadHelper("/view_fxml/GameOver/gameOverWin.fxml");
 		} else {
-			loadHelper("/View_fxml/GameOver/gameOverLose.fxml");
+			loadHelper("/view_fxml/GameOver/gameOverLose.fxml");
 		}
 	}
 
@@ -125,7 +125,7 @@ public class GamePanel {
 	 * Load the highScoreScene's fxml and hand over control to its controller.
 	 */
 	public void viewHighScore() {
-		loadHelper("/View_fxml/GameOver/HighScore.fxml");
+		loadHelper("/view_fxml/GameOver/HighScore.fxml");
 	}
 
 

@@ -2,7 +2,6 @@ package com.ae2dms.controller.menu;
 
 
 import com.ae2dms.GamePanel;
-import com.ae2dms.Main;
 import com.ae2dms.util.SoundEffect;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,7 +29,7 @@ public class MenuControllerTest {
         Scene scene = new Scene(anchorPane, 1280, 720);
 
         stage.setScene(scene);
-        Parent root = FXMLLoader.load(GamePanel.class.getResource("/View_fxml/menu/Menu.fxml"));
+        Parent root = FXMLLoader.load(GamePanel.class.getResource("/view_fxml/menu/Menu.fxml"));
         stage.getScene().setRoot(root);
         stage.show();
     }
@@ -106,9 +105,9 @@ public class MenuControllerTest {
         robot.clickOn("#back");
     }
 
-    @Test
-    void exit(FxRobot robot) {
-        robot.doubleClickOn("#exitGameButton");
-    }
+//    @Test
+//    void exit(FxRobot robot) {
+//        robot.doubleClickOn("#exitGameButton");
+//    }
 
 }

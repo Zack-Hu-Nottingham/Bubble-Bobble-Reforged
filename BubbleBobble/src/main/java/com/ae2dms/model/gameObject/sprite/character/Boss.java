@@ -2,14 +2,14 @@ package com.ae2dms.model.gameObject.sprite.character;
 
 import com.ae2dms.GamePanel;
 import com.ae2dms.model.gameObject.sprite.projectile.Bubble;
-import com.ae2dms.model.gameObject.sprite.fruit.fruits.Fruit;
+import com.ae2dms.model.gameObject.sprite.fruit.Fruit;
 import com.ae2dms.model.gameObject.sprite.fruit.fruitFactory.BossDropFruitFactory;
 import com.ae2dms.model.gameObject.sprite.fruit.fruitFactory.FruitFactory;
 import com.ae2dms.model.gameObject.sprite.projectile.BossProjectile;
 import com.ae2dms.model.gameObject.sprite.SpriteObject;
-import com.ae2dms.model.gameObject.wall.WallObject.CeilingUnit;
-import com.ae2dms.model.gameObject.wall.WallObject.FloorUnit;
-import com.ae2dms.model.gameObject.wall.WallObject.WallUnit;
+import com.ae2dms.model.gameObject.wall.wallObject.CeilingUnit;
+import com.ae2dms.model.gameObject.wall.wallObject.FloorUnit;
+import com.ae2dms.model.gameObject.wall.wallObject.WallUnit;
 import com.ae2dms.model.scene.GameScene;
 import com.ae2dms.util.SoundEffect;
 import javafx.scene.canvas.GraphicsContext;

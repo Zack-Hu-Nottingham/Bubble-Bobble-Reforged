@@ -3,9 +3,9 @@ package com.ae2dms.util;
 import com.ae2dms.model.gameObject.sprite.character.Boss;
 import com.ae2dms.model.gameObject.sprite.character.Enemy;
 import com.ae2dms.model.gameObject.sprite.character.Hero;
-import com.ae2dms.model.gameObject.wall.WallObject.CeilingUnit;
-import com.ae2dms.model.gameObject.wall.WallObject.FloorUnit;
-import com.ae2dms.model.gameObject.wall.WallObject.WallUnit;
+import com.ae2dms.model.gameObject.wall.wallObject.CeilingUnit;
+import com.ae2dms.model.gameObject.wall.wallObject.FloorUnit;
+import com.ae2dms.model.gameObject.wall.wallObject.WallUnit;
 import com.ae2dms.model.scene.GameScene;
 
 import java.io.InputStream;
