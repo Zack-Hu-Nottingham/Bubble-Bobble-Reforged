@@ -172,7 +172,7 @@ public abstract class GameObject {
     }
 
     /**
-     * The default draw method for all the game object, could be overWritten & redesigned by subclass.
+     * The default draw method for all the game object, could be overWritten and redesigned by subclass.
      *
      * @param graphicsContext the graphics context
      */

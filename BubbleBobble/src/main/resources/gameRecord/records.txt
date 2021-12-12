@@ -2,4 +2,3 @@ Zixiang Hu,200,106
 Bryan,360,60
 Yu Heng,300,54
 Bob,500,50
-Zack,430,27

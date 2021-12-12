@@ -372,7 +372,7 @@ public class GameScene {
 
 		chargeLevel = 0;
 
-		level = new SimpleIntegerProperty(3);
+		level = new SimpleIntegerProperty(1);
 
 		mapReader = MapReader.getInstance();
 

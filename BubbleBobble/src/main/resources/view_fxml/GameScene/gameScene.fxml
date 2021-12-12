@@ -105,11 +105,6 @@
                   <Image url="@../../image/ui/gameScene/blank.png" />
                </image>
             </ImageView>
-            <Label fx:id="bossLife" layoutX="582.0" layoutY="130.0" prefHeight="27.0" prefWidth="161.0" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
             <ProgressBar fx:id="bossLife" layoutX="544.0" layoutY="129.0" prefWidth="200.0" progress="0.0" styleClass="progress-bar" visible="false" />
 
          </children>
