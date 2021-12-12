@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -22,50 +23,34 @@ import javafx.scene.input.MouseEvent;
  */
 public class GameSceneController {
 
-    private GameScene gameScene;
-
+    /**
+     * Hint bar component
+     */
+    @FXML private ProgressBar bossLife;
     @FXML private Label bestRecord;
-    /**
-     * The Charge state.
-     */
-    @FXML private Label chargeState;
-    /**
-     * The Cover 1.
-     */
-    @FXML private ImageView cover1;
-    /**
-     * The Cover 2.
-     */
-    @FXML private ImageView cover2;
-    /**
-     * The Cover 3.
-     */
-    @FXML private ImageView cover3;
-    /**
-     * The Cover 4.
-     */
-    @FXML private ImageView cover4;
-
-    @FXML
-    private ImageView blank;
-
-    @FXML
-    private Label bossLife;
-
-    // View Node
-    @FXML private Canvas canvas;
-    /**
-     * The Blur group.
-     */
-    @FXML private Group blurGroup;
+    @FXML private Label levelHint;
     @FXML private Label currentScore;
     @FXML private Label timeSpend;
+    @FXML private Label chargeState;
+
+    /**
+     * The cover for charge state.
+     */
+    @FXML private ImageView cover1;
+    @FXML private ImageView cover2;
+    @FXML private ImageView cover3;
+    @FXML private ImageView cover4;
+
+
+    @FXML private Canvas canvas;
+    @FXML private Group blurGroup;
+
     /**
      * The Exit game pop up controller.
      */
     @FXML protected ExitGamePopUpController ExitGamePopUpController;
-    @FXML private Label levelHint;
 
+    private GameScene gameScene;
 
     private Refresher refresher = new Refresher();
 
@@ -137,6 +122,9 @@ public class GameSceneController {
         });
     }
 
+    /**
+     * Apply blur effect to background, when confirmation page pop up
+     */
     private void blurEffect() {
         GaussianBlur gaussianBlur = new GaussianBlur();
         gaussianBlur.setRadius(22);
@@ -181,13 +169,13 @@ public class GameSceneController {
     }
 
     private void setBossLife() {
-        if (gameScene.level.getValue() == 3) {
-            if (!blank.visibleProperty().getValue()) {
-                blank.setVisible(true);
+        if (gameScene.level.getValue() == 4) {
+            if (!bossLife.visibleProperty().getValue()) {
+                bossLife.setVisible(true);
             }
             if (!gameScene.getBosses().isEmpty()) {
                 Boss boss = gameScene.getBosses().get(0);
-                bossLife.setText("Boss life: "+String.valueOf(boss.getLife()-boss.getDamage()));
+                bossLife.setProgress((double) (boss.getLife()-boss.getDamage())/boss.getLife());
             }
         }
     }

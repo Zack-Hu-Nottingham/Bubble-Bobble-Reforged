@@ -88,9 +88,7 @@ public class Bubble extends SpriteObject {
      * @param boss the boss
      */
     public void collideWith(Boss boss) {
-		if (this.overlaps(boss)) {
-			boss.collideWithProjectile();
-		}
+		boss.collideWithProjectile();
 	}
 
 }

@@ -110,7 +110,7 @@ public class Boss extends SpriteObject {
                 HEIGHT = UNIT_SIZE + sizeRange;
                 BUBBLED_FRAMES = 300;
                 SHOOT_BUBBLE_CHANCE = 0.01;
-                life = 5;
+                life = 12;
                 break;
 
             case MEDIUM:
@@ -121,7 +121,7 @@ public class Boss extends SpriteObject {
                 HEIGHT = UNIT_SIZE + sizeRange;
                 BUBBLED_FRAMES = 200;
                 SHOOT_BUBBLE_CHANCE = 0.02;
-                life = 8;
+                life = 16;
                 break;
 
             case HIGH:
@@ -131,7 +131,7 @@ public class Boss extends SpriteObject {
                 HEIGHT = UNIT_SIZE-5;
                 BUBBLED_FRAMES = 100;
                 SHOOT_BUBBLE_CHANCE = 0.03;
-                life = 10;
+                life = 20;
                 break;
         }
 
@@ -235,6 +235,7 @@ public class Boss extends SpriteObject {
      */
     public void collideWithProjectile() {
         damage ++;
+        System.out.println(damage);
         if (!isBubbled && damage >= life) {
             isBubbled = true;
             yVelocity = 0;

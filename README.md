@@ -2,15 +2,15 @@
 
 "Zixiang Hu" 20215538 scyzh6@nottingham.edu.cn
 
->word count: 498
+>word count: 500
 
 ### Refactor:
 
 - Replace swing with Javafx.
 - Split clumsy class to achieve single responsibility. Split InteractableWorld.java to [GameScene.java](BubbleBobble/src/main/java/com/ae2dms/model/scene/GameScene.java)(model) and [GameSceneController.java](BubbleBobble/src/main/java/com/ae2dms/controller/gameScene/GameSceneController.java)(controller). Where [GameScene.java](BubbleBobble/src/main/java/com/ae2dms/model/scene/GameScene.java) encapsulate all the sub-models exist in the game like hero, enemy. It also provides public methods like [getGameScenePainter().paintComponent()](BubbleBobble/src/main/java/com/ae2dms/controller/gameScene/GameSceneController.java) for controller to invoke. 
 
-- Apply MVC pattern. Categorize the files into three main package: model, controller and util, and put the [view](BubbleBobble/src/main/resources/view_fxml)(fxml) part in resources folder. Split the game's view into three main part: menu, gameScene & gameOverScene, each part have its own FXML and controller. 
-- Extract multi-level abstraction. Extract abstract class like [GameObject.java](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/GameObject.java), [WallObject.java](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/wall/WallObject/WallObject.java), [SpriteObject.java](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/sprite/SpriteObject.java). Other concrete class would extends these abstract class and get rid of duplicate codes.
+- Apply MVC pattern. Categorize the files into three main packages: model, controller and util. Put the [view](BubbleBobble/src/main/resources/view_fxml)(fxml) part in resources folder. Split the game's view into three parts: menu, gameScene & gameOverScene, each part have its own FXML and controller. 
+- Extract multi-level abstraction. Extract abstract class like [GameObject.java](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/GameObject.java), [WallObject.java](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/wall/WallObject/WallObject.java), [SpriteObject.java](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/sprite/SpriteObject.java). Other concrete class would extends these abstract class, thus get rid of duplicate codes.
 - Encapsulate fields. Encapsulate crucial fields of game object with getter and setter, to have a better protection and encapsulation.
 
 
@@ -18,27 +18,28 @@
 ### Feature:
 
 - Complicated setting page. Player could select theme, difficulty and volume. With different difficulty, the chance to shoot, speed and size of enemy would vary.
-- Randomly dropped fruit with collect effects and sounds. When enemy killed, it would randomly drop a kind of fruit and collect it would pop up hint tells how much bonus it worth. 
+- Randomly dropped fruit with collect effects and sounds. When enemy killed, random kind of fruit drops. Collect fruit pop up hint tells the bonus it worth. 
 - Game scene equipped with level hint, score hint, time hint, boss remaining life hint and hero charging status hint.
 - Multi-level with final level's boss. The boss can withstand more shoots, and shoots a different kind of bubble.
 - Animation between the switch of scene. Click subpage in menu, the subpage would gently slide from the bottom to the top. Click back button in game scene, the background would blur with the confirm page pop up. All these are implemented by nested FXML with nested controller.
-- No actual buttons/checkBox/choiceBox used, all are simulated with imageView combined with animation and sounds.
+- No actual buttons/checkBox/choiceBox used, all simulated by imageView combined with animation and sounds.
 
 
 
 ### Design pattern:
 
 - Singleton pattern: [GamePanel.java](BubbleBobble/src/main/java/com/ae2dms/GamePanel.java), the director of the game, would only be constructed once and its instance would be returned by [getInstance()](BubbleBobble/src/main/java/com/ae2dms/GamePanel.java#L31) as a handle.
-- FlyWeight pattern: When creating [WallObjects](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/wall/wallObject), it gets wall's image from [WallImageFactory](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/wall/wallObject/WallImageFactory.java). Factory would check if the required image already exist, and if exist, return that image. It guarantees the image is created only once and shared by all the wallObjects, which would reduce the amount of duplicate memory.
-- Template pattern: Abstract class [SpriteObject.java](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/sprite/SpriteObject.java) defines a template for all sprite object to extends. It implements method that is duplicate for all the sprite objects like [turnAround()](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/sprite/SpriteObject.java#L88). For method that differs, like [collideWithCeiling()](104) the implementation detail is down to each subclass.
+- FlyWeight pattern: When creating [WallObjects](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/wall/wallObject), it gets wall's image from [WallImageFactory](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/wall/wallObject/WallImageFactory.java). Factory would check if the required image already exist, and if exist, return that image. It guarantees the image is created only once and shared by all  wallObjects, which would reduce the amount of duplicate memory.
+- Template pattern: Abstract class [SpriteObject.java](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/sprite/SpriteObject.java) defines a template for all sprite object to extends. It implements method that is duplicate for all the sprite objects like [turnAround()](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/sprite/SpriteObject.java#L88). For method that differs, like [collideWithCeiling()](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/sprite/SpriteObject.java#L104) the implementation detail is down to each subclass.
 - Factory pattern: [BossDropFruitFactory.java](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/sprite/fruit/fruitFactory/BossDropFruitFactory.java) and [EnemyDropFruitFactory.java](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/sprite/fruit/fruitFactory/EnemyDropFruitFactory.java) are two fruit factories that extends [FruitFactory.java](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/sprite/fruit/fruitFactory/FruitFactory.java). They create and return different kind of fruits according to requirements.
 - Strategy pattern: Interface [CollideStrategy.java](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/wall/CollideStrategy/CollideStrategy.java) is implemented by [CollideWithWall](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/wall/collideStrategy/CollideWithWall.java), [CollideWithCeiling](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/wall/collideStrategy/CollideWithCeiling.java) & [CollideWithFloor](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/wall/collideStrategy/CollideWithFloor.java). Each [WallObject](BubbleBobble/src/main/java/com/ae2dms/model/gameObject/wall/wallObject/WallObject.java) contains a specific collide strategy, which decides how it collide with other object.
+- Mediator Pattern: [GameSceneController.java](BubbleBobble/src/main/java/com/ae2dms/controller/gameScene/GameSceneController.java) act as the mediator of [GameScene.java](BubbleBobble/src/main/java/com/ae2dms/model/scene/GameScene.java) and [GameScene.fxml](BubbleBobble/src/main/resources/view_fxml/GameScene/gameScene.fxml)
 
 
 
 ### Git work flow:
 
-When an issue is raised a new branch would be created to handle . When solved, branch would be merge back.
+When an issue is raised, a new branch would be created to handle . When solved, branch would be merge back.
 
 Commit message follows AngularJS Git Commit Message Conventions.
 

@@ -75,7 +75,24 @@ class MapReaderTest extends ApplicationTest {
         ArrayList<Hero> heroes = gameScene.getHeroes();
         ArrayList<Boss> bosses = gameScene.getBosses();
 
-        Assertions.assertEquals(enemies.size(), 4);
+        Assertions.assertEquals(enemies.size(), 7);
+        Assertions.assertNotNull(heroes.get(0));
+        Assertions.assertEquals(bosses.size(), 0);
+    }
+
+    @Test
+    void readMapFour() {
+        MapReader mapReader = MapReader.getInstance();
+
+        GameScene gameScene = new GameScene();
+        mapReader.setGameScene(gameScene);
+
+        mapReader.readMap(4);
+        ArrayList<Enemy> enemies = gameScene.getEnemies();
+        ArrayList<Hero> heroes = gameScene.getHeroes();
+        ArrayList<Boss> bosses = gameScene.getBosses();
+
+        Assertions.assertEquals(enemies.size(), 3);
         Assertions.assertNotNull(heroes.get(0));
         Assertions.assertEquals(bosses.size(), 1);
     }

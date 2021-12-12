@@ -234,6 +234,7 @@ public class GameSceneUpdater {
                 bubble.collideWith(enemy);
             }
             for (Boss boss : gameScene.getBosses()) {
+//                System.out.println(boss.isBombed);
                 if (!boss.isBombed) {
                     bubble.collideWith(boss);
                     boss.isBombed = true;
@@ -249,15 +250,15 @@ public class GameSceneUpdater {
 
         // end game logic
         if (gameScene.getEnemies().isEmpty() && gameStatus != GamePanel.GameStatus.WIN) {
-            System.out.println(delay);
+//            System.out.println(delay);
 //            System.out.println("isEmpty");
             if (delay == 90) {
                 SoundEffect.getInstance().play("nextLevel");
                 delay -= 1;
             } else if (delay == 0) {
-                if (gameScene.level.getValue() == 3 ) {
+                if (gameScene.level.getValue() == 4 ) {
                     if (gameScene.getBosses().isEmpty()) {
-                        System.out.println("no boss");
+//                        System.out.println("no boss");
                         gameStatus = GamePanel.GameStatus.WIN;
                         SoundEffect.getInstance().play("victory");
                         delay = 180;

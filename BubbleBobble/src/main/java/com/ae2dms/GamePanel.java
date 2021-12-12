@@ -114,6 +114,7 @@ public class GamePanel {
 	 * Load the gameOverScene's fxml based on the game stayus, and hand over control to its controller.
 	 */
 	public void gameOver() {
+		gameTimer.stop();
 		if (gameStatus == GameStatus.WIN) {
 			loadHelper("/view_fxml/GameOver/gameOverWin.fxml");
 		} else {

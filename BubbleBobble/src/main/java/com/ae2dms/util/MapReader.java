@@ -52,6 +52,7 @@ public class MapReader {
         String level1 = "/world/World1.txt";
         String level2 = "/world/World2.txt";
         String level3 = "/world/World3.txt";
+        String level4 = "/world/World4.txt";
         String map = level1;
 
         switch (level) {
@@ -63,6 +64,9 @@ public class MapReader {
                 break;
             case 3:
                 map = level3;
+                break;
+            case 4:
+                map = level4;
         }
 
         InputStream input = this.getClass().getResourceAsStream(map);
