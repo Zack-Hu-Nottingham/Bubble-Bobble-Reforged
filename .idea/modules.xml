@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/BubbleBobble/BubbleBobble.iml" filepath="$PROJECT_DIR$/BubbleBobble/BubbleBobble.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/ae2dms-cw-20215538.iml" filepath="$PROJECT_DIR$/.idea/ae2dms-cw-20215538.iml" />
-    </modules>
-  </component>
-</project>
